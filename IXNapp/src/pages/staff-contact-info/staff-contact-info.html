@@ -1,51 +1,80 @@
+
 <ion-header>
   <ion-navbar>
     <ion-title>
       Staff Contact Info
-    </ion-title>
+    </ion-title> 
   </ion-navbar>
 </ion-header>
-<ion-content padding id="page6">
+
+<ion-content id="page6">
   <h4 id="staffContactInfo-heading2" style="color:#000000;">
     Lecturers
   </h4>
-  <ion-list id="staffContactInfo-list3">
+   <div class= "Lecturerparent">
+  <ion-item-group id="staffContactInfo-list3">
     <ion-item color="none" id="staffContactInfo-list-item15">
-      <ion-avatar item-left>
-        <img />
+      <ion-avatar class = "lecturer" item-start>
+        <img class= "Lecturersize" src= "http://static.bleacherreport.net/images/redesign/avatars/default-user-icon-profile.png">
       </ion-avatar>
-      <h2>
-        Firstname Lastname
-      </h2>
+      <ul>
+        <li>Firstname Lastname</li>
+        <li>f.lastname@ucl.ac.uk</li>
+        <li>Office hours: xxx</li>
+        <li>Office location: xxx</li>
+      </ul>
     </ion-item>
-  </ion-list>
+  </ion-item-group>
+  </div>
+  <hr>
+
+
+<div class= "TAParent">
+  <ion-item-group id="staffContactInfo-list6">
+    <div class TA>
   <h4 id="staffContactInfo-heading3" style="color:#000000;">
-    TAs
+    Teaching Assistants
   </h4>
-  <ion-list id="staffContactInfo-list6">
     <ion-item color="none" id="staffContactInfo-list-item28">
       <ion-avatar item-left>
-        <img />
+        <img class= "TAsize" src= "http://static.bleacherreport.net/images/redesign/avatars/default-user-icon-profile.png"/>
       </ion-avatar>
-      <h2>
-        Firstname Lastname
-      </h2>
+      <ul>
+        <li>Firstname Lastname</li>
+        <li>f.lastname@ucl.ac.uk</li>
+        <li>Lab hours: xxx</li>
+        <li>Lab location: xxx</li>
+      </ul>  
     </ion-item>
+  </div>
+
+  <div class TA>
     <ion-item color="none" id="staffContactInfo-list-item29">
       <ion-avatar item-left>
-        <img />
+        <img class= "TAsize" src= "http://static.bleacherreport.net/images/redesign/avatars/default-user-icon-profile.png"/>
       </ion-avatar>
-      <h2>
-        Firstname Lastname
-      </h2>
+      <ul>
+        <li>Firstname Lastname</li>
+        <li>f.lastname@ucl.ac.uk</li>
+        <li>Lab hours: xxx</li>
+        <li>Lab location: xxx</li>
+      </ul>
     </ion-item>
+  </div>
+  <div TA>
+
     <ion-item color="none" id="staffContactInfo-list-item30">
       <ion-avatar item-left>
-        <img />
+        <img class= "TAsize" src= "http://static.bleacherreport.net/images/redesign/avatars/default-user-icon-profile.png"/>
       </ion-avatar>
-      <h2>
-        Firstname Lastname
-      </h2>
-    </ion-item>
-  </ion-list>
+      <ul>
+        <li>Firstname Lastname</li>
+        <li>f.lastname@ucl.ac.uk</li>
+        <li>Lab hours: xxx</li>
+        <li>Lab location: xxx</li>
+      </ul>         
+       </ion-item>
+        </div>
+  </ion-item-group>
+</div>
 </ion-content>
