@@ -1,3 +1,43 @@
 page-my-profile {
+    #profilepic {
+        display:block;
+        width:80px;
+        height:80px;
+        margin-left:auto;
+        margin-right:auto;
+    }
+    
+    #myProfile-input1 {
+        width:150px;
+        float:left;
+    }
+    #myProfile-input2 {
+        width:140px;
+        padding-left:0px;
+    }
+    
+    ion-input {
+        border:solid 2px;
+        border-color:#00A8FF;
+        //background-color:#00A8FF;
+        border-radius: 15px;
+        padding-left: 10px;
+        margin-bottom: 10px;
+        color:white;
+    }
+    
+    #supervising{
+        margin-top: 25px;
+    }
+    button {
+        background-color:#00A8FF;
+        color:white;
+        font-size:17px;
+        border-radius:70px;
+        height:50px;
+        width:50px;
+        margin-top:10px;
+    }
+
 
 }

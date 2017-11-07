@@ -25678,3 +25678,44 @@ ion-navbar.toolbar {
   min-height: calc(46px + constant(safe-area-inset-bottom));
   min-height: calc(46px + env(safe-area-inset-bottom));
 }
+
+page-my-profile #profilepic {
+  display: block;
+  width: 80px;
+  height: 80px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+page-my-profile #myProfile-input1 {
+  width: 150px;
+  float: left;
+}
+
+page-my-profile #myProfile-input2 {
+  width: 140px;
+  padding-left: 0px;
+}
+
+page-my-profile ion-input {
+  border: solid 2px;
+  border-color: #00A8FF;
+  border-radius: 15px;
+  padding-left: 10px;
+  margin-bottom: 10px;
+  color: white;
+}
+
+page-my-profile #supervising {
+  margin-top: 25px;
+}
+
+page-my-profile button {
+  background-color: #00A8FF;
+  color: white;
+  font-size: 17px;
+  border-radius: 70px;
+  height: 50px;
+  width: 50px;
+  margin-top: 10px;
+}
