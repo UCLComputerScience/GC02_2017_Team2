@@ -1,3 +1,72 @@
-page-staff-contact-info {
+
+ion-header {
+	line-height: 140px;
+	background: white;
+	border: 2 px solid #00A8FF;
+}
+
+ion-navbar {
+	height: 140px;
+	background: transparent;
+}
+
+ion-title {
+	text-align: center;
+	position: relative;
+}
+
+ul {
+  list-style-type: none;
+  position:relative;  
+  list-style: none;
+  width:100%;
+}
+
+#staffContactInfo-heading2 {
+	margin-top: 20px;
+	float: left;
+	top: 60px;
+	padding-left: 50px;
+	position: relative;
+}
+
+.Lecturerparent {
+	display: flex;
+	flex-direction: row;
+	align-self: center;
+	margin-top: 120px;
+	margin-bottom: 40px;
+	border: 1px;
+	padding-left: 30px;
+	position: relative;
 
 }
+
+
+.Lecturersize {
+	width: 100% !important;  
+    height : 100% !important;  
+    max-width: 90px !important;
+    max-height: 90px !important;
+}
+
+hr {
+	size: 1px;
+	color: #555e6d;
+}
+
+.TAParent {
+	float:left;
+	padding-left: 30px;	
+	margin-top: 160 px;
+	position: absolute;
+
+}
+
+.TAsize {
+	width: 100% !important;  
+    height : 100% !important;  
+    max-width: 90px !important;
+    max-height: 90px !important;
+}
+
