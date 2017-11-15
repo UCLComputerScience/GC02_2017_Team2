@@ -20975,6 +20975,7 @@ ion-navbar.toolbar {
   display: flex;
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
+  height: auto;
 }
 
 .bar-button {
