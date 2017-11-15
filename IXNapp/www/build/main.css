@@ -25689,12 +25689,12 @@ page-my-profile #profilepic {
 }
 
 page-my-profile #myProfile-input1 {
-  width: 150px;
+  width: 52%;
   float: left;
 }
 
 page-my-profile #myProfile-input2 {
-  width: 140px;
+  width: 47%;
   padding-left: 0px;
 }
 
@@ -25718,23 +25718,11 @@ page-my-profile button {
   border-radius: 70px;
   height: 50px;
   width: 50px;
-  margin-top: 10px;
+  margin: 10px;
 }
 
-ion-header {
-  height: 20%;
-  background: white;
-  border: 2 px solid #00A8FF;
-}
-
-ion-navbar {
-  height: 100%;
-  background: transparent;
-}
-
-ion-title {
+page-my-profile #groups {
   text-align: center;
-  position: relative;
 }
 
 ul {

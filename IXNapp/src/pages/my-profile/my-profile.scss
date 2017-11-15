@@ -8,11 +8,11 @@ page-my-profile {
     }
     
     #myProfile-input1 {
-        width:150px;
+        width:52%;
         float:left;
     }
     #myProfile-input2 {
-        width:140px;
+        width:47%;
         padding-left:0px;
     }
     
@@ -36,7 +36,11 @@ page-my-profile {
         border-radius:70px;
         height:50px;
         width:50px;
-        margin-top:10px;
+        margin:10px;
+    }
+    
+    #groups {
+        text-align: center;
     }
 
 
