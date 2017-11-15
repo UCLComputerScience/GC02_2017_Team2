@@ -1,12 +1,12 @@
 
 ion-header {
-	line-height: 140px;
+	height: 20%;
 	background: white;
 	border: 2 px solid #00A8FF;
 }
 
 ion-navbar {
-	height: 140px;
+	height: 100%;
 	background: transparent;
 }
 
@@ -23,10 +23,10 @@ ul {
 }
 
 #staffContactInfo-heading2 {
-	margin-top: 20px;
-	float: left;
-	top: 60px;
-	padding-left: 50px;
+	margin-top: 5%;
+	top: 5%;
+	padding-left: 4.5%;
+	z-index: 1;
 	position: relative;
 }
 
@@ -34,10 +34,11 @@ ul {
 	display: flex;
 	flex-direction: row;
 	align-self: center;
-	margin-top: 120px;
-	margin-bottom: 40px;
+	margin-top: 5%;
+	margin-bottom: 3%;
 	border: 1px;
-	padding-left: 30px;
+	padding-right: 2%;
+	z-index: 0;
 	position: relative;
 
 }
@@ -46,8 +47,8 @@ ul {
 .Lecturersize {
 	width: 100% !important;  
     height : 100% !important;  
-    max-width: 90px !important;
-    max-height: 90px !important;
+    max-width: 21vw !important;
+    max-height: 17vh !important;
 }
 
 hr {
@@ -55,18 +56,32 @@ hr {
 	color: #555e6d;
 }
 
-.TAParent {
-	float:left;
-	padding-left: 30px;	
-	margin-top: 160 px;
-	position: absolute;
+#staffContactInfo-heading3 {
+	margin-top: 5%;
+	padding-left: 4%;
+	margin-bottom: 1%;
+	position: relative;
 
+}
+
+.TAav {
+	float:left;
+	margin-top: 1%;
+	margin-bottom: 4%;
+	position: relative;
+}
+
+.TAlist {
+	display: inline-block;
+	margin-top: 1%;
+	margin-bottom: 4%;
+	position: relative;
 }
 
 .TAsize {
 	width: 100% !important;  
     height : 100% !important;  
-    max-width: 90px !important;
-    max-height: 90px !important;
+    max-width: 21vw !important;
+    max-height: 17vh !important;
 }
 
