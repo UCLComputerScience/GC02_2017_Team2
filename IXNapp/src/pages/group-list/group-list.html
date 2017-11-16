@@ -1,36 +1,28 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-      Group List
-    </ion-title>
-  </ion-navbar>
+    <ion-navbar>
+        <ion-title>
+            Group List
+        </ion-title>
+    </ion-navbar>
 </ion-header>
+
 <ion-content padding id="page3">
-  <div id="groupList-container1">
-    <button id="groupList-button3" ion-button color="balanced" on-click="goToFeedbackSummary()">
-      Group 1 - Project Stage
-    </button>
-    <button id="groupList-button8" ion-button clear color="positive" style="color:#00A8FF;text-align:left;border-radius:3px 3px 3px 3px;" on-click="goToGroup()">
-      <ion-icon name="add-circle"></ion-icon>
-    </button>
-  </div>
-  <div id="groupList-container2">
-    <div class="spacer" style="width:300px;height:15px;" id="groupList-spacer7"></div>
-    <button id="groupList-button9" ion-button color="assertive" on-click="goToFeedbackSummary()">
-      Group 2 - Project Stage
-    </button>
-    <button id="groupList-button10" ion-button clear color="positive" style="color:#00A8FF;text-align:left;border-radius:3px 3px 3px 3px;" on-click="goToGroup()">
-      <ion-icon name="add-circle"></ion-icon>
-    </button>
-    <div class="spacer" style="width:300px;height:15px;" id="groupList-spacer8"></div>
-  </div>
-  <div id="groupList-container5">
-    <button id="groupList-button15" ion-button color="energized" on-click="goToFeedbackSummary()">
-      Group 3 - Project Stage
-    </button>
-    <button id="groupList-button16" ion-button clear color="positive" style="color:#00A8FF;text-align:left;border-radius:3px 3px 3px 3px;" on-click="goToGroup()">
-      <ion-icon name="add-circle"></ion-icon>
-    </button>
-  </div>
-  <div class="spacer" style="width:300px;height:15px;" id="groupList-spacer6"></div>
+    <div id="groupList-container1">
+        <button id="groupList-button3" ion-button color="balanced" on-click="goToFeedbackSummary()">
+            Group&nbsp; <span>1</span>&nbsp; - &nbsp;<span>&nbsp; Project Stage</span>
+        </button>
+        <button class="addbutton" ion-button clear on-click="goToGroup()">
+            <ion-icon name="add-circle"></ion-icon>
+        </button>
+    </div>
+    <div class="spacer" style="width:300px;height:15px;" id="groupList-spacer6"></div>
+  
+
 </ion-content>
+
+onload ....
+
+for each groups ...
+
+
+$scope.inputs = [Group1, Group2, Group3,];

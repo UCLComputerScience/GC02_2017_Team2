@@ -10,5 +10,10 @@ export class GroupPage {
   // should be each tab's root Page
   constructor(public navCtrl: NavController) {
   }
+ goBack(params){
+    if (!params) params = {};
+    this.navCtrl.pop();
+  }
   
 }
+

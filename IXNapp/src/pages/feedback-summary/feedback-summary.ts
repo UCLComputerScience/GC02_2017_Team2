@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { GroupPage } from '../group/group';
 
 @Component({
   selector: 'page-feedback-summary',
@@ -10,5 +11,8 @@ export class FeedbackSummaryPage {
   // should be each tab's root Page
   constructor(public navCtrl: NavController) {
   }
-  
+  goToGroup(params){
+    if (!params) params = {};
+    this.navCtrl.push(GroupPage);
+  }
 }

@@ -25679,6 +25679,44 @@ ion-navbar.toolbar {
   min-height: calc(46px + env(safe-area-inset-bottom));
 }
 
+page-feedback-summary #addfeedback {
+  vertical-align: middle;
+  text-align: right;
+}
+
+page-feedback-summary #feedbackSummary-button42 {
+  border: solid 2px;
+}
+
+page-feedback-summary #overallp {
+  float: left;
+}
+
+page-feedback-summary #latestp {
+  padding-left: 20px;
+}
+
+page-feedback-summary #latestperformance {
+  text-align: center;
+}
+
+page-feedback-summary #feedbackSummary-heading6 {
+  margin-bottom: 0;
+  float: left;
+}
+
+page-group-list .addbutton {
+  color: #00A8FF;
+  text-align: left;
+  border-radius: 3px 3px 3px 3px;
+  font-size: 37px;
+  padding: 0;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  height: auto;
+  float: right;
+}
+
 page-my-profile #profilepic {
   display: block;
   width: 80px;

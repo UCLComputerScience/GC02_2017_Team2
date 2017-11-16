@@ -8,20 +8,35 @@
     </ion-title>
   </ion-navbar>
 </ion-header>
+
 <ion-content padding id="page14">
-  <h4 id="feedbackSummary-heading6" style="color:#000000;">
-    Group #
-  </h4>
-  <h5 id="feedbackSummary-heading7" style="color:#000000;">
-    Current overall performance
-  </h5>
-  <h5 id="feedbackSummary-heading8" style="color:#000000;">
-    latest performance: good
-  </h5>
-  <button id="feedbackSummary-button42" ion-button clear color="positive" small>
-    add Feedback
-  </button>
-  <div id="feedbackSummary-markdown10" class="show-list-numbers-and-dots">
+    <h4 id="feedbackSummary-heading6" style="color:#000000;">
+        Group <span>#</span>
+    </h4>
+    <div id="addfeedback">
+        <button id="feedbackSummary-button42" ion-button clear color="positive" small on-click="goToGroup();">
+            Add Feedback
+        </button>
+    </div>
+    <div id="top">
+        <div id="latestfeedback">
+            <p>Latest Feedback:
+            <br>Week <span>4</span></p>
+        </div>
+    </div>
+    <div>
+        <div>
+            <br>
+            <p id="overallp" style="color:#000000;">
+            Current overall <br> performance
+            </p>
+            <p id="latestp" style="color:#000000;">
+                latest performance:
+            <span id="latestperformance">good</span>
+            </p>
+        </div>
+    </div>
+    <div id="feedbackSummary-markdown10" class="show-list-numbers-and-dots">
     <p style="color:#000000;font-size:20px;">
       Very Good
     </p>
