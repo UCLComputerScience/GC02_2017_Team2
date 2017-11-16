@@ -1,3 +1,66 @@
 page-red-students {
 
+ion-header {
+	height: 15vh;
+	width: 100vw;
+
+}
+
+ion-navbar {
+	height: 15vh;
+	width: 100vw;
+	line-height: 880%;
+}
+
+ion-buttons {
+	position: absolute;
+}
+
+ion-title {
+	position: relative;
+	display: inline-block;
+}
+
+ion-scroll {
+	position: relative;
+	height: 10vh;
+}
+
+ion-row {
+	justify-content: start;
+	position: relative;
+}
+
+ion-list {
+	top: 1vh;
+	position: relative;
+}
+
+.Week {
+	float: left;
+	position: relative;
+	top: 0.5vh;
+}
+
+ion-item {
+	border: 3px;
+}
+
+.stat {
+	float: left;
+	left: 7%;
+	top: 1%;
+	height: 10 vh;
+	width: 10 vw;
+	position: relative;
+}
+
+.contribution {
+	top: 0.3vh;
+	left: 10vw;
+	width: 20%;
+	position: relative;
+}
+
+
 }
