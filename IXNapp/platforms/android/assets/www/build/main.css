@@ -25819,30 +25819,162 @@ page-my-profile #groups {
   text-align: center;
 }
 
-page-staff-contact-info ion-header {
+page-red-groups ion-header {
+  height: 15vh;
+  width: 100vw;
+}
+
+page-red-groups ion-navbar {
+  height: 15vh;
+  width: 100vw;
+}
+
+page-red-groups .GTitle {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+
+page-red-groups ion-buttons {
+  position: relative;
+}
+
+page-red-groups ion-title {
+  position: relative;
+}
+
+page-red-groups ion-scroll {
+  position: relative;
+  height: 10vh;
+}
+
+page-red-groups ion-row {
+  -webkit-box-pack: start;
+  -webkit-justify-content: start;
+  -ms-flex-pack: start;
+  justify-content: start;
+  position: relative;
+}
+
+page-red-groups ion-list {
+  top: 1vh;
+  position: relative;
+}
+
+page-red-groups .Week {
+  float: left;
+  position: relative;
+  top: 0.5vh;
+  left: 17vw;
+}
+
+page-red-groups ion-item {
+  border: 3px;
+}
+
+page-red-groups .stat {
+  float: left;
+  left: 28vw;
+  height: 10vh;
+  position: relative;
+  width: 10vw;
+}
+
+page-red-students ion-header {
+  height: 15vh;
+  width: 100vw;
+}
+
+page-red-students ion-navbar {
+  height: 15vh;
+  width: 100vw;
+  line-height: 880%;
+}
+
+page-red-students ion-buttons {
+  position: absolute;
+}
+
+page-red-students ion-title {
+  position: relative;
+  display: inline-block;
+}
+
+page-red-students ion-scroll {
+  position: relative;
+  height: 10vh;
+}
+
+page-red-students ion-row {
+  -webkit-box-pack: start;
+  -webkit-justify-content: start;
+  -ms-flex-pack: start;
+  justify-content: start;
+  position: relative;
+}
+
+page-red-students ion-list {
+  top: 1vh;
+  position: relative;
+}
+
+page-red-students .Week {
+  float: left;
+  position: relative;
+  top: 0.5vh;
+}
+
+page-red-students ion-item {
+  border: 3px;
+}
+
+page-red-students .stat {
+  float: left;
+  left: 7%;
+  top: 1%;
+  height: 10 vh;
+  width: 10 vw;
+  position: relative;
+}
+
+page-red-students .contribution {
+  top: 0.3vh;
+  left: 10vw;
+  width: 20%;
+  position: relative;
+}
+
+staff-contact-info ion-header {
   height: 20%;
   background: white;
   border: 2 px solid #00A8FF;
 }
 
-page-staff-contact-info ion-navbar {
+staff-contact-info ion-navbar {
   height: 100%;
+  line-height: 1300%;
   background: transparent;
 }
 
-page-staff-contact-info ion-title {
-  text-align: center;
+staff-contact-info ion-title {
   position: relative;
+  display: inline-block;
 }
 
-page-staff-contact-info ul {
+staff-contact-info ul {
   list-style-type: none;
   position: relative;
   list-style: none;
   width: 100%;
 }
 
-page-staff-contact-info #staffContactInfo-heading2 {
+staff-contact-info #staffContactInfo-heading2 {
   margin-top: 5%;
   top: 5%;
   padding-left: 4.5%;
@@ -25850,7 +25982,7 @@ page-staff-contact-info #staffContactInfo-heading2 {
   position: relative;
 }
 
-page-staff-contact-info .Lecturerparent {
+staff-contact-info .Lecturerparent {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -25871,40 +26003,40 @@ page-staff-contact-info .Lecturerparent {
   position: relative;
 }
 
-page-staff-contact-info .Lecturersize {
+staff-contact-info .Lecturersize {
   width: 100% !important;
   height: 100% !important;
   max-width: 21vw !important;
   max-height: 17vh !important;
 }
 
-page-staff-contact-info hr {
+staff-contact-info hr {
   size: 1px;
   color: #555e6d;
 }
 
-page-staff-contact-info #staffContactInfo-heading3 {
+staff-contact-info #staffContactInfo-heading3 {
   margin-top: 5%;
   padding-left: 4%;
   margin-bottom: 1%;
   position: relative;
 }
 
-page-staff-contact-info .TAav {
+staff-contact-info .TAav {
   float: left;
   margin-top: 1%;
   margin-bottom: 4%;
   position: relative;
 }
 
-page-staff-contact-info .TAlist {
+staff-contact-info .TAlist {
   display: inline-block;
   margin-top: 1%;
   margin-bottom: 4%;
   position: relative;
 }
 
-page-staff-contact-info .TAsize {
+staff-contact-info .TAsize {
   width: 100% !important;
   height: 100% !important;
   max-width: 21vw !important;
