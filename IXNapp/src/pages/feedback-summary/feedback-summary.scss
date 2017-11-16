@@ -2,6 +2,7 @@ page-feedback-summary {
     
     #latestfeedback {
     }
+    
     #addfeedback {
         vertical-align:middle;
         text-align: right;
@@ -11,24 +12,47 @@ page-feedback-summary {
         border:solid 2px;
     }
     
-    #overallp {
-        float: left;
-    }
-    
-    #latestp {
-        padding-left: 20px;
-    }
-    
-    #latestperformance {
-        text-align: center; 
-    }
-    
-    #top {
-        
-    }
-    
     #feedbackSummary-heading6 {
         margin-bottom: 0;
         float: left;
+    }
+    
+    #overallp {
+    }
+    
+    #latestp {
+        padding-left: 18%;
+    }
+    
+    #latestperformance { 
+    }
+    
+    #performance {
+        background-color:blue;
+        border-radius:70px;
+        height:20px;
+        width:20px;
+        padding-top:0px;
+        padding-bottom:0px;
+        margin-top: 0px;
+        
+    
+    }
+    ion-item {
+    }
+    
+    .name {
+        font-size: 15px;
+        color: black;
+    }
+    
+    .floating {
+        display:inline-block;
+    }
+    
+    #performance2 {
+        color:#000000;
+        font-size:20px;
+        margin-top:0;
     }
 }

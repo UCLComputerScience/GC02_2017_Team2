@@ -25,48 +25,52 @@
         </div>
     </div>
     <div>
-        <div>
-            <br>
-            <p id="overallp" style="color:#000000;">
-            Current overall <br> performance
+        <div id="lll">
+            <p class="floating" id="overallp" style="color:#000000;">
+            Current overall <br> performance:
             </p>
-            <p id="latestp" style="color:#000000;">
+            <p class="floating" id="latestp" style="color:#000000;">
                 latest performance:
+                <br>
             <span id="latestperformance">good</span>
             </p>
         </div>
+
+            <p id="performance2">
+                Very Good
+            </p>
+
     </div>
-    <div id="feedbackSummary-markdown10" class="show-list-numbers-and-dots">
-    <p style="color:#000000;font-size:20px;">
-      Very Good
-    </p>
-  </div>
   <h5 id="feedbackSummary-heading9" style="color:#000000;">
     Individual feedback forms
   </h5>
+    
   <div id="feedbackSummary-container9">
     <ion-list id="feedbackSummary-list10">
-      <ion-item-divider color="light" id="feedbackSummary-list-item-divider2">
+      <ion-item-divider color="primary" id="feedbackSummary-list-item-divider2">
         W1
       </ion-item-divider>
       <ion-item color="none" id="feedbackSummary-list-item56">
-        Samantha Watson
-        <ion-note item-right></ion-note>
+          <p class="name">Samantha Watson</p>
+        <span><button id="performance"></button></span><span>40%</span>
+        <ion-note item-right>
+            <button id="feedbackSummary-button40" ion-button clear color="positive" small>
+                Edit
+            </button><br>
+            <button id="feedbackSummary-button41" ion-button clear color="positive" small>
+                more details
+            </button>  
+        </ion-note>
       </ion-item>
       <ion-item color="none" id="feedbackSummary-list-item57">
-        John Taylor
+        <p class="name">John Taylor</p>
         <ion-note item-right></ion-note>
       </ion-item>
       <ion-item color="none" id="feedbackSummary-list-item58">
-        James Kirk
+          <p class="name">James Kirk</p>
         <ion-note item-right></ion-note>
       </ion-item>
     </ion-list>
-    <button id="feedbackSummary-button40" ion-button clear color="positive" small>
-      Edit
-    </button>
-    <button id="feedbackSummary-button41" ion-button clear color="positive" small>
-      more details
-    </button>
+
   </div>
 </ion-content>
