@@ -1,49 +1,81 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar align-title="center" >
+    <div class= "GTitle">
     <ion-buttons start>
       <button ion-button></button>
     </ion-buttons>
     <ion-title>
       Red Groups
     </ion-title>
+    </div>
   </ion-navbar>
 </ion-header>
-<ion-content padding id="page9">
-  <div id="redGroups-container20">
-    <button id="redGroups-button77" ion-button color="assertive" style="border-radius:70px 70px 70px 70px;">
-      G3
+<ion-content padding id="page8">
+  
+  <ion-scroll scrollX="true">
+    <ion-row nowrap class= "scroller">
+      <ion-chip color= "danger">
+        <ion-label>
+          Group 1
+        </ion-label>
+      </ion-chip>
+      <ion-chip color= "danger">
+        <ion-label>
+          Group 2
+        </ion-label>
+      </ion-chip>
+      <ion-chip color= "danger">
+        <ion-label>
+          Group 3
+        </ion-label>
+      </ion-chip>
+      <ion-chip color= "danger">
+        <ion-label>
+          Group 4
+        </ion-label>
+      </ion-chip>
+      <ion-chip color= "danger">
+        <ion-label>
+          Group 5
+        </ion-label>
+      </ion-chip>
+      <ion-chip color= "danger">
+        <ion-label>
+          Group 6
+        </ion-label>
+      </ion-chip>
+      <ion-chip color= "danger">
+        <ion-label>
+          Group 7
+        </ion-label>
+      </ion-chip>
+      <ion-chip color= "danger">
+        <ion-label>
+          Group 8
+        </ion-label>
+      </ion-chip>
+      <ion-chip color= "danger">
+        <ion-label>
+          Group 9
+        </ion-label>
+      </ion-chip>
+    </ion-row>
+  </ion-scroll>
+
+<ion-list>
+  <ion-item>
+    <div class= "Week">
+      <h1>
+        Week 1
+      </h1>
+    </div>
+    <button ion-button class= "stat">
     </button>
-    <button id="redGroups-button80" ion-button color="assertive" style="border-radius:70px 70px 70px 70px;">
-      G3
-    </button>
-    <button id="redGroups-button81" ion-button color="assertive" style="border-radius:70px 70px 70px 70px;">
-      G3
-    </button>
-    <button id="redGroups-button82" ion-button color="assertive" style="border-radius:70px 70px 70px 70px;">
-      G3
-    </button>
-    <button id="redGroups-button83" ion-button color="assertive" style="border-radius:70px 70px 70px 70px;">
-      G3
-    </button>
-  </div>
-  <h5 id="redGroups-heading16" style="color:#000000;">
-    Feedback overview: Team #
-  </h5>
-  <ion-list id="redGroups-list16">
-    <ion-item-divider color="light" id="redGroups-list-item-divider3">
-      W1
-    </ion-item-divider>
-    <ion-item color="none" id="redGroups-list-item65">
-      Samantha Watson
-      <ion-note item-right></ion-note>
-    </ion-item>
-    <ion-item color="none" id="redGroups-list-item66">
-      John Taylor
-      <ion-note item-right></ion-note>
-    </ion-item>
-    <ion-item color="none" id="redGroups-list-item67">
-      James Kirk
-      <ion-note item-right></ion-note>
-    </ion-item>
-  </ion-list>
+  </ion-item>
+</ion-list>
+
+<p>
+  {{name}}
+</p>
+
 </ion-content>

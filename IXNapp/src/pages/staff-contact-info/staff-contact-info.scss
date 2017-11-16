@@ -1,92 +1,90 @@
-page-staff-contact-info {
-    
-    ion-header {
-        height: 20%;
-        background: white;
-        border: 2 px solid #00A8FF;
-    }
+staff-contact-info {
 
-    ion-navbar {
-        height: 100%;
-        background: transparent;
-    }
+ion-header {
+	height: 20%;
+	background: white;
+	border: 2 px solid #00A8FF;
+}
 
-    ion-title {
-        text-align: center;
-        position: relative;
-    }
+ion-navbar {
+	height: 100%;
+	line-height: 1300%;
+	background: transparent;
+}
 
-    ul {
-      list-style-type: none;
-      position:relative;  
-      list-style: none;
-      width:100%;
-    }
+ion-title {
+	position: relative;
+	display: inline-block;
+}
 
-    #staffContactInfo-heading2 {
-        margin-top: 5%;
-        top: 5%;
-        padding-left: 4.5%;
-        z-index: 1;
-        position: relative;
-    }
+ul {
+  list-style-type: none;
+  position:relative;  
+  list-style: none;
+  width:100%;
+}
 
-    .Lecturerparent {
-        display: flex;
-        flex-direction: row;
-        align-self: center;
-        margin-top: 5%;
-        margin-bottom: 3%;
-        border: 1px;
-        padding-right: 2%;
-        z-index: 0;
-        position: relative;
+#staffContactInfo-heading2 {
+	margin-top: 5%;
+	top: 5%;
+	padding-left: 4.5%;
+	z-index: 1;
+	position: relative;
+}
 
-    }
+.Lecturerparent {
+	display: flex;
+	flex-direction: row;
+	align-self: center;
+	margin-top: 5%;
+	margin-bottom: 3%;
+	border: 1px;
+	padding-right: 2%;
+	z-index: 0;
+	position: relative;
+
+}
 
 
-    .Lecturersize {
-        width: 100% !important;  
-        height : 100% !important;  
-        max-width: 21vw !important;
-        max-height: 17vh !important;
-    }
+.Lecturersize {
+	width: 100% !important;  
+    height : 100% !important;  
+    max-width: 21vw !important;
+    max-height: 17vh !important;
+}
 
-    hr {
-        size: 1px;
-        color: #555e6d;
-    }
+hr {
+	size: 1px;
+	color: #555e6d;
+}
 
-    #staffContactInfo-heading3 {
-        margin-top: 5%;
-        padding-left: 4%;
-        margin-bottom: 1%;
-        position: relative;
+#staffContactInfo-heading3 {
+	margin-top: 5%;
+	padding-left: 4%;
+	margin-bottom: 1%;
+	position: relative;
 
-    }
+}
 
-    .TAav {
-        float:left;
-        margin-top: 1%;
-        margin-bottom: 4%;
-        position: relative;
-    }
+.TAav {
+	float:left;
+	margin-top: 1%;
+	margin-bottom: 4%;
+	position: relative;
+}
 
-    .TAlist {
-        display: inline-block;
-        margin-top: 1%;
-        margin-bottom: 4%;
-        position: relative;
-    }
+.TAlist {
+	display: inline-block;
+	margin-top: 1%;
+	margin-bottom: 4%;
+	position: relative;
+}
 
-    .TAsize {
-        width: 100% !important;  
-        height : 100% !important;  
-        max-width: 21vw !important;
-        max-height: 17vh !important;
-    }
+.TAsize {
+	width: 100% !important;  
+    height : 100% !important;  
+    max-width: 21vw !important;
+    max-height: 17vh !important;
+}
 
-    
-    
-    
 }

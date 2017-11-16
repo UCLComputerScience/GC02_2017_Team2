@@ -1,3 +1,61 @@
 page-red-groups {
 
+ion-header {
+	height: 15vh;
+	width: 100vw;
+
+}
+
+ion-navbar {
+	height: 15vh;
+	width: 100vw;
+}
+
+.GTitle {
+	display: flex;
+	flex-direction: row;
+}
+
+ion-buttons {
+	position: relative;
+}
+
+ion-title {
+	position: relative;
+}
+
+ion-scroll {
+	position: relative;
+	height: 10vh;
+}
+
+ion-row {
+	justify-content: start;
+	position: relative;
+}
+
+ion-list {
+	top: 1vh;
+	position: relative;
+}
+
+.Week {
+	float: left;
+	position: relative;
+	top: 0.5vh;
+	left: 17vw;
+}
+
+ion-item {
+	border: 3px;
+}
+
+.stat {
+	float: left;
+	left: 28vw;
+	height: 10vh;
+	position: relative;
+	width: 10vw;
+}
+
 }
