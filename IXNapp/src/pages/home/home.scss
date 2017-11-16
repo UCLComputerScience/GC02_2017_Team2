@@ -1,3 +1,35 @@
 page-home {
+    
+    .scroll-content { //allowing no scrolling
+        height:100% !important
+    }
 
-}
+    ion-card-header {
+        font-weight: bold;
+    }
+
+    ion-card { 
+        height: 30 !important; 
+    }
+
+    ion-card-background {}
+
+    
+    
+    
+       canvas  {
+          height: 50% !important; 
+       }
+    
+       .table {
+        border: 1px solid red;
+        display: table;
+        width: 100%;
+        table-layout: fixed;
+       }
+
+       .cell {
+        display: table-cell;
+        vertical-align: middle;
+    }
+    }
