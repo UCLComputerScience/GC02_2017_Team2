@@ -8,11 +8,11 @@
     </ion-title>
   </ion-navbar>
 </ion-header>
-
 <ion-content padding id="page8">
+  
   <ion-scroll scrollX="true">
     <ion-row nowrap class= "scroller">
-      <button ion-button color= "danger" *ngFor= "let BadStu of RedStudents" (click)="onClick()">
+      <button ion-button color= "danger" *ngFor= "let BadStu of RedStudents" (click)="onClick()" class= "StudentButton">
           {{BadStu}}
       </button>
     </ion-row>
