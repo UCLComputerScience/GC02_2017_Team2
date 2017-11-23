@@ -25887,7 +25887,7 @@ page-red-groups .stat {
 }
 
 page-red-students ion-buttons {
-  position: absolute;
+  width: 50px !important;
 }
 
 page-red-students ion-scroll {
@@ -25901,6 +25901,8 @@ page-red-students ion-row {
   -ms-flex-pack: start;
   justify-content: start;
   position: relative;
+  width: 500px;
+  overflow-x: auto !important;
 }
 
 page-red-students ion-list {
