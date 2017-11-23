@@ -327,7 +327,7 @@ var RedGroupsPage = (function () {
 }());
 RedGroupsPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-red-groups',template:/*ion-inline-start:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/red-groups/red-groups.html"*/'<ion-header>\n  <ion-navbar align-title="center" >\n    <div class= "GTitle">\n    <ion-buttons start>\n      <button ion-button></button>\n    </ion-buttons>\n    <ion-title>\n      Red Groups\n    </ion-title>\n    </div>\n  </ion-navbar>\n</ion-header>\n<ion-content padding id="page8">\n  \n  <ion-scroll scrollX="true">\n    <ion-row nowrap class= "scroller">\n      <button ion-button color= "danger" *ngFor= "let BadG of RedGroups" (click)= "onClick()">\n          {{BadG}}\n      </button>\n    </ion-row>\n  </ion-scroll>\n\n<ion-list>\n  <ion-item *ngFor= "let BadWeek of RedWeeks">\n    <div class= "Week">\n      <h1>\n        {{BadWeek}}\n      </h1>\n    </div>\n    <button ion-button class= "stat">\n    </button>\n  </ion-item>\n</ion-list>\n\n<p>\n  {{name}}\n</p>\n\n</ion-content>\n'/*ion-inline-end:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/red-groups/red-groups.html"*/
+        selector: 'page-red-groups',template:/*ion-inline-start:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/red-groups/red-groups.html"*/'<ion-header>\n  <ion-navbar >\n    <ion-buttons start>\n      <button ion-button></button>\n    </ion-buttons>\n    <ion-title>\n      Red Groups\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n<ion-content padding id="page8">\n  \n  <ion-scroll scrollX="true">\n    <ion-row nowrap class= "scroller">\n      <button ion-button color= "danger" *ngFor= "let BadG of RedGroups" (click)= "onClick()" class= "BadButton">\n          {{BadG}}\n      </button>\n    </ion-row>\n  </ion-scroll>\n\n<ion-list>\n  <ion-item *ngFor= "let BadWeek of RedWeeks">\n    <div class= "Week">\n      <h1>\n        {{BadWeek}}\n      </h1>\n    </div>\n    <button ion-button class= "stat">\n    </button>\n  </ion-item>\n</ion-list>\n\n<p>\n  {{name}}\n</p>\n\n</ion-content>\n'/*ion-inline-end:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/red-groups/red-groups.html"*/
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */]])
 ], RedGroupsPage);
@@ -359,7 +359,7 @@ var RedStudentsPage = (function () {
         this.navCtrl = navCtrl;
     }
     RedStudentsPage.prototype.ngOnInit = function () {
-        this.RedStudents = ["Gary Johnson", "Abigail Taylor", "Tony Whatever"];
+        this.RedStudents = ["Gary Johnson", "Abigail Taylor", "Tony Whatever", "Gideon Hacquah",];
     };
     RedStudentsPage.prototype.onClick = function () {
         this.RedWeeks = [{ Week: "Week 1", Contr: "30%" }, { Week: "Week 2", Contr: "29%" }, { Week: "Week 3", Contr: "33%" }];
@@ -368,11 +368,12 @@ var RedStudentsPage = (function () {
 }());
 RedStudentsPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-red-students',template:/*ion-inline-start:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/red-students/red-students.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-buttons start>\n      <button ion-button></button>\n    </ion-buttons>\n    <ion-title>\n      Red Students\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding id="page8">\n  <ion-scroll scrollX="true">\n    <ion-row nowrap class= "scroller">\n      <button ion-button color= "danger" *ngFor= "let BadStu of RedStudents" (click)="onClick()">\n          {{BadStu}}\n      </button>\n    </ion-row>\n  </ion-scroll>\n\n<ion-list>\n  <ion-item *ngFor="let BadWeek of RedWeeks">\n    <div class= "Week">\n      <h1>\n        {{BadWeek.Week}}\n      </h1>\n    </div>\n    <button ion-button class= "stat">\n      \n    </button>\n    <h1 class= "contribution">\n      {{BadWeek.Contr}}\n    </h1>\n  </ion-item>\n</ion-list>\n\n</ion-content>\n'/*ion-inline-end:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/red-students/red-students.html"*/
+        selector: 'page-red-students',template:/*ion-inline-start:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/red-students/red-students.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-buttons start>\n      <button ion-button></button>\n    </ion-buttons>\n    <ion-title>\n      Red Students\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n<ion-content padding id="page8">\n  \n  <ion-scroll scrollX="true">\n    <ion-row nowrap class= "scroller">\n      <button ion-button color= "danger" *ngFor= "let BadStu of RedStudents" (click)="onClick()" class= "StudentButton">\n          {{BadStu}}\n      </button>\n    </ion-row>\n  </ion-scroll>\n\n<ion-list>\n  <ion-item *ngFor="let BadWeek of RedWeeks">\n    <div class= "Week">\n      <h1>\n        {{BadWeek.Week}}\n      </h1>\n    </div>\n    <button ion-button class= "stat">\n      \n    </button>\n    <h1 class= "contribution">\n      {{BadWeek.Contr}}\n    </h1>\n  </ion-item>\n</ion-list>\n\n</ion-content>\n'/*ion-inline-end:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/red-students/red-students.html"*/
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */]])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */]) === "function" && _a || Object])
 ], RedStudentsPage);
 
+var _a;
 //# sourceMappingURL=red-students.js.map
 
 /***/ }),
