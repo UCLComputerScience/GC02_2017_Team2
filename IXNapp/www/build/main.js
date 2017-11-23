@@ -317,6 +317,12 @@ var RedGroupsPage = (function () {
     function RedGroupsPage(navCtrl) {
         this.navCtrl = navCtrl;
     }
+    RedGroupsPage.prototype.ngOnInit = function () {
+        this.RedGroups = ["G1", "G2", "G3", "G4"];
+    };
+    RedGroupsPage.prototype.onClick = function () {
+        this.RedWeeks = ["Week 1", "Week 2", "Week 3", "Week 4", "Week 5"];
+    };
     return RedGroupsPage;
 }());
 RedGroupsPage = __decorate([
@@ -352,6 +358,12 @@ var RedStudentsPage = (function () {
     function RedStudentsPage(navCtrl) {
         this.navCtrl = navCtrl;
     }
+    RedStudentsPage.prototype.ngOnInit = function () {
+        this.RedStudents = ["Gary Johnson", "Abigail Taylor", "Tony Whatever", "Gideon Hacquah",];
+    };
+    RedStudentsPage.prototype.onClick = function () {
+        this.RedWeeks = [{ Week: "Week 1", Contr: "30%" }, { Week: "Week 2", Contr: "29%" }, { Week: "Week 3", Contr: "33%" }];
+    };
     return RedStudentsPage;
 }());
 RedStudentsPage = __decorate([
