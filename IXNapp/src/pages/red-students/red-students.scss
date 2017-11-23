@@ -1,22 +1,17 @@
 page-red-students {
 
-
 ion-buttons {
-	width: 50px !important; 
+	position: absolute;
 }
 
 ion-scroll {
 	position: relative;
-	height: 10vh;
+	height: 15vh;
 }
-
-
 
 ion-row {
 	justify-content: start;
 	position: relative;
-	width: 500px;
-	overflow-x: auto !important;
 }
 
 ion-list {
