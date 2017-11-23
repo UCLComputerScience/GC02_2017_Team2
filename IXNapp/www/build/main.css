@@ -25707,6 +25707,10 @@ page-feedback-summary #performance {
   margin-top: 0px;
 }
 
+page-feedback-summary ion-item {
+  background-color: blue;
+}
+
 page-feedback-summary .name {
   font-size: 15px;
   color: black;
