@@ -12,7 +12,7 @@
   
   <ion-scroll scrollX="true">
     <ion-row nowrap class= "scroller">
-      <button ion-button color= "danger" *ngFor= "let BadStu of RedStudents">
+      <button ion-button color= "danger" *ngFor= "let BadStu of RedStudents" (click)="onClick()">
           {{BadStu}}
       </button>
     </ion-row>
