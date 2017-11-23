@@ -11,4 +11,6 @@ export class MyProfilePage {
   constructor(public navCtrl: NavController) {
   }
   
+  items = ['G1', 'G3', 'G8'];
+  
 }
