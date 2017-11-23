@@ -29,9 +29,9 @@
         Supervising groups
         </h5>
         <div id="groups">
-            <button id="myProfile-button25">G3</button>
-            <button id="myProfile-button24">G1</button>
-            <button id="myProfile-button26">G5</button>
+            <button *ngFor="let item of items">
+                {{ item }}
+            </button>
         </div>
     </div>
 </ion-content>
