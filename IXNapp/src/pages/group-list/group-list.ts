@@ -19,4 +19,8 @@ export class GroupListPage {
     if (!params) params = {};
     this.navCtrl.push(GroupPage);
   }
+  
+  items = ['1', '2', '7'];
+  
+  items2 = ['good', 'bad', 'ok'];
 }
