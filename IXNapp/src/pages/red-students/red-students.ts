@@ -17,7 +17,7 @@ RedStudents: String[];
 
 ngOnInit() {
 
-	this.RedStudents = ["Gary Johnson", "Abigail Taylor", "Tony Whatever"];
+	this.RedStudents = ["Gary Johnson", "Abigail Taylor", "Tony Whatever", "Gideon Hacquah", ];
 }
 
 onClick() {
