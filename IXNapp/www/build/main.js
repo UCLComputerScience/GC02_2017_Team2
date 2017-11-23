@@ -323,9 +323,10 @@ RedGroupsPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
         selector: 'page-red-groups',template:/*ion-inline-start:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/red-groups/red-groups.html"*/'<ion-header>\n  <ion-navbar align-title="center" >\n    <div class= "GTitle">\n    <ion-buttons start>\n      <button ion-button></button>\n    </ion-buttons>\n    <ion-title>\n      Red Groups\n    </ion-title>\n    </div>\n  </ion-navbar>\n</ion-header>\n<ion-content padding id="page8">\n  \n  <ion-scroll scrollX="true">\n    <ion-row nowrap class= "scroller">\n      <ion-chip color= "danger">\n        <ion-label>\n          Group 1\n        </ion-label>\n      </ion-chip>\n      <ion-chip color= "danger">\n        <ion-label>\n          Group 2\n        </ion-label>\n      </ion-chip>\n      <ion-chip color= "danger">\n        <ion-label>\n          Group 3\n        </ion-label>\n      </ion-chip>\n      <ion-chip color= "danger">\n        <ion-label>\n          Group 4\n        </ion-label>\n      </ion-chip>\n      <ion-chip color= "danger">\n        <ion-label>\n          Group 5\n        </ion-label>\n      </ion-chip>\n      <ion-chip color= "danger">\n        <ion-label>\n          Group 6\n        </ion-label>\n      </ion-chip>\n      <ion-chip color= "danger">\n        <ion-label>\n          Group 7\n        </ion-label>\n      </ion-chip>\n      <ion-chip color= "danger">\n        <ion-label>\n          Group 8\n        </ion-label>\n      </ion-chip>\n      <ion-chip color= "danger">\n        <ion-label>\n          Group 9\n        </ion-label>\n      </ion-chip>\n    </ion-row>\n  </ion-scroll>\n\n<ion-list>\n  <ion-item>\n    <div class= "Week">\n      <h1>\n        Week 1\n      </h1>\n    </div>\n    <button ion-button class= "stat">\n    </button>\n  </ion-item>\n</ion-list>\n\n<p>\n  {{name}}\n</p>\n\n</ion-content>'/*ion-inline-end:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/red-groups/red-groups.html"*/
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */]])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */]) === "function" && _a || Object])
 ], RedGroupsPage);
 
+var _a;
 //# sourceMappingURL=red-groups.js.map
 
 /***/ }),
@@ -358,9 +359,10 @@ RedStudentsPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
         selector: 'page-red-students',template:/*ion-inline-start:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/red-students/red-students.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-buttons start>\n      <button ion-button></button>\n    </ion-buttons>\n    <ion-title>\n      Red Students\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n<ion-content padding id="page8">\n  \n  <ion-scroll scrollX="true">\n    <ion-row nowrap class= "scroller">\n      <ion-chip color= "danger">\n        <ion-label>\n          student 1\n        </ion-label>\n      </ion-chip>\n      <ion-chip color= "danger">\n        <ion-label>\n          student 2\n        </ion-label>\n      </ion-chip>\n      <ion-chip color= "danger">\n        <ion-label>\n          student 3\n        </ion-label>\n      </ion-chip>\n      <ion-chip color= "danger">\n        <ion-label>\n          student 4\n        </ion-label>\n      </ion-chip>\n      <ion-chip color= "danger">\n        <ion-label>\n          student 5\n        </ion-label>\n      </ion-chip>\n      <ion-chip color= "danger">\n        <ion-label>\n          student 6\n        </ion-label>\n      </ion-chip>\n      <ion-chip color= "danger">\n        <ion-label>\n          student 7\n        </ion-label>\n      </ion-chip>\n      <ion-chip color= "danger">\n        <ion-label>\n          student 8\n        </ion-label>\n      </ion-chip>\n      <ion-chip color= "danger">\n        <ion-label>\n          student 9\n        </ion-label>\n      </ion-chip>\n    </ion-row>\n  </ion-scroll>\n\n<ion-list>\n  <ion-item>\n    <div class= "Week">\n      <h1>\n        Week 1\n      </h1>\n    </div>\n    <button ion-button class= "stat">\n      \n    </button>\n    <h1 class= "contribution">\n      33%\n    </h1>\n  </ion-item>\n</ion-list>\n\n</ion-content>'/*ion-inline-end:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/red-students/red-students.html"*/
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */]])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */]) === "function" && _a || Object])
 ], RedStudentsPage);
 
+var _a;
 //# sourceMappingURL=red-students.js.map
 
 /***/ }),
@@ -409,9 +411,10 @@ GroupListPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
         selector: 'page-group-list',template:/*ion-inline-start:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/group-list/group-list.html"*/'<ion-header>\n    <ion-navbar>\n        <ion-title>\n            Group List\n        </ion-title>\n    </ion-navbar>\n</ion-header>\n\n<ion-content padding id="page3">\n    <div id="groupList-container1">\n        <button id="groupList-button3" ion-button color="balanced" on-click="goToFeedbackSummary()">\n            Group&nbsp; <span>1</span>&nbsp; - &nbsp;<span>&nbsp; Project Stage</span>\n        </button>\n        <button class="addbutton" ion-button clear on-click="goToGroup()">\n            <ion-icon name="add-circle"></ion-icon>\n        </button>\n    </div>\n    <div class="spacer" style="width:300px;height:15px;" id="groupList-spacer6"></div>\n  \n\n</ion-content>\n\nonload ....\n\nfor each groups ...\n\n\n$scope.inputs = [Group1, Group2, Group3,];\n'/*ion-inline-end:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/group-list/group-list.html"*/
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */]])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */]) === "function" && _a || Object])
 ], GroupListPage);
 
+var _a;
 //# sourceMappingURL=group-list.js.map
 
 /***/ }),
@@ -527,9 +530,10 @@ MyProfilePage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
         selector: 'page-my-profile',template:/*ion-inline-start:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/my-profile/my-profile.html"*/'<ion-header>\n    <ion-navbar>\n        <ion-title>\n            My Profile\n        </ion-title>\n    </ion-navbar>\n</ion-header>\n<ion-content padding id="page4">\n    <div id="blueblue">\n        <img id ="profilepic" src="assets/img/iPJmfKWCSdylgevYCJ6t_myAvatar3.png"/>\n        <form id="myProfile-form3">\n            <div class="spacer" style="height:40px;" id="myProfile-spacer2"></div>\n            <ion-item id="myProfile-input1">\n                <ion-input type="text" placeholder="Firstname"></ion-input>\n            </ion-item>\n            <ion-item id="myProfile-input2">\n                <ion-input type="text" placeholder="Lastname"></ion-input>\n            </ion-item>\n            <ion-item id="myProfile-input3">\n                <ion-input type="email" placeholder="Email"></ion-input>\n            </ion-item>\n            <ion-item id="myProfile-input4">\n                <ion-input type="password" placeholder="Password"></ion-input>\n            </ion-item>\n        </form>\n    </div>\n    <div id="supervising">\n        <h5 id="myProfile-heading1" style="color:#000000;text-align:center;">\n        Supervising groups\n        </h5>\n        <div id="groups">\n            <button id="myProfile-button25">G3</button>\n            <button id="myProfile-button24">G1</button>\n            <button id="myProfile-button26">G5</button>\n        </div>\n    </div>\n</ion-content>'/*ion-inline-end:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/my-profile/my-profile.html"*/
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */]])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */]) === "function" && _a || Object])
 ], MyProfilePage);
 
+var _a;
 //# sourceMappingURL=my-profile.js.map
 
 /***/ }),
