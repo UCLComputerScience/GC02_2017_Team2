@@ -1,72 +1,28 @@
 <ion-header>
-  <ion-navbar align-title="center" >
-    <div class= "GTitle">
+  <ion-navbar >
     <ion-buttons start>
       <button ion-button></button>
     </ion-buttons>
     <ion-title>
       Red Groups
     </ion-title>
-    </div>
   </ion-navbar>
 </ion-header>
 <ion-content padding id="page8">
   
   <ion-scroll scrollX="true">
     <ion-row nowrap class= "scroller">
-      <ion-chip color= "danger">
-        <ion-label>
-          Group 1
-        </ion-label>
-      </ion-chip>
-      <ion-chip color= "danger">
-        <ion-label>
-          Group 2
-        </ion-label>
-      </ion-chip>
-      <ion-chip color= "danger">
-        <ion-label>
-          Group 3
-        </ion-label>
-      </ion-chip>
-      <ion-chip color= "danger">
-        <ion-label>
-          Group 4
-        </ion-label>
-      </ion-chip>
-      <ion-chip color= "danger">
-        <ion-label>
-          Group 5
-        </ion-label>
-      </ion-chip>
-      <ion-chip color= "danger">
-        <ion-label>
-          Group 6
-        </ion-label>
-      </ion-chip>
-      <ion-chip color= "danger">
-        <ion-label>
-          Group 7
-        </ion-label>
-      </ion-chip>
-      <ion-chip color= "danger">
-        <ion-label>
-          Group 8
-        </ion-label>
-      </ion-chip>
-      <ion-chip color= "danger">
-        <ion-label>
-          Group 9
-        </ion-label>
-      </ion-chip>
+      <button ion-button color= "danger" *ngFor= "let BadG of RedGroups" (click)= "onClick()" class= "BadButton">
+          {{BadG}}
+      </button>
     </ion-row>
   </ion-scroll>
 
 <ion-list>
-  <ion-item>
+  <ion-item *ngFor= "let BadWeek of RedWeeks">
     <div class= "Week">
       <h1>
-        Week 1
+        {{BadWeek}}
       </h1>
     </div>
     <button ion-button class= "stat">

@@ -1,34 +1,19 @@
 page-red-students {
 
-ion-header {
-	height: 15vh;
-	width: 100vw;
-
-}
-
-ion-navbar {
-	height: 15vh;
-	width: 100vw;
-	line-height: 880%;
-}
-
 ion-buttons {
 	position: absolute;
 }
 
-ion-title {
-	position: relative;
-	display: inline-block;
-}
-
 ion-scroll {
 	position: relative;
-	height: 10vh;
+	height: 15vh;
 }
 
 ion-row {
 	justify-content: start;
 	position: relative;
+	width: 600px !important; 
+	overflow-x: auto !important;
 }
 
 ion-list {

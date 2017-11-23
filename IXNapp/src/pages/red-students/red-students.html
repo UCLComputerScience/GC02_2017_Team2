@@ -12,66 +12,24 @@
   
   <ion-scroll scrollX="true">
     <ion-row nowrap class= "scroller">
-      <ion-chip color= "danger">
-        <ion-label>
-          student 1
-        </ion-label>
-      </ion-chip>
-      <ion-chip color= "danger">
-        <ion-label>
-          student 2
-        </ion-label>
-      </ion-chip>
-      <ion-chip color= "danger">
-        <ion-label>
-          student 3
-        </ion-label>
-      </ion-chip>
-      <ion-chip color= "danger">
-        <ion-label>
-          student 4
-        </ion-label>
-      </ion-chip>
-      <ion-chip color= "danger">
-        <ion-label>
-          student 5
-        </ion-label>
-      </ion-chip>
-      <ion-chip color= "danger">
-        <ion-label>
-          student 6
-        </ion-label>
-      </ion-chip>
-      <ion-chip color= "danger">
-        <ion-label>
-          student 7
-        </ion-label>
-      </ion-chip>
-      <ion-chip color= "danger">
-        <ion-label>
-          student 8
-        </ion-label>
-      </ion-chip>
-      <ion-chip color= "danger">
-        <ion-label>
-          student 9
-        </ion-label>
-      </ion-chip>
+      <button ion-button color= "danger" *ngFor= "let BadStu of RedStudents" (click)="onClick()" class= "StudentButton">
+          {{BadStu}}
+      </button>
     </ion-row>
   </ion-scroll>
 
 <ion-list>
-  <ion-item>
+  <ion-item *ngFor="let BadWeek of RedWeeks">
     <div class= "Week">
       <h1>
-        Week 1
+        {{BadWeek.Week}}
       </h1>
     </div>
     <button ion-button class= "stat">
       
     </button>
     <h1 class= "contribution">
-      33%
+      {{BadWeek.Contr}}
     </h1>
   </ion-item>
 </ion-list>

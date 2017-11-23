@@ -25819,39 +25819,13 @@ page-my-profile #groups {
   text-align: center;
 }
 
-page-red-groups ion-header {
-  height: 15vh;
-  width: 100vw;
-}
-
-page-red-groups ion-navbar {
-  height: 15vh;
-  width: 100vw;
-}
-
-page-red-groups .GTitle {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-}
-
 page-red-groups ion-buttons {
-  position: relative;
-}
-
-page-red-groups ion-title {
   position: relative;
 }
 
 page-red-groups ion-scroll {
   position: relative;
-  height: 10vh;
+  height: 15vh;
 }
 
 page-red-groups ion-row {
@@ -25886,29 +25860,21 @@ page-red-groups .stat {
   width: 10vw;
 }
 
-page-red-students ion-header {
-  height: 15vh;
-  width: 100vw;
-}
-
-page-red-students ion-navbar {
-  height: 15vh;
-  width: 100vw;
-  line-height: 880%;
+page-red-groups .BadButton {
+  display: block;
+  border-radius: 50%;
+  width: 24vw !important;
+  height: 10vh !important;
+  white-space: nowrap;
 }
 
 page-red-students ion-buttons {
   position: absolute;
 }
 
-page-red-students ion-title {
-  position: relative;
-  display: inline-block;
-}
-
 page-red-students ion-scroll {
   position: relative;
-  height: 10vh;
+  height: 15vh;
 }
 
 page-red-students ion-row {
@@ -25917,6 +25883,8 @@ page-red-students ion-row {
   -ms-flex-pack: start;
   justify-content: start;
   position: relative;
+  width: 600px !important;
+  overflow-x: auto !important;
 }
 
 page-red-students ion-list {
