@@ -25883,6 +25883,12 @@ page-red-students ion-scroll {
   height: 15vh;
 }
 
+page-red-students .para {
+  border-style: solid;
+  border-width: 4px;
+  border-radius: 10%;
+}
+
 page-red-students ion-row {
   -webkit-box-pack: start;
   -webkit-justify-content: start;
@@ -25890,7 +25896,6 @@ page-red-students ion-row {
   justify-content: start;
   position: relative;
   width: 600px !important;
-  overflow-x: auto !important;
 }
 
 page-red-students ion-list {
