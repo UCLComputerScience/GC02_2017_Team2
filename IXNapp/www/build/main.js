@@ -181,22 +181,18 @@ var HomePage = (function () {
     };
     HomePage.prototype.ionViewDidLoad = function () {
         var donutCtx = this.doughnutCanvas.nativeElement;
-        donutCtx.height = innerHeight * 0.35;
+        donutCtx.height = innerHeight * 0.3;
+        var datax = [4, 5, 6, 8];
         var data = {
-            labels: [
-                "Excellent",
-                "Good",
-                "Average",
-                "Bad"
-            ],
+            labels: datax,
             datasets: [
                 {
-                    "data": [4, 5, 6, 3],
+                    "data": datax,
                     "backgroundColor": [
                         "#ff6384",
                         "#ffcd56",
                         "#7ed321",
-                        "#058d65" //dark gree
+                        "#058d65" //dark green 
                     ]
                 }
             ]
@@ -214,22 +210,26 @@ var HomePage = (function () {
                 "animation": {
                     "animateScale": true,
                     "animateRotate": false
-                }
+                },
             }
         });
         var donutCtx2 = this.doughnutCanvas2.nativeElement;
-        donutCtx2.height = innerHeight * 0.35;
+        donutCtx2.height = innerHeight * 0.3;
         var data2 = {
             labels: [
-                "Value A",
-                "Value B"
+                "Excellent",
+                "Good",
+                "Average",
+                "Bad"
             ],
             datasets: [
                 {
-                    "data": [101342, 55342],
+                    "data": [4, 5, 6, 3],
                     "backgroundColor": [
-                        "primary",
-                        "secondary"
+                        "#ff6384",
+                        "#ffcd56",
+                        "#7ed321",
+                        "#058d65" //dark green 
                     ]
                 }
             ]
@@ -240,7 +240,7 @@ var HomePage = (function () {
             "options": {
                 legend: {
                     display: true,
-                    position: 'bottom',
+                    position: 'right',
                 },
                 responsive: true,
                 maintainAspectRatio: true,
@@ -263,16 +263,15 @@ __decorate([
 ], HomePage.prototype, "doughnutCanvas2", void 0);
 __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_13" /* ViewChild */])(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* Slides */]),
-    __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* Slides */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* Slides */]) === "function" && _a || Object)
+    __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* Slides */])
 ], HomePage.prototype, "slides", void 0);
 HomePage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-home',template:/*ion-inline-start:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/home/home.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>\n      Home\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding id="page2">\n  <div id="home-container11">\n    <button id="home-button43" ion-button color="positive" block icon-right style="text-align:right;" on-click="goToDeadlines()">\n      >Deadlines >\n      <ion-icon name="calendar"></ion-icon>\n    </button>\n  </div>\n  <div id="home-markdown16" style="text-align:center;" class="show-list-numbers-and-dots">\n    <p style="color:#000000;">\n      All feedback up to date\n    </p>\n  </div>\n  <h4 id="home-heading11" style="color:#000000;">\n    Latest Feedback\n  </h4>\n<div>\n  <ion-slides>\n    <ion-slide>\n \n            <canvas #doughnutCanvas></canvas>\n    </ion-slide>\n    <ion-slide>\n                <canvas #doughnutCanvas2></canvas>\n        </ion-slide>\n  </ion-slides>\n</div>\n  <h5 id="home-heading12" style="color:#000000;">\n    Teams -- Students\n  </h5>\n  <div id="home-markdown17" class="show-list-numbers-and-dots">\n    <p style="color:#000000;">\n      very good, good, average, bad... and number of teams/students with that state (could work with table)\n    </p>\n  </div>\n  <button id="home-button44" ion-button color="assertive" style="font-size:9px;" on-click="goToRedGroups()">\n    Teams with red feedback\n  </button>\n  <button id="home-button45" ion-button color="assertive" style="font-size:9px;" on-click="goToRedStudents()">\n    students with red feedback\n  </button>\n</ion-content>'/*ion-inline-end:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/home/home.html"*/
+        selector: 'page-home',template:/*ion-inline-start:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/home/home.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>\n      Home\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding id="page2">\n  <div id="home-container11">\n    <button id="home-button43" ion-button color="positive" block icon-right style="text-align:right;" on-click="goToDeadlines()">\n      >Deadlines >\n      <ion-icon name="calendar"></ion-icon>\n    </button>\n  </div>\n  <div id="home-markdown16" style="text-align:center;" class="show-list-numbers-and-dots">\n    <p style="color:#000000;">\n      All feedback up to date\n    </p>\n  </div>\n  <h4 id="home-heading11" style="color:#000000;">\n    Latest Feedback\n  </h4>\n<div>\n  <ion-slides pager = "true">\n    <ion-slide>\n            <canvas  #doughnutCanvas></canvas>\n            \n            <h5 id="home-heading12">\n              Groups Feedback\n            </h5>\n          <ion-grid>\n            <ion-row>\n            <ion-label>\n                4\n              </ion-label>\n              <ion-label>\n                  5\n                </ion-label>\n                <ion-label>\n                    6\n                  </ion-label>\n                  <ion-label>\n                      7\n                    </ion-label>\n            </ion-row>\n            </ion-grid>\n    </ion-slide>\n    <ion-slide>\n                <canvas #doughnutCanvas2 ></canvas>\n                <h5 id="home-heading12">\n                    Students Feedback\n                </h5>\n               \n        </ion-slide>\n  </ion-slides>\n</div>\n  <h5 id="home-heading12" style="color:#000000;">\n    Teams -- Students\n  </h5>\n\n  <button id="home-button44" ion-button color="assertive" style="font-size:9px;" on-click="goToRedGroups()">\n    Red Teams\n  </button>\n  <button id="home-button45" ion-button color="assertive" style="font-size:9px;" on-click="goToRedStudents()">\n    Red Students\n  </button>\n</ion-content>'/*ion-inline-end:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/home/home.html"*/
     }),
-    __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */]) === "function" && _b || Object])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */]])
 ], HomePage);
 
-var _a, _b;
 //# sourceMappingURL=home.js.map
 
 /***/ }),
@@ -423,8 +422,6 @@ var GroupListPage = (function () {
     // should be each tab's root Page
     function GroupListPage(navCtrl) {
         this.navCtrl = navCtrl;
-        this.items = ['1', '2', '7'];
-        this.items2 = ['good', 'bad', 'ok'];
     }
     GroupListPage.prototype.goToFeedbackSummary = function (params) {
         if (!params)
@@ -442,10 +439,9 @@ GroupListPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
         selector: 'page-group-list',template:/*ion-inline-start:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/group-list/group-list.html"*/'<ion-header>\n    <ion-navbar>\n        <ion-title>\n            Group List\n        </ion-title>\n    </ion-navbar>\n</ion-header>\n\n<ion-content padding id="page3">\n    <div id="groupList-container1" *ngFor="let item of items; let i = index">\n        <button id="groupList-button3" ion-button color="balanced" on-click="goToFeedbackSummary()">\n            Group&nbsp; <span>{{item}}</span>&nbsp; - &nbsp;<span>{{items2[i]}}</span>&nbsp;\n        </button>\n        <button class="addbutton" ion-button clear on-click="goToGroup()">\n            <ion-icon name="add-circle"></ion-icon>\n        </button>\n    </div>\n    <div class="spacer" style="width:300px;height:15px;" id="groupList-spacer6"></div>\n  \n\n</ion-content>\n'/*ion-inline-end:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/group-list/group-list.html"*/
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */]) === "function" && _a || Object])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */]])
 ], GroupListPage);
 
-var _a;
 //# sourceMappingURL=group-list.js.map
 
 /***/ }),
@@ -554,7 +550,6 @@ var MyProfilePage = (function () {
     // should be each tab's root Page
     function MyProfilePage(navCtrl) {
         this.navCtrl = navCtrl;
-        this.items = ['G1', 'G3', 'G8'];
     }
     return MyProfilePage;
 }());
@@ -562,10 +557,9 @@ MyProfilePage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
         selector: 'page-my-profile',template:/*ion-inline-start:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/my-profile/my-profile.html"*/'<ion-header>\n    <ion-navbar>\n        <ion-title>\n            My Profile\n        </ion-title>\n    </ion-navbar>\n</ion-header>\n<ion-content padding id="page4">\n    <div id="blueblue">\n        <img id ="profilepic" src="assets/img/iPJmfKWCSdylgevYCJ6t_myAvatar3.png"/>\n        <form id="myProfile-form3">\n            <div class="spacer" style="height:40px;" id="myProfile-spacer2"></div>\n            <ion-item id="myProfile-input1">\n                <ion-input type="text" placeholder="Firstname"></ion-input>\n            </ion-item>\n            <ion-item id="myProfile-input2">\n                <ion-input type="text" placeholder="Lastname"></ion-input>\n            </ion-item>\n            <ion-item id="myProfile-input3">\n                <ion-input type="email" placeholder="Email"></ion-input>\n            </ion-item>\n            <ion-item id="myProfile-input4">\n                <ion-input type="password" placeholder="Password"></ion-input>\n            </ion-item>\n        </form>\n    </div>\n    <div id="supervising">\n        <h5 id="myProfile-heading1" style="color:#000000;text-align:center;">\n        Supervising groups\n        </h5>\n        <div id="groups">\n            <button *ngFor="let item of items">\n                {{ item }}\n            </button>\n        </div>\n    </div>\n</ion-content>'/*ion-inline-end:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/my-profile/my-profile.html"*/
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */]) === "function" && _a || Object])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */]])
 ], MyProfilePage);
 
-var _a;
 //# sourceMappingURL=my-profile.js.map
 
 /***/ }),
