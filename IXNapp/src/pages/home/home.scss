@@ -1,5 +1,9 @@
 page-home {
     
+    #myGraph{ 
+        height: 50% !important; 
+    }
+
     .scroll-content { //allowing no scrolling
         height:100% !important
     }
@@ -9,17 +13,16 @@ page-home {
     }
 
     ion-card { 
-        height: 30 !important; 
+        height: 60% !important; 
     }
 
     ion-card-background {}
-
     
+    canvas{
+        width: 100% !important;
+        height: auto !important;
     
-    
-       canvas  {
-          height: 50% !important; 
-       }
+    }
     
        .table {
         border: 1px solid red;

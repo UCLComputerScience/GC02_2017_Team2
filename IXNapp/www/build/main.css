@@ -25746,6 +25746,10 @@ page-group-list .addbutton {
   float: right;
 }
 
+page-home #myGraph {
+  height: 50% !important;
+}
+
 page-home .scroll-content {
   height: 100% !important;
 }
@@ -25755,11 +25759,12 @@ page-home ion-card-header {
 }
 
 page-home ion-card {
-  height: 30 !important;
+  height: 60% !important;
 }
 
 page-home canvas {
-  height: 50% !important;
+  width: 100% !important;
+  height: auto !important;
 }
 
 page-home .table {
