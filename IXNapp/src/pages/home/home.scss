@@ -16,12 +16,26 @@ page-home {
         height: 60% !important; 
     }
 
-    ion-card-background {}
+    ion-label{ 
+        border-radius: 20px !important; 
+        background-color: blue !important; 
+        color: white !important; 
+    }
     
     canvas{
         width: 100% !important;
         height: auto !important;
     
+    }
+
+    
+    secondary:  #ffcd56,
+    danger:     #ff6384,
+    light:      #7ed321,
+    dark:       #058d65
+
+    #red-legend{
+        background-color: blue; 
     }
     
        .table {

@@ -25762,9 +25762,19 @@ page-home ion-card {
   height: 60% !important;
 }
 
+page-home ion-label {
+  border-radius: 20px !important;
+  background-color: blue !important;
+  color: white !important;
+}
+
 page-home canvas {
   width: 100% !important;
   height: auto !important;
+}
+
+page-home #red-legend {
+  background-color: blue;
 }
 
 page-home .table {

@@ -41,9 +41,47 @@ export class HomePage {
 
   ionViewDidLoad() {    
     let donutCtx = this.doughnutCanvas.nativeElement; 
-    donutCtx.height = innerHeight*0.35; 
-
+    donutCtx.height = innerHeight*0.3; 
+    var datax = [4, 5, 6, 8]; 
     var data = {
+        labels: datax,
+        datasets: [
+            {
+                "data": datax,
+                "backgroundColor": [ 
+                    "#ff6384", //red
+                    "#ffcd56", //yellow
+                    "#7ed321", //light gree
+                    "#058d65" //dark green 
+                ]
+            }]
+    };
+
+    new Chart(
+        donutCtx,
+        {
+            "type": 'doughnut',
+            "data": data,
+            "options": {
+                legend: { 
+                    display: false, 
+                    position: 'right',
+                }, 
+                responsive: true,
+                maintainAspectRatio: true,
+                "animation": {
+                    "animateScale": true,
+                    "animateRotate": false
+                }, 
+              
+            }
+        }
+    );
+
+    let donutCtx2 = this.doughnutCanvas2.nativeElement; 
+    donutCtx2.height = innerHeight*0.3; 
+
+    var data2 = {
         labels: [
             "Excellent",
             "Good",
@@ -57,45 +95,7 @@ export class HomePage {
                     "#ff6384", //red
                     "#ffcd56", //yellow
                     "#7ed321", //light gree
-                    "#058d65" //dark gree
-                ]
-            }]
-    };
-
-    new Chart(
-        donutCtx,
-        {
-            "type": 'doughnut',
-            "data": data,
-            "options": {
-                legend: { 
-                    display: true, 
-                    position: 'right', 
-                }, 
-                responsive: true,
-                maintainAspectRatio: true,
-                "animation": {
-                    "animateScale": true,
-                    "animateRotate": false
-                }
-            }
-        }
-    );
-
-    let donutCtx2 = this.doughnutCanvas2.nativeElement; 
-    donutCtx2.height = innerHeight*0.35; 
-
-    var data2 = {
-        labels: [
-            "Value A",
-            "Value B"
-        ],
-    datasets: [
-            {
-                "data": [101342, 55342],
-                "backgroundColor": [
-                    "primary",
-                    "secondary"
+                    "#058d65" //dark green 
                 ]
             }]
     };
@@ -107,8 +107,8 @@ export class HomePage {
             "data": data2,
             "options": {
                 legend: { 
-                    display: true, 
-                    position: 'bottom', 
+                    display: false, 
+                    position: 'right', 
                 }, 
                 responsive: true,
                 maintainAspectRatio: true,

@@ -181,8 +181,41 @@ var HomePage = (function () {
     };
     HomePage.prototype.ionViewDidLoad = function () {
         var donutCtx = this.doughnutCanvas.nativeElement;
-        donutCtx.height = innerHeight * 0.35;
+        donutCtx.height = innerHeight * 0.3;
+        var datax = [4, 5, 6, 8];
         var data = {
+            labels: datax,
+            datasets: [
+                {
+                    "data": datax,
+                    "backgroundColor": [
+                        "#ff6384",
+                        "#ffcd56",
+                        "#7ed321",
+                        "#058d65" //dark green 
+                    ]
+                }
+            ]
+        };
+        new __WEBPACK_IMPORTED_MODULE_5_chart_js__["Chart"](donutCtx, {
+            "type": 'doughnut',
+            "data": data,
+            "options": {
+                legend: {
+                    display: false,
+                    position: 'right',
+                },
+                responsive: true,
+                maintainAspectRatio: true,
+                "animation": {
+                    "animateScale": true,
+                    "animateRotate": false
+                },
+            }
+        });
+        var donutCtx2 = this.doughnutCanvas2.nativeElement;
+        donutCtx2.height = innerHeight * 0.3;
+        var data2 = {
             labels: [
                 "Excellent",
                 "Good",
@@ -196,40 +229,7 @@ var HomePage = (function () {
                         "#ff6384",
                         "#ffcd56",
                         "#7ed321",
-                        "#058d65" //dark gree
-                    ]
-                }
-            ]
-        };
-        new __WEBPACK_IMPORTED_MODULE_5_chart_js__["Chart"](donutCtx, {
-            "type": 'doughnut',
-            "data": data,
-            "options": {
-                legend: {
-                    display: true,
-                    position: 'right',
-                },
-                responsive: true,
-                maintainAspectRatio: true,
-                "animation": {
-                    "animateScale": true,
-                    "animateRotate": false
-                }
-            }
-        });
-        var donutCtx2 = this.doughnutCanvas2.nativeElement;
-        donutCtx2.height = innerHeight * 0.35;
-        var data2 = {
-            labels: [
-                "Value A",
-                "Value B"
-            ],
-            datasets: [
-                {
-                    "data": [101342, 55342],
-                    "backgroundColor": [
-                        "primary",
-                        "secondary"
+                        "#058d65" //dark green 
                     ]
                 }
             ]
@@ -239,8 +239,8 @@ var HomePage = (function () {
             "data": data2,
             "options": {
                 legend: {
-                    display: true,
-                    position: 'bottom',
+                    display: false,
+                    position: 'right',
                 },
                 responsive: true,
                 maintainAspectRatio: true,
@@ -267,7 +267,7 @@ __decorate([
 ], HomePage.prototype, "slides", void 0);
 HomePage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-home',template:/*ion-inline-start:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/home/home.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>\n      Home\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding id="page2" >\n  <div id="home-container11">\n    <button id="home-button43" ion-button color="positive" block icon-right style="text-align:right;" on-click="goToDeadlines()">\n      >Deadlines >\n      <ion-icon name="calendar"></ion-icon>\n    </button>\n  </div>\n  <div id="home-markdown16" style="text-align:center;" class="show-list-numbers-and-dots">\n    <p style="color:#000000;">\n      All feedback up to date\n    </p>\n  </div>\n  <h4 id="home-heading11" style="color:#000000;">\n    Latest Feedback\n  </h4>\n<div>\n  <ion-slides pager = "true">\n    <ion-slide>\n            <canvas  #doughnutCanvas></canvas>\n    </ion-slide>\n    <ion-slide>\n                <canvas #doughnutCanvas2 ></canvas>\n        </ion-slide>\n  </ion-slides>\n</div>\n  <h5 id="home-heading12" style="color:#000000;">\n    Teams -- Students\n  </h5>\n  <div id="home-markdown17" class="show-list-numbers-and-dots">\n    <p style="color:#000000;">\n      very good, good, average, bad... and number of teams/students with that state (could work with table)\n    </p>\n  </div>\n  <button id="home-button44" ion-button color="assertive" style="font-size:9px;" on-click="goToRedGroups()">\n    Red Teams\n  </button>\n  <button id="home-button45" ion-button color="assertive" style="font-size:9px;" on-click="goToRedStudents()">\n    Red Students\n  </button>\n</ion-content>'/*ion-inline-end:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/home/home.html"*/
+        selector: 'page-home',template:/*ion-inline-start:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/home/home.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>\n      Home\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding id="page2" >\n  <div id="home-container11">\n    <button id="home-button43" ion-button color="positive" block icon-right style="text-align:right;" on-click="goToDeadlines()">\n      >Deadlines >\n      <ion-icon name="calendar"></ion-icon>\n    </button>\n  </div>\n  <div id="home-markdown16" style="text-align:center;" class="show-list-numbers-and-dots">\n    <p style="color:#000000;">\n      All feedback up to date\n    </p>\n  </div>\n  <h4 id="home-heading11" style="color:#000000;">\n    Latest Feedback\n  </h4>\n<div>\n  <ion-slides pager = "true">\n    <ion-slide>\n            <canvas  #doughnutCanvas></canvas>\n            \n            <h5 id="home-heading12">\n              Groups Feedback\n            </h5>\n          <ion-grid>\n            <ion-row>\n            <ion-label>\n                4\n              </ion-label>\n              <ion-label>\n                  5\n                </ion-label>\n                <ion-label>\n                    6\n                  </ion-label>\n                  <ion-label>\n                      7\n                    </ion-label>\n            </ion-row>\n            </ion-grid>\n    </ion-slide>\n    <ion-slide>\n                <canvas #doughnutCanvas2 ></canvas>\n                <h5 id="home-heading12">\n                    Students Feedback\n                </h5>\n               \n        </ion-slide>\n  </ion-slides>\n</div>\n  <h5 id="home-heading12" style="color:#000000;">\n    Teams -- Students\n  </h5>\n\n  <button id="home-button44" ion-button color="assertive" style="font-size:9px;" on-click="goToRedGroups()">\n    Red Teams\n  </button>\n  <button id="home-button45" ion-button color="assertive" style="font-size:9px;" on-click="goToRedStudents()">\n    Red Students\n  </button>\n</ion-content>'/*ion-inline-end:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/home/home.html"*/
     }),
     __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */]) === "function" && _b || Object])
 ], HomePage);
