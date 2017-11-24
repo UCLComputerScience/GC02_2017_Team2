@@ -196,7 +196,7 @@ var HomePage = (function () {
                         "#ff6384",
                         "#ffcd56",
                         "#7ed321",
-                        "#058d65"
+                        "#058d65" //dark gree
                     ]
                 }
             ]
