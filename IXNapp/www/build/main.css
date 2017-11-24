@@ -25746,6 +25746,15 @@ page-group-list .addbutton {
   float: right;
 }
 
+page-home {
+  /*
+    secondary:  #ffcd56,
+    danger:     #ff6384,
+    light:      #7ed321,
+    dark:       #058d65
+*/
+}
+
 page-home #myGraph {
   height: 50% !important;
 }
