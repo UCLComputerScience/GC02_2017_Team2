@@ -10,6 +10,8 @@ export class RedStudentsPage implements OnInit {
 
 RedWeeks: any[];
 RedStudents: String[];
+Contribution: String[];
+Clicked: string;
 	
 
   constructor(public navCtrl: NavController) {
@@ -22,6 +24,7 @@ ngOnInit() {
 
 onClick() {
 	this.RedWeeks = [ {Week: "Week 1", Contr: "30%"}, {Week: "Week 2", Contr: "29%"}, {Week: "Week 3", Contr: "33%"}];
+	this.Contribution = ["Contribution"];
 }
 
 }
