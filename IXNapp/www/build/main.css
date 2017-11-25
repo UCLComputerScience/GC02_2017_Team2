@@ -25751,11 +25751,6 @@ page-group-list .addbutton {
 }
 
 page-home {
-<<<<<<< HEAD
-  /*.scroll-content { //allowing no scrolling
-        height:100% !important
-    }*/
-=======
   /*
     secondary:  #ffcd56,
     danger:     #ff6384,
@@ -25770,7 +25765,6 @@ page-home #myGraph {
 
 page-home .scroll-content {
   height: 100% !important;
->>>>>>> Wontek
 }
 
 page-home ion-card-header {

@@ -202,7 +202,7 @@ var HomePage = (function () {
             "data": data,
             "options": {
                 legend: {
-                    display: true,
+                    display: false,
                     position: 'right',
                 },
                 responsive: true,
@@ -239,7 +239,7 @@ var HomePage = (function () {
             "data": data2,
             "options": {
                 legend: {
-                    display: true,
+                    display: false,
                     position: 'right',
                 },
                 responsive: true,
@@ -263,15 +263,16 @@ __decorate([
 ], HomePage.prototype, "doughnutCanvas2", void 0);
 __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_13" /* ViewChild */])(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* Slides */]),
-    __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* Slides */])
+    __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* Slides */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* Slides */]) === "function" && _a || Object)
 ], HomePage.prototype, "slides", void 0);
 HomePage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
         selector: 'page-home',template:/*ion-inline-start:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/home/home.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>\n      Home\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding id="page2">\n  <div id="home-container11">\n    <button id="home-button43" ion-button color="positive" block icon-right style="text-align:right;" on-click="goToDeadlines()">\n      >Deadlines >\n      <ion-icon name="calendar"></ion-icon>\n    </button>\n  </div>\n  <div id="home-markdown16" style="text-align:center;" class="show-list-numbers-and-dots">\n    <p style="color:#000000;">\n      All feedback up to date\n    </p>\n  </div>\n  <h4 id="home-heading11" style="color:#000000;">\n    Latest Feedback\n  </h4>\n<div>\n  <ion-slides pager = "true">\n    <ion-slide>\n            <canvas  #doughnutCanvas></canvas>\n            \n            <h5 id="home-heading12">\n              Groups Feedback\n            </h5>\n          <ion-grid>\n            <ion-row>\n            <ion-label>\n                4\n              </ion-label>\n              <ion-label>\n                  5\n                </ion-label>\n                <ion-label>\n                    6\n                  </ion-label>\n                  <ion-label>\n                      7\n                    </ion-label>\n            </ion-row>\n            </ion-grid>\n    </ion-slide>\n    <ion-slide>\n                <canvas #doughnutCanvas2 ></canvas>\n                <h5 id="home-heading12">\n                    Students Feedback\n                </h5>\n               \n        </ion-slide>\n  </ion-slides>\n</div>\n  <h5 id="home-heading12" style="color:#000000;">\n    Teams -- Students\n  </h5>\n\n  <button id="home-button44" ion-button color="assertive" style="font-size:9px;" on-click="goToRedGroups()">\n    Red Teams\n  </button>\n  <button id="home-button45" ion-button color="assertive" style="font-size:9px;" on-click="goToRedStudents()">\n    Red Students\n  </button>\n</ion-content>'/*ion-inline-end:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/home/home.html"*/
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */]])
+    __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */]) === "function" && _b || Object])
 ], HomePage);
 
+var _a, _b;
 //# sourceMappingURL=home.js.map
 
 /***/ }),

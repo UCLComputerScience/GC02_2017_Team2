@@ -41,20 +41,6 @@ export class HomePage {
 
   ionViewDidLoad() {    
     let donutCtx = this.doughnutCanvas.nativeElement; 
-<<<<<<< HEAD
-    donutCtx.height = innerHeight*0.35; 
-
-    var data = {
-        labels: [
-            "Excellent",
-            "Good",
-            "Average", 
-            "Bad"
-        ],
-        datasets: [
-            {
-                "data": [4, 5, 6, 3],
-=======
     donutCtx.height = innerHeight*0.3; 
     var datax = [4, 5, 6, 8]; 
     var data = {
@@ -62,16 +48,11 @@ export class HomePage {
         datasets: [
             {
                 "data": datax,
->>>>>>> Wontek
                 "backgroundColor": [ 
                     "#ff6384", //red
                     "#ffcd56", //yellow
                     "#7ed321", //light gree
-<<<<<<< HEAD
-                    "#058d65" //dark gree
-=======
                     "#058d65" //dark green 
->>>>>>> Wontek
                 ]
             }]
     };
@@ -83,45 +64,21 @@ export class HomePage {
             "data": data,
             "options": {
                 legend: { 
-<<<<<<< HEAD
-                    display: true, 
-                    position: 'right', 
-=======
                     display: false, 
                     position: 'right',
->>>>>>> Wontek
                 }, 
                 responsive: true,
                 maintainAspectRatio: true,
                 "animation": {
                     "animateScale": true,
                     "animateRotate": false
-<<<<<<< HEAD
-                }
-=======
                 }, 
               
->>>>>>> Wontek
             }
         }
     );
 
     let donutCtx2 = this.doughnutCanvas2.nativeElement; 
-<<<<<<< HEAD
-    donutCtx2.height = innerHeight*0.35; 
-
-    var data2 = {
-        labels: [
-            "Value A",
-            "Value B"
-        ],
-    datasets: [
-            {
-                "data": [101342, 55342],
-                "backgroundColor": [
-                    "primary",
-                    "secondary"
-=======
     donutCtx2.height = innerHeight*0.3; 
 
     var data2 = {
@@ -139,7 +96,6 @@ export class HomePage {
                     "#ffcd56", //yellow
                     "#7ed321", //light gree
                     "#058d65" //dark green 
->>>>>>> Wontek
                 ]
             }]
     };
@@ -151,13 +107,8 @@ export class HomePage {
             "data": data2,
             "options": {
                 legend: { 
-<<<<<<< HEAD
-                    display: true, 
-                    position: 'bottom', 
-=======
                     display: false, 
                     position: 'right', 
->>>>>>> Wontek
                 }, 
                 responsive: true,
                 maintainAspectRatio: true,
