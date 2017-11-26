@@ -329,10 +329,9 @@ RedGroupsPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
         selector: 'page-red-groups',template:/*ion-inline-start:"/Users/sophia/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/red-groups/red-groups.html"*/'<ion-header>\n  <ion-navbar >\n    <ion-buttons start>\n      <button ion-button></button>\n    </ion-buttons>\n    <ion-title>\n      Red Groups\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n<ion-content padding id="page8">\n  \n  <ion-scroll scrollX="true">\n    <ion-row nowrap class= "scroller">\n      <button ion-button color= "danger" *ngFor= "let BadG of RedGroups" (click)= "onClick()" class= "BadButton">\n          {{BadG}}\n      </button>\n    </ion-row>\n  </ion-scroll>\n\n<ion-list>\n  <ion-item *ngFor= "let BadWeek of RedWeeks">\n    <div class= "Week">\n      <h1>\n        {{BadWeek}}\n      </h1>\n    </div>\n    <button ion-button class= "stat">\n    </button>\n  </ion-item>\n</ion-list>\n\n<p>\n  {{name}}\n</p>\n\n</ion-content>\n'/*ion-inline-end:"/Users/sophia/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/red-groups/red-groups.html"*/
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */]) === "function" && _a || Object])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */]])
 ], RedGroupsPage);
 
-var _a;
 //# sourceMappingURL=red-groups.js.map
 
 /***/ }),
@@ -371,10 +370,9 @@ RedStudentsPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
         selector: 'page-red-students',template:/*ion-inline-start:"/Users/sophia/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/red-students/red-students.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-buttons start>\n      <button ion-button></button>\n    </ion-buttons>\n    <ion-title>\n      Red Students\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n<ion-content padding id="page8">\n  \n  <ion-scroll scrollX="true">\n    <ion-row nowrap class= "scroller">\n      <button ion-button color= "danger" *ngFor= "let BadStu of RedStudents" (click)="onClick()" class= "StudentButton">\n          {{BadStu}}\n      </button>\n    </ion-row>\n  </ion-scroll>\n\n<ion-list>\n  <ion-item *ngFor="let BadWeek of RedWeeks">\n    <div class= "Week">\n      <h1>\n        {{BadWeek.Week}}\n      </h1>\n    </div>\n    <button ion-button class= "stat">\n      \n    </button>\n    <h1 class= "contribution">\n      {{BadWeek.Contr}}\n    </h1>\n  </ion-item>\n</ion-list>\n\n</ion-content>\n'/*ion-inline-end:"/Users/sophia/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/red-students/red-students.html"*/
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */]) === "function" && _a || Object])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */]])
 ], RedStudentsPage);
 
-var _a;
 //# sourceMappingURL=red-students.js.map
 
 /***/ }),
@@ -423,7 +421,7 @@ var GroupListPage = (function () {
 }());
 GroupListPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-group-list',template:/*ion-inline-start:"/Users/sophia/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/group-list/group-list.html"*/'<ion-header>\n    <ion-navbar>\n        <ion-title>\n            Group List\n        </ion-title>\n    </ion-navbar>\n</ion-header>\n\n<ion-content padding id="page3">\n    <div id="groupList-container1" *ngFor="let item of items; let i = index">\n        <button id="groupList-button3" ion-button color="balanced" on-click="goToFeedbackSummary()">\n            Group&nbsp; <span>{{item}}</span>&nbsp; - &nbsp;<span>{{items2[i]}}</span>&nbsp;\n        </button>\n        <button class="addbutton" ion-button clear on-click="goToGroup()">\n            <ion-icon name="add-circle"></ion-icon>\n        </button>\n    </div>\n    <div class="spacer" style="width:300px;height:15px;" id="groupList-spacer6"></div>\n  \n\n</ion-content>\n'/*ion-inline-end:"/Users/sophia/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/group-list/group-list.html"*/
+        selector: 'page-group-list',template:/*ion-inline-start:"/Users/sophia/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/group-list/group-list.html"*/'<ion-header>\n    <ion-navbar>\n        <ion-title>\n            Group List\n        </ion-title>\n    </ion-navbar>\n</ion-header>\n\n<ion-content padding id="page3">\n    <div id="groupList-container1" *ngFor="let item of items; let i = index">\n        <button class="groupbutton" ion-button color="balanced" on-click="goToFeedbackSummary()">\n            Group&nbsp; <span>{{item}}</span>&nbsp; - &nbsp;<span>{{items2[i]}}</span>&nbsp;\n        </button>\n        <button class="addbutton" ion-button clear on-click="goToGroup()">\n            <ion-icon name="add-circle"></ion-icon>\n        </button>\n    </div>\n    <div class="spacer" style="width:300px;height:15px;" id="groupList-spacer6"></div>\n  \n\n</ion-content>\n'/*ion-inline-end:"/Users/sophia/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/group-list/group-list.html"*/
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */]])
 ], GroupListPage);
@@ -457,17 +455,66 @@ var FeedbackSummaryPage = (function () {
     // should be each tab's root Page
     function FeedbackSummaryPage(navCtrl) {
         this.navCtrl = navCtrl;
+        this.latestperformance = "good";
+        this.overallperformance = "average";
+        this.latestfeedback = "4";
+        this.weekswithinfo = [1, 2, 3, 4, 5, 8];
+        this.percentageresults = [
+            [30, 30, 40],
+            [34, 33, 33],
+            [33, 33, 34],
+            [33, 34, 33],
+            [34, 33, 33],
+            [33, 34, 33],
+            [],
+            [34, 33, 33],
+            [33, 34, 33],
+            [33, 33, 34]
+        ];
+        this.results = [
+            [4, 3, 3],
+            [2, 3, 4],
+            [1, 2, 3],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            []
+        ];
+        this.students = ['Samantha Watson', 'John Taylor', 'James Kirk'];
+        this.colourval = "blue";
     }
     FeedbackSummaryPage.prototype.goToGroup = function (params) {
         if (!params)
             params = {};
         this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_2__group_group__["a" /* GroupPage */]);
     };
+    FeedbackSummaryPage.prototype.addfields = function () {
+        var weekswithinfo = this.weekswithinfo;
+        var indexx = [];
+        var weekno = weekswithinfo.length;
+        for (var i = 0; i < weekno; i++) {
+            var weekval = weekswithinfo[i];
+            if (weekval < 6) {
+                indexx.push(weekval - 1);
+            }
+            else {
+                indexx.push(weekval - 2);
+            }
+        }
+        return indexx;
+    };
+    FeedbackSummaryPage.prototype.setcolour = function () {
+        var val = "blue";
+        return val;
+    };
     return FeedbackSummaryPage;
 }());
 FeedbackSummaryPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-feedback-summary',template:/*ion-inline-start:"/Users/sophia/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/feedback-summary/feedback-summary.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-buttons start>\n      <button ion-button></button>\n    </ion-buttons>\n    <ion-title>\n      Feedback Summary\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding id="page14">\n    <h4 id="feedbackSummary-heading6" style="color:#000000;">\n        Group <span>#</span>\n    </h4>\n    <div id="addfeedback">\n        <button id="feedbackSummary-button42" ion-button clear color="positive" small on-click="goToGroup();">\n            Add Feedback\n        </button>\n    </div>\n    <div id="top">\n        <div id="latestfeedback">\n            <p>Latest Feedback:\n            <br>Week <span>4</span></p>\n        </div>\n    </div>\n    <div>\n        <div id="lll">\n            <p class="floating" id="overallp" style="color:#000000;">\n            Current overall <br> performance:\n            </p>\n            <p class="floating" id="latestp" style="color:#000000;">\n                latest performance:\n                <br>\n            <span id="latestperformance">good</span>\n            </p>\n        </div>\n\n            <p id="performance2">\n                Very Good\n            </p>\n\n    </div>\n  <h5 id="feedbackSummary-heading9" style="color:#000000;">\n    Individual feedback forms\n  </h5>\n    \n  <div id="feedbackSummary-container9">\n    <ion-list id="feedbackSummary-list10">\n      <ion-item-divider color="primary" id="feedbackSummary-list-item-divider2">\n        W1\n      </ion-item-divider>\n      <ion-item color="none" id="feedbackSummary-list-item56">\n          <p class="name">Samantha Watson</p>\n        <span><button id="performance"></button></span><span>40%</span>\n        <ion-note item-right>\n            <button id="feedbackSummary-button40" ion-button clear color="positive" small>\n                Edit\n            </button><br>\n            <button id="feedbackSummary-button41" ion-button clear color="positive" small>\n                more details\n            </button>  \n        </ion-note>\n      </ion-item>\n      <ion-item color="none" id="feedbackSummary-list-item57">\n        <p class="name">John Taylor</p>\n        <ion-note item-right></ion-note>\n      </ion-item>\n      <ion-item color="none" id="feedbackSummary-list-item58">\n          <p class="name">James Kirk</p>\n        <ion-note item-right></ion-note>\n      </ion-item>\n    </ion-list>\n\n  </div>\n</ion-content>'/*ion-inline-end:"/Users/sophia/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/feedback-summary/feedback-summary.html"*/
+        selector: 'page-feedback-summary',template:/*ion-inline-start:"/Users/sophia/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/feedback-summary/feedback-summary.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-buttons start>\n      <button ion-button></button>\n    </ion-buttons>\n    <ion-title>\n      Feedback Summary\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding id="page14" >\n    <h4 id="feedbackSummary-heading6">\n        Group <span>#</span>\n    </h4>\n    <div id="addfeedback">\n        <button id="feedbackSummary-button42" ion-button clear color="positive" small on-click="goToGroup();">\n            Add Feedback\n        </button>\n    </div>\n    \n    <div id="top" >\n        <div id="latestfeedback">\n            <p style="margin:0px;outline:none;">Latest Feedback:\n            <br>Week <span>4</span></p>\n        </div>\n    </div>\n    <hr>\n    <div>\n        <div id="lll">\n            <p class="floating" id="overallp" style="color:#000000;">\n            Current overall <br> performance:\n            </p>\n            <p class="floating" id="latestp" style="color:#000000;">\n                latest performance:\n                <br>\n            <span id="latestperformance">{{latestperformance}}</span>\n            </p>\n        </div>\n            <p id="performance2">\n                {{overallperformance}}\n            </p>\n    </div>\n    <hr>\n    <h5 id="feedbackSummary-heading9" style="color:#000000;">\n        Individual feedback forms\n    </h5>\n    \n  <div id="feedbackSummary-container9" *ngFor="let item of weekswithinfo; let i = index">\n    <ion-list id="feedbackSummary-list10">\n      <ion-item-divider color="primary" id="feedbackSummary-list-item-divider2">\n        W<span>{{item}}</span>\n      </ion-item-divider>\n      <ion-item color="none" id="feedbackSummary-list-item56" *ngFor="let student of students; let j = index" (click)="setcolour();">\n          <p class="name">{{student}}</p>\n        <span><button id="performance" style="background-color:{{setcolour()}}"></button></span><span>{{percentageresults[addfields()[i]][j]}}</span>\n        <ion-note item-right>\n            <button id="feedbackSummary-button40" ion-button clear color="positive" small>\n                Edit\n            </button><br>\n            <button id="feedbackSummary-button41" ion-button clear color="positive" small>\n                more details\n            </button>  \n        </ion-note>\n      </ion-item>\n      \n    </ion-list>\n\n  </div>\n</ion-content>'/*ion-inline-end:"/Users/sophia/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/feedback-summary/feedback-summary.html"*/
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */]])
 ], FeedbackSummaryPage);
@@ -504,7 +551,7 @@ var StaffContactInfoPage = (function () {
 }());
 StaffContactInfoPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-staff-contact-info',template:/*ion-inline-start:"/Users/sophia/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/staff-contact-info/staff-contact-info.html"*/'\n\n<ion-header>\n  <ion-navbar>\n    <ion-title>\n      Staff Contact Info\n    </ion-title> \n  </ion-navbar>\n</ion-header>\n\n<ion-content no-bounce>\n  <h4 id="staffContactInfo-heading2" style="color:#000000;">\n    Lecturer\n  </h4>\n   <div class= "Lecturerparent">\n  <ion-item-group id="staffContactInfo-list3">\n    <ion-item color="none" id="staffContactInfo-list-item15">\n      <ion-avatar class = "lecturer" item-start>\n        <img class= "Lecturersize" src= "http://static.bleacherreport.net/images/redesign/avatars/default-user-icon-profile.png">\n      </ion-avatar>\n      <ul>\n        <li>Firstname Lastname</li>\n        <li>f.lastname@ucl.ac.uk</li>\n        <li>Office hours: xxx</li>\n        <li>Office location: xxx</li>\n      </ul>\n    </ion-item>\n  </ion-item-group>\n  </div>\n  <hr>\n\n  <h4 id="staffContactInfo-heading3" style="color:#000000;">\n    Teaching Assistance\n  </h4>\n  \n<div class= "TAParent">\n  	<ion-list no-lines>\n    <ion-item color="none" id="staffContactInfo-list-item28">\n      <ion-avatar class="TAav" item-left>\n        <img class= "TAsize" src= "http://static.bleacherreport.net/images/redesign/avatars/default-user-icon-profile.png"/>\n      </ion-avatar>\n      <ul class="TAlist">\n        <li>Firstname Lastname</li>\n        <li>f.lastname@ucl.ac.uk</li>\n        <li>Lab hours: xxx</li>\n        <li>Lab location: xxx</li>\n      </ul>  \n\n    </ion-item>\n  </ion-list>\n</div>\n</ion-content>'/*ion-inline-end:"/Users/sophia/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/staff-contact-info/staff-contact-info.html"*/
+        selector: 'page-staff-contact-info',template:/*ion-inline-start:"/Users/sophia/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/staff-contact-info/staff-contact-info.html"*/'\n\n<ion-header>\n  <ion-navbar>\n    <ion-title>\n      Staff Contact Info\n    </ion-title> \n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <h4 id="staffContactInfo-heading2" style="color:#000000;">\n    Lecturer\n  </h4>\n   <div class= "Lecturerparent">\n  <ion-item-group id="staffContactInfo-list3">\n    <ion-item color="none" id="staffContactInfo-list-item15">\n      <ion-avatar class = "lecturer" item-start>\n        <img class= "Lecturersize" src= "http://static.bleacherreport.net/images/redesign/avatars/default-user-icon-profile.png">\n      </ion-avatar>\n      <ul>\n        <li>Firstname Lastname</li>\n        <li>f.lastname@ucl.ac.uk</li>\n        <li>Office hours: xxx</li>\n        <li>Office location: xxx</li>\n      </ul>\n    </ion-item>\n  </ion-item-group>\n  </div>\n  <hr>\n\n  <h4 id="staffContactInfo-heading3" style="color:#000000;">\n    Teaching Assistants\n  </h4>\n  \n<div class= "TAParent">\n  	<ion-list no-lines>\n    <ion-item color="none" id="staffContactInfo-list-item28">\n      <ion-avatar class="TAav" item-left>\n        <img class= "TAsize" src= "http://static.bleacherreport.net/images/redesign/avatars/default-user-icon-profile.png"/>\n      </ion-avatar>\n      <ul class="TAlist">\n        <li>Firstname Lastname</li>\n        <li>f.lastname@ucl.ac.uk</li>\n        <li>Lab hours: xxx</li>\n        <li>Lab location: xxx</li>\n      </ul>  \n\n    </ion-item>\n  </ion-list>\n</div>\n</ion-content>'/*ion-inline-end:"/Users/sophia/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/staff-contact-info/staff-contact-info.html"*/
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */]])
 ], StaffContactInfoPage);

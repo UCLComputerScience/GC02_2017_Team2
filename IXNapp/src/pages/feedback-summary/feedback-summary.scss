@@ -1,6 +1,8 @@
 page-feedback-summary {
-    
-    #latestfeedback {
+
+    hr {
+        width: 100%;
+        padding:0px;
     }
     
     #addfeedback {
@@ -10,6 +12,7 @@ page-feedback-summary {
     
     #feedbackSummary-button42 {
         border:solid 2px;
+        margin:0px;outline:none;
     }
     
     #feedbackSummary-heading6 {
@@ -28,7 +31,6 @@ page-feedback-summary {
     }
     
     #performance {
-        background-color:blue;
         border-radius:70px;
         height:20px;
         width:20px;
@@ -53,5 +55,8 @@ page-feedback-summary {
         color:#000000;
         font-size:20px;
         margin-top:0;
+    }
+    
+    #top {
     }
 }

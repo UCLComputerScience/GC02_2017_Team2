@@ -25679,6 +25679,11 @@ ion-navbar.toolbar {
   min-height: calc(46px + env(safe-area-inset-bottom));
 }
 
+page-feedback-summary hr {
+  width: 100%;
+  padding: 0px;
+}
+
 page-feedback-summary #addfeedback {
   vertical-align: middle;
   text-align: right;
@@ -25686,6 +25691,8 @@ page-feedback-summary #addfeedback {
 
 page-feedback-summary #feedbackSummary-button42 {
   border: solid 2px;
+  margin: 0px;
+  outline: none;
 }
 
 page-feedback-summary #feedbackSummary-heading6 {
@@ -25698,7 +25705,6 @@ page-feedback-summary #latestp {
 }
 
 page-feedback-summary #performance {
-  background-color: blue;
   border-radius: 70px;
   height: 20px;
   width: 20px;
@@ -25736,6 +25742,10 @@ page-group-list .addbutton {
   padding-bottom: 0px;
   height: auto;
   float: right;
+}
+
+page-group-list .groupbutton {
+  width: 75%;
 }
 
 page-group-list .addbutton {
