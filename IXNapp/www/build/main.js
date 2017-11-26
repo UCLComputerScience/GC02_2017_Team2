@@ -263,16 +263,15 @@ __decorate([
 ], HomePage.prototype, "doughnutCanvas2", void 0);
 __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_13" /* ViewChild */])(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* Slides */]),
-    __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* Slides */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* Slides */]) === "function" && _a || Object)
+    __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* Slides */])
 ], HomePage.prototype, "slides", void 0);
 HomePage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
         selector: 'page-home',template:/*ion-inline-start:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/home/home.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>\n      Home\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding id="page2">\n  <div id="home-container11">\n    <button id="home-button43" ion-button color="positive" block icon-right style="text-align:right;" on-click="goToDeadlines()">\n      >Deadlines >\n      <ion-icon name="calendar"></ion-icon>\n    </button>\n  </div>\n  <div id="home-markdown16" style="text-align:center;" class="show-list-numbers-and-dots">\n    <p style="color:#000000;">\n      All feedback up to date\n    </p>\n  </div>\n  <h4 id="home-heading11" style="color:#000000;">\n    Latest Feedback\n  </h4>\n<div>\n  <ion-slides pager = "true">\n    <ion-slide>\n            <canvas  #doughnutCanvas></canvas>\n            \n            <h5 id="home-heading12">\n              Groups Feedback\n            </h5>\n          <ion-grid>\n            <ion-row>\n            <ion-label>\n                4\n              </ion-label>\n              <ion-label>\n                  5\n                </ion-label>\n                <ion-label>\n                    6\n                  </ion-label>\n                  <ion-label>\n                      7\n                    </ion-label>\n            </ion-row>\n            </ion-grid>\n    </ion-slide>\n    <ion-slide>\n                <canvas #doughnutCanvas2 ></canvas>\n                <h5 id="home-heading12">\n                    Students Feedback\n                </h5>\n               \n        </ion-slide>\n  </ion-slides>\n</div>\n  <h5 id="home-heading12" style="color:#000000;">\n    Teams -- Students\n  </h5>\n\n  <button id="home-button44" ion-button color="assertive" style="font-size:9px;" on-click="goToRedGroups()">\n    Red Teams\n  </button>\n  <button id="home-button45" ion-button color="assertive" style="font-size:9px;" on-click="goToRedStudents()">\n    Red Students\n  </button>\n</ion-content>'/*ion-inline-end:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/home/home.html"*/
     }),
-    __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */]) === "function" && _b || Object])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */]])
 ], HomePage);
 
-var _a, _b;
 //# sourceMappingURL=home.js.map
 
 /***/ }),
@@ -382,12 +381,13 @@ var RedStudentsPage = (function () {
     };
     RedStudentsPage.prototype.onClick = function () {
         this.RedWeeks = [{ Week: "Week 1", Contr: "30%" }, { Week: "Week 2", Contr: "29%" }, { Week: "Week 3", Contr: "33%" }];
+        this.Contribution = ["Contribution"];
     };
     return RedStudentsPage;
 }());
 RedStudentsPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-red-students',template:/*ion-inline-start:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/red-students/red-students.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-buttons start>\n      <button ion-button></button>\n    </ion-buttons>\n    <ion-title>\n      Red Students\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n<ion-content padding id="page8">\n  \n  <ion-scroll scrollX="true">\n    <ion-row nowrap class= "scroller">\n      <button ion-button color= "danger" *ngFor= "let BadStu of RedStudents" (click)="onClick()" class= "StudentButton">\n          {{BadStu}}\n      </button>\n    </ion-row>\n  </ion-scroll>\n\n<ion-list>\n  <ion-item *ngFor="let BadWeek of RedWeeks">\n    <div class= "Week">\n      <h1>\n        {{BadWeek.Week}}\n      </h1>\n    </div>\n    <button ion-button class= "stat">\n      \n    </button>\n    <h1 class= "contribution">\n      {{BadWeek.Contr}}\n    </h1>\n  </ion-item>\n</ion-list>\n\n</ion-content>\n'/*ion-inline-end:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/red-students/red-students.html"*/
+        selector: 'page-red-students',template:/*ion-inline-start:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/red-students/red-students.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-buttons start>\n      <button ion-button></button>\n    </ion-buttons>\n    <ion-title>\n      Red Students\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n<ion-content padding id="page8">\n  \n  <ion-scroll scrollX="true">\n    <ion-row nowrap class= "scroller">\n      <button ion-button color= "danger" *ngFor= "let BadStu of RedStudents" (click)="onClick()" class= "StudentButton" round="true">\n          {{BadStu}}\n      </button>\n    </ion-row>\n  </ion-scroll>\n\n  <div ng-hide= "Clicked" class= "ng-hide">\n  <p class= "para" style="font-size:160%;" align="center">Press On a Student!</p>\n  </div>\n\n  <p style= "margin-left:42vw;" *ngFor="let con of Contribution">{{con}}</p>\n\n<ion-list>\n  <ion-item *ngFor="let BadWeek of RedWeeks">\n    <div class= "Week">\n      <h1>\n        {{BadWeek.Week}}\n      </h1>\n    </div>\n    <button ion-button class= "stat" style= "width: 8vw; border-radius: 50%;">\n    </button>\n    <h1 class= "contribution">\n      {{BadWeek.Contr}}\n    </h1>\n  </ion-item>\n</ion-list>\n\n</ion-content>\n'/*ion-inline-end:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/red-students/red-students.html"*/
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */]])
 ], RedStudentsPage);
@@ -423,6 +423,8 @@ var GroupListPage = (function () {
     // should be each tab's root Page
     function GroupListPage(navCtrl) {
         this.navCtrl = navCtrl;
+        this.items = ['1', '2', '7'];
+        this.items2 = ['good', 'bad', 'ok'];
     }
     GroupListPage.prototype.goToFeedbackSummary = function (params) {
         if (!params)
@@ -510,16 +512,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var StaffContactInfoPage = (function () {
-    // this tells the tabs component which Pages
-    // should be each tab's root Page
     function StaffContactInfoPage(navCtrl) {
         this.navCtrl = navCtrl;
     }
+    StaffContactInfoPage.prototype.ngOnInit = function () {
+        this.StaffContact = [{ Name: "Yun Fu", Email: "yunfu@ucl.ac.uk", Hours: "13:00", Location: "Malet Place" }];
+        this.TAContact = [{ Name: "John Taylor", Email: "John@ucl.ac.uk", Hours: "14:00", Location: "Malet Place", Exp: "Ionic" }, { Name: "Dominic Twain", Email: "Dominic@ucl.ac.uk", Hours: "16:00", Location: "Malet Place", Exp: "Databases" }, { Name: "Ashley Shana", Email: "Ashley@ucl.ac.uk", Hours: "14:00", Location: "Malet Place", Exp: "Python" }];
+    };
     return StaffContactInfoPage;
 }());
 StaffContactInfoPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-staff-contact-info',template:/*ion-inline-start:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/staff-contact-info/staff-contact-info.html"*/'\n\n<ion-header>\n  <ion-navbar>\n    <ion-title>\n      Staff Contact Info\n    </ion-title> \n  </ion-navbar>\n</ion-header>\n\n<ion-content no-bounce>\n  <h4 id="staffContactInfo-heading2" style="color:#000000;">\n    Lecturer\n  </h4>\n   <div class= "Lecturerparent">\n  <ion-item-group id="staffContactInfo-list3">\n    <ion-item color="none" id="staffContactInfo-list-item15">\n      <ion-avatar class = "lecturer" item-start>\n        <img class= "Lecturersize" src= "http://static.bleacherreport.net/images/redesign/avatars/default-user-icon-profile.png">\n      </ion-avatar>\n      <ul>\n        <li>Firstname Lastname</li>\n        <li>f.lastname@ucl.ac.uk</li>\n        <li>Office hours: xxx</li>\n        <li>Office location: xxx</li>\n      </ul>\n    </ion-item>\n  </ion-item-group>\n  </div>\n  <hr>\n\n  <h4 id="staffContactInfo-heading3" style="color:#000000;">\n    Teaching Assistance\n  </h4>\n  \n<div class= "TAParent">\n  	<ion-list no-lines>\n    <ion-item color="none" id="staffContactInfo-list-item28">\n      <ion-avatar class="TAav" item-left>\n        <img class= "TAsize" src= "http://static.bleacherreport.net/images/redesign/avatars/default-user-icon-profile.png"/>\n      </ion-avatar>\n      <ul class="TAlist">\n        <li>Firstname Lastname</li>\n        <li>f.lastname@ucl.ac.uk</li>\n        <li>Lab hours: xxx</li>\n        <li>Lab location: xxx</li>\n      </ul>  \n\n    </ion-item>\n  </ion-list>\n</div>\n</ion-content>'/*ion-inline-end:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/staff-contact-info/staff-contact-info.html"*/
+        selector: 'page-staff-contact-info',template:/*ion-inline-start:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/staff-contact-info/staff-contact-info.html"*/'\n\n<ion-header>\n  <ion-navbar>\n    <ion-title>\n      Staff Contact Info\n    </ion-title> \n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <h4 style="margin-top: 6vh;">\n    Lecturer\n  </h4>\n    <ion-item no-lines *ngFor= "let StaffC of StaffContact">\n      <ion-avatar item-start>\n        <img src= "http://static.bleacherreport.net/images/redesign/avatars/default-user-icon-profile.png" style= "height: 12vh; width: 22vw;">\n      </ion-avatar>\n      <ul style="list-style-type:none; margin-left: -6vw;">\n        <li>{{StaffC.Name}}</li>\n        <li>{{StaffC.Email}}</li>\n        <li>{{StaffC.Hours}}</li>\n        <li>{{StaffC.Location}}</li>\n      </ul>\n    </ion-item>\n\n  <hr>\n\n  <h4>\n    Teaching Assistance\n  </h4>\n  \n    <ion-item no-lines *ngFor= "let TAC of TAContact">\n      <ion-avatar item-start>\n        <img class= "TAsize" src= "http://static.bleacherreport.net/images/redesign/avatars/default-user-icon-profile.png" style= "height: 10vh; width: 18vw; margin-left: 4vw; margin-top:-13vh;">\n      </ion-avatar>\n      <ul style="list-style-type:none; margin-left: -7vw;">\n        <li>{{TAC.Name}}</li>\n        <li>{{TAC.Email}}</li>\n      </ul>\n      <ul style="list-style-type:none; margin-left: -7vw;">\n        <li><u>Lab Hours:</u></li>\n        <li>{{TAC.Hours}}</li>\n        <li><u>Lab Location:</u></li>\n        <li>{{TAC.Location}}</li>\n        <li><u>Experience:</u></li>\n        <li>{{TAC.Exp}}</li>\n      </ul>  \n\n    </ion-item>\n</ion-content>\n'/*ion-inline-end:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/staff-contact-info/staff-contact-info.html"*/
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */]])
 ], StaffContactInfoPage);
@@ -551,6 +555,7 @@ var MyProfilePage = (function () {
     // should be each tab's root Page
     function MyProfilePage(navCtrl) {
         this.navCtrl = navCtrl;
+        this.items = ['G1', 'G3', 'G8'];
     }
     return MyProfilePage;
 }());
