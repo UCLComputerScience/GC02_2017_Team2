@@ -14,9 +14,9 @@
   </h4>
     <ion-item no-lines *ngFor= "let StaffC of StaffContact">
       <ion-avatar item-start>
-        <img src= "http://static.bleacherreport.net/images/redesign/avatars/default-user-icon-profile.png" style= "height: 12vh; width: 22vw;">
+        <img src= "assets/img/Staff.png" style= "height: 12vh; width: 22vw; margin-left: 1.6vw;">
       </ion-avatar>
-      <ul style="list-style-type:none; margin-left: -6vw;">
+      <ul style="list-style-type:none; margin-left: -9vw;">
         <li>{{StaffC.Name}}</li>
         <li>{{StaffC.Email}}</li>
         <li>{{StaffC.Hours}}</li>
@@ -32,7 +32,7 @@
   
     <ion-item no-lines *ngFor= "let TAC of TAContact">
       <ion-avatar item-start>
-        <img class= "TAsize" src= "http://static.bleacherreport.net/images/redesign/avatars/default-user-icon-profile.png" style= "height: 10vh; width: 18vw; margin-left: 4vw; margin-top:-13vh;">
+        <img class= "TAsize" src= "{{TAC.Pic}}" style= "height: 10vh; width: 18vw; margin-left: 4vw; margin-top:-13vh;">
       </ion-avatar>
       <ul style="list-style-type:none; margin-left: -7vw;">
         <li>{{TAC.Name}}</li>
