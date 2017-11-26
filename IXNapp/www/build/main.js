@@ -474,21 +474,71 @@ var FeedbackSummaryPage = (function () {
     // should be each tab's root Page
     function FeedbackSummaryPage(navCtrl) {
         this.navCtrl = navCtrl;
+        this.latestperformance = "good";
+        this.overallperformance = "average";
+        this.latestfeedback = "4";
+        this.weekswithinfo = [1, 2, 3, 4, 5, 8];
+        this.percentageresults = [
+            [30, 30, 40],
+            [34, 33, 33],
+            [33, 33, 34],
+            [33, 34, 33],
+            [34, 33, 33],
+            [33, 34, 33],
+            [],
+            [34, 33, 33],
+            [33, 34, 33],
+            [33, 33, 34]
+        ];
+        this.results = [
+            [4, 3, 3],
+            [2, 3, 4],
+            [1, 2, 3],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            []
+        ];
+        this.students = ['Samantha Watson', 'John Taylor', 'James Kirk'];
+        this.colourval = "blue";
     }
     FeedbackSummaryPage.prototype.goToGroup = function (params) {
         if (!params)
             params = {};
         this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_2__group_group__["a" /* GroupPage */]);
     };
+    FeedbackSummaryPage.prototype.addfields = function () {
+        var weekswithinfo = this.weekswithinfo;
+        var indexx = [];
+        var weekno = weekswithinfo.length;
+        for (var i = 0; i < weekno; i++) {
+            var weekval = weekswithinfo[i];
+            if (weekval < 6) {
+                indexx.push(weekval - 1);
+            }
+            else {
+                indexx.push(weekval - 2);
+            }
+        }
+        return indexx;
+    };
+    FeedbackSummaryPage.prototype.setcolour = function () {
+        var val = "blue";
+        return val;
+    };
     return FeedbackSummaryPage;
 }());
 FeedbackSummaryPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-feedback-summary',template:/*ion-inline-start:"/Users/sophia/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/feedback-summary/feedback-summary.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-buttons start>\n      <button ion-button></button>\n    </ion-buttons>\n    <ion-title>\n      Feedback Summary\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding id="page14">\n    <h4 id="feedbackSummary-heading6" style="color:#000000;">\n        Group <span>#</span>\n    </h4>\n    <div id="addfeedback">\n        <button id="feedbackSummary-button42" ion-button clear color="positive" small on-click="goToGroup();">\n            Add Feedback\n        </button>\n    </div>\n    <div id="top">\n        <div id="latestfeedback">\n            <p>Latest Feedback:\n            <br>Week <span>4</span></p>\n        </div>\n    </div>\n    <div>\n        <div id="lll">\n            <p class="floating" id="overallp" style="color:#000000;">\n            Current overall <br> performance:\n            </p>\n            <p class="floating" id="latestp" style="color:#000000;">\n                latest performance:\n                <br>\n            <span id="latestperformance">good</span>\n            </p>\n        </div>\n\n            <p id="performance2">\n                Very Good\n            </p>\n\n    </div>\n  <h5 id="feedbackSummary-heading9" style="color:#000000;">\n    Individual feedback forms\n  </h5>\n    \n  <div id="feedbackSummary-container9">\n    <ion-list id="feedbackSummary-list10">\n      <ion-item-divider color="primary" id="feedbackSummary-list-item-divider2">\n        W1\n      </ion-item-divider>\n      <ion-item color="none" id="feedbackSummary-list-item56">\n          <p class="name">Samantha Watson</p>\n        <span><button id="performance"></button></span><span>40%</span>\n        <ion-note item-right>\n            <button id="feedbackSummary-button40" ion-button clear color="positive" small>\n                Edit\n            </button><br>\n            <button id="feedbackSummary-button41" ion-button clear color="positive" small>\n                more details\n            </button>  \n        </ion-note>\n      </ion-item>\n      <ion-item color="none" id="feedbackSummary-list-item57">\n        <p class="name">John Taylor</p>\n        <ion-note item-right></ion-note>\n      </ion-item>\n      <ion-item color="none" id="feedbackSummary-list-item58">\n          <p class="name">James Kirk</p>\n        <ion-note item-right></ion-note>\n      </ion-item>\n    </ion-list>\n\n  </div>\n</ion-content>'/*ion-inline-end:"/Users/sophia/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/feedback-summary/feedback-summary.html"*/
+        selector: 'page-feedback-summary',template:/*ion-inline-start:"/Users/sophia/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/feedback-summary/feedback-summary.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-buttons start>\n      <button ion-button></button>\n    </ion-buttons>\n    <ion-title>\n      Feedback Summary\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding id="page14" >\n    <h4 id="feedbackSummary-heading6">\n        Group <span>#</span>\n    </h4>\n    <div id="addfeedback">\n        <button id="feedbackSummary-button42" ion-button clear color="positive" small on-click="goToGroup();">\n            Add Feedback\n        </button>\n    </div>\n    \n    <div id="top" >\n        <div id="latestfeedback">\n            <p style="margin:0px;outline:none;">Latest Feedback:\n            <br>Week <span>4</span></p>\n        </div>\n    </div>\n    <hr>\n    <div>\n        <div id="lll">\n            <p class="floating" id="overallp" style="color:#000000;">\n            Current overall <br> performance:\n            </p>\n            <p class="floating" id="latestp" style="color:#000000;">\n                latest performance:\n                <br>\n            <span id="latestperformance">{{latestperformance}}</span>\n            </p>\n        </div>\n            <p id="performance2">\n                {{overallperformance}}\n            </p>\n    </div>\n    <hr>\n    <h5 id="feedbackSummary-heading9" style="color:#000000;">\n        Individual feedback forms\n    </h5>\n    \n  <div id="feedbackSummary-container9" *ngFor="let item of weekswithinfo; let i = index">\n    <ion-list id="feedbackSummary-list10">\n      <ion-item-divider color="primary" id="feedbackSummary-list-item-divider2">\n        W<span>{{item}}</span>\n      </ion-item-divider>\n      <ion-item color="none" id="feedbackSummary-list-item56" *ngFor="let student of students; let j = index" (click)="setcolour();">\n          <p class="name">{{student}}</p>\n        <span><button id="performance" style="background-color:{{setcolour()}}"></button></span><span>{{percentageresults[addfields()[i]][j]}}</span>\n        <ion-note item-right>\n            <button id="feedbackSummary-button40" ion-button clear color="positive" small>\n                Edit\n            </button><br>\n            <button id="feedbackSummary-button41" ion-button clear color="positive" small>\n                more details\n            </button>  \n        </ion-note>\n      </ion-item>\n      \n    </ion-list>\n\n  </div>\n</ion-content>'/*ion-inline-end:"/Users/sophia/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/feedback-summary/feedback-summary.html"*/
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */]])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */]) === "function" && _a || Object])
 ], FeedbackSummaryPage);
 
+var _a;
 //# sourceMappingURL=feedback-summary.js.map
 
 /***/ }),
