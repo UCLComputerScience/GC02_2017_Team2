@@ -19,7 +19,18 @@ ngOnInit() {
 }
 
 onClick() {
-	this.RedWeeks = ["Week 1", "Week 2", "Week 3", "Week 4", "Week 5"];
+	this.RedWeeks = [{Week: "Week 1", Color: 4}, {Week: "Week 2", Color: 1}, {Week: "Week 3", Color: 1}, {Week: "Week 4", Color: 2}, {Week: "Week 5", Color: 1}];
+	for(let i = 0; i < this.RedWeeks.length; i++){
+		if(this.RedWeeks[i].Color == 4){
+			this.RedWeeks[i].Color = "dark";
+		} else if(this.RedWeeks[i].Color == 3){
+			this.RedWeeks[i].Color = "light";
+		} else if(this.RedWeeks[i].Color == 2){
+			this.RedWeeks[i].Color = "secondary";
+		} else if(this.RedWeeks[i].Color == 1){
+			this.RedWeeks[i].Color = "danger";
+		}
+	}
 }
 
 }
