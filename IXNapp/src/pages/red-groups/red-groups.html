@@ -18,20 +18,19 @@
     </ion-row>
   </ion-scroll>
 
+<p class= "para" style="font-size:160%;" align="center">Press On a Team!</p>
+
 <ion-list>
   <ion-item *ngFor= "let BadWeek of RedWeeks">
     <div class= "Week">
       <h1>
-        {{BadWeek}}
+        {{BadWeek.Week}}
       </h1>
     </div>
-    <button ion-button class= "stat">
+    <button ion-button class= "stat" color= "{{BadWeek.Color}}" style= "width: 8vw; border-radius: 50%;">
     </button>
   </ion-item>
 </ion-list>
 
-<p>
-  {{name}}
-</p>
 
 </ion-content>
