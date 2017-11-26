@@ -9,44 +9,52 @@
 </ion-header>
 
 <ion-content padding>
+<<<<<<< HEAD
   <h4 id="staffContactInfo-heading2" style="color:#000000;">
+=======
+  <h4 style="margin-top: 6vh;">
+>>>>>>> master
     Lecturer
   </h4>
-   <div class= "Lecturerparent">
-  <ion-item-group id="staffContactInfo-list3">
-    <ion-item color="none" id="staffContactInfo-list-item15">
-      <ion-avatar class = "lecturer" item-start>
-        <img class= "Lecturersize" src= "http://static.bleacherreport.net/images/redesign/avatars/default-user-icon-profile.png">
+    <ion-item no-lines *ngFor= "let StaffC of StaffContact">
+      <ion-avatar item-start>
+        <img src= "http://static.bleacherreport.net/images/redesign/avatars/default-user-icon-profile.png" style= "height: 12vh; width: 22vw;">
       </ion-avatar>
-      <ul>
-        <li>Firstname Lastname</li>
-        <li>f.lastname@ucl.ac.uk</li>
-        <li>Office hours: xxx</li>
-        <li>Office location: xxx</li>
+      <ul style="list-style-type:none; margin-left: -6vw;">
+        <li>{{StaffC.Name}}</li>
+        <li>{{StaffC.Email}}</li>
+        <li>{{StaffC.Hours}}</li>
+        <li>{{StaffC.Location}}</li>
       </ul>
     </ion-item>
-  </ion-item-group>
-  </div>
+
   <hr>
 
+<<<<<<< HEAD
   <h4 id="staffContactInfo-heading3" style="color:#000000;">
     Teaching Assistants
+=======
+  <h4>
+    Teaching Assistance
+>>>>>>> master
   </h4>
   
-<div class= "TAParent">
-  	<ion-list no-lines>
-    <ion-item color="none" id="staffContactInfo-list-item28">
-      <ion-avatar class="TAav" item-left>
-        <img class= "TAsize" src= "http://static.bleacherreport.net/images/redesign/avatars/default-user-icon-profile.png"/>
+    <ion-item no-lines *ngFor= "let TAC of TAContact">
+      <ion-avatar item-start>
+        <img class= "TAsize" src= "http://static.bleacherreport.net/images/redesign/avatars/default-user-icon-profile.png" style= "height: 10vh; width: 18vw; margin-left: 4vw; margin-top:-13vh;">
       </ion-avatar>
-      <ul class="TAlist">
-        <li>Firstname Lastname</li>
-        <li>f.lastname@ucl.ac.uk</li>
-        <li>Lab hours: xxx</li>
-        <li>Lab location: xxx</li>
+      <ul style="list-style-type:none; margin-left: -7vw;">
+        <li>{{TAC.Name}}</li>
+        <li>{{TAC.Email}}</li>
+      </ul>
+      <ul style="list-style-type:none; margin-left: -7vw;">
+        <li><u>Lab Hours:</u></li>
+        <li>{{TAC.Hours}}</li>
+        <li><u>Lab Location:</u></li>
+        <li>{{TAC.Location}}</li>
+        <li><u>Experience:</u></li>
+        <li>{{TAC.Exp}}</li>
       </ul>  
 
     </ion-item>
-  </ion-list>
-</div>
 </ion-content>

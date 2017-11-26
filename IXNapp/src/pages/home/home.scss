@@ -1,25 +1,43 @@
 page-home {
-    
-    /*.scroll-content { //allowing no scrolling
+
+    #myGraph{ 
+        height: 50% !important; 
+    }
+
+    .scroll-content { //allowing no scrolling
         height:100% !important
-    }*/
+    }
 
     ion-card-header {
         font-weight: bold;
     }
 
     ion-card { 
-        height: 30 !important; 
+        height: 60% !important; 
     }
 
-    ion-card-background {}
+    ion-label{ 
+        border-radius: 20px !important; 
+        background-color: blue !important; 
+        color: white !important; 
+    }
+    
+    canvas{
+        width: 100% !important;
+        height: auto !important;
+    
+    }
 
-    
-    
-    
-       canvas  {
-          height: 50% !important; 
-       }
+    /*
+    secondary:  #ffcd56,
+    danger:     #ff6384,
+    light:      #7ed321,
+    dark:       #058d65
+*/
+
+    #red-legend{
+        background-color: blue; 
+    }
     
        .table {
         border: 1px solid red;

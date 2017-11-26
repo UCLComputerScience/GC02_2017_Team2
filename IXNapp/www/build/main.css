@@ -25761,9 +25761,20 @@ page-group-list .addbutton {
 }
 
 page-home {
-  /*.scroll-content { //allowing no scrolling
-        height:100% !important
-    }*/
+  /*
+    secondary:  #ffcd56,
+    danger:     #ff6384,
+    light:      #7ed321,
+    dark:       #058d65
+*/
+}
+
+page-home #myGraph {
+  height: 50% !important;
+}
+
+page-home .scroll-content {
+  height: 100% !important;
 }
 
 page-home ion-card-header {
@@ -25771,11 +25782,22 @@ page-home ion-card-header {
 }
 
 page-home ion-card {
-  height: 30 !important;
+  height: 60% !important;
+}
+
+page-home ion-label {
+  border-radius: 20px !important;
+  background-color: blue !important;
+  color: white !important;
 }
 
 page-home canvas {
-  height: 50% !important;
+  width: 100% !important;
+  height: auto !important;
+}
+
+page-home #red-legend {
+  background-color: blue;
 }
 
 page-home .table {
@@ -25893,6 +25915,12 @@ page-red-students ion-scroll {
   height: 15vh;
 }
 
+page-red-students .para {
+  border-style: solid;
+  border-width: 4px;
+  border-radius: 10%;
+}
+
 page-red-students ion-row {
   -webkit-box-pack: start;
   -webkit-justify-content: start;
@@ -25900,7 +25928,6 @@ page-red-students ion-row {
   justify-content: start;
   position: relative;
   width: 600px !important;
-  overflow-x: auto !important;
 }
 
 page-red-students ion-list {
@@ -25934,95 +25961,7 @@ page-red-students .contribution {
   position: relative;
 }
 
-staff-contact-info ion-header {
-  height: 20%;
-  background: white;
-  border: 2 px solid #00A8FF;
-}
-
-staff-contact-info ion-navbar {
-  height: 100%;
-  line-height: 1300%;
-  background: transparent;
-}
-
-staff-contact-info ion-title {
-  position: relative;
-  display: inline-block;
-}
-
-staff-contact-info ul {
-  list-style-type: none;
-  position: relative;
-  list-style: none;
-  width: 100%;
-}
-
-staff-contact-info #staffContactInfo-heading2 {
-  margin-top: 5%;
-  top: 5%;
-  padding-left: 4.5%;
-  z-index: 1;
-  position: relative;
-}
-
-staff-contact-info .Lecturerparent {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
-  margin-top: 5%;
-  margin-bottom: 3%;
-  border: 1px;
-  padding-right: 2%;
-  z-index: 0;
-  position: relative;
-}
-
-staff-contact-info .Lecturersize {
-  width: 100% !important;
-  height: 100% !important;
-  max-width: 21vw !important;
-  max-height: 17vh !important;
-}
-
 staff-contact-info hr {
   size: 1px;
   color: #555e6d;
-}
-
-staff-contact-info #staffContactInfo-heading3 {
-  margin-top: 5%;
-  padding-left: 4%;
-  margin-bottom: 1%;
-  position: relative;
-}
-
-staff-contact-info .TAav {
-  float: left;
-  margin-top: 1%;
-  margin-bottom: 4%;
-  position: relative;
-}
-
-staff-contact-info .TAlist {
-  display: inline-block;
-  margin-top: 1%;
-  margin-bottom: 4%;
-  position: relative;
-}
-
-staff-contact-info .TAsize {
-  width: 100% !important;
-  height: 100% !important;
-  max-width: 21vw !important;
-  max-height: 17vh !important;
 }
