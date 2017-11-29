@@ -23,6 +23,8 @@ export class FeedbackSummaryPage {
   
   weekswithinfo = [1,2,3,4,5,8];
   
+  groupresults = ['lightgreen','lightgreen','darkgreen']
+  
   percentageresults = [
     [30, 30, 40],
     [34, 33, 33],

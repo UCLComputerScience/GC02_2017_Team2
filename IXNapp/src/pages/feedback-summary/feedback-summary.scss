@@ -3,6 +3,7 @@ page-feedback-summary {
     hr {
         width: 100%;
         padding:0px;
+        
     }
     
     #addfeedback {
@@ -105,6 +106,8 @@ page-feedback-summary {
     #weekdiv {
         float:left;
         padding-top: 8px; 
+        color:white;
+        padding-left: 5px;
     }
     
     #weekdiv2 {
@@ -126,6 +129,7 @@ page-feedback-summary {
     .darkgreen {
         background-color: #058D65;
     }
+    
 
 
 }

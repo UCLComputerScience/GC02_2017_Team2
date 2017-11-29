@@ -26,7 +26,7 @@
         </div>
     </div>
     <hr>
-    <div>
+    <div id="legend">
         <div id="lll">
             <p class="floating" id="overallp" style="color:#000000;">
             Current overall <br> performance:
@@ -46,9 +46,10 @@
         Weekly Feedback
     </h5>
     <div style="padding-bottom:7px;"><button class="performance darkgreen"></button> excellent <button class="performance lightgreen"></button> good <button class="performance yellow"></button> average <button class="performance red"></button> bad</div>
+    <hr>
   <div id="feedbackSummary-container9" *ngFor="let item of weekswithinfo; let i = index">
     <ion-list id="feedbackSummary-list10">
-      <ion-item-divider color="primary" id="feedbackSummary-list-item-divider2">
+      <ion-item-divider id="feedbackSummary-list-item-divider2" class="{{ groupresults[addfields()[i]] }}">
         <p id="weekdiv">Week {{item}}</p>
         <p id="weekdiv2"><button id="feedbackSummary-button41" ion-button clear small>
                 more details
