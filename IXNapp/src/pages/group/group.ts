@@ -24,19 +24,19 @@ export class GroupPage {
   names = ['Samantha Watson', 'John Taylor', 'James Kirk'];
   
   
-  buttonOneClicked(i) : void {
+  buttonOneClicked() : void {
     this.button1 = "highlighted";
     this.button2 = this.button3 = this.button4 = "nothighlighted";
   }
-  buttonTwoClicked(i) : void {
+  buttonTwoClicked() : void {
     this.button2 = "highlighted";
     this.button1 = this.button3 = this.button4 = "nothighlighted";
   }
-  buttonThreeClicked(i) : void {
+  buttonThreeClicked() : void {
     this.button3 = "highlighted";
     this.button1 = this.button2 = this.button4 = "nothighlighted";
   }
-  buttonFourClicked(i) : void {
+  buttonFourClicked() : void {
     this.button4 = "highlighted";
     this.button1 = this.button2 = this.button3 = "nothighlighted";
   }
