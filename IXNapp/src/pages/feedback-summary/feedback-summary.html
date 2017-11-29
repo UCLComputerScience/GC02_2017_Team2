@@ -9,9 +9,9 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding id="page14" >
+<ion-content padding id="page14">
     <h4 id="feedbackSummary-heading6">
-        Group <span>#</span>
+        Group {{groupnumber}}
     </h4>
     <div id="addfeedback">
         <button id="feedbackSummary-button42" ion-button clear color="positive" small on-click="goToGroup();">
@@ -21,8 +21,8 @@
     
     <div id="top" >
         <div id="latestfeedback">
-            <p style="margin:0px;outline:none;">Latest Feedback:
-            <br>Week <span>4</span></p>
+            <p style="margin:0px;outline:none;" >Latest Feedback:
+                <br><span class="feedbackwriting">Week </span><span class="feedbackwriting">4</span></p>
         </div>
     </div>
     <hr>
@@ -34,33 +34,31 @@
             <p class="floating" id="latestp" style="color:#000000;">
                 latest performance:
                 <br>
-            <span id="latestperformance">{{latestperformance}}</span>
+            <span class="feedbackwriting" id="latestperformance">{{latestperformance}}</span>
             </p>
         </div>
-            <p id="performance2">
+            <p class="feedbackwriting" id="performance2">
                 {{overallperformance}}
             </p>
     </div>
     <hr>
     <h5 id="feedbackSummary-heading9" style="color:#000000;">
-        Individual feedback forms
+        Weekly Feedback
     </h5>
-    
+    <div style="padding-bottom:7px;"><button class="performance darkgreen"></button> excellent <button class="performance lightgreen"></button> good <button class="performance yellow"></button> average <button class="performance red"></button> bad</div>
   <div id="feedbackSummary-container9" *ngFor="let item of weekswithinfo; let i = index">
     <ion-list id="feedbackSummary-list10">
       <ion-item-divider color="primary" id="feedbackSummary-list-item-divider2">
-        W<span>{{item}}</span>
+        <p id="weekdiv">Week {{item}}</p>
+        <p id="weekdiv2"><button id="feedbackSummary-button41" ion-button clear small>
+                more details
+            </button>
+        </p> 
       </ion-item-divider>
       <ion-item color="none" id="feedbackSummary-list-item56" *ngFor="let student of students; let j = index" (click)="setcolour();">
           <p class="name">{{student}}</p>
-        <span><button id="performance" style="background-color:{{setcolour()}}"></button></span><span>{{percentageresults[addfields()[i]][j]}}</span>
         <ion-note item-right>
-            <button id="feedbackSummary-button40" ion-button clear color="positive" small>
-                Edit
-            </button><br>
-            <button id="feedbackSummary-button41" ion-button clear color="positive" small>
-                more details
-            </button>  
+           <p><button class="performance {{results[addfields()[i]][j]}}"></button><span id="percentage" style="padding-left:10px"> {{percentageresults[addfields()[i]][j]}}%</span></p> 
         </ion-note>
       </ion-item>
       

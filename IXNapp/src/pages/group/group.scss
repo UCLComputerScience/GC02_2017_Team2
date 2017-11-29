@@ -1,3 +1,69 @@
-page-group {
+page-group { 
+    .datebar {
+        //float: left;
+        display:inline-block;
+    }
+    
+    #weekcontrol {
+        width:100%;
+        text-align: center;
+    }
+    
+    #date {
+        width: 65%;
+        font-size: 15px;
+    }
+    
+    #groupperformance {
+        display:inline-block;
+        width:100%
+    }
+    
+    .performancebutton {
+        font-size: 13px;
+        height: 30px;
+        width:23%;
+        padding: 2px;
+        margin:0px;
+        color: white;
+        border-radius: 5px;
+    }
+    
+    .highlighted {
+        border: solid 3px #00A8FF;
+    }
+    
+    .nothighlighted {
+        border: 0px;
+    }
+    
+    .studentbutton {
+        height: 30px;
+        width: 30px;
+        border-radius: 80px;
+        vertical-align: middle; 
+        margin-left: 5px;
+    }
+    
+    ion-avatar img {
+        width: 50px !important;
+        height: 50px !important;
+    }
+    
+    #commentbutton {
+        border: solid 2px #00A8FF;
+        font-size: 13px;
+        vertical-align: middle; 
+        margin-left: 10px;
+    }
+    
+    #name {
+        font-size: 16px;
+    }
+    
+    ion-input {
+        font-size: 15px !important;
+    }
+
 
 }

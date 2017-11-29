@@ -18,7 +18,8 @@ export class FeedbackSummaryPage {
   
   latestperformance = "good";
   overallperformance = "average";
-  latestfeedback  = "4";
+  latestfeedback  = 4;
+  groupnumber = "#";
   
   weekswithinfo = [1,2,3,4,5,8];
   
@@ -36,8 +37,8 @@ export class FeedbackSummaryPage {
   ];
   
     results = [
-    [4,3,3],
-    [2,3,4],
+    ['red','yellow','yellow'],
+    ['lightgreen','lightgreen','darkgreen'],
     [1,2,3],
     [],
     [],

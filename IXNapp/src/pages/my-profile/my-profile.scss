@@ -5,6 +5,8 @@ page-my-profile {
         height:80px;
         margin-left:auto;
         margin-right:auto;
+        margin-bottom: 30px;
+        margin-top: 20px;
     }
     
     #myProfile-input1 {
@@ -19,11 +21,10 @@ page-my-profile {
     ion-input {
         border:solid 2px;
         border-color:#00A8FF;
-        //background-color:#00A8FF;
         border-radius: 15px;
         padding-left: 10px;
         margin-bottom: 10px;
-        color:white;
+        background-color: white !important;
     }
     
     #supervising{
@@ -31,7 +32,6 @@ page-my-profile {
     }
     button {
         background-color:#00A8FF;
-        //background-color:"primary";
         color:white;
         font-size:17px;
         border-radius:70px;
@@ -42,6 +42,14 @@ page-my-profile {
     
     #groups {
         text-align: center;
+    }
+    
+    ion-item {
+        background-color: #00A8FF !important;
+    }
+
+    #blueblue {
+        background-color: #00A8FF;
     }
 
 

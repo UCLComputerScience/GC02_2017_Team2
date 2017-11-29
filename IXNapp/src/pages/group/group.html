@@ -10,75 +10,70 @@
     </ion-title>
     <ion-buttons end>
       <button ion-button>
-        Add
+        Save
       </button>
     </ion-buttons>
   </ion-navbar>
+    
+    
 </ion-header>
 <ion-content padding id="page13">
-  <div id="group-container6">
-    <button id="group-button18" ion-button clear color="positive">
+  <div id="weekcontrol">
+    <button class="datebar" id="group-button18" ion-button clear color="positive" (click)="previousweek()">
       <ion-icon name="arrow-back"></ion-icon>
     </button>
-    <button id="group-button19" ion-button clear color="positive">
+    <p class="datebar" id="date">
+      {{dates[currentdateindex]}}<br><b>{{(weeks[currentdateindex])}}</b>
+    </p>
+    <button class="datebar" id="group-button19" ion-button clear color="positive" (click)="nextweek()">
       <ion-icon name="arrow-forward"></ion-icon>
     </button>
-  </div>
-  <div id="group-markdown4" style="text-align:center;" class="show-list-numbers-and-dots">
-    <p style="color:#000000;">
-      23rd Oct - 30th Oct 2017 (Week 5)
-    </p>
   </div>
   <h5 id="group-heading4" style="color:#000000;">
     Group Performance
   </h5>
-  <div id="group-container7">
-    <button id="group-button22" ion-button color="balanced" style="font-size:-12px;border-radius:4px 4px 4px 4px;">
+  <div id="groupperformance">
+    <button ion-button class="{{ button1 }} performancebutton" (click)="buttonOneClicked(i)" style="background-color:#058D65">
       excellent
     </button>
-    <button id="group-button23" ion-button color="balanced">
+    <button class="{{ button2 }} performancebutton" (click)="buttonTwoClicked()" ion-button style="background-color:#7ED321">
       good
     </button>
-    <button id="group-button27" ion-button color="energized">
+    <button class="{{ button3 }} performancebutton" (click)="buttonThreeClicked()" ion-button style="background-color:#FFCD56">
       average
     </button>
-    <button id="group-button28" ion-button color="assertive">
+    <button class="performancebutton {{button4}}"  (click)="buttonFourClicked()" ion-button style="background-color:#FF6384">
       bad
     </button>
   </div>
-  <h5 id="group-heading5" style="color:#000000;">
+  <h6 id="group-heading5" style="color:#000000;">
     Comments
-  </h5>
+  </h6>
   <form id="group-form6">
     <ion-item id="group-input7">
       <ion-label></ion-label>
       <ion-input type="text" placeholder="Click to input"></ion-input>
     </ion-item>
   </form>
-  <ion-card id="group-card22">
+  <h5>Student Performance</h5>
+  <ion-card id="group-card22" *ngFor="let name of names; let i = index">
     <ion-list>
       <ion-item color="none" id="group-list-item39">
         <ion-avatar item-left>
-          <img />
+          <img src= "http://static.bleacherreport.net/images/redesign/avatars/default-user-icon-profile.png" style= "height: 12vh; width: 22vw;">
         </ion-avatar>
-        <h2>
-          Firstname Lastname
-        </h2>
+        <p id="name">
+          {{name}}
+        </p>
       </ion-item>
-      <div style="width:100%;height:220px;margin:0px 0px;line-height:250px;background-color:#e8ebef;text-align:center;">
-        <i class="icon ion-image" style="font-size:64px;color:#888;vertical-align:middle;"></i>
-      </div>
-      <ion-item-divider color="light" id="group-list-item-divider1">
-        student state and contribution
-      </ion-item-divider>
-      <div id="group-container8">
-        <button id="group-button29" ion-button color="balanced" small style="font-size:20px;border-radius:80px 80px 80px 80px;"></button>
-        <button id="group-button36" ion-button color="balanced" small style="border-radius:80px 80px 80px 80px;"></button>
-        <button id="group-button37" ion-button color="energized" small style="border-radius:80px 80px 80px 80px;"></button>
-        <button id="group-button38" ion-button color="assertive" small style="border-radius:80px 80px 80px 80px;"></button>
-        <button id="group-button39" ion-button clear color="positive" small icon-right style="color:#051414;font-size:10px;">
-          Add comment
-          <ion-icon name="add"></ion-icon>
+      <div>
+        <button class="studentbutton {{ studentbutton1 }}" style="background-color:#058D65" (click)="studentbuttonOneClicked()"></button>
+        <button class="studentbutton {{ studentbutton2 }}" style="background-color:#7ED321" (click)="studentbuttonTwoClicked()"></button>
+        <button class="studentbutton {{ studentbutton3 }}" style="background-color:#FFCD56" (click)="studentbuttonThreeClicked()"></button>
+        <button class="studentbutton {{ studentbutton4 }}" style="background-color:#FF6384" (click)="studentbuttonFourClicked()"></button>
+        
+        <button id="commentbutton"ion-button clear icon-right>
+          Add <br> comment
         </button>
       </div>
     </ion-list>

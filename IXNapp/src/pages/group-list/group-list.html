@@ -7,7 +7,7 @@
 </ion-header>
 
 <ion-content padding id="page3">
-    <div id="groupList-container1" *ngFor="let item of items; let i = index">
+    <div id="groupList" *ngFor="let item of items; let i = index">
         <button class="groupbutton" ion-button color="balanced" on-click="goToFeedbackSummary()">
             Group&nbsp; <span>{{item}}</span>&nbsp; - &nbsp;<span>{{items2[i]}}</span>&nbsp;
         </button>

@@ -28,22 +28,20 @@ page-feedback-summary {
     }
     
     #latestperformance { 
+        text-emphasis: bold;
     }
     
-    #performance {
+    .performance {
         border-radius:70px;
         height:20px;
         width:20px;
-        padding-top:0px;
-        padding-bottom:0px;
-        margin-top: 0px;
-    }
-    ion-item {
-        background-color: blue;
+        padding:0px !important;
+        margin:0px !important;
+        vertical-align: middle !important;
     }
     
     .name {
-        font-size: 15px;
+        font-size: 14px;
         color: black;
     }
     
@@ -52,11 +50,82 @@ page-feedback-summary {
     }
     
     #performance2 {
-        color:#000000;
         font-size:20px;
-        margin-top:0;
+        margin:0;
     }
     
-    #top {
+    #p {
+        padding: 0px;
+        margin:0px;outline:none;
     }
+    
+    .feedbackwriting {
+        color: #00A8FF;
+        
+    }
+    
+    ion-list {
+        padding:0px !important;
+        margin-bottom:10px !important;
+    }
+    
+    ion-item {
+        margin:0px !important;
+        // for old version: height:50px !important;
+        height:35px !important;
+    }
+    ion-note {
+        padding:0px !important;
+        margin:0px !important;
+        text-align: right;
+    }
+    
+    ion-note button {
+        margin: 0px !important;
+        padding: 0px !important;
+    }
+    
+    ion-item {
+        padding-top: 0px !important; 
+    }
+    
+    #percentage {
+        font-size: 14px !important;
+    }
+    
+    ion-item-divider {
+        height: 30px !important;
+    }
+    
+    #feedbackSummary-button41{
+        color: white;
+        vertical-align: middle !important;
+    }
+    
+    #weekdiv {
+        float:left;
+        padding-top: 8px; 
+    }
+    
+    #weekdiv2 {
+        float:right;
+    }
+    
+    .red {
+        background-color: #FF6384;
+    }
+    
+    .yellow {
+        background-color:  #FFCD56;
+    }
+    
+    .lightgreen {
+        background-color: #7ED321;
+    }
+    
+    .darkgreen {
+        background-color: #058D65;
+    }
+
+
 }
