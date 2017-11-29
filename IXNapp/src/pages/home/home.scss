@@ -8,35 +8,81 @@ page-home {
         height:100% !important
     }
 
-    ion-card-header {
-        font-weight: bold;
-    }
-
-    ion-card { 
-        height: 60% !important; 
-    }
-
     ion-label{ 
-        border-radius: 20px !important; 
-        background-color: blue !important; 
+        width: 100% !important; 
+        border-radius: 20px !important;  
         color: white !important; 
+    }
+
+    ion-col{
+        width: 100% !important;
+    }
+
+    ion-grid{ 
+        height: 100% !important; 
+    }
+
+    h4{
+        margin-bottom: 20px !important; 
+    }
+
+    h6{ 
+        padding: 0px !important; 
+        margin-bottom: 0px !important; 
+        margin-top: 5px !important; 
     }
     
     canvas{
         width: 100% !important;
         height: auto !important;
-    
     }
 
-    /*
-    secondary:  #ffcd56,
-    danger:     #ff6384,
-    light:      #7ed321,
-    dark:       #058d65
-*/
 
-    #red-legend{
-        background-color: blue; 
+    #colButton{ 
+        height: 50% !important;    
+    }  
+    
+    #buttonsection{
+        height: 18% !important;
+    }
+
+    #redbutton { 
+        width: 100% !important; 
+        height: 100% !important; 
+        border-radius: 15px !important; 
+        background-color: #ff6384; 
+    } 
+
+    ion-button{ 
+        height: 200px !important; 
+    }
+
+    /*#spacerline{
+        border-radius: 10px solid black !important; 
+    }*/
+
+    #rowbuttons{
+        height: 200px !important;
+    }
+
+    #buttoncols{
+        height: 100px !important; 
+    }
+
+    #greendarklabel{
+        background-color: #058d65; 
+    }
+
+    #greenlabel{
+        background-color: #7ed321; 
+    }
+
+    #yellowlabel{
+        background-color: #ffcd56; 
+    }
+
+    #redlabel{
+        background-color: #ff6384; 
     }
     
        .table {
