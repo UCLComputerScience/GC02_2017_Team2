@@ -33,7 +33,7 @@
     Group Performance
   </h5>
   <div id="groupperformance">
-    <button ion-button class="{{ button1 }} performancebutton" (click)="buttonOneClicked()" style="background-color:#058D65">
+    <button class="performancebutton {{ button1 }}" (click)="buttonOneClicked()" style="background-color:#058D65">
       excellent
     </button>
     <button class="{{ button2 }} performancebutton" (click)="buttonTwoClicked()" ion-button style="background-color:#7ED321">
@@ -67,10 +67,10 @@
         </p>
       </ion-item>
       <div>
-        <button class="studentbutton {{ studentbutton1 }}" style="background-color:#058D65" (click)="studentbuttonOneClicked()"></button>
-        <button class="studentbutton {{ studentbutton2 }}" style="background-color:#7ED321" (click)="studentbuttonTwoClicked()"></button>
-        <button class="studentbutton {{ studentbutton3 }}" style="background-color:#FFCD56" (click)="studentbuttonThreeClicked()"></button>
-        <button class="studentbutton {{ studentbutton4 }}" style="background-color:#FF6384" (click)="studentbuttonFourClicked()"></button>
+        <button class="studentbutton {{ getclassname(1, i) }}" style="background-color:#058D65" (click)="studentbuttonOneClicked(i)"></button>
+        <button class="studentbutton {{ getclassname(2, i) }}" style="background-color:#7ED321" (click)="studentbuttonTwoClicked()"></button>
+        <button class="studentbutton {{ getclassname(3, i) }}" style="background-color:#FFCD56" (click)="studentbuttonThreeClicked()"></button>
+        <button class="studentbutton {{ getclassname(4, i) }}" style="background-color:#FF6384" (click)="studentbuttonFourClicked()"></button>
         
         <button id="commentbutton"ion-button clear icon-right>
           Add <br> comment
