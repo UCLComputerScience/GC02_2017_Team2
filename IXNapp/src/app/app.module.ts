@@ -14,6 +14,8 @@ import { DeadlinesPage } from '../pages/deadlines/deadlines';
 import { GroupPage } from '../pages/group/group';
 import { FeedbackSummaryPage } from '../pages/feedback-summary/feedback-summary';
 
+import { HttpModule } from '@angular/http';
+import { StaffContakProvider } from '../providers/staff-contak/staff-contak';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -35,7 +37,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    HttpModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -55,7 +58,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    StaffContakProvider
   ]
 })
 export class AppModule {}
