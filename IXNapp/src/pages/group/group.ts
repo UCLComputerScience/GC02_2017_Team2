@@ -23,6 +23,10 @@ export class GroupPage {
   
   names = ['Samantha Watson', 'John Taylor', 'James Kirk'];
   
+  button1;
+  button2;
+  button3;
+  button4;
   
   buttonOneClicked() : void {
     this.button1 = "highlighted";
