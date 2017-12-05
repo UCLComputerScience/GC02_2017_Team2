@@ -57,9 +57,12 @@ export class GroupPage {
     }
   }
   
+  studentbutton1;
+  studentbutton2;
+  studentbutton3;
+  studentbutton4;
+  
   studentbuttonOneClicked(i) : void {
-    let studentbutton1 = 'studentbutton1'+i;
-    console.log(studentbutton1);
     this.studentbutton1 = "highlighted";
     this.studentbutton2 = this.studentbutton3 = this.studentbutton4 = "nothighlighted";
   }
