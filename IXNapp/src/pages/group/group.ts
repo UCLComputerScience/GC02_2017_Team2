@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { NgModule} from '@angular/core';
 
+
 @Component({
   selector: 'page-group',
   templateUrl: 'group.html'
@@ -27,6 +28,7 @@ export class GroupPage {
   button2;
   button3;
   button4;
+  
   
   buttonOneClicked() : void {
     this.button1 = "highlighted";
@@ -63,18 +65,44 @@ export class GroupPage {
   studentbutton4;
   
   studentbuttonOneClicked(i) : void {
+    //var myEl = ng.element( document.querySelector( '#studentbutton10' ) );
+    //myEl.addClass('highlighted');
+    //var myElement = angular.element( document.querySelector('a[target="studentbutton10"]') );
+    //myElement.addClass('highlighted');
+    //angular.element('#studentbutton10').addClass("highlighted");
+    
+    let studentbutton1 = 'studentbutton1'+i;
+    let studentbutton2 = 'studentbutton2'+i;
+    let studentbutton3 = 'studentbutton3'+i;
+    let studentbutton4 = 'studentbutton4'+i;
+    console.log(studentbutton1);
     this.studentbutton1 = "highlighted";
     this.studentbutton2 = this.studentbutton3 = this.studentbutton4 = "nothighlighted";
   }
-  studentbuttonTwoClicked() : void {
+  studentbuttonTwoClicked(i) : void {
+    let studentbutton1 = 'studentbutton1'+i;
+    let studentbutton2 = 'studentbutton2'+i;
+    let studentbutton3 = 'studentbutton3'+i;
+    let studentbutton4 = 'studentbutton4'+i;
+    console.log(studentbutton2);
     this.studentbutton2 = "highlighted";
     this.studentbutton1 = this.studentbutton3 = this.studentbutton4 = "nothighlighted";
   }
-  studentbuttonThreeClicked() : void {
+  studentbuttonThreeClicked(i) : void {
+    let studentbutton1 = 'studentbutton1'+i;
+    let studentbutton2 = 'studentbutton2'+i;
+    let studentbutton3 = 'studentbutton3'+i;
+    let studentbutton4 = 'studentbutton4'+i;
+    console.log(studentbutton3);
     this.studentbutton3 = "highlighted";
     this.studentbutton2 = this.studentbutton1 = this.studentbutton4 = "nothighlighted";
   }
-  studentbuttonFourClicked() : void {
+  studentbuttonFourClicked(i) : void {
+    let studentbutton1 = 'studentbutton1'+i;
+    let studentbutton2 = 'studentbutton2'+i;
+    let studentbutton3 = 'studentbutton3'+i;
+    let studentbutton4 = 'studentbutton4'+i;
+    console.log(studentbutton4);
     this.studentbutton4 = "highlighted";
     this.studentbutton2 = this.studentbutton3 = this.studentbutton1 = "nothighlighted";
   }

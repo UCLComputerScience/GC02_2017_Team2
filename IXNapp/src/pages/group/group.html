@@ -50,8 +50,7 @@
     Comments
   </h6>
   <form id="group-form6">
-    <ion-item id="group-input7">
-      <ion-label></ion-label>
+    <ion-item no-lines id="group-input7">
       <ion-input type="text" placeholder="Click to input"></ion-input>
     </ion-item>
   </form>
@@ -67,15 +66,19 @@
         </p>
       </ion-item>
       <div>
-        <button class="studentbutton {{ getclassname(1, i) }}" style="background-color:#058D65" (click)="studentbuttonOneClicked(i)"></button>
-        <button class="studentbutton {{ getclassname(2, i) }}" style="background-color:#7ED321" (click)="studentbuttonTwoClicked()"></button>
-        <button class="studentbutton {{ getclassname(3, i) }}" style="background-color:#FFCD56" (click)="studentbuttonThreeClicked()"></button>
-        <button class="studentbutton {{ getclassname(4, i) }}" style="background-color:#FF6384" (click)="studentbuttonFourClicked()"></button>
-        
-        <button id="commentbutton"ion-button clear icon-right>
-          Add <br> comment
-        </button>
+        <button class="studentbutton {{ studentbutton10 }}" style="background-color:#058D65" (click)="studentbuttonOneClicked(i)"></button>
+        <button class="studentbutton  {{ 'studentbutton2'+i }}" style="background-color:#7ED321" (click)="studentbuttonTwoClicked(i)"></button>
+        <button class="studentbutton {{ 'studentbutton3'+i }}" style="background-color:#FFCD56" (click)="studentbuttonThreeClicked(i)"></button>
+        <button class="studentbutton {{ 'studentbutton4'+i }}" style="background-color:#FF6384" (click)="studentbuttonFourClicked(i)"></button>
+        <ion-input placeholder = "contr." id="contribution"></ion-input>
       </div>
+      <ion-item lines>
+        <ion-input type="text" placeholder="Click to input comment"></ion-input>
+      </ion-item>
+      <ion-item no-lines id="toggleitem">
+        <ion-label id="label">Absent:</ion-label>
+        <ion-toggle [(ngModel)]="pepperoni"></ion-toggle>
+      </ion-item>
     </ion-list>
   </ion-card>
 </ion-content>

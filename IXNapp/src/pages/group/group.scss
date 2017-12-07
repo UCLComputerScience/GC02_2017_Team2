@@ -55,15 +55,62 @@ page-group {
         font-size: 13px;
         vertical-align: middle; 
         margin-left: 10px;
+        margin-top:10px;
+        padding-left:3px;
+        padding-right:3px;
+        float:left;
     }
     
     #name {
         font-size: 16px;
     }
+
+    
+    #contribution {
+        width: 70px !important;
+        height: 30px !important;
+        font-size: 16px !important;
+        float: right !important;
+        border: solid 1px grey !important;
+        margin-left:10px;
+        margin-right: 5px;
+        font-size: 16px !important;
+        padding-left: 10px !important;
+        
+        
+    }
+    
+    #toggleitem{
+        width: 150px !important;
+        margin-left:40%;
+        
+    }
+    
+    ion-label {
+        font-size: 16px;
+        margin-right:0px !important;
+        margin-left:0px !important;
+    }
+    
+    ion-list {
+        padding:0px 10px 0px 10px !important;
+    }
+    
+    ion-card {
+        padding-bottom: 3px;
+    }
+    
+    ion-toggle {
+        padding-left:3px !important;
+        padding-top:0px !important;
+        padding-bottom:0px !important;
+        
+    }
     
     ion-input {
-        font-size: 15px !important;
+        font-size:15px !important;
+        border-bottom: 0.5px solid black;
     }
-
+    
 
 }
