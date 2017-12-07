@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { NgStyle } from '@angular/common';
+import { Http, Headers, RequestOptions } from '@angular/http';
+
+import { RedStudantProvider } from '../../providers/red-studant/red-studant'
 
 @Component({
   selector: 'page-red-students',
@@ -8,38 +11,54 @@ import { NgStyle } from '@angular/common';
 
 })
 
-export class RedStudentsPage implements OnInit {
+export class RedStudentsPage {
 
+data:any = {};
+Students: object[];
 RedWeeks: any[];
-RedStudents: String[];
-Contribution: String[];
-Clicked: string;
 	
 
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController, public redstudantprovider: RedStudantProvider, public http: Http) {
+  	this.data.fname = '';
+  	this.data.lname = '';
+  	this.data.response = '';
+  	this.getStudentNames();
+
   }
 
-ngOnInit() {
 
-	this.RedStudents = ["Gary Johnson", "Abigail Taylor", "Tony Whatever", "Gideon Hacquah", ];
-}
+ getStudentNames() {
+ 	this.redstudantprovider.getStudentNames().subscribe(data => { 
+ 	this.Students = data;
+ 	console.log(this.Students);
+ 	});
+ }
 
-onClick() {
-	this.RedWeeks = [ {Week: "Week 1", Color: 2, Contr: "30%"}, {Week: "Week 2", Color: 3, Contr: "29%"}, {Week: "Week 3", Color: 1, Contr: "33%"}];
-	for(let i = 0; i < this.RedWeeks.length; i++){
-		if(this.RedWeeks[i].Color == 4){
-			this.RedWeeks[i].Color = "dark";
-		} else if(this.RedWeeks[i].Color == 3){
-			this.RedWeeks[i].Color = "light";
-		} else if(this.RedWeeks[i].Color == 2){
-			this.RedWeeks[i].Color = "secondary";
-		} else if(this.RedWeeks[i].Color == 1){
-			this.RedWeeks[i].Color = "danger";
+
+onClick(first : any, last: any) {
+	console.log(first);
+	console.log(last);
+
+	var link = 'http://localhost/StaffContactPHP/RedStudentReceive.php';
+	var myData = JSON.stringify({studentfirstname: first, studentlastname: last})
+
+	this.http.post(link, myData).subscribe(data => {
+		this.RedWeeks = JSON.parse(data["_body"]);   /* data["_body"] */
+		for(let i = 0; i < this.RedWeeks.length; i++){
+		if(this.RedWeeks[i].st_fb == 4){
+			this.RedWeeks[i].st_fb = "dark";
+		} else if(this.RedWeeks[i].st_fb == 3){
+			this.RedWeeks[i].st_fb = "light";
+		} else if(this.RedWeeks[i].st_fb == 2){
+			this.RedWeeks[i].st_fb = "secondary";
+		} else if(this.RedWeeks[i].st_fb == 1){
+			this.RedWeeks[i].st_fb = "danger";
 		}
 	}
-	this.Contribution = ["Contribution"];
-}
-
-
-
+		console.log(this.RedWeeks);
+	}, error => {
+		console.log("Oooooops!");
+	});
+this.Contribution = ["Contribution"];
+ 	}
 }
