@@ -16,6 +16,7 @@ export class RedStudentsPage {
 data:any = {};
 Students: object[];
 RedWeeks: any[];
+Contribution: any[];
 	
 
   constructor(public navCtrl: NavController, public redstudantprovider: RedStudantProvider, public http: Http) {
