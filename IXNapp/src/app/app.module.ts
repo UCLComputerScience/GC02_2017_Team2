@@ -16,6 +16,7 @@ import { FeedbackSummaryPage } from '../pages/feedback-summary/feedback-summary'
 
 import { HttpModule } from '@angular/http';
 import { StaffContakProvider } from '../providers/staff-contak/staff-contak';
+import { RedStudantProvider } from '../providers/red-studant/red-studant';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -59,7 +60,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    StaffContakProvider
+    StaffContakProvider,
+    RedStudantProvider
   ]
 })
 export class AppModule {}
