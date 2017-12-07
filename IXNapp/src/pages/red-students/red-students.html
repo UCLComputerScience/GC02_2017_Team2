@@ -12,29 +12,31 @@
   
   <ion-scroll scrollX="true">
     <ion-row nowrap class= "scroller">
-      <button ion-button color= "danger" *ngFor= "let BadStu of RedStudents" (click)="onClick()" class= "StudentButton" round="true">
-          {{BadStu}}
+      <div *ngFor= "let BadStu of Students">
+      <button ion-button color= "danger" (click)="onClick(BadStu.first, BadStu.last)" class= "StudentButton" round="true">
+          {{BadStu.first}} {{BadStu.last}}
       </button>
+      </div>
     </ion-row>
   </ion-scroll>
 
   <div ng-hide= "Clicked" class= "ng-hide">
-  <p class= "para" style="font-size:160%;" align="center">Press On a Student!</p>
+  <p class= "para" style="font-size:160%; top-margin:-3vh;" align="center">Press On a Student!</p>
   </div>
 
   <p style= "margin-left:44vw; margin-bottom:-1vh;" *ngFor="let con of Contribution">{{con}}</p>
 
 <ion-list>
-  <ion-item *ngFor="let BadWeek of RedWeeks">
+  <ion-item *ngFor="let BadW of RedWeeks">
     <div class= "Week">
       <h1>
-        {{BadWeek.Week}}
+        Week {{BadW.weeknum}}
       </h1>
     </div>
-    <button ion-button class= "stat" style= "width: 8vw; border-radius: 50%;" color= {{BadWeek.Color}}>
+    <button ion-button class= "stat" style= "width: 8vw; border-radius: 50%;" color= {{BadW.st_fb}}>
     </button>
     <h1 class= "contribution">
-      {{BadWeek.Contr}}
+      {{BadW.contr}}%
     </h1>
   </ion-item>
 </ion-list>
