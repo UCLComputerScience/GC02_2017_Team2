@@ -14,25 +14,33 @@ import { RedStudantProvider } from '../../providers/red-studant/red-studant'
 export class RedStudentsPage {
 
 data:any = {};
+data2:any = {};
 Students: object[];
 RedWeeks: any[];
 Contribution: any[];
+TAID: number;
 	
 
-  constructor(public navCtrl: NavController, public redstudantprovider: RedStudantProvider, public http: Http) {
+  constructor(public navCtrl: NavController, public redstudantprovider: RedStudantProvider, public http: Http, public http2 : Http) {
   	this.data.fname = '';
   	this.data.lname = '';
   	this.data.response = '';
-  	this.getStudentNames();
+  	this.TAID = 1;
+  	this.getStudentNames(this.TAID);
 
   }
 
 
- getStudentNames() {
- 	this.redstudantprovider.getStudentNames().subscribe(data => { 
- 	this.Students = data;
- 	console.log(this.Students);
- 	});
+ getStudentNames(TAID: number) {
+ 	var link1 = 'http://gc02team02app.azurewebsites.net/SQL/RedStudentInit.php/';
+	var myData1 = JSON.stringify({teachID: TAID})
+
+ 	this.http2.post(link1, myData1).subscribe(data2 => {
+		this.Students = JSON.parse(data2["_body"]);   /* data["_body"] */
+		console.log(this.Students);
+	}, error => {
+		console.log("Oooooops!");
+	});
  }
 
 
@@ -40,7 +48,7 @@ onClick(first : any, last: any) {
 	console.log(first);
 	console.log(last);
 
-	var link = 'http://localhost/StaffContactPHP/RedStudentReceive.php';
+	var link = 'http://gc02team02app.azurewebsites.net/SQL/RedStudentReceive.php/';
 	var myData = JSON.stringify({studentfirstname: first, studentlastname: last})
 
 	this.http.post(link, myData).subscribe(data => {
