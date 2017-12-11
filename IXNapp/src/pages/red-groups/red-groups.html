@@ -12,8 +12,8 @@
   
   <ion-scroll scrollX="true">
     <ion-row nowrap class= "scroller">
-      <button ion-button color= "danger" *ngFor= "let BadG of RedGroups" (click)= "onClick()" class= "BadButton">
-          {{BadG}}
+      <button ion-button color= "danger" *ngFor= "let BadG of RedGroups" (click)= "onClick(BadG.g_id)" class= "BadButton">
+          G{{BadG.g_id}}
       </button>
     </ion-row>
   </ion-scroll>
@@ -24,10 +24,10 @@
   <ion-item *ngFor= "let BadWeek of RedWeeks">
     <div class= "Week">
       <h1>
-        {{BadWeek.Week}}
+        Week {{BadWeek.weeknum}}
       </h1>
     </div>
-    <button ion-button class= "stat" color= "{{BadWeek.Color}}" style= "width: 8vw; border-radius: 50%;">
+    <button ion-button class= "stat" color= "{{BadWeek.g_fb}}" style= "width: 8vw; border-radius: 50%;">
     </button>
   </ion-item>
 </ion-list>
