@@ -13,6 +13,8 @@ import { RedGroupsPage } from '../pages/red-groups/red-groups';
 import { DeadlinesPage } from '../pages/deadlines/deadlines';
 import { GroupPage } from '../pages/group/group';
 import { FeedbackSummaryPage } from '../pages/feedback-summary/feedback-summary';
+import { ProgressBarComponent } from "../components/progress-bar/progress-bar";
+
 
 import { HttpModule } from '@angular/http';
 import { StaffContakProvider } from '../providers/staff-contak/staff-contak';
@@ -34,7 +36,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     RedGroupsPage,
     DeadlinesPage,
     GroupPage,
-    FeedbackSummaryPage
+    FeedbackSummaryPage, 
+    ProgressBarComponent
   ],
   imports: [
     BrowserModule,

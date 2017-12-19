@@ -25679,6 +25679,24 @@ ion-navbar.toolbar {
   min-height: calc(46px + env(safe-area-inset-bottom));
 }
 
+progress-bar .progress-outer {
+  width: 100%;
+  padding: 3px;
+  text-align: center;
+  background-color: #f4f4f4;
+  border: 2px solid #dcdcdc;
+  color: #fff;
+  border-radius: 20px;
+}
+
+progress-bar .progress-inner {
+  min-width: 15%;
+  white-space: nowrap;
+  overflow: hidden;
+  border-radius: 20px;
+  background-color: #00a8ff;
+}
+
 page-feedback-summary hr {
   width: 100%;
   padding: 0px;
@@ -25704,21 +25722,22 @@ page-feedback-summary #latestp {
   padding-left: 18%;
 }
 
-page-feedback-summary #performance {
+page-feedback-summary #latestperformance {
+  -webkit-text-emphasis: bold;
+  text-emphasis: bold;
+}
+
+page-feedback-summary .performance {
   border-radius: 70px;
   height: 20px;
   width: 20px;
-  padding-top: 0px;
-  padding-bottom: 0px;
-  margin-top: 0px;
-}
-
-page-feedback-summary ion-item {
-  background-color: blue;
+  padding: 0px !important;
+  margin: 0px !important;
+  vertical-align: middle !important;
 }
 
 page-feedback-summary .name {
-  font-size: 15px;
+  font-size: 14px;
   color: black;
 }
 
@@ -25727,9 +25746,190 @@ page-feedback-summary .floating {
 }
 
 page-feedback-summary #performance2 {
-  color: #000000;
   font-size: 20px;
-  margin-top: 0;
+  margin: 0;
+}
+
+page-feedback-summary #p {
+  padding: 0px;
+  margin: 0px;
+  outline: none;
+}
+
+page-feedback-summary .feedbackwriting {
+  color: #00A8FF;
+}
+
+page-feedback-summary ion-list {
+  padding: 0px !important;
+  margin-bottom: 10px !important;
+}
+
+page-feedback-summary ion-item {
+  margin: 0px !important;
+  height: 35px !important;
+}
+
+page-feedback-summary ion-note {
+  padding: 0px !important;
+  margin: 0px !important;
+  text-align: right;
+}
+
+page-feedback-summary ion-note button {
+  margin: 0px !important;
+  padding: 0px !important;
+}
+
+page-feedback-summary ion-item {
+  padding-top: 0px !important;
+}
+
+page-feedback-summary #percentage {
+  font-size: 14px !important;
+}
+
+page-feedback-summary ion-item-divider {
+  height: 30px !important;
+}
+
+page-feedback-summary #feedbackSummary-button41 {
+  color: white;
+  vertical-align: middle !important;
+}
+
+page-feedback-summary #weekdiv {
+  float: left;
+  padding-top: 8px;
+  color: white;
+  padding-left: 5px;
+}
+
+page-feedback-summary #weekdiv2 {
+  float: right;
+}
+
+page-feedback-summary .red {
+  background-color: #FF6384;
+}
+
+page-feedback-summary .yellow {
+  background-color: #FFCD56;
+}
+
+page-feedback-summary .lightgreen {
+  background-color: #7ED321;
+}
+
+page-feedback-summary .darkgreen {
+  background-color: #058D65;
+}
+
+page-group .datebar {
+  display: inline-block;
+}
+
+page-group #weekcontrol {
+  width: 100%;
+  text-align: center;
+}
+
+page-group #date {
+  width: 65%;
+  font-size: 15px;
+}
+
+page-group #groupperformance {
+  display: inline-block;
+  width: 100%;
+}
+
+page-group .performancebutton {
+  font-size: 13px;
+  height: 30px;
+  width: 23%;
+  padding: 2px;
+  margin: 0px;
+  color: white;
+  border-radius: 5px;
+}
+
+page-group .highlighted {
+  border: solid 3px #00A8FF;
+}
+
+page-group .nothighlighted {
+  border: 0px;
+}
+
+page-group .studentbutton {
+  height: 30px;
+  width: 30px;
+  border-radius: 80px;
+  vertical-align: middle;
+  margin-left: 5px;
+}
+
+page-group ion-avatar img {
+  width: 50px !important;
+  height: 50px !important;
+}
+
+page-group #commentbutton {
+  border: solid 2px #00A8FF;
+  font-size: 13px;
+  vertical-align: middle;
+  margin-left: 10px;
+  margin-top: 10px;
+  padding-left: 3px;
+  padding-right: 3px;
+  float: left;
+}
+
+page-group #name {
+  font-size: 16px;
+}
+
+page-group #contribution {
+  width: 70px !important;
+  height: 30px !important;
+  font-size: 16px !important;
+  float: right !important;
+  border: solid 1px grey !important;
+  margin-left: 10px;
+  margin-right: 5px;
+  font-size: 16px !important;
+  padding-left: 10px !important;
+}
+
+page-group #toggleitem {
+  width: 150px !important;
+  margin-left: 40%;
+}
+
+page-group ion-label {
+  font-size: 16px;
+  margin-right: 0px !important;
+  margin-left: 0px !important;
+}
+
+page-group ion-list {
+  padding: 0px 10px 0px 10px !important;
+}
+
+page-group ion-card {
+  padding-bottom: 3px;
+}
+
+page-group ion-toggle {
+  padding-left: 3px !important;
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
+}
+
+page-group ion-input {
+  font-size: 15px !important;
+  border-bottom: 0.5px solid black;
 }
 
 page-group-list .addbutton {
@@ -25742,6 +25942,13 @@ page-group-list .addbutton {
   padding-bottom: 0px;
   height: auto;
   float: right;
+  margin: 0;
+  vertical-align: middle;
+}
+
+page-group-list .groupbutton {
+  width: 75%;
+  float: left;
 }
 
 page-group-list .addbutton {
@@ -25754,15 +25961,6 @@ page-group-list .addbutton {
   padding-bottom: 0px;
   height: auto;
   float: right;
-}
-
-page-home {
-  /*
-    secondary:  #ffcd56,
-    danger:     #ff6384,
-    light:      #7ed321,
-    dark:       #058d65
-*/
 }
 
 page-home #myGraph {
@@ -25773,18 +25971,28 @@ page-home .scroll-content {
   height: 100% !important;
 }
 
-page-home ion-card-header {
-  font-weight: bold;
-}
-
-page-home ion-card {
-  height: 60% !important;
-}
-
 page-home ion-label {
+  width: 100% !important;
   border-radius: 20px !important;
-  background-color: blue !important;
   color: white !important;
+}
+
+page-home ion-col {
+  width: 100% !important;
+}
+
+page-home ion-grid {
+  height: 100% !important;
+}
+
+page-home h4 {
+  margin-bottom: 20px !important;
+}
+
+page-home h6 {
+  padding: 0px !important;
+  margin-bottom: 0px !important;
+  margin-top: 5px !important;
 }
 
 page-home canvas {
@@ -25792,8 +26000,57 @@ page-home canvas {
   height: auto !important;
 }
 
-page-home #red-legend {
-  background-color: blue;
+page-home #colButton {
+  height: 50% !important;
+}
+
+page-home #buttonsection {
+  height: 18% !important;
+}
+
+page-home #redbutton {
+  width: 100% !important;
+  height: 100% !important;
+  border-radius: 15px !important;
+  background-color: #ff6384;
+}
+
+page-home ion-button {
+  height: 200px !important;
+}
+
+page-home #home-button43 {
+  background-color: white !important;
+  border: 2px solid #dcdcdc;
+  color: black !important;
+}
+
+page-home #progress-section {
+  width: 100% !important;
+}
+
+page-home #rowbuttons {
+  height: 200px !important;
+}
+
+page-home #buttoncols {
+  height: 100px !important;
+}
+
+page-home #greendarklabel {
+  background-color: #058d65;
+}
+
+page-home #greenlabel {
+  background-color: #7ed321;
+}
+
+page-home #yellowlabel {
+  background-color: #ffcd56;
+}
+
+page-home #redlabel {
+  background-color: #ff6384;
 }
 
 page-home .table {
@@ -25814,6 +26071,8 @@ page-my-profile #profilepic {
   height: 80px;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 30px;
+  margin-top: 20px;
 }
 
 page-my-profile #myProfile-input1 {
@@ -25832,7 +26091,7 @@ page-my-profile ion-input {
   border-radius: 15px;
   padding-left: 10px;
   margin-bottom: 10px;
-  color: white;
+  background-color: white !important;
 }
 
 page-my-profile #supervising {
@@ -25853,6 +26112,14 @@ page-my-profile #groups {
   text-align: center;
 }
 
+page-my-profile ion-item {
+  background-color: #00A8FF !important;
+}
+
+page-my-profile #blueblue {
+  background-color: #00A8FF;
+}
+
 page-red-groups ion-buttons {
   position: relative;
 }
@@ -25860,6 +26127,12 @@ page-red-groups ion-buttons {
 page-red-groups ion-scroll {
   position: relative;
   height: 15vh;
+}
+
+page-red-groups .para {
+  border-style: solid;
+  border-width: 4px;
+  border-radius: 10%;
 }
 
 page-red-groups ion-row {
