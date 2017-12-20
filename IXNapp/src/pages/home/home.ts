@@ -22,6 +22,15 @@ export class HomePage {
 		// this.Slides.observer = true ;
 	}
 
+	doRefresh(refresher) {
+		console.log('Sync in process ', refresher);
+	
+		setTimeout(() => {
+		  console.log('Sync completed');
+		  refresher.complete();
+		}, 1000);
+	  }
+
 	innerHeight: any;
 	innerWidth: any;
 	doughnutChart: any;

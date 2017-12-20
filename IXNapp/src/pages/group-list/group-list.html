@@ -6,16 +6,27 @@
     </ion-navbar>
 </ion-header>
 
-<ion-content padding id="page3">
-    <div id="groupList" *ngFor="let item of items; let i = index">
+<ion-content no-padding id="page3">
+    <div class="spacer" style="width:300px;height: 20px;" id="groupList-spacer6"></div>
+    <div class="section" *ngFor="let item of items; let i = index">
         <button class="groupbutton" ion-button color="balanced" on-click="goToFeedbackSummary()">
-            Group&nbsp; <span>{{item}}</span>&nbsp; - &nbsp;<span>{{items2[i]}}</span>&nbsp;
+            <span class="button-inner">
+                <ion-item class="background" no-lines>
+                    <ion-row>
+                        <ion-col>
+                            Group&nbsp; <span>{{item}}</span>
+                        </ion-col>
+                        <ion-col>
+                        </ion-col>
+                        <ion-col>
+                            <span id="hello">{{items2[i]}}</span>&nbsp;
+                        </ion-col>
+                    </ion-row>
+                </ion-item>
+            </span>
         </button>
-        <button class="addbutton" ion-button clear on-click="goToGroup()">
+     <!-- <button class="addbutton" ion-button clear on-click="goToGroup()">
             <ion-icon name="add-circle"></ion-icon>
-        </button>
+        </button> -->
     </div>
-    <div class="spacer" style="width:300px;height:15px;" id="groupList-spacer6"></div>
-  
-
 </ion-content>

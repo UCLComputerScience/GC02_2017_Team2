@@ -1,26 +1,80 @@
 page-home {
 
-    #myGraph{ 
-        height: 50% !important; 
+    #deadlines-section{
+        height: 6% !important;
+    }
+
+    #deadlines-button{
+        height: 100% !important;
+        background-color: white !important;
+        border: 2px solid #dcdcdc;
+        color: black !important;
+    }
+
+    #notification-section{
+        margin-top: 4% !important;
+        height: 5% !important;
+        width: 100% !important;
+    }
+
+    #notification{
+        height: 100% !important;
+        width: 100% !important;
+        background-color: #00A8FF;
+        color: white !important;
+        border-radius: 5px !important;
+    }
+
+    #graph-section{
+        height: 42% !important;
+    }
+
+    .legend-number{
+        width: 100% !important;
+        border-radius: 20px !important;
+        color: black !important;
     }
 
     .scroll-content { //allowing no scrolling
         height:100% !important
     }
 
-    ion-label{ 
-        width: 100% !important; 
-        border-radius: 20px !important;  
-        color: white !important; 
-    }
-
-    ion-col{
+    .greendarklabel{
+        background-color: #058d65;
         width: 100% !important;
+        border-radius: 20px !important;
+        color: white !important;
+        font-size: 3vw !important;
     }
 
-    ion-grid{ 
-        height: 100% !important; 
+    #greendarklabel2{
+        background-color: #058d65;
     }
+
+    .greenlabel{
+        background-color: #7ed321;
+        width: 100% !important;
+        border-radius: 20px !important;
+        color: white !important;
+        font-size: 3vw !important;
+    }
+
+    .yellowlabel{
+        background-color: #ffcd56;
+        width: 100% !important;
+        border-radius: 20px !important;
+        color: white !important;
+        font-size: 3vw !important;
+    }
+
+    .redlabel{
+        background-color: #ff6384;
+        width: 100% !important;
+        border-radius: 20px !important;
+        color: white !important;
+        font-size: 3vw !important;
+    }
+
 
     h4{
         margin-bottom: 20px !important; 
@@ -36,70 +90,19 @@ page-home {
         width: 100% !important;
         height: auto !important;
     }
-
-
-    #colButton{ 
-        height: 50% !important;    
-    }  
     
     #buttonsection{
-        height: 18% !important;
+        height: 15% !important;
     }
 
-    #redbutton { 
+    .redbutton {
         width: 100% !important; 
         height: 100% !important; 
         border-radius: 15px !important; 
         background-color: #ff6384; 
     } 
 
-    ion-button{ 
-        height: 200px !important; 
+    .rowbuttons{
+        height: 100% !important;
     }
-
-#home-button43{
-  background-color: white !important;
-  border: 2px solid #dcdcdc;
-  color: black !important;
 }
-
-#progress-section{
-  width: 100% !important;
-}
-
-    #rowbuttons{
-        height: 200px !important;
-    }
-
-    #buttoncols{
-        height: 100px !important; 
-    }
-
-    #greendarklabel{
-        background-color: #058d65; 
-    }
-
-    #greenlabel{
-        background-color: #7ed321; 
-    }
-
-    #yellowlabel{
-        background-color: #ffcd56; 
-    }
-
-    #redlabel{
-        background-color: #ff6384; 
-    }
-    
-       .table {
-        border: 1px solid red;
-        display: table;
-        width: 100%;
-        table-layout: fixed;
-       }
-
-       .cell {
-        display: table-cell;
-        vertical-align: middle;
-    }
-    }

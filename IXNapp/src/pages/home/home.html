@@ -5,109 +5,131 @@
         </ion-title>
     </ion-navbar>
 </ion-header>
+<!--Adding Refresher Section -->
+<ion-content padding>
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
 
-<ion-content padding id="page2">
-    <div id="home-container11">
-        <button id="home-button43" ion-button block icon-right style="text-align:right;"
+    <!--Button to Deadlines Section -->
+    <div id="deadlines-section" no-padding>
+        <button id="deadlines-button" ion-button block icon-right style="text-align:right;"
                 on-click="goToDeadlines()">
             Deadlines 
             <ion-icon name="calendar"></ion-icon>
         </button>
     </div>
-    <div id="progress-section">
-    <progress-bar [progress]="loadProgress"></progress-bar>
-    </div>
-    <!--<div id="home-markdown16" style="text-align:center;" class="show-list-numbers-and-dots">
-        <p style="color:#000000;">
-            All feedback up to date
-        </p>
-    </div>-->
+
+    <!--Notification for Feedback Request-->
+<div id="notification-section" no-padding no-margin >
+    <ion-card text-center id="notification" no-padding no-margin>
+        <h6>Everything up to date</h6>
+    </ion-card>
+</div>
+
+    <!--Latest Feedback title section-->
     <h4 id="home-heading11" style="color:#000000;">
         Latest Feedback
     </h4>
-    <div>
-        <ion-slides pager="true">
+
+    <!--Graph section with information-->
+    <div id="graph-section">
+        <ion-slides pager="true"> <!--pager for the small points-->
             <ion-slide>
                 <canvas #doughnutCanvas></canvas>
-                <h6 id="home-heading12" padding=20px>
-                    Groups Feedback (groups)
+                <h6 padding=20px>
+                    Groups Feedback
                 </h6>
-                <div class="spacer" style="height:10px;" id="cameraTabDefaultPage-spacer1"></div>
-                <ion-grid> <!--can add no-padding no-margin to reduce gap between title and legend -->
+                <div class="spacer" style="height:10px;"></div>
+
+                <ion-grid style="margin-bottom: 5px;"> <!--can add no-padding no-margin to reduce gap between title and legend -->
                     <ion-row>
-                        <ion-label no-padding no-margin id="greendarklabel">
+                        <ion-label no-padding no-margin class="greendarklabel">
+                            excellent
+                        </ion-label>
+                        <ion-label no-padding no-margin class="greenlabel">
+                            good
+                        </ion-label>
+                        <ion-label no-padding no-margin class="yellowlabel">
+                            average
+                        </ion-label>
+                        <ion-label no-padding no-margin class="redlabel">
+                            danger
+                        </ion-label>
+                    </ion-row>
+                    <ion-row>
+                        <ion-label class="legend-number" no-padding no-margin >
                             {{Fred}}
                         </ion-label>
-                        <ion-label no-padding no-margin id="greenlabel">
+                        <ion-label class="legend-number" no-padding no-margin >
                             {{Fred}}
                         </ion-label>
-                        <ion-label no-padding no-margin id="yellowlabel">
+                        <ion-label class="legend-number" no-padding no-margin >
                             {{Fyellow}}
                         </ion-label>
-                        <ion-label no-padding no-margin id="redlabel">
+                        <ion-label class="legend-number" no-padding no-margin >
                             {{Fdgreen}}
                         </ion-label>
                     </ion-row>
                 </ion-grid>
-                <div class="spacer" style="height:20px;" id="spacerline"></div>
+
+                <div class="spacer" style="height:5px;" id="spacerline"></div>
             </ion-slide>
             <ion-slide>
                 <canvas #doughnutCanvas2></canvas>
                 <h6 id="home-heading12">
                     Students Feedback
                 </h6>
-                <div class="spacer" style="height:10px;" id="cameraTabDefaultPage-spacer1"></div>
-                <ion-grid> <!--can add no-padding no-margin to reduce gap between title and legend -->
+                <div class="spacer" style="height:10px;"></div>
+
+                <ion-grid style="margin-bottom: 5px;"> <!--can add no-padding no-margin to reduce gap between title and legend -->
                     <ion-row>
-                        <ion-label no-padding no-margin id="greendarklabel">
+                        <ion-label no-padding no-margin class="greendarklabel">
+                            excellent
+                        </ion-label>
+                        <ion-label no-padding no-margin class="greenlabel">
+                            good
+                        </ion-label>
+                        <ion-label no-padding no-margin class="yellowlabel">
+                            average
+                        </ion-label>
+                        <ion-label no-padding no-margin class="redlabel">
+                            danger
+                        </ion-label>
+                    </ion-row>
+                    <ion-row>
+                        <ion-label class="legend-number" no-padding no-margin >
                             {{Fred}}
                         </ion-label>
-                        <ion-label no-padding no-margin id="greenlabel">
+                        <ion-label class="legend-number" no-padding no-margin >
                             {{Fred}}
                         </ion-label>
-                        <ion-label no-padding no-margin id="yellowlabel">
+                        <ion-label class="legend-number" no-padding no-margin >
                             {{Fyellow}}
                         </ion-label>
-                        <ion-label no-padding no-margin id="redlabel">
+                        <ion-label class="legend-number" no-padding no-margin >
                             {{Fdgreen}}
                         </ion-label>
                     </ion-row>
                 </ion-grid>
-                <div class="spacer" style="height:20px;" id="spacerline"></div>
+
+                <div class="spacer" style="height:5px;"></div>
             </ion-slide>
         </ion-slides>
     </div>
+
     <div id="buttonsection">
-        <ion-row id="rowbuttons">
-            <ion-col col-6 id="buttoncols">
-                <!--<div id="colButton">-->
-                <button id="redbutton" ion-button no-padding on-click="goToRedGroups()">
+        <ion-row class="rowbuttons">
+            <ion-col col-6>
+                <button class="redbutton" ion-button no-padding on-click="goToRedGroups()">
                     Red Teams
                 </button>
-                <!--</div> -->
             </ion-col>
-            <ion-col col-6 id="buttoncols">
-                <button id="redbutton" ion-button no-padding on-click="goToRedStudents()">
+            <ion-col col-6>
+                <button class="redbutton" ion-button no-padding on-click="goToRedStudents()">
                     Red Students
                 </button>
             </ion-col>
         </ion-row>
     </div>
 </ion-content>
-
-
-<!--
-     <ion-col col-6>
-       <div id="colButton">
-       <button id="redbutton" ion-button no-padding margin-right="5px" on-click="goToRedGroups()">
-         Red Teams
-       </button>
-
-     </ion-col>
-     <ion-col >
-       <button id="redbutton" ion-button no-padding margin-left="5px" on-click="goToRedStudents()">
-         Red Students
-       </button>
-     </ion-col>
-   </ion-row>
-</ion-content> -->
