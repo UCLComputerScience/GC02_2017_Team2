@@ -13,13 +13,33 @@ import { Slides } from 'ionic-angular';
 })
 export class HomePage {
 	@ViewChild('doughnutCanvas') doughnutCanvas;
-	@ViewChild('doughnutCanvas2') doughnutCanvas2;
+	@ViewChild('doughnutCanvasS') doughnutCanvasS;
 	@ViewChild(Slides) slides: Slides;
 
 	ngAfterViewInit() {
 		console.log("Slider------------>>Input Props Set");
 		this.slides.autoHeight = true;
-		// this.Slides.observer = true ;
+	}
+
+
+	/*Data to retrieve for this section only */
+	
+	studentData = [2,4,1,5]; //bad, average, good, excellent order
+	groupData = [1,2,3,5]; //bad, average, good, excellent order
+
+	/* Do not modify anything below this */
+	innerHeight: any;
+	innerWidth: any;
+	doughnutGroup: any;
+	doughnutStudent: any; 
+	Fred: any;
+	Fyellow: any;
+	Fgreen: any;
+	Fdgreen: any;
+
+	constructor(public navCtrl: NavController) {
+		this.innerHeight = (window.screen.height);
+		this.innerWidth = (window.screen.width);
 	}
 
 	doRefresh(refresher) {
@@ -29,31 +49,16 @@ export class HomePage {
 		  console.log('Sync completed');
 		  refresher.complete();
 		}, 1000);
-	  }
-
-	innerHeight: any;
-	innerWidth: any;
-	doughnutChart: any;
-	Fred: any;
-	Fyellow: any;
-	Fgreen: any;
-	Fdgreen: any;
-
-	constructor(public navCtrl: NavController) {
-		this.innerHeight = (window.screen.height);
-		this.innerWidth = (window.screen.width); //+"px"
 	}
 
 	ionViewDidLoad() {
-		this.Fred = 4;
-		this.Fyellow = 6;
-		this.Fgreen = 5;
-		this.Fdgreen = 7;
+		this.studentData; 
+		this.groupData; 
 
-		let donutCtx = this.doughnutCanvas.nativeElement;
-		donutCtx.height = innerHeight * 0.28;
-		var datax = [4, 5, 6, 8];
-		var data = {
+		let donutGroup = this.doughnutCanvas.nativeElement;
+		donutGroup.height = innerHeight * 0.28;
+		var datax = this.groupData;
+		var dataGroup = {
 			labels: datax,
 			datasets: [
 				{
@@ -61,21 +66,22 @@ export class HomePage {
 					"backgroundColor": [
 						"#ff6384", //red
 						"#ffcd56", //yellow
-						"#7ed321", //light gree
-						"#058d65" //dark green 
+						"#7ed321",//light green
+						"#058d65",  //dark green, 
+						 
+						
 					]
 				}]
 		};
 
-		new Chart(
-			donutCtx,
+		this.doughnutGroup= new Chart(
+			donutGroup,
 			{
 				"type": 'doughnut',
-				"data": data,
+				"data": dataGroup,
 				"options": {
 					legend: {
 						display: false,
-						position: 'right',
 					},
 					responsive: true,
 					maintainAspectRatio: true,
@@ -83,15 +89,14 @@ export class HomePage {
 						"animateScale": true,
 						"animateRotate": false
 					},
-
 				}
 			}
 		);
+	
+		let donutStudent = this.doughnutCanvasS.nativeElement;
+		donutStudent.height = innerHeight * 0.28;
 
-		let donutCtx2 = this.doughnutCanvas2.nativeElement;
-		donutCtx2.height = innerHeight * 0.28;
-
-		var data2 = {
+		var dataStudent = {
 			labels: [
 				"Excellent",
 				"Good",
@@ -100,21 +105,21 @@ export class HomePage {
 			],
 			datasets: [
 				{
-					"data": [4, 5, 6, 3],
+					"data": this.studentData,
 					"backgroundColor": [
 						"#ff6384", //red
 						"#ffcd56", //yellow
-						"#7ed321", //light gree
-						"#058d65" //dark green 
+						"#7ed321", //light green
+						"#058d65", //dark green, 
 					]
 				}]
 		};
 
-		new Chart(
-			donutCtx2,
+		this.doughnutStudent = new Chart(
+			donutStudent,
 			{
 				"type": 'doughnut',
-				"data": data2,
+				"data": dataStudent,
 				"options": {
 					legend: {
 						display: false,
@@ -130,6 +135,7 @@ export class HomePage {
 			}
 		);
 	}
+
 
 	goToDeadlines(params) {
 		if (!params) params = {};
