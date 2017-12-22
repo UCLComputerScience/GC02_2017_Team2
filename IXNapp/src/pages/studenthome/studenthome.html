@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Home Page
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding id="page2">
+    <div id="notification-section" no-padding no-margin >
+        <ion-card text-center id="notification" no-padding no-margin>
+            <h6 style="color: white">Today's date: {{Date()}}</h6>
+        </ion-card>
+    </div>
+    <div class="spacer" style="height:2% ;" id="spacerline"></div>
+    
+    <div id="deadlines-section" no-padding>
+        <button id="deadlines-button" ion-button block icon-right style="text-align:right;"
+                on-click="goToDeadlines()">
+            Deadlines 
+            <ion-icon name="calendar"></ion-icon>
+        </button>
+    </div>
+
+    
+    <div class="spacer" style="height:3% ;" id="spacerline"></div>
+    <div id="header-section">
+    <h4>My Overview</h4>
+    </div>
+    <div class="spacer" style="height:5%; " id="spacerline"></div>
+        
+    <ion-card class="graphCard" style="border-top: 5px solid #00A8FF;" padding no-margin>
+        <ion-card-content>
+          <canvas #lineCanvas></canvas>
+        </ion-card-content>
+    </ion-card>
+  <div class="spacer" style="height:3%;" id="spacerline"></div>
+  <div id="header-section">
+      <h4>Latest Feedback</h4>
+      </div>
+  <div class="spacer" style="height:5%; " id="spacerline"></div>
+    <div style="height: 30vh;">
+        <ion-card no-padding no-margin style="height: 40% !important;"> <!-- important to position the card in the center -->
+            <ion-card-content no-padding no-margin> <!-- important to fill the content of the card with the group performance color -->
+                <ion-item-divider style="width: 100% !important; height: 2vh !important; color: white;" class="{{ performanceColor[latestPerformance()] }}">
+                    <p id="weekdiv" style="color: white;">Week {{weekindex}} group peformance: </p>
+                    <p style="float: right; color: white;"> {{ performanceDescription[latestPerformance()] }} </p>
+                  </ion-item-divider>
+                  <ion-item color="none" id="feedbackSummary-list-item56">
+                      <p class="name">{{student}}</p>
+                      <ion-note item-right>
+                       <p><button class="performance {{ performanceColor[studentLatestPerformance()] }}"></button><span id="percentage" style="padding-left:10px"> {{contribution}}% (contribution)</span></p>
+                      </ion-note>
+                    </ion-item>
+              </ion-card-content>
+            </ion-card>
+</div>
+</ion-content>
