@@ -11,8 +11,9 @@
 <ion-content padding id="page8">
   
   <ion-scroll scrollX="true">
-    <ion-row nowrap class= "scroller">
-      <button ion-button color= "danger" *ngFor= "let BadG of RedGroups" (click)= "onClick(BadG.g_id)" class= "BadButton">
+    <ion-spinner name="dots" style= "margin-left:35.5vw;" *ngIf="RGroups == 0"></ion-spinner>
+    <ion-row nowrap class= "scroller" *ngIf="RGroups != 0">
+      <button ion-button color= "danger" *ngFor= "let BadG of RGroups" (click)= "onClick(BadG.g_id)" class= "BadButton">
           G{{BadG.g_id}}
       </button>
     </ion-row>
@@ -20,8 +21,9 @@
 
 <p class= "para" style="font-size:160%;" align="center">Press On a Team!</p>
 
-<ion-list>
-  <ion-item *ngFor= "let BadWeek of RedWeeks">
+<ion-spinner name="dots" style= "margin-left:35.5vw;" *ngIf="RWeeks == 0 && clicked"></ion-spinner>
+<ion-list *ngIf="RWeekds != 0">
+  <ion-item *ngFor= "let BadWeek of RWeeks">
     <div class= "Week">
       <h1>
         Week {{BadWeek.weeknum}}
