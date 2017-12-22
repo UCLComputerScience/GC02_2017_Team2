@@ -7,7 +7,6 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { TabsControllerPage } from '../pages/tabs-controller/tabs-controller';
 import { LoginPage } from '../pages/login/login';
-import  {ProfilePage } from '../pages/my-profile/my-profile';
 
 
 
