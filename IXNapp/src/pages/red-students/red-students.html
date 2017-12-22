@@ -11,8 +11,9 @@
 <ion-content padding id="page8">
   
   <ion-scroll scrollX="true">
-    <ion-row nowrap class= "scroller">
-      <div *ngFor= "let BadStu of Students">
+    <ion-spinner name="dots" style= "margin-left:35.5vw;" *ngIf="RStudents == 0"></ion-spinner>
+    <ion-row nowrap class= "scroller" *ngIf="RStudents != 0">
+      <div *ngFor= "let BadStu of RStudents">
       <button ion-button color= "danger" (click)="onClick(BadStu.first, BadStu.last)" class= "StudentButton" round="true">
           {{BadStu.first}} {{BadStu.last}}
       </button>
@@ -26,8 +27,9 @@
 
   <p style= "margin-left:44vw; margin-bottom:-1vh;" *ngFor="let con of Contribution">{{con}}</p>
 
-<ion-list>
-  <ion-item *ngFor="let BadW of RedWeeks">
+<ion-spinner name="dots" style= "margin-left:35.5vw;" *ngIf="RWeeks == 0 && clicked"></ion-spinner>
+<ion-list *ngIf="RWeeks != 0">
+  <ion-item *ngFor="let BadW of RWeeks">
     <div class= "Week">
       <h1>
         Week {{BadW.weeknum}}
@@ -38,6 +40,9 @@
     <h1 class= "contribution">
       {{BadW.contr}}%
     </h1>
+    <p style="font-size:70%; margin-left: 40.5vw;">
+      Contribution
+    </p>
   </ion-item>
 </ion-list>
 
