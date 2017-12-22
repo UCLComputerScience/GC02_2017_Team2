@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { NgStyle } from '@angular/common';
 import { Http, Headers, RequestOptions } from '@angular/http';
+import { HouseProvider } from '../../providers/house/house';
 
 @Component({
   selector: 'page-red-groups',
@@ -9,53 +10,63 @@ import { Http, Headers, RequestOptions } from '@angular/http';
 })
 export class RedGroupsPage {
 
-data:any = {};
-data2:any = {};
-RedWeeks: any[];
-RedGroups: object[];
-TAID: number;
+dt:any = {};
+dt2:any = {};
+wkn: number[] = [];
+mx: number;
+clicked: any = false;
+Groups: any[];
+RGroups: any[] = [];
+Weeks: any[];
+RWeeks: any[] = [];
+	
 
-  constructor(public navCtrl: NavController, public http: Http, public http2 : Http) {
-  this.TAID = 1;
-  this.getGroupNames(this.TAID);
+  constructor(public navCtrl: NavController, public house: HouseProvider, public http: Http, public http2 : Http) {
 
   }
 
-  getGroupNames(TAID: number) {
- 	var link1 = 'http://gc02team02app.azurewebsites.net/SQL/RedGroupsInit.php/';
-	var myData1 = JSON.stringify({teachID: TAID})
+  ngOnInit() {
+  	this.house.getAllRedTeam().subscribe(dt => {
+  		this.Groups = JSON.parse(dt["_body"]);
 
- 	this.http2.post(link1, myData1).subscribe(data2 => {
-		this.RedGroups = JSON.parse(data2["_body"]);   /* data["_body"] */
-		console.log(this.RedGroups);
-	}, error => {
-		console.log("Oooooops!");
-	});
- }
+  		for(let i in this.Groups){
+  		this.wkn.push(this.Groups[i].weeknum);
+  		}
+  		this.mx = Math.max.apply(Math, this.wkn);
 
- onClick(G : any) {
-	console.log(G);
+  		for(let k in this.Groups){
+  		if(this.Groups[k].weeknum == this.mx && this.Groups[k].g_fb == 1) {
+  			this.RGroups.push(this.Groups[k]);
+  		}
+  		}
 
-	var link = 'http://gc02team02app.azurewebsites.net/SQL/RedGroupReceive.php/';
-	var myData = JSON.stringify({grID: G})
+  	})
+  } 
 
-	this.http.post(link, myData).subscribe(data => {
-		this.RedWeeks = JSON.parse(data["_body"]);   /* data["_body"] */
-		for(let i = 0; i < this.RedWeeks.length; i++){
-		if(this.RedWeeks[i].g_fb == 4){
-			this.RedWeeks[i].g_fb = "dark";
-		} else if(this.RedWeeks[i].g_fb == 3){
-			this.RedWeeks[i].g_fb = "light";
-		} else if(this.RedWeeks[i].g_fb == 2){
-			this.RedWeeks[i].g_fb = "secondary";
-		} else if(this.RedWeeks[i].g_fb == 1){
-			this.RedWeeks[i].g_fb = "danger";
+onClick(gid : any) {
+	this.RWeeks = [];
+	this.clicked = true;
+
+this.house.getAllRedTeam().subscribe(dt2 => {
+	this.Weeks = JSON.parse(dt2["_body"]);
+	for(let i in this.Weeks){
+	if(this.Weeks[i].g_id == gid){
+		this.RWeeks.push(this.Weeks[i]);
+	}
+	}
+	for(let i = 0; i < this.RWeeks.length; i++){
+		if(this.RWeeks[i].g_fb == 4){
+			this.RWeeks[i].g_fb = "dark";
+		} else if(this.RWeeks[i].g_fb == 3){
+			this.RWeeks[i].g_fb = "light";
+		} else if(this.RWeeks[i].g_fb == 2){
+			this.RWeeks[i].g_fb = "secondary";
+		} else if(this.RWeeks[i].g_fb == 1){
+			this.RWeeks[i].g_fb = "danger";
 		}
 	}
-		console.log(this.RedWeeks);
-	}, error => {
-		console.log("Oooooops!");
-	});
+})
+
  	}
 
 }
