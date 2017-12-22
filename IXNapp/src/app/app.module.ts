@@ -66,7 +66,6 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     StaffContakProvider,
-    RedStudantProvider,
     AuthService,
     HouseProvider
   ]
