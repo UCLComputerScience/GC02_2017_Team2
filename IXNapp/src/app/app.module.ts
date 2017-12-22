@@ -19,8 +19,8 @@ import { ProgressBarComponent } from "../components/progress-bar/progress-bar";
 
 import { HttpModule } from '@angular/http';
 import { StaffContakProvider } from '../providers/staff-contak/staff-contak';
-import { RedStudantProvider } from '../providers/red-studant/red-studant';
 import { AuthService } from './../providers/auth-service';
+import { HouseProvider } from '../providers/house/house';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -67,7 +67,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     StaffContakProvider,
     RedStudantProvider,
-    AuthService
+    AuthService,
+    HouseProvider
   ]
 })
 export class AppModule {}
