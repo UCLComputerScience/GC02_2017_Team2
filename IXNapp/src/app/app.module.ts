@@ -14,11 +14,14 @@ import { DeadlinesPage } from '../pages/deadlines/deadlines';
 import { GroupPage } from '../pages/group/group';
 import { FeedbackSummaryPage } from '../pages/feedback-summary/feedback-summary';
 import { ProgressBarComponent } from "../components/progress-bar/progress-bar";
+import { ErrorHandler, NgModule } from '@angular/core';
+
 
 
 import { HttpModule } from '@angular/http';
 import { StaffContakProvider } from '../providers/staff-contak/staff-contak';
 import { RedStudantProvider } from '../providers/red-studant/red-studant';
+import { AuthService } from './../providers/auth-service';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -64,7 +67,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     StaffContakProvider,
-    RedStudantProvider
+    RedStudantProvider,
+    AuthService
   ]
 })
 export class AppModule {}

@@ -4,19 +4,39 @@ import { HomePage } from '../home/home';
 import { GroupListPage } from '../group-list/group-list';
 import { StaffContactInfoPage } from '../staff-contact-info/staff-contact-info';
 import { MyProfilePage } from '../my-profile/my-profile';
+import { LoginPage } from '../login/login';
+import { AuthService } from '../../providers/auth-service';
 
 @Component({
   selector: 'page-tabs-controller',
   templateUrl: 'tabs-controller.html'
 })
 export class TabsControllerPage {
-  // this tells the tabs component which Pages
-  // should be each tab's root Page
-  tab1Root: any = HomePage;
-  tab2Root: any = GroupListPage;
-  tab3Root: any = StaffContactInfoPage;
-  tab4Root: any = MyProfilePage;
-  constructor(public navCtrl: NavController) {
+
+  type: String;
+  
+  tab1Root: any;
+  tab2Root: any;
+  tab3Root: any;
+  tab4Root: any;
+  
+  constructor( public navCtrl: NavController, private auth: AuthService) {
+    let info = this.auth.getUserInfo();
+    this.type = info['type'];
+    console.log("constructor");
+    this.newvalue();
+  }
+  
+  
+  newvalue() {
+    if (this.type === "Student") {
+    }
+    else if (this.type === "TA" || this.type === "Lecturer") {
+        this.tab1Root = HomePage;
+        this.tab2Root = GroupListPage;
+        this.tab3Root = StaffContactInfoPage;
+        this.tab4Root = MyProfilePage;
+    }
   }
   
 }

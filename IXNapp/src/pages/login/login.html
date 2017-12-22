@@ -5,43 +5,29 @@
     </ion-title>
   </ion-navbar>
 </ion-header>
-<ion-content padding id="page7">
-  <form id="login-form5">
-    <ion-list id="login-list7">
-      <ion-item id="login-input5">
-        <ion-label>
-          Email
-        </ion-label>
-        <ion-input type="email" placeholder=""></ion-input>
+<ion-content id="page7">
+  <div padding id="blueblue">
+    <h1 id="title">Welcome to IXN TrafficLights</h1>
+    <form (ngSubmit)="login()" id="login-form">
+      <ion-item no-lines id="login-input5">
+        <ion-input type="email" placeholder="enter your username" name="email" [(ngModel)]="registerCredentials.email" required></ion-input>
       </ion-item>
-      <ion-item id="login-input6">
-        <ion-label>
-          Password
-        </ion-label>
-        <ion-input type="password" placeholder=""></ion-input>
+      <ion-item no-lines id="login-input6">
+        <ion-input type="password" placeholder="enter your password" name="password" [(ngModel)]="registerCredentials.password" required></ion-input>
       </ion-item>
-    </ion-list>
-    <div class="spacer" style="height:40px;" id="login-spacer1"></div>
-    <ion-item id="login-select1">
-      <ion-label>
-        Login as
-      </ion-label>
-      <ion-select name="">
-        <ion-option>
-          Student
-        </ion-option>
-        <ion-option>
-          TA
-        </ion-option>
-        <ion-option>
-          Lecturer
-        </ion-option>
-      </ion-select>
-    </ion-item>
-    <button id="login-button1" ion-button color="stable" block>
+      <ion-item no-lines id="login-select">
+          <ion-select placeholder="Login as" name="Login as" [(ngModel)]="registerCredentials.type" required>
+            <ion-option>Student</ion-option>
+            <ion-option>TA</ion-option>
+            <ion-option>Lecturer</ion-option>
+          </ion-select>
+      </ion-item>
+      <button id="login-button" ion-button color="stable" block type="submit">
       Log in
-    </button>
-    <div class="spacer" style="height:40px;" id="login-spacer4"></div>
-  </form>
-  <img src="assets/img/5btfuKHPTWm5m0tLskbu_ScreenShot2017-11-06at14.09.26.png" style="display:block;width:50px;height:auto;margin-left:auto;" />
+      </button>
+    </form>
+  </div>
+  <div>
+      <img id="logo" src="assets/img/logo.png"/>
+  </div>
 </ion-content>
