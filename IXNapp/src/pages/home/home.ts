@@ -23,7 +23,7 @@ export class HomePage {
 
 
 	/*Data to retrieve for this section only */
-	
+
 	studentData = [2,4,1,5]; //bad, average, good, excellent order
 	groupData = [1,2,3,5]; //bad, average, good, excellent order
 
@@ -56,7 +56,7 @@ export class HomePage {
 		this.groupData; 
 
 		let donutGroup = this.doughnutCanvas.nativeElement;
-		donutGroup.height = innerHeight * 0.28;
+		donutGroup.height = innerHeight * 0.3;
 		var datax = this.groupData;
 		var dataGroup = {
 			labels: datax,
@@ -94,7 +94,7 @@ export class HomePage {
 		);
 	
 		let donutStudent = this.doughnutCanvasS.nativeElement;
-		donutStudent.height = innerHeight * 0.28;
+		donutStudent.height = innerHeight * 0.3;
 
 		var dataStudent = {
 			labels: [
