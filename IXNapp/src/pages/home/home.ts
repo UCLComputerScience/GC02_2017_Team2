@@ -20,14 +20,6 @@ export class HomePage {
 	@ViewChild('doughnutCanvasS') doughnutCanvasS;
 	@ViewChild(Slides) slides: Slides;
 
-	ngAfterViewInit() {
-		console.log("Slider------------>>Input Props Set");
-		this.slides.autoHeight = true;
-	}
-
-
-	/*Data to retrieve for this section only */
-
 	Students: any[];
 	Groups: any[];
 	wkn: number[] = [];
@@ -51,7 +43,6 @@ export class HomePage {
 	//studentData = [2,4,1,5]; bad, average, good, excellent order
 	//groupData = [1,2,3,5]; bad, average, good, excellent order
 
-	/* Do not modify anything below this */
 	innerHeight: any;
 	innerWidth: any;
 	doughnutGroup: any;
@@ -209,6 +200,11 @@ export class HomePage {
 
 		});
 
+
+	}
+
+	ngOnInit() {
+	this.slides.autoHeight = true;
 	}
 
 	doRefresh(refresher) {
@@ -219,88 +215,6 @@ export class HomePage {
 		  refresher.complete();
 		}, 1000);
 	}
-
-	/* ngOnInit() {
-
-		console.log(this.studentData);
-		console.log(this.groupData);
-		
-		let donutGroup = this.doughnutCanvas.nativeElement;
-		donutGroup.height = innerHeight * 0.3;
-		var datax = this.groupData;
-		var dataGroup = {
-			labels: datax,
-			datasets: [
-				{
-					"data": datax,
-					"backgroundColor": [
-						"#ff6384", //red
-						"#ffcd56", //yellow
-						"#7ed321",//light green
-						"#058d65",  //dark green, 
-						 
-						
-					]
-				}]
-		};
-
-		this.doughnutGroup= new Chart(
-			donutGroup,
-			{
-				"type": 'doughnut',
-				"data": dataGroup,
-				"options": {
-					legend: {
-						display: false,
-					},
-					responsive: true,
-					maintainAspectRatio: true,
-					"animation": {
-						"animateScale": true,
-						"animateRotate": false
-					},
-				}
-			}
-		);
-	
-		let donutStudent = this.doughnutCanvasS.nativeElement;
-		donutStudent.height = innerHeight * 0.3;
-
-		var dataStudent = {
-			datasets: [
-				{
-					"data": this.studentData,
-					"backgroundColor": [
-						"#ff6384", //red
-						"#ffcd56", //yellow
-						"#7ed321", //light green
-						"#058d65", //dark green, 
-					]
-				}]
-		};
-
-		this.doughnutStudent = new Chart(
-			donutStudent,
-			{
-				"type": 'doughnut',
-				"data": dataStudent,
-				"options": {
-					legend: {
-						display: false,
-						position: 'right',
-					},
-					responsive: true,
-					maintainAspectRatio: true,
-					"animation": {
-						"animateScale": true,
-						"animateRotate": false
-					}
-				}
-			}
-		);
-
-	} */
-
 
 	goToDeadlines(params) {
 		if (!params) params = {};
