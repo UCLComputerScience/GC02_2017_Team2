@@ -5,6 +5,7 @@ import { RedGroupsPage } from '../red-groups/red-groups';
 import { RedStudentsPage } from '../red-students/red-students';
 import { Chart } from 'chart.js';
 import { Slides } from 'ionic-angular';
+import { OnInit } from '@angular/core';
 
 import { Http, Headers, RequestOptions } from '@angular/http';
 import { HouseProvider } from '../../providers/house/house';
@@ -63,18 +64,6 @@ export class HomePage {
 	constructor(public navCtrl: NavController, public house: HouseProvider) {
 		this.innerHeight = (window.screen.height);
 		this.innerWidth = (window.screen.width);
-	}
-
-	doRefresh(refresher) {
-		console.log('Sync in process ', refresher);
-	
-		setTimeout(() => {
-		  console.log('Sync completed');
-		  refresher.complete();
-		}, 1000);
-	}
-
-	ionViewDidLoad() {
 
 		this.house.getAllRedTeam().subscribe(dt => {
 		this.Groups = JSON.parse(dt["_body"]);
@@ -105,6 +94,9 @@ export class HomePage {
 		this.groupData.push(this.LGCount);
 		this.groupData.push(this.DGCount);
 
+		console.log(this.groupData);
+
+		console.log(this.studentData);
 		console.log(this.groupData);
 		
 		let donutGroup = this.doughnutCanvas.nativeElement;
@@ -178,17 +170,11 @@ export class HomePage {
 		this.studentData.push(this.DCount);
 
 		console.log(this.studentData);
-	
+
 		let donutStudent = this.doughnutCanvasS.nativeElement;
 		donutStudent.height = innerHeight * 0.3;
 
 		var dataStudent = {
-			labels: [
-				"Excellent",
-				"Good",
-				"Average",
-				"Bad"
-			],
 			datasets: [
 				{
 					"data": this.studentData,
@@ -221,9 +207,99 @@ export class HomePage {
 			}
 		);
 
-
 		});
+
 	}
+
+	doRefresh(refresher) {
+		console.log('Sync in process ', refresher);
+	
+		setTimeout(() => {
+		  console.log('Sync completed');
+		  refresher.complete();
+		}, 1000);
+	}
+
+	/* ngOnInit() {
+
+		console.log(this.studentData);
+		console.log(this.groupData);
+		
+		let donutGroup = this.doughnutCanvas.nativeElement;
+		donutGroup.height = innerHeight * 0.3;
+		var datax = this.groupData;
+		var dataGroup = {
+			labels: datax,
+			datasets: [
+				{
+					"data": datax,
+					"backgroundColor": [
+						"#ff6384", //red
+						"#ffcd56", //yellow
+						"#7ed321",//light green
+						"#058d65",  //dark green, 
+						 
+						
+					]
+				}]
+		};
+
+		this.doughnutGroup= new Chart(
+			donutGroup,
+			{
+				"type": 'doughnut',
+				"data": dataGroup,
+				"options": {
+					legend: {
+						display: false,
+					},
+					responsive: true,
+					maintainAspectRatio: true,
+					"animation": {
+						"animateScale": true,
+						"animateRotate": false
+					},
+				}
+			}
+		);
+	
+		let donutStudent = this.doughnutCanvasS.nativeElement;
+		donutStudent.height = innerHeight * 0.3;
+
+		var dataStudent = {
+			datasets: [
+				{
+					"data": this.studentData,
+					"backgroundColor": [
+						"#ff6384", //red
+						"#ffcd56", //yellow
+						"#7ed321", //light green
+						"#058d65", //dark green, 
+					]
+				}]
+		};
+
+		this.doughnutStudent = new Chart(
+			donutStudent,
+			{
+				"type": 'doughnut',
+				"data": dataStudent,
+				"options": {
+					legend: {
+						display: false,
+						position: 'right',
+					},
+					responsive: true,
+					maintainAspectRatio: true,
+					"animation": {
+						"animateScale": true,
+						"animateRotate": false
+					}
+				}
+			}
+		);
+
+	} */
 
 
 	goToDeadlines(params) {
