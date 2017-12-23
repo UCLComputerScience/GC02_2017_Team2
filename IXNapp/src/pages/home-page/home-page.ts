@@ -7,7 +7,7 @@ import { Chart } from 'chart.js';
   selector: 'page-home-page',
   templateUrl: 'home-page.html'
 })
-export class HomePagePage {
+export class StudentHomePage {
 
   @ViewChild('lineCanvas') lineCanvas;
 
