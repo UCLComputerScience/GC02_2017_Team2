@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { NgModule} from '@angular/core';
 
@@ -7,11 +7,15 @@ import { NgModule} from '@angular/core';
   selector: 'page-group',
   templateUrl: 'group.html'
 })
-export class GroupPage {
+export class GroupPage implements OnInit {
   // this tells the tabs component which Pages
   // should be each tab's root Page
   constructor(public navCtrl: NavController) {
   }
+
+  ngOnInit() {
+  }
+
  goBack(params){
     if (!params) params = {};
     this.navCtrl.pop();
@@ -24,28 +28,7 @@ export class GroupPage {
   
   names = ['Samantha Watson', 'John Taylor', 'James Kirk'];
   
-  button1;
-  button2;
-  button3;
-  button4;
-  
-  
-  buttonOneClicked() : void {
-    this.button1 = "highlighted";
-    this.button2 = this.button3 = this.button4 = "nothighlighted";
-  }
-  buttonTwoClicked() : void {
-    this.button2 = "highlighted";
-    this.button1 = this.button3 = this.button4 = "nothighlighted";
-  }
-  buttonThreeClicked() : void {
-    this.button3 = "highlighted";
-    this.button1 = this.button2 = this.button4 = "nothighlighted";
-  }
-  buttonFourClicked() : void {
-    this.button4 = "highlighted";
-    this.button1 = this.button2 = this.button3 = "nothighlighted";
-  }
+  buttons = ['button1', 'button2', 'button3', 'button4'];
   
   nextweek() : void {
     if (this.currentdateindex < this.weeks.length-1) {
@@ -58,60 +41,34 @@ export class GroupPage {
         this.currentdateindex--;
     }
   }
+
+  buttonSelected;
   
-  studentbutton1;
-  studentbutton2;
-  studentbutton3;
-  studentbutton4;
+  buttonSelect(k) {
+    this.buttonSelected = k;
+  }
   
-  studentbuttonOneClicked(i) : void {
-    //var myEl = ng.element( document.querySelector( '#studentbutton10' ) );
-    //myEl.addClass('highlighted');
-    //var myElement = angular.element( document.querySelector('a[target="studentbutton10"]') );
-    //myElement.addClass('highlighted');
-    //angular.element('#studentbutton10').addClass("highlighted");
+  getDescription(k) {
+    if (k == 0) {
+        return "excellent";
+    }
+    else if (k == 1) {
+        return "good";
+    }
+    else if (k == 2) {
+        return "average";
+    }
+    else if (k == 3) {
+        return "bad";
+    }
+  }
+  
+  onSelect(selectedIndex: number, studentIndex: number){
+    this['isStudentSelected'+studentIndex] = selectedIndex;
+  }
     
-    let studentbutton1 = 'studentbutton1'+i;
-    let studentbutton2 = 'studentbutton2'+i;
-    let studentbutton3 = 'studentbutton3'+i;
-    let studentbutton4 = 'studentbutton4'+i;
-    console.log(studentbutton1);
-    this.studentbutton1 = "highlighted";
-    this.studentbutton2 = this.studentbutton3 = this.studentbutton4 = "nothighlighted";
-  }
-  studentbuttonTwoClicked(i) : void {
-    let studentbutton1 = 'studentbutton1'+i;
-    let studentbutton2 = 'studentbutton2'+i;
-    let studentbutton3 = 'studentbutton3'+i;
-    let studentbutton4 = 'studentbutton4'+i;
-    console.log(studentbutton2);
-    this.studentbutton2 = "highlighted";
-    this.studentbutton1 = this.studentbutton3 = this.studentbutton4 = "nothighlighted";
-  }
-  studentbuttonThreeClicked(i) : void {
-    let studentbutton1 = 'studentbutton1'+i;
-    let studentbutton2 = 'studentbutton2'+i;
-    let studentbutton3 = 'studentbutton3'+i;
-    let studentbutton4 = 'studentbutton4'+i;
-    console.log(studentbutton3);
-    this.studentbutton3 = "highlighted";
-    this.studentbutton2 = this.studentbutton1 = this.studentbutton4 = "nothighlighted";
-  }
-  studentbuttonFourClicked(i) : void {
-    let studentbutton1 = 'studentbutton1'+i;
-    let studentbutton2 = 'studentbutton2'+i;
-    let studentbutton3 = 'studentbutton3'+i;
-    let studentbutton4 = 'studentbutton4'+i;
-    console.log(studentbutton4);
-    this.studentbutton4 = "highlighted";
-    this.studentbutton2 = this.studentbutton3 = this.studentbutton1 = "nothighlighted";
-  }
-  
-  getclassname(studentbutton, i) {
-    let classname = 'studentbutton'+studentbutton+i;
-    console.log("Classname= "+classname);
-    return classname;
-    
+  getIsStudentSelected(i) {
+    return this['isStudentSelected'+i];
   }
   
   

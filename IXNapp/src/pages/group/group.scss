@@ -24,7 +24,7 @@ page-group {
         height: 30px;
         width:23%;
         padding: 2px;
-        margin:0px;
+        margin:3px;
         color: white;
         border-radius: 5px;
     }
@@ -110,6 +110,22 @@ page-group {
     ion-input {
         font-size:15px !important;
         border-bottom: 0.5px solid black;
+    }
+    
+    .button1 {
+        background-color:#058D65;
+    }
+    
+    .button2 {
+        background-color:#7ED321;
+    }
+    
+    .button3 {
+        background-color:#FFCD56;
+    }
+    
+    .button4 {
+        background-color:#FF6384;
     }
     
 

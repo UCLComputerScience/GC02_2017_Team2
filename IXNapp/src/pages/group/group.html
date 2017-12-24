@@ -14,8 +14,6 @@
       </button>
     </ion-buttons>
   </ion-navbar>
-    
-    
 </ion-header>
 <ion-content padding id="page13">
   <div id="weekcontrol">
@@ -23,7 +21,9 @@
       <ion-icon name="arrow-back"></ion-icon>
     </button>
     <p class="datebar" id="date">
-      {{dates[currentdateindex]}}<br><b>{{(weeks[currentdateindex])}}</b>
+      {{dates[currentdateindex]}}
+      <br>
+      <b>{{(weeks[currentdateindex])}}</b>
     </p>
     <button class="datebar" id="group-button19" ion-button clear color="positive" (click)="nextweek()">
       <ion-icon name="arrow-forward"></ion-icon>
@@ -33,17 +33,8 @@
     Group Performance
   </h5>
   <div id="groupperformance">
-    <button class="performancebutton {{ button1 }}" (click)="buttonOneClicked()" style="background-color:#058D65">
-      excellent
-    </button>
-    <button class="{{ button2 }} performancebutton" (click)="buttonTwoClicked()" ion-button style="background-color:#7ED321">
-      good
-    </button>
-    <button class="{{ button3 }} performancebutton" (click)="buttonThreeClicked()" ion-button style="background-color:#FFCD56">
-      average
-    </button>
-    <button class="performancebutton {{button4}}"  (click)="buttonFourClicked()" ion-button style="background-color:#FF6384">
-      bad
+    <button *ngFor="let button of buttons; let k = index; " class="performancebutton {{ button }}" [class.highlighted]="k === buttonSelected" (click)="buttonSelect(k)">
+      {{getDescription(k)}}
     </button>
   </div>
   <h6 id="group-heading5" style="color:#000000;">
@@ -55,30 +46,29 @@
     </ion-item>
   </form>
   <h5>Student Performance</h5>
-  <ion-card id="group-card22" *ngFor="let name of names; let i = index">
-    <ion-list>
-      <ion-item color="none" id="group-list-item39">
-        <ion-avatar item-left>
-          <img src= "http://static.bleacherreport.net/images/redesign/avatars/default-user-icon-profile.png" style= "height: 12vh; width: 22vw;">
-        </ion-avatar>
-        <p id="name">
-          {{name}}
-        </p>
-      </ion-item>
+  <ion-list *ngFor="let name of names; let i = index; ">
+    <ion-card>
       <div>
-        <button class="studentbutton {{ studentbutton10 }}" style="background-color:#058D65" (click)="studentbuttonOneClicked(i)"></button>
-        <button class="studentbutton  {{ 'studentbutton2'+i }}" style="background-color:#7ED321" (click)="studentbuttonTwoClicked(i)"></button>
-        <button class="studentbutton {{ 'studentbutton3'+i }}" style="background-color:#FFCD56" (click)="studentbuttonThreeClicked(i)"></button>
-        <button class="studentbutton {{ 'studentbutton4'+i }}" style="background-color:#FF6384" (click)="studentbuttonFourClicked(i)"></button>
-        <ion-input placeholder = "contr." id="contribution"></ion-input>
+        <ion-item color="none" id="group-list-item39">
+          <ion-avatar item-left>
+            <img src="http://static.bleacherreport.net/images/redesign/avatars/default-user-icon-profile.png" style="height: 12vh; width: 22vw;">
+          </ion-avatar>
+          <p id="name">
+            {{name}}
+          </p>
+        </ion-item>
+        <div>
+          <button *ngFor="let button of buttons; let j = index; " class="studentbutton {{button}}" [class.highlighted]="j === getIsStudentSelected(i)" (click)="onSelect(j, i)"></button>
+          <ion-input placeholder="contr." id="contribution"></ion-input>
+        </div>
+        <ion-item lines>
+          <ion-input type="text" placeholder="Click to input comment"></ion-input>
+        </ion-item>
+        <ion-item no-lines id="toggleitem">
+          <ion-label id="label">Absent:</ion-label>
+          <ion-toggle></ion-toggle>
+        </ion-item>
       </div>
-      <ion-item lines>
-        <ion-input type="text" placeholder="Click to input comment"></ion-input>
-      </ion-item>
-      <ion-item no-lines id="toggleitem">
-        <ion-label id="label">Absent:</ion-label>
-        <ion-toggle [(ngModel)]="pepperoni"></ion-toggle>
-      </ion-item>
-    </ion-list>
-  </ion-card>
+    </ion-card>
+  </ion-list>
 </ion-content>
