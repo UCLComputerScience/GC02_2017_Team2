@@ -28,19 +28,19 @@
     <hr>
     <div id="legend">
         <div id="lll">
-            <p class="floating" id="overallp" style="color:#000000;">
-            Current overall <br> performance:
-            </p>
-            <p class="floating" id="latestp" style="color:#000000;">
-                latest performance:
-                <br>
-            <span class="feedbackwriting" id="latestperformance">{{latestperformance}}</span>
-            </p>
+          <p class="floating" id="overallp" style="color:#000000;">
+            Current average <br> performance:
+          </p>
+          <p class="floating" id="latestp" style="color:#000000;">
+            latest performance:
+            <br>
+            <span class="feedbackwriting" id="latestperformance">{{latestPerformance()}}</span>
+          </p>
         </div>
-            <p class="feedbackwriting" id="performance2">
-                {{overallperformance}}
-            </p>
-    </div>
+        <p class="feedbackwriting" id="performance2">
+          {{averagePerformance()}} out of 4
+        </p>
+      </div>
     <hr>
     <h5 id="feedbackSummary-heading9" style="color:#000000;">
         Weekly Feedback
@@ -49,8 +49,8 @@
     <hr>
   <div id="feedbackSummary-container9" *ngFor="let item of weekswithinfo; let i = index">
     <ion-list id="feedbackSummary-list10">
-      <ion-item-divider id="feedbackSummary-list-item-divider2" class="{{ groupresults[addfields()[i]] }}">
-        <p id="weekdiv">Week {{item}}</p>
+      <ion-item-divider id="feedbackSummary-list-item-divider2" class="{{ groupColorSetting(i) }}">
+        <p id="weekdiv">Week {{weekswithinfo[i]}}</p>
         <p id="weekdiv2"><button id="feedbackSummary-button41" ion-button clear small>
                 more details
             </button>
@@ -59,7 +59,7 @@
       <ion-item color="none" id="feedbackSummary-list-item56" *ngFor="let student of students; let j = index" (click)="setcolour();">
           <p class="name">{{student}}</p>
         <ion-note item-right>
-           <p><button class="performance {{results[addfields()[i]][j]}}"></button><span id="percentage" style="padding-left:10px"> {{percentageresults[addfields()[i]][j]}}%</span></p> 
+           <p><button class="performance {{studentColorSetting(i, j)}}"></button><span id="percentage" style="padding-left:10px"> contribution: {{ percentageresults[i][j] }}%</span></p> 
         </ion-note>
       </ion-item>
       

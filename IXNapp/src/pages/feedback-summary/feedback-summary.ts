@@ -16,14 +16,15 @@ export class FeedbackSummaryPage {
     this.navCtrl.push(GroupPage);
   }
   
+  students = ['Samantha Watson', 'John Taylor', 'James Kirk'];
   latestperformance = "good";
   overallperformance = "average";
   latestfeedback  = 4;
   groupnumber = "#";
   
   weekswithinfo = [1,2,3,4,5,8];
+  groupdata = [4,4,3,4,4,3]; //group performance history 
   
-  groupresults = ['lightgreen','lightgreen','darkgreen']
   
   percentageresults = [
     [30, 30, 40],
@@ -39,8 +40,8 @@ export class FeedbackSummaryPage {
   ];
   
     results = [
-    ['red','yellow','yellow'],
-    ['lightgreen','lightgreen','darkgreen'],
+    [1, 4, 3],
+    [2, 3, 4],
     [1,2,3],
     [],
     [],
@@ -51,8 +52,46 @@ export class FeedbackSummaryPage {
     []
   ];
 
+  performanceAnnotation = ['bad', 'average', 'good', 'excellent']; //constants do not modify
+  performanceColor = ['red', 'yellow', 'lightgreen', 'darkgreen']; //constants do not modify
 
- students = ['Samantha Watson', 'John Taylor', 'James Kirk'];
+
+  latestWeek() {
+    var weekIndex = this.weekswithinfo.length; 
+    weekIndex = weekIndex-1; 
+    var latestW = this.weekswithinfo[weekIndex]; 
+    return latestW; 
+  }
+
+  averagePerformance(){
+    var weekIndex = this.weekswithinfo.length; 
+    var sum = 0;
+    for (let i=0; i<weekIndex; i++){
+      sum = sum+this.groupdata[i]; 
+    }
+    sum = sum/weekIndex; 
+    return sum.toFixed(1);
+  }
+
+  latestPerformance() {
+    var weekIndex = this.weekswithinfo.length; 
+    var indexvalue = this.groupdata[weekIndex-1]; 
+    return this.performanceAnnotation[indexvalue]; 
+  }
+
+  groupColorSetting(x) {
+    var value = this.groupdata[x];  
+    var indexvalue = value-1; 
+    var colorName = this.performanceColor[indexvalue]; 
+    return colorName; 
+  }
+
+  studentColorSetting(x, y) {  
+    var indexvalue = this.results[x][y]-1; 
+    var studentColor = this.performanceColor[indexvalue]; 
+    return studentColor; 
+  }
+
 
 colourval = "blue";
 
