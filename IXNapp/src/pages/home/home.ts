@@ -56,7 +56,11 @@ export class HomePage {
 		this.innerHeight = (window.screen.height);
 		this.innerWidth = (window.screen.width);
 
-		this.house.getAllRedTeam().subscribe(dt => {
+	}
+
+	ngOnInit() {
+
+	this.house.getAllRedTeam().subscribe(dt => {
 		this.Groups = JSON.parse(dt["_body"]);
 
   		for(let i in this.Groups){
@@ -85,13 +89,11 @@ export class HomePage {
 		this.groupData.push(this.LGCount);
 		this.groupData.push(this.DGCount);
 
-		console.log(this.groupData);
-
-		console.log(this.studentData);
-		console.log(this.groupData);
-		
 		let donutGroup = this.doughnutCanvas.nativeElement;
-		donutGroup.height = innerHeight * 0.3;
+		donutGroup.height = innerHeight * 0.25;
+
+		console.log(donutGroup.height);
+
 		var datax = this.groupData;
 		var dataGroup = {
 			labels: datax,
@@ -163,7 +165,7 @@ export class HomePage {
 		console.log(this.studentData);
 
 		let donutStudent = this.doughnutCanvasS.nativeElement;
-		donutStudent.height = innerHeight * 0.3;
+		donutStudent.height = innerHeight * 0.25;
 
 		var dataStudent = {
 			datasets: [
@@ -199,24 +201,194 @@ export class HomePage {
 		);
 
 		});
+		console.log(this.studentData);
 
 
-	}
-
-	ngOnInit() {
 	this.slides.autoHeight = true;
+	console.log("happened");
+
+
 	}
+
+ /* AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA */
 
 	doRefresh(refresher) {
 		console.log('Sync in process ', refresher);
-	
-		setTimeout(() => {
-		  console.log('Sync completed');
-		  refresher.complete();
-		}, 1000);
-	}
 
-	goToDeadlines(params) {
+		this.Students= [];
+		this.Groups= [];
+		this.wkn= [];
+		this.wkn2= [];
+		this.mx= 0;
+		this.mx2= 0;
+
+		this.RCount= 0;
+		this.ACount= 0;
+		this.LCount= 0;
+		this.DCount= 0;
+
+		this.RGCount= 0;
+		this.AGCount= 0;
+		this.LGCount= 0;
+		this.DGCount= 0;
+
+		this.studentData= [];
+		this.groupData= [];
+
+		this.house.getAllRedTeam().subscribe(dt => {
+		this.Groups = JSON.parse(dt["_body"]);
+
+  		for(let i in this.Groups){
+  		this.wkn2.push(this.Groups[i].weeknum);
+  		}
+  		this.mx2 = Math.max.apply(Math, this.wkn2);
+
+  		for(let k in this.Groups){
+  		if(this.Groups[k].weeknum == this.mx2 && this.Groups[k].g_fb == 1) {
+  		this.RGCount = this.RGCount + 1;
+  		}
+  		if(this.Groups[k].weeknum == this.mx2 && this.Groups[k].g_fb == 2) {
+  			this.AGCount = this.AGCount + 1;
+  		}
+  		if(this.Groups[k].weeknum == this.mx2 && this.Groups[k].g_fb == 3) {
+  			this.LGCount = this.LGCount + 1;
+  		}
+  		if(this.Groups[k].weeknum == this.mx2 && this.Groups[k].g_fb == 4) {
+  			this.DGCount = this.DGCount + 1;
+  		}
+
+  		}
+
+  		this.groupData.push(this.RGCount);
+		this.groupData.push(this.AGCount);
+		this.groupData.push(this.LGCount);
+		this.groupData.push(this.DGCount);
+
+		let donutGroup = this.doughnutCanvas.nativeElement;
+		donutGroup.height = innerHeight * 0.25;
+
+		console.log(donutGroup.height);
+
+		var datax = this.groupData;
+		var dataGroup = {
+			labels: datax,
+			datasets: [
+				{
+					"data": datax,
+					"backgroundColor": [
+						"#ff6384", //red
+						"#ffcd56", //yellow
+						"#7ed321",//light green
+						"#058d65",  //dark green, 
+						 
+						
+					]
+				}]
+		};
+
+		this.doughnutGroup= new Chart(
+			donutGroup,
+			{
+				"type": 'doughnut',
+				"data": dataGroup,
+				"options": {
+					legend: {
+						display: false,
+					},
+					responsive: true,
+					maintainAspectRatio: true,
+					"animation": {
+						"animateScale": true,
+						"animateRotate": false
+					},
+				}
+			}
+		);
+
+		});
+
+		this.house.getAllRedStudent().subscribe(dt => {
+		this.Students = JSON.parse(dt["_body"]);
+
+		for(let i in this.Students){
+  		this.wkn.push(this.Students[i].weeknum);
+  		}
+  		this.mx = Math.max.apply(Math, this.wkn);
+
+  		for(let k in this.Students){
+  		if(this.Students[k].weeknum == this.mx && this.Students[k].st_fb == 1) {
+  			this.RCount = this.RCount + 1;
+  			console.log(this.RCount);
+  		}
+  		if(this.Students[k].weeknum == this.mx && this.Students[k].st_fb == 2) {
+  			this.ACount = this.ACount + 1;
+  		}
+  		if(this.Students[k].weeknum == this.mx && this.Students[k].st_fb == 3) {
+  			this.LCount = this.LCount + 1;
+  		}
+  		if(this.Students[k].weeknum == this.mx && this.Students[k].st_fb == 4) {
+  			this.DCount = this.DCount + 1;
+  		}
+
+  		}
+
+  		this.studentData.push(this.RCount);
+		this.studentData.push(this.ACount);
+		this.studentData.push(this.LCount);
+		this.studentData.push(this.DCount);
+
+		console.log(this.studentData);
+
+		let donutStudent = this.doughnutCanvasS.nativeElement;
+		donutStudent.height = innerHeight * 0.25;
+
+		var dataStudent = {
+			datasets: [
+				{
+					"data": this.studentData,
+					"backgroundColor": [
+						"#ff6384", //red
+						"#ffcd56", //yellow
+						"#7ed321", //light green
+						"#058d65", //dark green, 
+					]
+				}]
+		};
+
+		this.doughnutStudent = new Chart(
+			donutStudent,
+			{
+				"type": 'doughnut',
+				"data": dataStudent,
+				"options": {
+					legend: {
+						display: false,
+						position: 'right',
+					},
+					responsive: true,
+					maintainAspectRatio: true,
+					"animation": {
+						"animateScale": true,
+						"animateRotate": false
+					}
+				}
+			}
+		);
+
+		});
+		console.log(this.studentData);
+
+	setTimeout(() => {
+      console.log('Async operation has ended');
+      refresher.complete();
+
+    }, 500);
+
+	console.log(this.studentData);
+	
+}
+
+goToDeadlines(params) {
 		if (!params) params = {};
 		this.navCtrl.push(DeadlinesPage);
 	} goToRedGroups(params) {
