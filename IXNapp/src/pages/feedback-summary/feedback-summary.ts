@@ -16,16 +16,10 @@ export class FeedbackSummaryPage {
     this.navCtrl.push(GroupPage);
   }
   
-  students = ['Samantha Watson', 'John Taylor', 'James Kirk'];
-  latestperformance = "good";
-  overallperformance = "average";
-  latestfeedback  = 4;
-  groupnumber = "#";
-  
+  /* Change this data for backend */
+  students = ['Samantha Watson', 'John Taylor', 'James Kirk']; 
   weekswithinfo = [1,2,3,4,5,8];
   groupdata = [4,4,3,4,4,3]; //group performance history 
-  
-  
   percentageresults = [
     [30, 30, 40],
     [34, 33, 33],
@@ -51,6 +45,9 @@ export class FeedbackSummaryPage {
     [],
     []
   ];
+
+
+  /* Do not modify below here */
 
   performanceAnnotation = ['bad', 'average', 'good', 'excellent']; //constants do not modify
   performanceColor = ['red', 'yellow', 'lightgreen', 'darkgreen']; //constants do not modify
