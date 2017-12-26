@@ -25988,7 +25988,23 @@ page-group-list .section {
 
 page-group-list .background {
   color: white;
-  background-color: #00A8FF;
+  font-size: 18px;
+}
+
+page-group-list .excellent {
+  background-color: #058D65;
+}
+
+page-group-list .good {
+  background-color: #7ED321;
+}
+
+page-group-list .average {
+  background-color: #FFCD56;
+}
+
+page-group-list .bad {
+  background-color: #FF6384;
 }
 
 page-group-list .addbutton {
@@ -26245,6 +26261,36 @@ page-login #logo {
   position: absolute;
   bottom: 0px;
   right: 25px;
+}
+
+page-more-details .performancebutton {
+  font-size: 13px;
+  height: 30px;
+  width: 23%;
+  padding: 2px;
+  margin: 3px;
+  color: white;
+  border-radius: 5px;
+}
+
+page-more-details .excellent {
+  background-color: #058D65;
+}
+
+page-more-details .good {
+  background-color: #7ED321;
+}
+
+page-more-details .average {
+  background-color: #FFCD56;
+}
+
+page-more-details .bad {
+  background-color: #FF6384;
+}
+
+page-more-details h5 {
+  text-align: center;
 }
 
 page-my-profile #profilepic {
