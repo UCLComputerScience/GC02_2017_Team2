@@ -15,7 +15,7 @@ export class MyProfilePage {
   lastName = '';
   email = '';
   type = '';
-  password: null;
+  password;
   
   constructor(private app: App, public navCtrl: NavController, private auth: AuthService, private alertCtrl: AlertController) {
     let info = this.auth.getUserInfo();
@@ -41,16 +41,17 @@ export class MyProfilePage {
   }
   
   changePassword() {
-    if (this.password === null) {
+    if (this.password === null || this.password == null) {
         this.showError("No password inserted");
     }
-    else if(this.password.length < 7) {
-        this.showError("Please choose a password that is at least 6 characters long");
-    }
-    else {
-        this.password = null;
-        // BACKEND HERE
-    }
+    else if (this.password !== null)
+        if (this.password.length < 7) {
+            this.showError("Please choose a password that is at least 6 characters long");
+        }
+        else {
+            this.password = null;
+            // BACKEND HERE
+        }
     
   }
   
