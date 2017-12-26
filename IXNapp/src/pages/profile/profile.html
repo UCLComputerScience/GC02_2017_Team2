@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      My Profile
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding id="page4">
+  <div id="blueblue">
+    <img id ="profilepic" src="assets/img/iPJmfKWCSdylgevYCJ6t_myAvatar3.png"/>
+    <form id="myProfile-form3">
+      <div class="spacer" style="height:40px;" id="myProfile-spacer2"></div>
+      <ion-item id="myProfile-input1">
+        <ion-input type="text" placeholder="Firstname"></ion-input>
+      </ion-item>
+      <ion-item id="myProfile-input2">
+        <ion-input type="text" placeholder="Lastname"></ion-input>
+      </ion-item>
+      <ion-item id="myProfile-input3">
+        <ion-input type="email" placeholder="Email"></ion-input>
+      </ion-item>
+      <ion-item id="myProfile-input4">
+        <ion-input type="password" placeholder="Password"></ion-input>
+      </ion-item>
+    </form>
+  </div>
+  <div id="supervising">
+    <h5 id="myProfile-heading1" style="color:#000000;text-align:center;">
+      Supervising groups
+    </h5>
+    <div id="groups">
+      <button *ngFor="let item of items">
+        {{ item }}
+      </button>
+    </div>
+  </div>
+</ion-content>

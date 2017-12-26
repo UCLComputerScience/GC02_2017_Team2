@@ -287,7 +287,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 var HomePage = (function () {
     function HomePage(navCtrl, house) {
-        var _this = this;
         this.navCtrl = navCtrl;
         this.house = house;
         this.wkn = [];
@@ -304,6 +303,9 @@ var HomePage = (function () {
         this.groupData = [];
         this.innerHeight = (window.screen.height);
         this.innerWidth = (window.screen.width);
+    }
+    HomePage.prototype.ngOnInit = function () {
+        var _this = this;
         this.house.getAllRedTeam().subscribe(function (dt) {
             _this.Groups = JSON.parse(dt["_body"]);
             for (var i in _this.Groups) {
@@ -328,11 +330,9 @@ var HomePage = (function () {
             _this.groupData.push(_this.AGCount);
             _this.groupData.push(_this.LGCount);
             _this.groupData.push(_this.DGCount);
-            console.log(_this.groupData);
-            console.log(_this.studentData);
-            console.log(_this.groupData);
             var donutGroup = _this.doughnutCanvas.nativeElement;
-            donutGroup.height = innerHeight * 0.3;
+            donutGroup.height = innerHeight * 0.25;
+            console.log(donutGroup.height);
             var datax = _this.groupData;
             var dataGroup = {
                 labels: datax,
@@ -391,7 +391,7 @@ var HomePage = (function () {
             _this.studentData.push(_this.DCount);
             console.log(_this.studentData);
             var donutStudent = _this.doughnutCanvasS.nativeElement;
-            donutStudent.height = innerHeight * 0.3;
+            donutStudent.height = innerHeight * 0.25;
             var dataStudent = {
                 datasets: [
                     {
@@ -422,16 +422,156 @@ var HomePage = (function () {
                 }
             });
         });
-    }
-    HomePage.prototype.ngOnInit = function () {
+        console.log(this.studentData);
         this.slides.autoHeight = true;
+        console.log("happened");
     };
+    /* AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA */
     HomePage.prototype.doRefresh = function (refresher) {
+        var _this = this;
         console.log('Sync in process ', refresher);
+        this.innerHeight = (window.screen.height);
+        this.innerWidth = (window.screen.width);
+        console.log(this.innerHeight);
+        console.log(this.innerWidth);
+        this.Students = [];
+        this.Groups = [];
+        this.wkn = [];
+        this.wkn2 = [];
+        this.mx = 0;
+        this.mx2 = 0;
+        this.RCount = 0;
+        this.ACount = 0;
+        this.LCount = 0;
+        this.DCount = 0;
+        this.RGCount = 0;
+        this.AGCount = 0;
+        this.LGCount = 0;
+        this.DGCount = 0;
+        this.studentData = [];
+        this.groupData = [];
+        this.house.getAllRedTeam().subscribe(function (dt) {
+            _this.Groups = JSON.parse(dt["_body"]);
+            for (var i in _this.Groups) {
+                _this.wkn2.push(_this.Groups[i].weeknum);
+            }
+            _this.mx2 = Math.max.apply(Math, _this.wkn2);
+            for (var k in _this.Groups) {
+                if (_this.Groups[k].weeknum == _this.mx2 && _this.Groups[k].g_fb == 1) {
+                    _this.RGCount = _this.RGCount + 1;
+                }
+                if (_this.Groups[k].weeknum == _this.mx2 && _this.Groups[k].g_fb == 2) {
+                    _this.AGCount = _this.AGCount + 1;
+                }
+                if (_this.Groups[k].weeknum == _this.mx2 && _this.Groups[k].g_fb == 3) {
+                    _this.LGCount = _this.LGCount + 1;
+                }
+                if (_this.Groups[k].weeknum == _this.mx2 && _this.Groups[k].g_fb == 4) {
+                    _this.DGCount = _this.DGCount + 1;
+                }
+            }
+            _this.groupData.push(_this.RGCount);
+            _this.groupData.push(_this.AGCount);
+            _this.groupData.push(_this.LGCount);
+            _this.groupData.push(_this.DGCount);
+            var donutGroup = _this.doughnutCanvas.nativeElement;
+            donutGroup.height = innerHeight * 0.25;
+            console.log(donutGroup.height);
+            var datax = _this.groupData;
+            var dataGroup = {
+                labels: datax,
+                datasets: [
+                    {
+                        "data": datax,
+                        "backgroundColor": [
+                            "#ff6384",
+                            "#ffcd56",
+                            "#7ed321",
+                            "#058d65",
+                        ]
+                    }
+                ]
+            };
+            _this.doughnutGroup = new __WEBPACK_IMPORTED_MODULE_5_chart_js__["Chart"](donutGroup, {
+                "type": 'doughnut',
+                "data": dataGroup,
+                "options": {
+                    legend: {
+                        display: false,
+                    },
+                    responsive: true,
+                    maintainAspectRatio: true,
+                    "animation": {
+                        "animateScale": true,
+                        "animateRotate": false
+                    },
+                }
+            });
+        });
+        this.house.getAllRedStudent().subscribe(function (dt) {
+            _this.Students = JSON.parse(dt["_body"]);
+            for (var i in _this.Students) {
+                _this.wkn.push(_this.Students[i].weeknum);
+            }
+            _this.mx = Math.max.apply(Math, _this.wkn);
+            for (var k in _this.Students) {
+                if (_this.Students[k].weeknum == _this.mx && _this.Students[k].st_fb == 1) {
+                    _this.RCount = _this.RCount + 1;
+                    console.log(_this.RCount);
+                }
+                if (_this.Students[k].weeknum == _this.mx && _this.Students[k].st_fb == 2) {
+                    _this.ACount = _this.ACount + 1;
+                }
+                if (_this.Students[k].weeknum == _this.mx && _this.Students[k].st_fb == 3) {
+                    _this.LCount = _this.LCount + 1;
+                }
+                if (_this.Students[k].weeknum == _this.mx && _this.Students[k].st_fb == 4) {
+                    _this.DCount = _this.DCount + 1;
+                }
+            }
+            _this.studentData.push(_this.RCount);
+            _this.studentData.push(_this.ACount);
+            _this.studentData.push(_this.LCount);
+            _this.studentData.push(_this.DCount);
+            console.log(_this.studentData);
+            var donutStudent = _this.doughnutCanvasS.nativeElement;
+            donutStudent.height = innerHeight * 0.25;
+            var dataStudent = {
+                datasets: [
+                    {
+                        "data": _this.studentData,
+                        "backgroundColor": [
+                            "#ff6384",
+                            "#ffcd56",
+                            "#7ed321",
+                            "#058d65",
+                        ]
+                    }
+                ]
+            };
+            _this.doughnutStudent = new __WEBPACK_IMPORTED_MODULE_5_chart_js__["Chart"](donutStudent, {
+                "type": 'doughnut',
+                "data": dataStudent,
+                "options": {
+                    legend: {
+                        display: false,
+                        position: 'right',
+                    },
+                    responsive: true,
+                    maintainAspectRatio: true,
+                    "animation": {
+                        "animateScale": true,
+                        "animateRotate": false
+                    }
+                }
+            });
+        });
+        console.log(this.studentData);
         setTimeout(function () {
-            console.log('Sync completed');
+            console.log('Async operation has ended');
             refresher.complete();
-        }, 1000);
+        }, 500);
+        console.log(this.studentData);
     };
     HomePage.prototype.goToDeadlines = function (params) {
         if (!params)
@@ -460,15 +600,16 @@ __decorate([
 ], HomePage.prototype, "doughnutCanvasS", void 0);
 __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_13" /* ViewChild */])(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* Slides */]),
-    __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* Slides */])
+    __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* Slides */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* Slides */]) === "function" && _a || Object)
 ], HomePage.prototype, "slides", void 0);
 HomePage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
         selector: 'page-home',template:/*ion-inline-start:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/home/home.html"*/'<ion-header>\n    <ion-navbar>\n        <ion-title>\n            Home\n        </ion-title>\n    </ion-navbar>\n</ion-header>\n<!--Adding Refresher Section -->\n<ion-content padding>\n    <ion-refresher (ionRefresh)="doRefresh($event)">\n        <ion-refresher-content></ion-refresher-content>\n    </ion-refresher>\n\n    <!--Button to Deadlines Section -->\n    <div id="deadlines-section" no-padding>\n        <button id="deadlines-button" ion-button block icon-right style="text-align:right;"\n                on-click="goToDeadlines()">\n            Deadlines \n            <ion-icon name="calendar"></ion-icon>\n        </button>\n    </div>\n\n    <!--Notification for Feedback Request-->\n<div id="notification-section" no-padding no-margin >\n    <ion-card text-center id="notification" no-margin>\n        <h6 style="padding-top: 0 auto !important">Everything up to date</h6>\n    </ion-card>\n</div>\n\n    <!--Latest Feedback title section-->\n    <h4 id="home-heading11" style="color:#000000;">\n        Latest Feedback\n    </h4>\n\n    <!--Graph section with information-->\n    <div id="graph-section">\n        <ion-slides pager="true"> <!--pager for the small points-->\n            <ion-slide>\n                <canvas #doughnutCanvas></canvas>\n                <h6 padding=20px>\n                    Groups Feedback\n                </h6>\n                <div class="spacer" style="height:10px;"></div>\n\n                <ion-grid style="margin-bottom: 5px;"> <!--can add no-padding no-margin to reduce gap between title and legend -->\n                    <ion-row>\n                        <ion-label no-padding no-margin class="greendarklabel">\n                            excellent\n                        </ion-label>\n                        <ion-label no-padding no-margin class="greenlabel">\n                            good\n                        </ion-label>\n                        <ion-label no-padding no-margin class="yellowlabel">\n                            average\n                        </ion-label>\n                        <ion-label no-padding no-margin class="redlabel">\n                            danger\n                        </ion-label>\n                    </ion-row>\n                    <ion-row>\n                        <ion-label class="legend-number" no-padding no-margin >\n                            {{groupData[3]}}\n                        </ion-label>\n                        <ion-label class="legend-number" no-padding no-margin >\n                            {{groupData[2]}}\n                        </ion-label>\n                        <ion-label class="legend-number" no-padding no-margin >\n                            {{groupData[1]}}\n                        </ion-label>\n                        <ion-label class="legend-number" no-padding no-margin >\n                            {{groupData[0]}}\n                        </ion-label>\n                    </ion-row>\n                </ion-grid>\n\n                <div class="spacer" style="height:5px;" id="spacerline"></div>\n            </ion-slide>\n            <ion-slide>\n                <canvas #doughnutCanvasS></canvas>\n                <h6 id="home-heading12">\n                    Students Feedback\n                </h6>\n                <div class="spacer" style="height:10px;"></div>\n\n                <ion-grid style="margin-bottom: 5px;"> <!--can add no-padding no-margin to reduce gap between title and legend -->\n                    <ion-row>\n                        <ion-label no-padding no-margin class="greendarklabel">\n                            excellent\n                        </ion-label>\n                        <ion-label no-padding no-margin class="greenlabel">\n                            good\n                        </ion-label>\n                        <ion-label no-padding no-margin class="yellowlabel">\n                            average\n                        </ion-label>\n                        <ion-label no-padding no-margin class="redlabel">\n                            danger\n                        </ion-label>\n                    </ion-row>\n                    <ion-row>\n                        <ion-label class="legend-number" no-padding no-margin >\n                            {{studentData[3]}}\n                        </ion-label>\n                        <ion-label class="legend-number" no-padding no-margin >\n                            {{studentData[2]}}\n                        </ion-label>\n                        <ion-label class="legend-number" no-padding no-margin >\n                            {{studentData[1]}}\n                        </ion-label>\n                        <ion-label class="legend-number" no-padding no-margin >\n                            {{studentData[0]}}\n                        </ion-label>\n                    </ion-row>\n                </ion-grid>\n\n                <div class="spacer" style="height:5px;"></div>\n            </ion-slide>\n        </ion-slides>\n    </div>\n\n    <div id="buttonsection">\n        <ion-row class="rowbuttons">\n            <ion-col col-6>\n                <button class="redbutton" ion-button no-padding on-click="goToRedGroups()">\n                    Red Teams\n                </button>\n            </ion-col>\n            <ion-col col-6>\n                <button class="redbutton" ion-button no-padding on-click="goToRedStudents()">\n                    Red Students\n                </button>\n            </ion-col>\n        </ion-row>\n    </div>\n</ion-content>\n'/*ion-inline-end:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/home/home.html"*/
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_6__providers_house_house__["a" /* HouseProvider */]])
+    __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_6__providers_house_house__["a" /* HouseProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__providers_house_house__["a" /* HouseProvider */]) === "function" && _c || Object])
 ], HomePage);
 
+var _a, _b, _c;
 //# sourceMappingURL=home.js.map
 
 /***/ }),
@@ -775,11 +916,8 @@ var FeedbackSummaryPage = (function () {
     // should be each tab's root Page
     function FeedbackSummaryPage(navCtrl) {
         this.navCtrl = navCtrl;
+        /* Change this data for backend */
         this.students = ['Samantha Watson', 'John Taylor', 'James Kirk'];
-        this.latestperformance = "good";
-        this.overallperformance = "average";
-        this.latestfeedback = 4;
-        this.groupnumber = "#";
         this.weekswithinfo = [1, 2, 3, 4, 5, 8];
         this.groupdata = [4, 4, 3, 4, 4, 3]; //group performance history 
         this.percentageresults = [
@@ -806,6 +944,7 @@ var FeedbackSummaryPage = (function () {
             [],
             []
         ];
+        /* Do not modify below here */
         this.performanceAnnotation = ['bad', 'average', 'good', 'excellent']; //constants do not modify
         this.performanceColor = ['red', 'yellow', 'lightgreen', 'darkgreen']; //constants do not modify
         this.colourval = "blue";
@@ -871,10 +1010,9 @@ FeedbackSummaryPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
         selector: 'page-feedback-summary',template:/*ion-inline-start:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/feedback-summary/feedback-summary.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-buttons start>\n      <button ion-button></button>\n    </ion-buttons>\n    <ion-title>\n      Feedback Summary\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding id="page14">\n    <h4 id="feedbackSummary-heading6">\n        Group {{groupnumber}}\n    </h4>\n    <div id="addfeedback">\n        <button id="feedbackSummary-button42" ion-button clear color="positive" small on-click="goToGroup();">\n            Add Feedback\n        </button>\n    </div>\n    \n    <div id="top" >\n        <div id="latestfeedback">\n            <p style="margin:0px;outline:none;" >Latest Feedback:\n                <br><span class="feedbackwriting">Week </span><span class="feedbackwriting">4</span></p>\n        </div>\n    </div>\n    <hr>\n    <div id="legend">\n        <div id="lll">\n          <p class="floating" id="overallp" style="color:#000000;">\n            Current average <br> performance:\n          </p>\n          <p class="floating" id="latestp" style="color:#000000;">\n            latest performance:\n            <br>\n            <span class="feedbackwriting" id="latestperformance">{{latestPerformance()}}</span>\n          </p>\n        </div>\n        <p class="feedbackwriting" id="performance2">\n          {{averagePerformance()}} out of 4\n        </p>\n      </div>\n    <hr>\n    <h5 id="feedbackSummary-heading9" style="color:#000000;">\n        Weekly Feedback\n    </h5>\n    <div style="padding-bottom:7px;"><button class="performance darkgreen"></button> excellent <button class="performance lightgreen"></button> good <button class="performance yellow"></button> average <button class="performance red"></button> bad</div>\n    <hr>\n  <div id="feedbackSummary-container9" *ngFor="let item of weekswithinfo; let i = index">\n    <ion-list id="feedbackSummary-list10">\n      <ion-item-divider id="feedbackSummary-list-item-divider2" class="{{ groupColorSetting(i) }}">\n        <p id="weekdiv">Week {{weekswithinfo[i]}}</p>\n        <p id="weekdiv2"><button id="feedbackSummary-button41" ion-button clear small>\n                more details\n            </button>\n        </p> \n      </ion-item-divider>\n      <ion-item color="none" id="feedbackSummary-list-item56" *ngFor="let student of students; let j = index" (click)="setcolour();">\n          <p class="name">{{student}}</p>\n        <ion-note item-right>\n           <p><button class="performance {{studentColorSetting(i, j)}}"></button><span id="percentage" style="padding-left:10px"> contribution: {{ percentageresults[i][j] }}%</span></p> \n        </ion-note>\n      </ion-item>\n      \n    </ion-list>\n\n  </div>\n</ion-content>'/*ion-inline-end:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/feedback-summary/feedback-summary.html"*/
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */]) === "function" && _a || Object])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */]])
 ], FeedbackSummaryPage);
 
-var _a;
 //# sourceMappingURL=feedback-summary.js.map
 
 /***/ }),

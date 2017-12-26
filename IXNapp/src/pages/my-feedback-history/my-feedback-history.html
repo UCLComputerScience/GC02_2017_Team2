@@ -1,0 +1,64 @@
+<ion-header>
+  <ion-navbar>
+    <ion-buttons start>
+      <button ion-button></button>
+    </ion-buttons>
+    <ion-title>
+      Feedback Summary
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <h4 id="feedbackSummary-heading6">
+    Group {{groupnumber}}
+  </h4>
+  <!-- Latest Feedback section -->
+  <div class="spacer" style="height:3%;" id="spacerline"></div>
+    <div>
+      <br><p style="margin:0px; outline:none;"> Latest Feedback:
+        <span class="feedbackwriting">Week </span><span class="feedbackwriting"> {{latestWeek()}} </span></p>
+    </div>
+  <hr>
+  <div id="legend">
+    <div id="lll">
+      <p class="floating" id="overallp" style="color:#000000;">
+        Current average <br> performance:
+      </p>
+      <p class="floating" id="latestp" style="color:#000000;">
+        latest performance:
+        <br>
+        <span class="feedbackwriting" id="latestperformance">{{latestPerformance()}}</span>
+      </p>
+    </div>
+    <p class="feedbackwriting" id="performance2">
+      {{averagePerformance()}} out of 4
+    </p>
+  </div>
+<!-- Weekly feedback history legend-->
+  <hr>
+  <h5 style="color:#000000;">
+    Weekly Feedback
+  </h5>
+  <div style="padding-bottom:7px;"><button class="performance darkgreen"></button> excellent <button class="performance lightgreen"></button> good <button class="performance yellow"></button> average <button class="performance red"></button> bad</div>
+  <hr>
+  <div id="feedbackSummary-container9" *ngFor="let item of weekswithinfo; let i = index">
+    <ion-list id="feedbackSummary-list10">
+      <ion-item-divider id="feedbackSummary-list-item-divider2" class="{{groupColorSetting(i)}}">
+        <p id="weekdiv">Week {{weekswithinfo[i]}}</p>
+        <p id="weekdiv2"><button id="feedbackSummary-button41" ion-button clear small>
+          more details
+        </button>
+        </p>
+      </ion-item-divider>
+      <!-- Weekly feedback history -->
+      <ion-item color="none" id="feedbackSummary-list-item56" (click)="setcolour();">
+        <p class="name">{{student}}</p>
+        <ion-note item-right>
+          <p><button class="performance {{studentColorSetting(i)}} "></button><span id="percentage" style="padding-left:10px"> contribution: {{ percentageresults[i] }}%</span></p>
+        </ion-note>
+      </ion-item>
+    </ion-list>
+
+  </div>
+</ion-content>

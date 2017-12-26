@@ -214,7 +214,10 @@ export class HomePage {
 
 	doRefresh(refresher) {
 		console.log('Sync in process ', refresher);
-
+		this.innerHeight = (window.screen.height);
+		this.innerWidth = (window.screen.width);
+		console.log(this.innerHeight);
+		console.log(this.innerWidth); 
 		this.Students= [];
 		this.Groups= [];
 		this.wkn= [];
