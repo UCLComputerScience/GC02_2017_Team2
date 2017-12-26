@@ -15,6 +15,7 @@ import { GroupPage } from '../pages/group/group';
 import { FeedbackSummaryPage } from '../pages/feedback-summary/feedback-summary';
 import { ProgressBarComponent } from "../components/progress-bar/progress-bar";
 import { StudentHomePage } from '../pages/home-page/home-page';
+import { MoreDetailsPage } from '../pages/more-details/more-details';
 
 
 
@@ -41,7 +42,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     GroupPage,
     FeedbackSummaryPage, 
     ProgressBarComponent,
-    StudentHomePage
+    StudentHomePage,
+    MoreDetailsPage
   ],
   imports: [
     BrowserModule,
@@ -62,7 +64,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     DeadlinesPage,
     GroupPage,
     FeedbackSummaryPage,
-    StudentHomePage
+    StudentHomePage,
+    MoreDetailsPage
   ],
   providers: [
     StatusBar,

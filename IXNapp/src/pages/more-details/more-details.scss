@@ -1,0 +1,33 @@
+page-more-details {
+    
+    .performancebutton {
+        font-size: 13px;
+        height: 30px;
+        width:23%;
+        padding: 2px;
+        margin:3px;
+        color: white;
+        border-radius: 5px;
+    }
+    
+    .excellent {
+        background-color:#058D65;
+    }
+    
+    .good {
+        background-color:#7ED321;
+    }
+    
+    .average {
+        background-color:#FFCD56;
+    }
+    
+    .bad {
+        background-color:#FF6384;
+    }
+    
+    h5 {
+        text-align: center;
+    }
+    
+}

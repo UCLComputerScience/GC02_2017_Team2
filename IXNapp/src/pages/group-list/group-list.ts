@@ -22,5 +22,5 @@ export class GroupListPage {
   
   items = ['1', '2', '7'];
   
-  items2 = ['good', 'bad', 'ok'];
+  items2 = ['excellent', 'good', 'average'];
 }

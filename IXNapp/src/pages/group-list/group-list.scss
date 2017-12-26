@@ -38,8 +38,24 @@ page-group-list {
 
     .background{
         color: white;
-        background-color: #00A8FF;
+        font-size: 18px;
 
+    }
+    
+    .excellent {
+        background-color:#058D65;
+    }
+    
+    .good {
+        background-color:#7ED321;
+    }
+    
+    .average {
+        background-color:#FFCD56;
+    }
+    
+    .bad {
+        background-color:#FF6384;
     }
 
 }
