@@ -20,7 +20,15 @@ export class GroupListPage {
     this.navCtrl.push(GroupPage);
   }
   
-  items = ['1', '2', '7'];
+  groups = [1, 2, 7];
   
-  items2 = ['excellent', 'good', 'average'];
+  performances = [1, 2, 3];
+  
+  performanceAnnotation = ['bad', 'average', 'good', 'excellent']; //constants do not modify
+  
+  getPerformance(x) {
+    var value = this.performances[x];
+    var colorName = this.performanceAnnotation[value-1];
+    return colorName;
+  }
 }

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { GroupPage } from '../group/group';
+import { MoreDetailsPage } from '../more-details/more-details';
 
 @Component({
   selector: 'page-feedback-summary',
@@ -14,6 +15,11 @@ export class FeedbackSummaryPage {
   goToGroup(params){
     if (!params) params = {};
     this.navCtrl.push(GroupPage);
+  }
+  
+  goToDetails(params){
+    if (!params) params = {};
+    this.navCtrl.push(MoreDetailsPage);
   }
   
   /* Change this data for backend */
