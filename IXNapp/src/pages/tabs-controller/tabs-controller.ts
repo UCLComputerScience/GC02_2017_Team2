@@ -7,6 +7,9 @@ import { MyProfilePage } from '../my-profile/my-profile';
 import { LoginPage } from '../login/login';
 import { AuthService } from '../../providers/auth-service';
 import { StudentHomePage } from '../home-page/home-page';
+import { StaffContactPage } from '../staff-contact/staff-contact';
+import { ProfilePage } from '../profile/profile';
+import { MyFeedbackHistoryPage } from '../my-feedback-history/my-feedback-history';
 
 @Component({
   selector: 'page-tabs-controller',
@@ -32,9 +35,9 @@ export class TabsControllerPage {
   newvalue() {
     if (this.type === "Student") {
         this.tab1Root = StudentHomePage;
-        this.tab2Root = GroupListPage;
-        this.tab3Root = StaffContactInfoPage;
-        this.tab4Root = MyProfilePage;
+        this.tab2Root = MyFeedbackHistoryPage;
+        this.tab3Root = StaffContactPage;
+        this.tab4Root = ProfilePage;
     }
     else if (this.type === "TA" || this.type === "Lecturer") {
         this.tab1Root = HomePage;

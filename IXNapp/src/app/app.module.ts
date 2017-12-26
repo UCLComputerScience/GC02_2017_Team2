@@ -16,8 +16,9 @@ import { FeedbackSummaryPage } from '../pages/feedback-summary/feedback-summary'
 import { ProgressBarComponent } from "../components/progress-bar/progress-bar";
 import { StudentHomePage } from '../pages/home-page/home-page';
 import { MoreDetailsPage } from '../pages/more-details/more-details';
-
-
+import { StaffContactPage } from '../pages/staff-contact/staff-contact';
+import { ProfilePage } from '../pages/profile/profile';
+import { MyFeedbackHistoryPage } from '../pages/my-feedback-history/my-feedback-history';
 
 import { HttpModule } from '@angular/http';
 import { StaffContakProvider } from '../providers/staff-contak/staff-contak';
@@ -43,7 +44,10 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     FeedbackSummaryPage, 
     ProgressBarComponent,
     StudentHomePage,
-    MoreDetailsPage
+    MoreDetailsPage,
+    StaffContactPage,
+    ProfilePage,
+    MyFeedbackHistoryPage
   ],
   imports: [
     BrowserModule,
@@ -65,7 +69,10 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     GroupPage,
     FeedbackSummaryPage,
     StudentHomePage,
-    MoreDetailsPage
+    MoreDetailsPage,
+    StaffContactPage,
+    ProfilePage,
+    MyFeedbackHistoryPage
   ],
   providers: [
     StatusBar,
