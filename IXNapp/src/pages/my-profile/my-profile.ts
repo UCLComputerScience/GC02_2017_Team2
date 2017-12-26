@@ -41,7 +41,7 @@ export class MyProfilePage {
   }
   
   changePassword() {
-    if (this.password == null) {
+    if (this.password === null) {
         this.showError("No password inserted");
     }
     else if(this.password.length < 7) {
