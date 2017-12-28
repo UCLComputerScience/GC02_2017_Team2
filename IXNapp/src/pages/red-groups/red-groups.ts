@@ -41,9 +41,9 @@ Message: string;
   		}
   		}
 
-  		if(this.RGroups == 0) {
+  		/* if(this.RGroups == 0) {
   			this.Message = 'No Red Groups!';
-  		}
+  		} */
 
   	})
   } 
