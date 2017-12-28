@@ -11,7 +11,7 @@
 <ion-content padding id="page8">
   
   <ion-scroll scrollX="true">
-    <ion-spinner name="dots" style= "margin-left:35.5vw;" *ngIf="RGroups == 0"></ion-spinner>
+    <ion-spinner name="dots" style= "margin-left:35.5vw;" *ngIf="RGroups == 0 && Message == 'Press on a Student!'"></ion-spinner>
     <ion-row nowrap class= "scroller" *ngIf="RGroups != 0">
       <button ion-button color= "danger" *ngFor= "let BadG of RGroups" (click)= "onClick(BadG.g_id)" class= "BadButton">
           G{{BadG.g_id}}
@@ -19,7 +19,7 @@
     </ion-row>
   </ion-scroll>
 
-<p class= "para" style="font-size:160%;" align="center">Press On a Team!</p>
+<p class= "para" style="font-size:160%;" align="center">{{Message}}</p>
 
 <ion-spinner name="dots" style= "margin-left:41vw;" *ngIf="RWeeks == 0 && clicked"></ion-spinner>
 <ion-list *ngIf="RWeekds != 0">
