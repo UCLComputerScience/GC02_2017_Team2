@@ -22,7 +22,7 @@
     <div id="top" >
         <div id="latestfeedback">
             <p style="margin:0px;outline:none;" >Latest Feedback:
-                <br><span class="feedbackwriting">Week </span><span class="feedbackwriting">4</span></p>
+                <br><span class="feedbackwriting">Week </span><span class="feedbackwriting">{{mx2}}</span></p>
         </div>
     </div>
     <hr>
@@ -34,11 +34,11 @@
           <p class="floating" id="latestp" style="color:#000000;">
             latest performance:
             <br>
-            <span class="feedbackwriting" id="latestperformance">{{latestPerformance()}}</span>
+            <span class="feedbackwriting" id="latestperformance">{{latestperformance}}</span>
           </p>
         </div>
         <p class="feedbackwriting" id="performance2">
-          {{averagePerformance()}} out of 4
+          {{sum}} out of 4
         </p>
       </div>
     <hr>
@@ -47,16 +47,17 @@
     </h5>
     <div style="padding-bottom:7px;"><button class="performance darkgreen"></button> excellent <button class="performance lightgreen"></button> good <button class="performance yellow"></button> average <button class="performance red"></button> bad</div>
     <hr>
-  <div id="feedbackSummary-container9" *ngFor="let item of weekswithinfo; let i = index">
+
+  <div id="feedbackSummary-container9" *ngFor="let week of ultimatewkn; let i = index">
     <ion-list id="feedbackSummary-list10">
       <ion-item-divider id="feedbackSummary-list-item-divider2" class="{{ groupColorSetting(i) }}">
-        <p id="weekdiv">Week {{weekswithinfo[i]}}</p>
-        <p id="weekdiv2"><button id="feedbackSummary-button41" on-click="goToDetails();" ion-button clear small>
+        <p id="weekdiv">Week {{week}}</p>
+        <p id="weekdiv2"><button id="feedbackSummary-button41" ion-button clear small>
                 more details
             </button>
         </p> 
       </ion-item-divider>
-      <ion-item text-wrap color="none" id="feedbackSummary-list-item56" *ngFor="let student of students; let j = index" (click)="setcolour();">
+      <ion-item color="none" id="feedbackSummary-list-item56" *ngFor="let student of StudentNames; let j = index" (click)="setcolour();">
           <p class="name">{{student}}</p>
         <ion-note item-right>
            <p><button class="performance {{studentColorSetting(i, j)}}"></button><span id="percentage" style="padding-left:10px"> contribution: {{ percentageresults[i][j] }}%</span></p> 
