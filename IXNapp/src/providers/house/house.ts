@@ -33,7 +33,13 @@ export class HouseProvider {
 	var myData2 = JSON.stringify({teachID: this.TAID})
 
  	return this.http2.post(link2, myData2);
-  	/* return this.http.get('http://gc02team02app.azurewebsites.net/SQL/RedGroup.php'); */
+  }
+
+  GetStage2Student() {
+    	var link3 = 'http://gc02team02app.azurewebsites.net/SQL/Stage2StudentPrelim.php';
+  	var myData3 = JSON.stringify({teachID: this.TAID})
+
+  	return this.http3.post(link3, myData3);
   }
 
 }
