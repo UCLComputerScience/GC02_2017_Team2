@@ -15,7 +15,7 @@ export class HouseProvider {
 
 	TAID: number = 1; /* I assume I know this here */
 
-  constructor(public http: Http, public http2: Http) {
+  constructor(public http: Http, public http2: Http, public http3: Http) {
     console.log('Hello HouseProvider Provider');
   }
 
