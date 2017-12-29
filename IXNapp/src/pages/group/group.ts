@@ -121,7 +121,7 @@ export class GroupPage implements OnInit {
   
   public giveFeedback() {
     if (this.buttonSelected === null || this.groupComment === null) {
-        this.showError ("please fill in all fields 111");
+        this.showError ("please fill in all fields");
     }
     else {
         this.setButtonData();
