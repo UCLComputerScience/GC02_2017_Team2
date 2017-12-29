@@ -12,6 +12,8 @@ export class GroupPage implements OnInit {
   // this tells the tabs component which Pages
   // should be each tab's root Page
   constructor(public navCtrl: NavController, private alertCtrl: AlertController) {
+    this.fillWeeksWithout();
+    this.latestWeek();
   }
 
 
@@ -23,7 +25,10 @@ export class GroupPage implements OnInit {
     this.navCtrl.pop();
   }
   
-  currentdateindex = 1;
+  currentdateindex;
+  
+  // BACKEND ALL WEEKS WITH INFO
+  weekswithinfo=[1,3,5,6];
   
   //BACKEND
   weeks = [1,2,3,4,5,6,7,8,9,10]; //dont touch
@@ -45,8 +50,38 @@ export class GroupPage implements OnInit {
   groupFeedback = null;
   groupComment = null;
   
+  weekswithoutinfo = [];
+  
+  fillWeeksWithout() {
+    for (let i=0; i < this.weeks.length; i++) {
+        let week = this.weeks[i];
+        if (this.weekswithinfo.includes(week)) {
+            //do nothing
+        }
+        else {
+            this.weekswithoutinfo.push(week);
+        }
+    }
+  }
+  
+  latestWeek() {
+    var latestW = this.weekswithinfo[this.weekswithinfo.length - 1];
+    for (let i=0; i < this.weeks.length; i++) {
+        if (latestW === this.weeks[i]) {
+            var nextW = this.weeks[i+1];
+            break;
+        }
+    }
+    for (let j=0; j < this.weekswithoutinfo.length; j++) {
+        if(nextW == this.weekswithoutinfo[j]) {
+            this.currentdateindex = j;
+        }
+    }
+    
+  }
+  
   nextweek() : void {
-    if (this.currentdateindex < this.weeks.length-1) {
+    if (this.currentdateindex < this.weekswithoutinfo.length-1) {
         this.currentdateindex++;
     }
   }
