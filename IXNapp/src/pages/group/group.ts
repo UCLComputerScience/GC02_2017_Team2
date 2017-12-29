@@ -26,16 +26,17 @@ export class GroupPage implements OnInit {
   currentdateindex = 1;
   
   //BACKEND
-  weeks = [1,2,3,4,5,6,7,8,9,10]
+  weeks = [1,2,3,4,5,6,7,8,9,10]; //dont touch
+  feedbackExisting = []; //here for week numbers existing feedback
   
   //BACKEND
   names = ['Samantha Watson', 'John Taylor', 'James Kirk'];
   
   //BACKEND
-  buttons = ['button1', 'button2', 'button3', 'button4'];
-  
-  //BACKEND
   groupNumber = 3;
+  
+  buttons = ['button1', 'button2', 'button3', 'button4'];
+
   
   descriptions= ['excellent', 'good', 'average', 'bad']; // don't change
   
@@ -129,7 +130,7 @@ export class GroupPage implements OnInit {
     }
   }
   
-  storeData() {
+  storeData() { //only method to consider for backend 
     for (let i=0; i<this.names.length; i++) {
         let feedback = this.getDescription(this['isStudentSelected'+i]);
         let comment = this['studentComment'+i];
@@ -161,10 +162,8 @@ export class GroupPage implements OnInit {
     }
     else {
         this['studentContribution'+i] = 0;
-    }
-        
+    }    
   }
-  
 }
 
 export class Student {

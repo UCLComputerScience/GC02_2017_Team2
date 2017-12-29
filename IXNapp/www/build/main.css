@@ -25847,7 +25847,7 @@ page-group #groupperformance {
 page-group .performancebutton {
   font-size: 13px;
   height: 30px;
-  width: 23%;
+  width: 20%;
   padding: 2px;
   margin: 3px;
   color: white;
@@ -26273,6 +26273,14 @@ page-more-details .performancebutton {
   border-radius: 5px;
 }
 
+page-more-details .studentbutton {
+  height: 30px;
+  width: 30px;
+  border-radius: 80px;
+  vertical-align: middle;
+  margin-left: 5px;
+}
+
 page-more-details .excellent {
   background-color: #058D65;
 }
@@ -26291,6 +26299,16 @@ page-more-details .bad {
 
 page-more-details h5 {
   text-align: center;
+}
+
+page-more-details ion-list {
+  margin-bottom: 0px !important;
+  margin-top: 0px !important;
+}
+
+page-more-details ion-item {
+  padding-bottom: 0px !important;
+  padding-top: 0px !important;
 }
 
 page-my-feedback-history #feedbackSummary-heading6 {
@@ -26451,16 +26469,16 @@ page-my-profile ion-input {
 }
 
 page-my-profile #supervising {
-  margin-top: 25px;
+  margin-top: 20px;
 }
 
-page-my-profile button {
+page-my-profile #button {
   background-color: #00A8FF;
   color: white;
-  font-size: 17px;
+  font-size: 24px;
   border-radius: 70px;
-  height: 50px;
-  width: 50px;
+  height: 70px;
+  width: 70px;
   margin: 10px;
 }
 
@@ -26474,17 +26492,27 @@ page-my-profile ion-item {
 
 page-my-profile #blueblue {
   background-color: #00A8FF;
+  padding-bottom: 40px;
 }
 
 page-my-profile #logout {
   position: absolute;
   top: 15px;
-  right: 10px;
+  right: 15px;
   width: auto;
   background-color: white;
   color: grey;
   border-radius: 5px;
   height: 25px;
+}
+
+page-my-profile #savechanges {
+  width: auto;
+  background-color: white;
+  color: grey;
+  border-radius: 5px;
+  height: 25px;
+  float: right;
 }
 
 page-profile #profilepic {
