@@ -1,7 +1,7 @@
 import {Component, ViewChild} from '@angular/core';
 import { NavController} from 'ionic-angular';
 import { Chart } from 'chart.js';
-
+import { HouseProvider } from '../../providers/house/house';
 
 @Component({
   selector: 'page-home-page',
@@ -17,8 +17,23 @@ export class StudentHomePage {
   innerHeight: any;
 	innerWidth: any;
   lineChart: any;
+  Students: any[] = [];
+  ultimatewkn: number[] = [];
+  ultimatewkn2: string[] = [];
+  weekindex: number;
+  groupdata: number[] = [];
+  studentdata: number[] = [];
+  studentN: any[] = [];
+  student: string;
+  StudentIDs: any[] = [];
+  contrhist: any[] = [];
+  contribution: number;
+  groupLatest: any[] = [];
+  studentLatest: any[] = [];
+  str: string;
+  str2: string;
   
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController, public house: HouseProvider) {
     this.innerHeight = (window.screen.height);
     this.innerWidth = (window.screen.width);
     this.student;  
@@ -27,14 +42,15 @@ export class StudentHomePage {
     this.performanceDescription; 
   }
 
+
   //variables to change for data retrieval
-  groupLatest = [3]; //latest group performance 
-  studentLatest = [3]; //latest student performance 
-  contribution = [33];  //latest student contribution 
-  weekindex = [4]; // latest week index
-  student = ['Samantha Watson']; //student name 
-  studentdata = [3, 2, 2, 1, 4, 3, 2]; //student performance history
-  groupdata = [4, 4, 3, 4, 3, 4, 3]; //group performance history 
+  //groupLatest = [3]; //latest group performance 
+  //studentLatest = [3]; //latest student performance 
+  //contribution = [33];  //latest student contribution 
+  //weekindex = [4]; // latest week index
+  //student = ['Samantha Watson']; //student name 
+  //studentdata = [3, 2, 2, 1, 4, 3, 2]; //student performance history
+  //groupdata = [4, 4, 3, 4, 3, 4, 3]; //group performance history 
 
 
   /*Not to change after here*/
@@ -62,15 +78,53 @@ export class StudentHomePage {
     return indicator; 
   }
 
+  ngOnInit() {
+  this.house.GetStudentHome().subscribe(dt => {
+      this.Students = JSON.parse(dt["_body"]);
 
-  ionViewDidLoad() {
-    let lineCTX = this.lineCanvas.nativeElement;
+      console.log(this.Students);
+
+      for(let i in this.Students) {
+      this.str = this.Students[i].fname;
+      this.str2 = this.Students[i].lname;
+      if(!this.studentN.includes(this.str.concat(" ", this.str2))) {
+        this.studentN.push(this.str.concat(" ", this.str2));
+        this.StudentIDs.push(this.Students[i].s_ID);
+        }
+      }
+
+      this.student = this.studentN[0];
+
+      for(let q in this.Students) {
+        this.ultimatewkn.push(this.Students[q].s_wk);
+        this.groupdata.push(this.Students[q].gp);
+        this.studentdata.push(this.Students[q].sp);
+        this.contrhist.push(this.Students[q].contr);
+      }
+
+      this.weekindex = Math.max.apply(Math, this.ultimatewkn);
+      console.log(this.weekindex);
+
+      this.groupLatest.push(this.groupdata[this.weekindex-1]);
+      this.studentLatest.push(this.studentdata[this.weekindex-1]);
+      this.contribution = this.contrhist[this.weekindex-1];
+
+      for(let t in this.ultimatewkn) {
+        var x;
+        var y;
+        y = "W";
+        x = String(this.ultimatewkn[t]);
+        this.ultimatewkn2.push(y.concat("", x));
+      }
+
+
+      let lineCTX = this.lineCanvas.nativeElement;
     lineCTX.height = innerHeight * 0.4;
     lineCTX.width = innerWidth;
-		var data = {
-			labels: ["W1", "W2", "W3", "W4", "W5", "W6", "W7"],
-			datasets: [
-				{
+    var data = {
+      labels: this.ultimatewkn2, //["W1", "W2", "W3", "W4", "W5", "W6", "W7", "W8", "W9", "W10"],
+      datasets: [
+        {
           label: 'me',
           data: this.studentdata,
           fill: false, //the area below the line empty
@@ -103,29 +157,27 @@ export class StudentHomePage {
         }
 
       ]
-		};
+    };
 
-		new Chart(
-			lineCTX,
-			{
-				"type": 'line',
-				"data": data,
-				"options": {
-					legend: {
-						display: true,
+    new Chart(
+      lineCTX,
+      {
+        "type": 'line',
+        "data": data,
+        "options": {
+          legend: {
+            display: true,
             position: 'top',
             responsive: true, 
             maintainAspectRatio: false
           },
-					"animation": {
-						"animateScale": true,
-						"animateRotate": false
-					},
-				}
-			}
-		);
-
-    
-   
+          "animation": {
+            "animateScale": true,
+            "animateRotate": false
+          },
+        }
+      }
+    );
+  })
   }
 }
