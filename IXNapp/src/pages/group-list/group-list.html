@@ -9,9 +9,9 @@
 <ion-content no-padding id="page3">
     <div class="spacer" style="width:300px;height: 20px;" id="groupList-spacer6"></div>
     <div class="section" *ngFor="let item of items; let i = index">
-        <button ion-button class="groupbutton {{items2[i]}}" on-click="goToFeedbackSummary()">
+        <button ion-button class="groupbutton {{getPerformance(i)}}" on-click="goToFeedbackSummary(item)">
             <span class="button-inner">
-                <ion-item class="background {{items2[i]}}" no-lines>
+                <ion-item class="background {{getPerformance(i)}}" no-lines>
                     <ion-row>
                         <ion-col>
                             Group&nbsp; <span>{{item}}</span>
@@ -19,7 +19,7 @@
                         <ion-col>
                         </ion-col>
                         <ion-col>
-                            <span id="hello">{{items2[i]}}</span>&nbsp;
+                            <span id="hello">{{getPerformance(i)}}</span>&nbsp;
                         </ion-col>
                     </ion-row>
                 </ion-item>

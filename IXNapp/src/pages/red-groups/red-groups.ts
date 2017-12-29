@@ -19,10 +19,11 @@ Groups: any[];
 RGroups: any[] = [];
 Weeks: any[];
 RWeeks: any[] = [];
+Message: string;
 	
 
   constructor(public navCtrl: NavController, public house: HouseProvider, public http: Http, public http2 : Http) {
-
+  	this.Message = 'Press on a Student!';
   }
 
   ngOnInit() {
@@ -38,6 +39,10 @@ RWeeks: any[] = [];
   		if(this.Groups[k].weeknum == this.mx && this.Groups[k].g_fb == 1) {
   			this.RGroups.push(this.Groups[k]);
   		}
+  		}
+
+  		if(this.RGroups.length == 0) {
+  			this.Message = 'No Red Groups!';
   		}
 
   	})

@@ -1,6 +1,6 @@
 import { Component , OnInit} from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { StaffContakProvider } from '../../providers/staff-contak/staff-contak';
+import { HouseProvider } from '../../providers/house/house';
 
 
 @Component({
@@ -13,15 +13,10 @@ export class StaffContactInfoPage {
 StaffContact: any[];
 TAContact: any[];
 
-  constructor(public navCtrl: NavController, public staffcontakprovider: StaffContakProvider) {
-    this.getStaffCon();
+  constructor(public navCtrl: NavController, public house: HouseProvider) {
+    this.house.getStaffCon().subscribe(data => this.TAContact = data);
+  console.log(this.TAContact);
   }
-
-getStaffCon() {
-  this.staffcontakprovider.getStaffCon().subscribe(data => this.TAContact = data);
-}
-
-  
 
 
 ngOnInit() {

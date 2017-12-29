@@ -10,6 +10,14 @@ page-more-details {
         border-radius: 5px;
     }
     
+    .studentbutton {
+        height: 30px;
+        width: 30px;
+        border-radius: 80px;
+        vertical-align: middle; 
+        margin-left: 5px;
+    }
+    
     .excellent {
         background-color:#058D65;
     }
@@ -28,6 +36,21 @@ page-more-details {
     
     h5 {
         text-align: center;
+    }
+    
+    ion-list {
+        margin-bottom: 0px !important;
+        margin-top: 0px !important;
+    }
+    
+    ion-card {
+        
+    }
+    
+    ion-item {
+        padding-bottom: 0px !important;
+        padding-top: 0px !important;
+        
     }
     
 }

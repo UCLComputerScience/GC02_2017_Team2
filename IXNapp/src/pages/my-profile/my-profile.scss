@@ -28,15 +28,16 @@ page-my-profile {
     }
     
     #supervising{
-        margin-top: 25px;
+        margin-top: 20px;
     }
-    button {
+    
+    #button {
         background-color:#00A8FF;
         color:white;
-        font-size:17px;
+        font-size:24px;
         border-radius:70px;
-        height:50px;
-        width:50px;
+        height:70px;
+        width:70px;
         margin:10px;
     }
     
@@ -50,17 +51,27 @@ page-my-profile {
 
     #blueblue {
         background-color: #00A8FF;
+        padding-bottom: 40px;
     }
     
     #logout {
         position:absolute;
         top: 15px;
-        right: 10px;
+        right: 15px;
         width: auto;
         background-color: white;
         color: grey;
         border-radius: 5px;
         height: 25px;
+    }
+    
+    #savechanges {
+        width: auto;
+        background-color: white;
+        color: grey;
+        border-radius: 5px;
+        height: 25px;
+        float:right;
     }
 
 

@@ -9,19 +9,20 @@
     <div padding id="blueblue">
         <button id="logout" (click)="logout()">Log out</button>
         <img id ="profilepic" src= "http://static.bleacherreport.net/images/redesign/avatars/default-user-icon-profile.png" style= "height: 12vh; width: 22vw;">
-        <form id="myProfile-form3">
+        <form (ngSubmit)="changePassword()" id="passwordForm">
             <ion-item no-lines id="myProfile-input1">
-                <ion-input type="text" placeholder="{{firstName}}"></ion-input>
+                <ion-input [readonly]=true type="text" placeholder="{{firstName}}"></ion-input>
             </ion-item>
             <ion-item no-lines id="myProfile-input2">
-                <ion-input type="text" placeholder="{{lastName}}"></ion-input>
+                <ion-input [readonly]=true type="text" placeholder="{{lastName}}"></ion-input>
             </ion-item>
             <ion-item no-lines id="myProfile-input3">
-                <ion-input type="email" placeholder="{{email}}"></ion-input>
+                <ion-input [readonly]=true type="email" placeholder="{{email}}"></ion-input>
             </ion-item>
             <ion-item no-lines id="myProfile-input4">
-                <ion-input type="password" placeholder="Password"></ion-input>
+                <ion-input type="password" placeholder="Enter new password" name="password" [(ngModel)]="this.password"></ion-input>
             </ion-item>
+            <button type="submit" id="savechanges">Save password changes</button>
         </form>
     </div>
     <div id="supervising">
@@ -29,7 +30,7 @@
         Supervising groups
         </h5>
         <div id="groups">
-            <button *ngFor="let item of items">
+            <button id="button" *ngFor="let item of items">
                 {{ item }}
             </button>
         </div>

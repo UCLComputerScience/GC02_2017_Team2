@@ -21,7 +21,6 @@ import { ProfilePage } from '../pages/profile/profile';
 import { MyFeedbackHistoryPage } from '../pages/my-feedback-history/my-feedback-history';
 
 import { HttpModule } from '@angular/http';
-import { StaffContakProvider } from '../providers/staff-contak/staff-contak';
 import { AuthService } from './../providers/auth-service';
 import { HouseProvider } from '../providers/house/house';
 
@@ -78,7 +77,6 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    StaffContakProvider,
     AuthService,
     HouseProvider
   ]

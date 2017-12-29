@@ -15,7 +15,7 @@ export class HouseProvider {
 
 	TAID: number = 1; /* I assume I know this here */
 
-  constructor(public http: Http, public http2: Http) {
+  constructor(public http: Http, public http2: Http, public http3: Http, public http4: Http) {
     console.log('Hello HouseProvider Provider');
   }
 
@@ -33,7 +33,18 @@ export class HouseProvider {
 	var myData2 = JSON.stringify({teachID: this.TAID})
 
  	return this.http2.post(link2, myData2);
-  	/* return this.http.get('http://gc02team02app.azurewebsites.net/SQL/RedGroup.php'); */
+  }
+
+  GetStage2Student() {
+    	var link3 = 'http://gc02team02app.azurewebsites.net/SQL/Stage2StudentPrelim.php';
+  	var myData3 = JSON.stringify({teachID: this.TAID})
+
+  	return this.http3.post(link3, myData3);
+  }
+	
+  getStaffCon(){
+
+        return this.http4.get('http://gc02team02app.azurewebsites.net/SQL/Staff%20Contact.php').do((res: Response) => console.log(res)).map((res: Response) => res.json());
   }
 
 }

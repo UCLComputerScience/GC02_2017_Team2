@@ -6,10 +6,10 @@
       </button>
     </ion-buttons>
     <ion-title>
-      Group #
+      Group {{groupNumber}}
     </ion-title>
     <ion-buttons end>
-      <button ion-button>
+      <button ion-button type="submit" form="feedbackForm">
         Save
       </button>
     </ion-buttons>
@@ -21,9 +21,7 @@
       <ion-icon name="arrow-back"></ion-icon>
     </button>
     <p class="datebar" id="date">
-      {{dates[currentdateindex]}}
-      <br>
-      <b>{{(weeks[currentdateindex])}}</b>
+      <b>Week {{(weeks[currentdateindex])}}</b>
     </p>
     <button class="datebar" id="group-button19" ion-button clear color="positive" (click)="nextweek()">
       <ion-icon name="arrow-forward"></ion-icon>
@@ -34,41 +32,41 @@
   </h5>
   <div id="groupperformance">
     <button *ngFor="let button of buttons; let k = index; " class="performancebutton {{ button }}" [class.highlighted]="k === buttonSelected" (click)="buttonSelect(k)">
-      {{getDescription(k)}}
+      {{this.getDescription(k)}}
     </button>
   </div>
   <h6 id="group-heading5" style="color:#000000;">
     Comments
   </h6>
-  <form id="group-form6">
-    <ion-item lines id="group-input7">
-      <ion-textarea rows=2 type="text" placeholder="Click to input"></ion-textarea>
+  <form (ngSubmit)="giveFeedback()" id="feedbackForm">
+    <ion-item text-wrap lines id="group-input7">
+      <ion-textarea rows=2 type="text" placeholder="Click to input" [(ngModel)]="this.groupComment" name="groupComment"></ion-textarea>
     </ion-item>
-  </form>
-  <h5>Student Performance</h5>
-  <ion-list *ngFor="let name of names; let i = index; ">
-    <ion-card>
-      <div>
-        <ion-item color="none" id="group-list-item39">
-          <ion-avatar item-left>
-            <img src="http://static.bleacherreport.net/images/redesign/avatars/default-user-icon-profile.png" style="height: 12vh; width: 22vw;">
-          </ion-avatar>
-          <p id="name">
-            {{name}}
-          </p>
-        </ion-item>
-        <div>
-          <button *ngFor="let button of buttons; let j = index; " class="studentbutton {{button}}" [class.highlighted]="j === getIsStudentSelected(i)" (click)="onSelect(j, i)"></button>
-          <ion-input placeholder="contr." id="contribution"></ion-input>
-        </div>
-        <ion-item lines>
-          <ion-input type="text" placeholder="Click to input comment"></ion-input>
-        </ion-item>
-        <ion-item no-lines id="toggleitem">
-          <ion-label id="label">Absent:</ion-label>
-          <ion-toggle></ion-toggle>
-        </ion-item>
-      </div>
-    </ion-card>
-  </ion-list>
+      <h5>Student Performance</h5>
+      <ion-list *ngFor="let name of names; let i = index; ">
+        <ion-card>
+          <div>
+            <ion-item text-wrap color="none" id="group-list-item39">
+              <ion-avatar item-left>
+                <img src="http://static.bleacherreport.net/images/redesign/avatars/default-user-icon-profile.png" style="height: 12vh; width: 22vw;">
+              </ion-avatar>
+              <p id="name">
+                {{name}}
+              </p>
+            </ion-item>
+            <div>
+              <button type="button" *ngFor="let button of buttons; let j = index; " class="studentbutton {{button}}" [class.highlighted]="j === getIsStudentSelected(i)" (click)="onSelect(j, i)"></button>
+              <ion-input placeholder="contr." id="contribution" [(ngModel)]="this['studentContribution'+i]" name="studentContribution"></ion-input>
+            </div>
+            <ion-item lines>
+              <ion-input [(ngModel)]="this['studentComment'+i]" name="studentComment" type="text" placeholder="Click to input comment"></ion-input>
+            </ion-item>
+            <ion-item no-lines id="toggleitem">
+              <ion-label id="label">Absent:</ion-label>
+              <ion-toggle></ion-toggle>
+            </ion-item>
+          </div>
+        </ion-card>
+      </ion-list>
+    </form>
 </ion-content>
