@@ -6,7 +6,7 @@ webpackJsonp([0],{
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoginPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__tabs_controller_tabs_controller__ = __webpack_require__(213);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_auth_service__ = __webpack_require__(61);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -79,7 +79,7 @@ LoginPage = __decorate([
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return GroupPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(11);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -195,16 +195,16 @@ webpackEmptyAsyncContext.id = 168;
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TabsControllerPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__home_home__ = __webpack_require__(214);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__group_list_group_list__ = __webpack_require__(342);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__staff_contact_info_staff_contact_info__ = __webpack_require__(344);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__my_profile_my_profile__ = __webpack_require__(346);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_auth_service__ = __webpack_require__(61);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__home_page_home_page__ = __webpack_require__(347);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__staff_contact_staff_contact__ = __webpack_require__(467);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__profile_profile__ = __webpack_require__(468);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__my_feedback_history_my_feedback_history__ = __webpack_require__(469);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__staff_contact_staff_contact__ = __webpack_require__(348);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__profile_profile__ = __webpack_require__(349);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__my_feedback_history_my_feedback_history__ = __webpack_require__(350);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -254,10 +254,9 @@ TabsControllerPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
         selector: 'page-tabs-controller',template:/*ion-inline-start:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/tabs-controller/tabs-controller.html"*/'<ion-tabs id="tabsController-tabs1">\n  <ion-tab [root]="tab1Root" tabTitle="Home" tabIcon="home" id="tabsController-tab1"></ion-tab>\n  <ion-tab [root]="tab2Root" tabTitle="Feedback" tabIcon="stats" id="tabsController-tab2"></ion-tab>\n  <ion-tab [root]="tab3Root" tabTitle="Staff contacts" tabIcon="contacts" id="tabsController-tab4"></ion-tab>\n  <ion-tab [root]="tab4Root" tabTitle="Profile" tabIcon="person" id="tabsController-tab3"></ion-tab>\n</ion-tabs>'/*ion-inline-end:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/tabs-controller/tabs-controller.html"*/
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_6__providers_auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__providers_auth_service__["a" /* AuthService */]) === "function" && _b || Object])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_6__providers_auth_service__["a" /* AuthService */]])
 ], TabsControllerPage);
 
-var _a, _b;
 //# sourceMappingURL=tabs-controller.js.map
 
 /***/ }),
@@ -268,7 +267,7 @@ var _a, _b;
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__deadlines_deadlines__ = __webpack_require__(215);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__red_groups_red_groups__ = __webpack_require__(216);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__red_students_red_students__ = __webpack_require__(220);
@@ -626,7 +625,7 @@ HomePage = __decorate([
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DeadlinesPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(11);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -670,7 +669,7 @@ DeadlinesPage = __decorate([
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RedGroupsPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__(45);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_house_house__ = __webpack_require__(59);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -760,7 +759,7 @@ RedGroupsPage = __decorate([
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RedStudentsPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__(45);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_house_house__ = __webpack_require__(59);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -850,7 +849,7 @@ RedStudentsPage = __decorate([
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return GroupListPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__feedback_summary_feedback_summary__ = __webpack_require__(343);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__group_group__ = __webpack_require__(115);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -903,7 +902,7 @@ GroupListPage = __decorate([
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FeedbackSummaryPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__group_group__ = __webpack_require__(115);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1029,7 +1028,7 @@ FeedbackSummaryPage = __decorate([
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return StaffContactInfoPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_staff_contak_staff_contak__ = __webpack_require__(345);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1124,7 +1123,7 @@ StaffContakProvider = __decorate([
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyProfilePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_auth_service__ = __webpack_require__(61);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__login_login__ = __webpack_require__(113);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -1184,7 +1183,7 @@ MyProfilePage = __decorate([
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return StudentHomePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_chart_js__ = __webpack_require__(221);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_chart_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_chart_js__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -1315,9 +1314,166 @@ StudentHomePage = __decorate([
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return StaffContactPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(11);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var StaffContactPage = (function () {
+    function StaffContactPage(navCtrl) {
+        this.navCtrl = navCtrl;
+    }
+    StaffContactPage.prototype.ngOnInit = function () {
+        this.StaffContact = [{ Name: "Yun Fu", Email: "yunfu@ucl.ac.uk", Hours: "13:00", Location: "Malet Place" }];
+        this.TAContact = [{ Name: "John Taylor", Email: "John@ucl.ac.uk", Hours: "14:00", Location: "Malet Place", Exp: "Ionic" }, { Name: "Dominic Twain", Email: "Dominic@ucl.ac.uk", Hours: "16:00", Location: "Malet Place", Exp: "Databases" }, { Name: "Ashley Shana", Email: "Ashley@ucl.ac.uk", Hours: "14:00", Location: "Malet Place", Exp: "Python" }];
+    };
+    return StaffContactPage;
+}());
+StaffContactPage = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+        selector: 'page-staff-contact',template:/*ion-inline-start:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/staff-contact/staff-contact.html"*/'\n\n<ion-header>\n  <ion-navbar>\n    <ion-title>\n      Staff Contact Info\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <h4 style="margin-top: 6vh;">\n    Lecturer\n  </h4>\n  <ion-item no-lines *ngFor= "let StaffC of StaffContact">\n    <ion-avatar item-start>\n      <img src= "http://static.bleacherreport.net/images/redesign/avatars/default-user-icon-profile.png" style= "height: 12vh; width: 22vw;">\n    </ion-avatar>\n    <ul style="list-style-type:none; margin-left: -6vw;">\n      <li>{{StaffC.Name}}</li>\n      <li>{{StaffC.Email}}</li>\n      <li>{{StaffC.Hours}}</li>\n      <li>{{StaffC.Location}}</li>\n    </ul>\n  </ion-item>\n\n  <hr>\n\n  <h4>\n    Teaching Assistance\n  </h4>\n\n  <ion-item no-lines *ngFor= "let TAC of TAContact">\n    <ion-avatar item-start>\n      <img class= "TAsize" src= "http://static.bleacherreport.net/images/redesign/avatars/default-user-icon-profile.png" style= "height: 10vh; width: 18vw; margin-left: 4vw; margin-top:-13vh;">\n    </ion-avatar>\n    <ul style="list-style-type:none; margin-left: -7vw;">\n      <li>{{TAC.Name}}</li>\n      <li>{{TAC.Email}}</li>\n    </ul>\n    <ul style="list-style-type:none; margin-left: -7vw;">\n      <li><u>Lab Hours:</u></li>\n      <li>{{TAC.Hours}}</li>\n      <li><u>Lab Location:</u></li>\n      <li>{{TAC.Location}}</li>\n      <li><u>Experience:</u></li>\n      <li>{{TAC.Exp}}</li>\n    </ul>\n\n  </ion-item>\n</ion-content>\n'/*ion-inline-end:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/staff-contact/staff-contact.html"*/
+    }),
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */]])
+], StaffContactPage);
+
+//# sourceMappingURL=staff-contact.js.map
+
+/***/ }),
+
+/***/ 349:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ProfilePage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(11);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var ProfilePage = (function () {
+    // this tells the tabs component which Pages
+    // should be each tab's root Page
+    function ProfilePage(navCtrl) {
+        this.navCtrl = navCtrl;
+    }
+    return ProfilePage;
+}());
+ProfilePage = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+        selector: 'page-profile',template:/*ion-inline-start:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/profile/profile.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>\n      My Profile\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n<ion-content padding id="page4">\n  <div id="blueblue">\n    <img id ="profilepic" src="assets/img/iPJmfKWCSdylgevYCJ6t_myAvatar3.png"/>\n    <form id="myProfile-form3">\n      <div class="spacer" style="height:40px;" id="myProfile-spacer2"></div>\n      <ion-item id="myProfile-input1">\n        <ion-input type="text" placeholder="Firstname"></ion-input>\n      </ion-item>\n      <ion-item id="myProfile-input2">\n        <ion-input type="text" placeholder="Lastname"></ion-input>\n      </ion-item>\n      <ion-item id="myProfile-input3">\n        <ion-input type="email" placeholder="Email"></ion-input>\n      </ion-item>\n      <ion-item id="myProfile-input4">\n        <ion-input type="password" placeholder="Password"></ion-input>\n      </ion-item>\n    </form>\n  </div>\n  <div id="supervising">\n    <h5 id="myProfile-heading1" style="color:#000000;text-align:center;">\n      Supervising groups\n    </h5>\n    <div id="groups">\n      <button *ngFor="let item of items">\n        {{ item }}\n      </button>\n    </div>\n  </div>\n</ion-content>\n'/*ion-inline-end:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/profile/profile.html"*/
+    }),
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */]])
+], ProfilePage);
+
+//# sourceMappingURL=profile.js.map
+
+/***/ }),
+
+/***/ 350:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyFeedbackHistoryPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(11);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var MyFeedbackHistoryPage = (function () {
+    // this tells the tabs component which Pages
+    // should be each tab's root Page
+    function MyFeedbackHistoryPage(navCtrl) {
+        this.navCtrl = navCtrl;
+        /* Data retrieval (only this section to modify with data) */
+        this.groupnumber = 4; //group number
+        this.student = 'Samantha Watson'; //student name
+        this.weekswithinfo = [1, 2, 3, 4, 5, 8]; //week numbers of those performances
+        this.studentdata = [3, 2, 2, 1, 4, 3, 2]; //student performance history
+        this.groupdata = [4, 4, 3, 4, 4, 3]; //group performance history 
+        this.percentageresults = [30, 33, 40, 33, 34, 30]; //contribution percentages
+        /* Do not change anything beyond this point */
+        this.performanceAnnotation = ['bad', 'average', 'good', 'excellent']; //constants do not modify
+        this.performanceColor = ['red', 'yellow', 'lightgreen', 'darkgreen']; //constants do not modify
+        this.student;
+        this.percentageresults;
+        this.groupnumber;
+    }
+    MyFeedbackHistoryPage.prototype.groupColorSetting = function (x) {
+        var value = this.groupdata[x];
+        var indexvalue = value - 1;
+        var colorName = this.performanceColor[indexvalue];
+        return colorName;
+    };
+    MyFeedbackHistoryPage.prototype.studentColorSetting = function (x) {
+        var indexvalue = this.studentdata[x] - 1;
+        var studentColor = this.performanceColor[indexvalue];
+        return studentColor;
+    };
+    MyFeedbackHistoryPage.prototype.latestWeek = function () {
+        var weekIndex = this.weekswithinfo.length;
+        weekIndex = weekIndex - 1;
+        var latestW = this.weekswithinfo[weekIndex];
+        return latestW;
+    };
+    MyFeedbackHistoryPage.prototype.averagePerformance = function () {
+        var weekIndex = this.weekswithinfo.length;
+        var sum = 0;
+        for (var i = 0; i < weekIndex; i++) {
+            sum = sum + this.groupdata[i];
+        }
+        sum = sum / weekIndex;
+        return sum.toFixed(1);
+    };
+    MyFeedbackHistoryPage.prototype.latestPerformance = function () {
+        var weekIndex = this.weekswithinfo.length;
+        var indexvalue = this.groupdata[weekIndex - 1];
+        return this.performanceAnnotation[indexvalue];
+    };
+    return MyFeedbackHistoryPage;
+}());
+MyFeedbackHistoryPage = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+        selector: 'page-my-feedback-history',template:/*ion-inline-start:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/my-feedback-history/my-feedback-history.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-buttons start>\n      <button ion-button></button>\n    </ion-buttons>\n    <ion-title>\n      Feedback Summary\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <h4 id="feedbackSummary-heading6">\n    Group {{groupnumber}}\n  </h4>\n  <!-- Latest Feedback section -->\n  <div class="spacer" style="height:3%;" id="spacerline"></div>\n    <div>\n      <br><p style="margin:0px; outline:none;"> Latest Feedback:\n        <span class="feedbackwriting">Week </span><span class="feedbackwriting"> {{latestWeek()}} </span></p>\n    </div>\n  <hr>\n  <div id="legend">\n    <div id="lll">\n      <p class="floating" id="overallp" style="color:#000000;">\n        Current average <br> performance:\n      </p>\n      <p class="floating" id="latestp" style="color:#000000;">\n        latest performance:\n        <br>\n        <span class="feedbackwriting" id="latestperformance">{{latestPerformance()}}</span>\n      </p>\n    </div>\n    <p class="feedbackwriting" id="performance2">\n      {{averagePerformance()}} out of 4\n    </p>\n  </div>\n<!-- Weekly feedback history legend-->\n  <hr>\n  <h5 style="color:#000000;">\n    Weekly Feedback\n  </h5>\n  <div style="padding-bottom:7px;"><button class="performance darkgreen"></button> excellent <button class="performance lightgreen"></button> good <button class="performance yellow"></button> average <button class="performance red"></button> bad</div>\n  <hr>\n  <div id="feedbackSummary-container9" *ngFor="let item of weekswithinfo; let i = index">\n    <ion-list id="feedbackSummary-list10">\n      <ion-item-divider id="feedbackSummary-list-item-divider2" class="{{groupColorSetting(i)}}">\n        <p id="weekdiv">Week {{weekswithinfo[i]}}</p>\n        <p id="weekdiv2"><button id="feedbackSummary-button41" ion-button clear small>\n          more details\n        </button>\n        </p>\n      </ion-item-divider>\n      <!-- Weekly feedback history -->\n      <ion-item color="none" id="feedbackSummary-list-item56" (click)="setcolour();">\n        <p class="name">{{student}}</p>\n        <ion-note item-right>\n          <p><button class="performance {{studentColorSetting(i)}} "></button><span id="percentage" style="padding-left:10px"> contribution: {{ percentageresults[i] }}%</span></p>\n        </ion-note>\n      </ion-item>\n    </ion-list>\n\n  </div>\n</ion-content>\n'/*ion-inline-end:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/my-feedback-history/my-feedback-history.html"*/
+    }),
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */]])
+], MyFeedbackHistoryPage);
+
+//# sourceMappingURL=my-feedback-history.js.map
+
+/***/ }),
+
+/***/ 351:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(349);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_module__ = __webpack_require__(362);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(352);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_module__ = __webpack_require__(365);
 
 
 Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* platformBrowserDynamic */])().bootstrapModule(__WEBPACK_IMPORTED_MODULE_1__app_module__["a" /* AppModule */]);
@@ -1325,15 +1481,15 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 
 /***/ }),
 
-/***/ 362:
+/***/ 365:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__ = __webpack_require__(33);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_component__ = __webpack_require__(401);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_component__ = __webpack_require__(404);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_home_home__ = __webpack_require__(214);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_group_list_group_list__ = __webpack_require__(342);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_my_profile_my_profile__ = __webpack_require__(346);
@@ -1345,12 +1501,12 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__pages_deadlines_deadlines__ = __webpack_require__(215);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_group_group__ = __webpack_require__(115);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__pages_feedback_summary_feedback_summary__ = __webpack_require__(343);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__components_progress_bar_progress_bar__ = __webpack_require__(465);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__components_progress_bar_progress_bar__ = __webpack_require__(468);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__pages_home_page_home_page__ = __webpack_require__(347);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__pages_more_details_more_details__ = __webpack_require__(466);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__pages_staff_contact_staff_contact__ = __webpack_require__(467);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__pages_profile_profile__ = __webpack_require__(468);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__pages_my_feedback_history_my_feedback_history__ = __webpack_require__(469);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__pages_more_details_more_details__ = __webpack_require__(469);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__pages_staff_contact_staff_contact__ = __webpack_require__(348);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__pages_profile_profile__ = __webpack_require__(349);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__pages_my_feedback_history_my_feedback_history__ = __webpack_require__(350);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__angular_http__ = __webpack_require__(45);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__providers_staff_contak_staff_contak__ = __webpack_require__(345);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__providers_auth_service__ = __webpack_require__(61);
@@ -1459,13 +1615,13 @@ AppModule = __decorate([
 
 /***/ }),
 
-/***/ 401:
+/***/ 404:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyApp; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(208);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(212);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_login_login__ = __webpack_require__(113);
@@ -1505,7 +1661,7 @@ MyApp = __decorate([
 
 /***/ }),
 
-/***/ 446:
+/***/ 449:
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
@@ -1754,11 +1910,11 @@ webpackContext.keys = function webpackContextKeys() {
 };
 webpackContext.resolve = webpackContextResolve;
 module.exports = webpackContext;
-webpackContext.id = 446;
+webpackContext.id = 449;
 
 /***/ }),
 
-/***/ 465:
+/***/ 468:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1794,13 +1950,13 @@ ProgressBarComponent = __decorate([
 
 /***/ }),
 
-/***/ 466:
+/***/ 469:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MoreDetailsPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(11);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1831,163 +1987,6 @@ MoreDetailsPage = __decorate([
 ], MoreDetailsPage);
 
 //# sourceMappingURL=more-details.js.map
-
-/***/ }),
-
-/***/ 467:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return StaffContactPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(13);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-var StaffContactPage = (function () {
-    function StaffContactPage(navCtrl) {
-        this.navCtrl = navCtrl;
-    }
-    StaffContactPage.prototype.ngOnInit = function () {
-        this.StaffContact = [{ Name: "Yun Fu", Email: "yunfu@ucl.ac.uk", Hours: "13:00", Location: "Malet Place" }];
-        this.TAContact = [{ Name: "John Taylor", Email: "John@ucl.ac.uk", Hours: "14:00", Location: "Malet Place", Exp: "Ionic" }, { Name: "Dominic Twain", Email: "Dominic@ucl.ac.uk", Hours: "16:00", Location: "Malet Place", Exp: "Databases" }, { Name: "Ashley Shana", Email: "Ashley@ucl.ac.uk", Hours: "14:00", Location: "Malet Place", Exp: "Python" }];
-    };
-    return StaffContactPage;
-}());
-StaffContactPage = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-staff-contact',template:/*ion-inline-start:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/staff-contact/staff-contact.html"*/'\n\n<ion-header>\n  <ion-navbar>\n    <ion-title>\n      Staff Contact Info\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <h4 style="margin-top: 6vh;">\n    Lecturer\n  </h4>\n  <ion-item no-lines *ngFor= "let StaffC of StaffContact">\n    <ion-avatar item-start>\n      <img src= "http://static.bleacherreport.net/images/redesign/avatars/default-user-icon-profile.png" style= "height: 12vh; width: 22vw;">\n    </ion-avatar>\n    <ul style="list-style-type:none; margin-left: -6vw;">\n      <li>{{StaffC.Name}}</li>\n      <li>{{StaffC.Email}}</li>\n      <li>{{StaffC.Hours}}</li>\n      <li>{{StaffC.Location}}</li>\n    </ul>\n  </ion-item>\n\n  <hr>\n\n  <h4>\n    Teaching Assistance\n  </h4>\n\n  <ion-item no-lines *ngFor= "let TAC of TAContact">\n    <ion-avatar item-start>\n      <img class= "TAsize" src= "http://static.bleacherreport.net/images/redesign/avatars/default-user-icon-profile.png" style= "height: 10vh; width: 18vw; margin-left: 4vw; margin-top:-13vh;">\n    </ion-avatar>\n    <ul style="list-style-type:none; margin-left: -7vw;">\n      <li>{{TAC.Name}}</li>\n      <li>{{TAC.Email}}</li>\n    </ul>\n    <ul style="list-style-type:none; margin-left: -7vw;">\n      <li><u>Lab Hours:</u></li>\n      <li>{{TAC.Hours}}</li>\n      <li><u>Lab Location:</u></li>\n      <li>{{TAC.Location}}</li>\n      <li><u>Experience:</u></li>\n      <li>{{TAC.Exp}}</li>\n    </ul>\n\n  </ion-item>\n</ion-content>\n'/*ion-inline-end:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/staff-contact/staff-contact.html"*/
-    }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */]])
-], StaffContactPage);
-
-//# sourceMappingURL=staff-contact.js.map
-
-/***/ }),
-
-/***/ 468:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ProfilePage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(13);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-var ProfilePage = (function () {
-    // this tells the tabs component which Pages
-    // should be each tab's root Page
-    function ProfilePage(navCtrl) {
-        this.navCtrl = navCtrl;
-    }
-    return ProfilePage;
-}());
-ProfilePage = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-profile',template:/*ion-inline-start:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/profile/profile.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>\n      My Profile\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n<ion-content padding id="page4">\n  <div id="blueblue">\n    <img id ="profilepic" src="assets/img/iPJmfKWCSdylgevYCJ6t_myAvatar3.png"/>\n    <form id="myProfile-form3">\n      <div class="spacer" style="height:40px;" id="myProfile-spacer2"></div>\n      <ion-item id="myProfile-input1">\n        <ion-input type="text" placeholder="Firstname"></ion-input>\n      </ion-item>\n      <ion-item id="myProfile-input2">\n        <ion-input type="text" placeholder="Lastname"></ion-input>\n      </ion-item>\n      <ion-item id="myProfile-input3">\n        <ion-input type="email" placeholder="Email"></ion-input>\n      </ion-item>\n      <ion-item id="myProfile-input4">\n        <ion-input type="password" placeholder="Password"></ion-input>\n      </ion-item>\n    </form>\n  </div>\n  <div id="supervising">\n    <h5 id="myProfile-heading1" style="color:#000000;text-align:center;">\n      Supervising groups\n    </h5>\n    <div id="groups">\n      <button *ngFor="let item of items">\n        {{ item }}\n      </button>\n    </div>\n  </div>\n</ion-content>\n'/*ion-inline-end:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/profile/profile.html"*/
-    }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */]])
-], ProfilePage);
-
-//# sourceMappingURL=profile.js.map
-
-/***/ }),
-
-/***/ 469:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyFeedbackHistoryPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(13);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-var MyFeedbackHistoryPage = (function () {
-    // this tells the tabs component which Pages
-    // should be each tab's root Page
-    function MyFeedbackHistoryPage(navCtrl) {
-        this.navCtrl = navCtrl;
-        /* Data retrieval (only this section to modify with data) */
-        this.groupnumber = 4; //group number
-        this.student = 'Samantha Watson'; //student name
-        this.weekswithinfo = [1, 2, 3, 4, 5, 8]; //week numbers of those performances
-        this.studentdata = [3, 2, 2, 1, 4, 3, 2]; //student performance history
-        this.groupdata = [4, 4, 3, 4, 4, 3]; //group performance history 
-        this.percentageresults = [30, 33, 40, 33, 34, 30]; //contribution percentages
-        /* Do not change anything beyond this point */
-        this.performanceAnnotation = ['bad', 'average', 'good', 'excellent']; //constants do not modify
-        this.performanceColor = ['red', 'yellow', 'lightgreen', 'darkgreen']; //constants do not modify
-        this.student;
-        this.percentageresults;
-        this.groupnumber;
-    }
-    MyFeedbackHistoryPage.prototype.groupColorSetting = function (x) {
-        var value = this.groupdata[x];
-        var indexvalue = value - 1;
-        var colorName = this.performanceColor[indexvalue];
-        return colorName;
-    };
-    MyFeedbackHistoryPage.prototype.studentColorSetting = function (x) {
-        var indexvalue = this.studentdata[x] - 1;
-        var studentColor = this.performanceColor[indexvalue];
-        return studentColor;
-    };
-    MyFeedbackHistoryPage.prototype.latestWeek = function () {
-        var weekIndex = this.weekswithinfo.length;
-        weekIndex = weekIndex - 1;
-        var latestW = this.weekswithinfo[weekIndex];
-        return latestW;
-    };
-    MyFeedbackHistoryPage.prototype.averagePerformance = function () {
-        var weekIndex = this.weekswithinfo.length;
-        var sum = 0;
-        for (var i = 0; i < weekIndex; i++) {
-            sum = sum + this.groupdata[i];
-        }
-        sum = sum / weekIndex;
-        return sum.toFixed(1);
-    };
-    MyFeedbackHistoryPage.prototype.latestPerformance = function () {
-        var weekIndex = this.weekswithinfo.length;
-        var indexvalue = this.groupdata[weekIndex - 1];
-        return this.performanceAnnotation[indexvalue];
-    };
-    return MyFeedbackHistoryPage;
-}());
-MyFeedbackHistoryPage = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-my-feedback-history',template:/*ion-inline-start:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/my-feedback-history/my-feedback-history.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-buttons start>\n      <button ion-button></button>\n    </ion-buttons>\n    <ion-title>\n      Feedback Summary\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <h4 id="feedbackSummary-heading6">\n    Group {{groupnumber}}\n  </h4>\n  <!-- Latest Feedback section -->\n  <div class="spacer" style="height:3%;" id="spacerline"></div>\n    <div>\n      <br><p style="margin:0px; outline:none;"> Latest Feedback:\n        <span class="feedbackwriting">Week </span><span class="feedbackwriting"> {{latestWeek()}} </span></p>\n    </div>\n  <hr>\n  <div id="legend">\n    <div id="lll">\n      <p class="floating" id="overallp" style="color:#000000;">\n        Current average <br> performance:\n      </p>\n      <p class="floating" id="latestp" style="color:#000000;">\n        latest performance:\n        <br>\n        <span class="feedbackwriting" id="latestperformance">{{latestPerformance()}}</span>\n      </p>\n    </div>\n    <p class="feedbackwriting" id="performance2">\n      {{averagePerformance()}} out of 4\n    </p>\n  </div>\n<!-- Weekly feedback history legend-->\n  <hr>\n  <h5 style="color:#000000;">\n    Weekly Feedback\n  </h5>\n  <div style="padding-bottom:7px;"><button class="performance darkgreen"></button> excellent <button class="performance lightgreen"></button> good <button class="performance yellow"></button> average <button class="performance red"></button> bad</div>\n  <hr>\n  <div id="feedbackSummary-container9" *ngFor="let item of weekswithinfo; let i = index">\n    <ion-list id="feedbackSummary-list10">\n      <ion-item-divider id="feedbackSummary-list-item-divider2" class="{{groupColorSetting(i)}}">\n        <p id="weekdiv">Week {{weekswithinfo[i]}}</p>\n        <p id="weekdiv2"><button id="feedbackSummary-button41" ion-button clear small>\n          more details\n        </button>\n        </p>\n      </ion-item-divider>\n      <!-- Weekly feedback history -->\n      <ion-item color="none" id="feedbackSummary-list-item56" (click)="setcolour();">\n        <p class="name">{{student}}</p>\n        <ion-note item-right>\n          <p><button class="performance {{studentColorSetting(i)}} "></button><span id="percentage" style="padding-left:10px"> contribution: {{ percentageresults[i] }}%</span></p>\n        </ion-note>\n      </ion-item>\n    </ion-list>\n\n  </div>\n</ion-content>\n'/*ion-inline-end:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/my-feedback-history/my-feedback-history.html"*/
-    }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */]])
-], MyFeedbackHistoryPage);
-
-//# sourceMappingURL=my-feedback-history.js.map
 
 /***/ }),
 
@@ -2059,7 +2058,7 @@ HouseProvider = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_Observable__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_Observable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_Observable__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_observable_throw__ = __webpack_require__(464);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_observable_throw__ = __webpack_require__(467);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_observable_throw___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_observable_throw__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__ = __webpack_require__(114);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__);
@@ -2129,5 +2128,5 @@ AuthService = __decorate([
 
 /***/ })
 
-},[348]);
+},[351]);
 //# sourceMappingURL=main.js.map

@@ -26293,6 +26293,134 @@ page-more-details h5 {
   text-align: center;
 }
 
+page-my-feedback-history #feedbackSummary-heading6 {
+  margin-bottom: 0;
+  float: left;
+}
+
+page-my-feedback-history .feedbackwriting {
+  color: #00A8FF;
+}
+
+page-my-feedback-history #performance2 {
+  font-size: 20px;
+  margin: 0;
+}
+
+page-my-feedback-history hr {
+  width: 100%;
+  padding: 0px;
+}
+
+page-my-feedback-history #addfeedback {
+  vertical-align: middle;
+  text-align: right;
+}
+
+page-my-feedback-history #feedbackSummary-button42 {
+  border: solid 2px;
+  margin: 0px;
+  outline: none;
+}
+
+page-my-feedback-history #latestp {
+  padding-left: 18%;
+}
+
+page-my-feedback-history #latestperformance {
+  -webkit-text-emphasis: bold;
+  text-emphasis: bold;
+}
+
+page-my-feedback-history .performance {
+  border-radius: 70px;
+  height: 20px;
+  width: 20px;
+  padding: 0px !important;
+  margin: 0px !important;
+  vertical-align: middle !important;
+}
+
+page-my-feedback-history .name {
+  font-size: 14px;
+  color: black;
+}
+
+page-my-feedback-history .floating {
+  display: inline-block;
+}
+
+page-my-feedback-history #p {
+  padding: 0px;
+  margin: 0px;
+  outline: none;
+}
+
+page-my-feedback-history ion-list {
+  padding: 0px !important;
+  margin-bottom: 10px !important;
+}
+
+page-my-feedback-history ion-item {
+  margin: 0px !important;
+  height: 35px !important;
+}
+
+page-my-feedback-history ion-note {
+  padding: 0px !important;
+  margin: 0px !important;
+  text-align: right;
+}
+
+page-my-feedback-history ion-note button {
+  margin: 0px !important;
+  padding: 0px !important;
+}
+
+page-my-feedback-history ion-item {
+  padding-top: 0px !important;
+}
+
+page-my-feedback-history #percentage {
+  font-size: 14px !important;
+}
+
+page-my-feedback-history ion-item-divider {
+  height: 30px !important;
+}
+
+page-my-feedback-history #feedbackSummary-button41 {
+  color: white;
+  vertical-align: middle !important;
+}
+
+page-my-feedback-history #weekdiv {
+  float: left;
+  padding-top: 8px;
+  color: white;
+  padding-left: 5px;
+}
+
+page-my-feedback-history #weekdiv2 {
+  float: right;
+}
+
+page-my-feedback-history .red {
+  background-color: #FF6384;
+}
+
+page-my-feedback-history .yellow {
+  background-color: #FFCD56;
+}
+
+page-my-feedback-history .lightgreen {
+  background-color: #7ED321;
+}
+
+page-my-feedback-history .darkgreen {
+  background-color: #058D65;
+}
+
 page-my-profile #profilepic {
   display: block;
   width: 80px;
@@ -26357,6 +26485,51 @@ page-my-profile #logout {
   color: grey;
   border-radius: 5px;
   height: 25px;
+}
+
+page-profile #profilepic {
+  display: block;
+  width: 80px;
+  height: 80px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+page-profile #myProfile-input1 {
+  width: 52%;
+  float: left;
+}
+
+page-profile #myProfile-input2 {
+  width: 47%;
+  padding-left: 0px;
+}
+
+page-profile ion-input {
+  border: solid 2px;
+  border-color: #00A8FF;
+  border-radius: 15px;
+  padding-left: 10px;
+  margin-bottom: 10px;
+  color: white;
+}
+
+page-profile #supervising {
+  margin-top: 25px;
+}
+
+page-profile button {
+  background-color: #00A8FF;
+  color: white;
+  font-size: 17px;
+  border-radius: 70px;
+  height: 50px;
+  width: 50px;
+  margin: 10px;
+}
+
+page-profile #groups {
+  text-align: center;
 }
 
 page-red-groups ion-buttons {
@@ -26466,6 +26639,11 @@ page-red-students .contribution {
   left: 10vw;
   width: 20%;
   position: relative;
+}
+
+page-staff-contact hr {
+  size: 1px;
+  color: #555e6d;
 }
 
 staff-contact-info hr {
