@@ -14,8 +14,9 @@ import { Http, Headers, RequestOptions } from '@angular/http';
 export class HouseProvider {
 
 	TAID: number = 1; /* I assume I know this here */
+  SID: number = 1;
 
-  constructor(public http: Http, public http2: Http, public http3: Http, public http4: Http) {
+  constructor(public http: Http, public http2: Http, public http3: Http, public http4: Http, public http5: Http, public http6: Http) {
     console.log('Hello HouseProvider Provider');
   }
 
@@ -46,5 +47,20 @@ export class HouseProvider {
 
         return this.http4.get('http://gc02team02app.azurewebsites.net/SQL/Staff%20Contact.php').do((res: Response) => console.log(res)).map((res: Response) => res.json());
   }
+
+  GetStudentAdd() {
+      var link4 = 'http://gc02team02app.azurewebsites.net/SQL/Stage2StudentAdd.php';
+    var myData4 = JSON.stringify({teachID: this.TAID})
+
+    return this.http5.post(link4, myData4);
+  }
+
+  GetStudentHome() {
+      var link5 = 'http://gc02team02app.azurewebsites.net/SQL/StudentHome.php';
+    var myData5 = JSON.stringify({studID: this.SID})
+
+    return this.http6.post(link5, myData5);
+  }
+
 
 }
