@@ -26,6 +26,7 @@ import { HouseProvider } from '../providers/house/house';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { ShareService } from '../providers/share';
 
 @NgModule({
   declarations: [
@@ -76,6 +77,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   providers: [
     StatusBar,
     SplashScreen,
+    ShareService,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthService,
     HouseProvider

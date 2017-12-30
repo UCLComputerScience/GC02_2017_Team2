@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, AlertController, LoadingController, Loading, IonicPage } from 'ionic-angular';
 import { TabsControllerPage } from '../tabs-controller/tabs-controller';
 import { AuthService } from '../../providers/auth-service';
+import { ShareService } from '../../providers/share';
 
 @Component({
   selector: 'page-login',
@@ -9,15 +10,21 @@ import { AuthService } from '../../providers/auth-service';
 })
 
 export class LoginPage {
+  userNumber: number;
   loading: Loading;
   registerCredentials = { email: null, password: null, type: null };
+  
  
-  constructor(private navCtrl: NavController, private auth: AuthService, private alertCtrl: AlertController, private loadingCtrl: LoadingController) { }
+  constructor(private navCtrl: NavController, public shareService: ShareService, private auth: AuthService, private alertCtrl: AlertController, private loadingCtrl: LoadingController) {
+  }
  
   public login() {
-    this.showLoading()
+    this.showLoading()   
     this.auth.login(this.registerCredentials).subscribe(allowed => {
-      if (allowed) {        
+      if (allowed) {  
+        //backend section new
+        this.userNumber = 1; //query the ID number of the logged-in user 
+        this.shareService.setUserID(this.userNumber);      
         this.navCtrl.setRoot(TabsControllerPage);
       } else {
         this.showError("Access Denied");
