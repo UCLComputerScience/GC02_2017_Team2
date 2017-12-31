@@ -167,5 +167,10 @@ colourval = "blue";
     param1: this.groupnumber
     });
   }
+  
+  goToDetails(params){
+    if (!params) params = {};
+    this.navCtrl.push(MoreDetailsPage);
+  }
 
 }  
