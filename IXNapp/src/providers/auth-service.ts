@@ -4,6 +4,7 @@ import 'rxjs/add/observable/throw';
 import 'rxjs/add/operator/map';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
+import { HouseProvider } from './house/house';
 
  
 export class User {
@@ -26,7 +27,7 @@ export class AuthService {
   combo: any[] = [];
 
 
-  constructor(public http: Http, public http2: Http, public http3: Http) {
+  constructor(public http: Http, public http2: Http, public http3: Http, public house: HouseProvider) {
   }
  
   public login(credentials) {
@@ -50,6 +51,9 @@ export class AuthService {
         let email = this.combo[0].smail;
         let typee = credentials.type;
         this.currentUser = new User(firstName, lastName, email, typee);
+
+        this.house.setSID(this.combo[0].s_ID);
+
         observer.next(access);
         observer.complete();
         } else {
@@ -75,6 +79,9 @@ export class AuthService {
       let email = this.combo[0].tmail;
       let typee = credentials.type;
       this.currentUser = new User(firstName, lastName, email, typee);
+
+      this.house.setTAID(this.combo[0].t_ID);
+
       observer.next(access);
       observer.complete();
       } else {
@@ -125,3 +132,4 @@ export class AuthService {
     });
   }
 }
+
