@@ -163,7 +163,9 @@ colourval = "blue";
 
   goToGroup(params){
     if (!params) params = {};
-    this.navCtrl.push(GroupPage);
+    this.navCtrl.push(GroupPage,  {
+    param1: this.groupnumber
+    });
   }
 
 }  
