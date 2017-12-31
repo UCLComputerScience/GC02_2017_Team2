@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { GroupPage } from '../group/group';
+import { MoreDetailsPage } from '../more-details/more-details';
 import { HouseProvider } from '../../providers/house/house';
 import { Http, Headers, RequestOptions } from '@angular/http';
 
