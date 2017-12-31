@@ -21,10 +21,7 @@ export class LoginPage {
   public login() {
     this.showLoading()   
     this.auth.login(this.registerCredentials).subscribe(allowed => {
-      if (allowed) {  
-        //backend section new
-        this.userNumber = 1; //query the ID number of the logged-in user 
-        this.shareService.setUserID(this.userNumber);      
+      if (allowed) {        
         this.navCtrl.setRoot(TabsControllerPage);
       } else {
         this.showError("Access Denied");
