@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController, AlertController } from 'ionic-angular';
+import { NavController, AlertController, NavParams } from 'ionic-angular';
 import { NgModule} from '@angular/core';
+import { HouseProvider } from '../../providers/house/house';
+import { Http, Headers, RequestOptions } from '@angular/http';
 
 
 @Component({
@@ -9,15 +11,68 @@ import { NgModule} from '@angular/core';
 })
   
 export class GroupPage implements OnInit {
-  // this tells the tabs component which Pages
-  // should be each tab's root Page
-  constructor(public navCtrl: NavController, private alertCtrl: AlertController) {
-    this.fillWeeksWithout();
-    this.latestWeek();
+
+  currentdateindex: any = 1;
+  
+  weeks = [1,2,3,4,5,6,7,8,9,10]
+  weeksoccupied: any[] = [];
+  
+  buttons = ['button1', 'button2', 'button3', 'button4'];
+  
+  groupNumber: number;
+  
+  descriptions= ['excellent', 'good', 'average', 'bad']; // don't change
+  
+  studentFeedback: any[] = [];
+  
+  groupFeedback = null;
+  groupComment = null; 
+  data:any = {};
+  data2:any = {};
+
+  Students: any[] = [];
+  names: any[] = [];
+  str: string;
+  str2: string;
+  ultimatewkn: number[] = [];
+  mx2: number;
+  StudentIDs: any[] = [];
+
+
+  constructor(public navCtrl: NavController, private alertCtrl: AlertController, public nav : NavParams, public house: HouseProvider, public http: Http, public http2: Http) {
+    this.groupNumber = this.nav.get('param1');
   }
 
 
   ngOnInit() {
+    this.house.GetStage2Student().subscribe(dt => {
+      this.Students = JSON.parse(dt["_body"]);
+
+      console.log(this.Students);
+
+      for(let i in this.Students) {
+      this.str = this.Students[i].fname;
+      this.str2 = this.Students[i].lname;
+      if(!this.names.includes(this.str.concat(" ", this.str2)) && this.Students[i].g_ID == this.groupNumber) {
+        this.names.push(this.str.concat(" ", this.str2));
+        this.StudentIDs.push(this.Students[i].s_ID);
+        }
+      }
+
+      for(let j in this.Students) {
+      if(!this.ultimatewkn.includes(this.Students[j].g_wk)) {
+        this.ultimatewkn.push(this.Students[j].g_wk);
+      }
+      }
+
+      console.log(this.ultimatewkn);
+
+      this.weeksoccupied = this.ultimatewkn.slice();
+
+      this.mx2 = Math.max.apply(Math, this.ultimatewkn);
+      console.log(this.mx2);
+
+    })
   }
 
  goBack(params){
@@ -25,69 +80,14 @@ export class GroupPage implements OnInit {
     this.navCtrl.pop();
   }
   
-  currentdateindex;
-  
-  // BACKEND ALL WEEKS WITH INFO
-  weekswithinfo=[1,3,5,6];
-  
-  //BACKEND
-  weeks = [1,2,3,4,5,6,7,8,9,10]; //dont touch
-  feedbackExisting = []; //here for week numbers existing feedback
-  
-  //BACKEND
-  names = ['Samantha Watson', 'John Taylor', 'James Kirk'];
-  
-  //BACKEND
-  groupNumber = 3;
-  
-  buttons = ['button1', 'button2', 'button3', 'button4'];
-
-  
-  descriptions= ['excellent', 'good', 'average', 'bad']; // don't change
-  
-  studentFeedback = [];
-  
-  groupFeedback = null;
-  groupComment = null;
-  
-  weekswithoutinfo = [];
-  
-  fillWeeksWithout() {
-    for (let i=0; i < this.weeks.length; i++) {
-        let week = this.weeks[i];
-        if (this.weekswithinfo.includes(week)) {
-            //do nothing
-        }
-        else {
-            this.weekswithoutinfo.push(week);
-        }
-    }
-  }
-  
-  latestWeek() {
-    var latestW = this.weekswithinfo[this.weekswithinfo.length - 1];
-    for (let i=0; i < this.weeks.length; i++) {
-        if (latestW === this.weeks[i]) {
-            var nextW = this.weeks[i+1];
-            break;
-        }
-    }
-    for (let j=0; j < this.weekswithoutinfo.length; j++) {
-        if(nextW == this.weekswithoutinfo[j]) {
-            this.currentdateindex = j;
-        }
-    }
-    
-  }
-  
   nextweek() : void {
-    if (this.currentdateindex < this.weekswithoutinfo.length-1) {
+    if (this.currentdateindex < this.weeks.length) {
         this.currentdateindex++;
     }
   }
   
   previousweek() : void {
-    if (this.currentdateindex > 0) {
+    if (this.currentdateindex > 1) {
         this.currentdateindex--;
     }
   }
@@ -121,7 +121,7 @@ export class GroupPage implements OnInit {
   
   public giveFeedback() {
     if (this.buttonSelected === null || this.groupComment === null) {
-        this.showError ("please fill in all fields");
+        this.showError ("please fill in all fields.");
     }
     else {
         this.setButtonData();
@@ -149,6 +149,9 @@ export class GroupPage implements OnInit {
         }
     }
     if (checkData === true) {
+      console.log(this.weeksoccupied);
+      console.log(this.currentdateindex);
+      if(!this.weeksoccupied.includes(String(this.currentdateindex))) {
         let added = 0;
         for (let i=0; i<this.names.length; i++) {
             added += Number(this['studentContribution'+i]);
@@ -159,27 +162,88 @@ export class GroupPage implements OnInit {
         else {
             this.showError("the contributions must add up to 100");
         }
+        } else {
+          this.showError("This week's feedback already exists");
+        }
     }
     else if (checkData === false) {
         // do nothing
     }
   }
   
-  storeData() { //only method to consider for backend 
+  storeData() {
+
+    var studentFeedback: any[] = [];
+
     for (let i=0; i<this.names.length; i++) {
-        let feedback = this.getDescription(this['isStudentSelected'+i]);
-        let comment = this['studentComment'+i];
+        let feedback: any = this.getDescription(this['isStudentSelected'+i]);
+
+        if(feedback == 'bad') {
+          feedback = 1;
+        }
+        if(feedback == 'average') {
+          feedback = 2;
+        }
+        if(feedback == 'good') {
+          feedback = 3;
+        }
+        if(feedback == 'excellent') {
+          feedback = 4;
+        }
+
+        let comment: string = this['studentComment'+i];
         let contribution = Number(this['studentContribution'+i]);
-        this.studentFeedback.push(new Student(feedback, comment, contribution));
+        let stuID = this.StudentIDs[i];
+        studentFeedback.push(new Student(feedback, comment, contribution, stuID));
     }
     //BACKEND HERE - THE INFORMATION IS STORED IN THE FOLLOWING VARIABLES
     // this.groupFeedback
     // this.groupComment
     // this.studentFeedback // an array of Students with information //Student.feedback, Student.comment, Student.contribution
+
+
+    for(let u in studentFeedback) {
+
+    var link = 'http://gc02team02app.azurewebsites.net/SQL/AddFeed.php';
+    var myData = JSON.stringify({sfeed: studentFeedback[u].feedback, scomment: studentFeedback[u].comment, contr: parseInt(studentFeedback[u].contribution), week: this.currentdateindex, stuID: parseInt(studentFeedback[u].stuID)})
+
+    this.http.post(link, myData).subscribe(data => {
+    this.data.response = data["_body"];
+    }, error => {
+    console.log("Oooops!");
+    });
+
+    }
+
+    if(this.groupFeedback == 'bad') {
+          this.groupFeedback = 1;
+        }
+        if(this.groupFeedback == 'average') {
+          this.groupFeedback = 2;
+        }
+        if(this.groupFeedback == 'good') {
+          this.groupFeedback = 3;
+        }
+        if(this.groupFeedback == 'excellent') {
+          this.groupFeedback = 4;
+        }
+
+        console.log(this.currentdateindex);
+
+    var link1 = 'http://gc02team02app.azurewebsites.net/SQL/AddFeedG.php';
+    var myData1 = JSON.stringify({gID: this.groupNumber, gcomment: this.groupComment, gfeed: this.groupFeedback, week: parseInt(this.currentdateindex)})
+
+    this.http2.post(link1, myData1).subscribe(data2 => {
+    this.data2.response = data2["_body"];
+    console.log(data2);
+    }, error => {
+    console.log("Oooops!");
+    })
+
+    this.navCtrl.pop();
     
-    console.log(this.studentFeedback);
-  
   }
+
   
   getContribution(i){
     let val = this['studentContribution'+i];
@@ -197,19 +261,22 @@ export class GroupPage implements OnInit {
     }
     else {
         this['studentContribution'+i] = 0;
-    }    
+    }
+        
   }
+  
 }
 
 export class Student {
     feedback: string;
     comment: string;
     contribution: number;
+    stuID: number;
  
-    constructor(feedback: string, comment: string, contribution: number) {
+    constructor(feedback: string, comment: string, contribution: number, stuID: number) {
         this.feedback = feedback
         this.comment = comment;
         this.contribution = contribution;
+        this.stuID = stuID;
       }
 }
-
