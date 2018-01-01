@@ -13,13 +13,10 @@ import { Http, Headers, RequestOptions } from '@angular/http';
 @Injectable()
 export class HouseProvider {
 
-	//TAID: number = 1; /* I assume I know this here */
-  	//SID: number = 1;
-
   TAID: number;
   SID: number;
 
-  constructor(public http: Http, public http2: Http, public http3: Http, public http4: Http, public http5: Http, public http6: Http) {
+  constructor(public http: Http, public http2: Http, public http3: Http, public http4: Http, public http5: Http, public http6: Http, public http7: Http) {
     console.log('Hello HouseProvider Provider');
   }
 
@@ -63,6 +60,13 @@ export class HouseProvider {
     var myData5 = JSON.stringify({studID: this.SID})
 
     return this.http6.post(link5, myData5);
+  }
+	
+  MoreDets() {
+      var link6 = 'http://gc02team02app.azurewebsites.net/SQL/MoreDets.php';
+    var myData6 =  JSON.stringify({teachID: this.TAID})
+
+    return this.http7.post(link6, myData6);
   }
 
   setSID(userID){
