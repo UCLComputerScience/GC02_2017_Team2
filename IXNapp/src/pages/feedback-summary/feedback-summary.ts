@@ -169,9 +169,10 @@ colourval = "blue";
     });
   }
   
-  goToDetails(params){
-    if (!params) params = {};
-    this.navCtrl.push(MoreDetailsPage);
+  goToDetails(week: number){
+    this.navCtrl.push(MoreDetailsPage, {
+    param1: this.groupnumber, param2: week
+    });
   }
 
 }  
