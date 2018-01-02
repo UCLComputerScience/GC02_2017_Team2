@@ -15,6 +15,8 @@ export class HouseProvider {
 
   TAID: number;
   SID: number;
+  Lect: number;
+
 
   constructor(public http: Http, public http2: Http, public http3: Http, public http4: Http, public http5: Http, public http6: Http, public http7: Http, public http8: Http) {
     console.log('Hello HouseProvider Provider');
@@ -23,7 +25,7 @@ export class HouseProvider {
   getAllRedStudent() {
 
   	var link1 = 'http://gc02team02app.azurewebsites.net/SQL/RedStudentInit.php/';
-	var myData1 = JSON.stringify({teachID: this.TAID})
+	var myData1 = JSON.stringify({teachID: this.TAID, lect: this.Lect})
 
  	return this.http.post(link1, myData1);
 
@@ -31,14 +33,14 @@ export class HouseProvider {
 
   getAllRedTeam() {
   	var link2 = 'http://gc02team02app.azurewebsites.net/SQL/RedGroupsInit.php';
-	var myData2 = JSON.stringify({teachID: this.TAID})
+	var myData2 = JSON.stringify({teachID: this.TAID, lect: this.Lect})
 
  	return this.http2.post(link2, myData2);
   }
 
   GetStage2Student() {
     	var link3 = 'http://gc02team02app.azurewebsites.net/SQL/Stage2StudentPrelim.php';
-  	var myData3 = JSON.stringify({teachID: this.TAID})
+  	var myData3 = JSON.stringify({teachID: this.TAID, lect: this.Lect})
 
   	return this.http3.post(link3, myData3);
   }
@@ -50,7 +52,7 @@ export class HouseProvider {
 
   GetStudentAdd() {
       var link4 = 'http://gc02team02app.azurewebsites.net/SQL/Stage2StudentAdd.php';
-    var myData4 = JSON.stringify({teachID: this.TAID})
+    var myData4 = JSON.stringify({teachID: this.TAID, lect: this.Lect})
 
     return this.http5.post(link4, myData4);
   }
@@ -64,7 +66,7 @@ export class HouseProvider {
 	
   MoreDets() {
       var link6 = 'http://gc02team02app.azurewebsites.net/SQL/MoreDets.php';
-    var myData6 =  JSON.stringify({teachID: this.TAID})
+    var myData6 =  JSON.stringify({teachID: this.TAID, lect: this.Lect})
 
     return this.http7.post(link6, myData6);
   }
@@ -82,6 +84,10 @@ export class HouseProvider {
 
   setTAID(userID){
        this.TAID = userID; 
+   }
+
+   setLect(userID: number){
+       this.Lect = userID; 
    }
 
 
