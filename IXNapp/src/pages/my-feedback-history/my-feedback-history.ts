@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { HouseProvider } from '../../providers/house/house';
+import { MoreDetailsPage2 } from '../more-details2/more-details2';
 
 @Component({
   selector: 'page-my-feedback-history',
@@ -10,22 +11,14 @@ export class MyFeedbackHistoryPage {
   // this tells the tabs component which Pages
   // should be each tab's root Page
   
-  constructor(public navCtrl: NavController, public house: HouseProvider) {
+  constructor(public navCtrl: NavController, public house: HouseProvider, public nav : NavParams) {
     this.student; 
     this.percentageresults; 
     this.groupnumber; 
   }
 
-  /* Data retrieval (only this section to modify with data) */
-
-  //groupnumber = 4; //group number
-  //student = 'Samantha Watson'; //student name
-  //weekswithinfo = [1,2,3,4,5,8]; //week numbers of those performances
-  //studentdata = [3,2,2,1,4,3,2]; //student performance history
-  //groupdata = [4,4,3,4,4,3]; //group performance history 
-  //percentageresults = [30, 33, 40, 33, 34, 30]; //contribution percentages
-
   groupnumber: number;
+  ID: number;
   Students: any[] = [];
   str: string;
   str2: string;
@@ -58,6 +51,8 @@ export class MyFeedbackHistoryPage {
       }
 
       this.groupnumber = this.groupIDs[0];
+
+      this.ID = this.StudentIDs[0];
 
       this.student = this.studentN[0];
 
@@ -120,4 +115,11 @@ export class MyFeedbackHistoryPage {
     return this.performanceAnnotation[indexvalue-1]; 
     
   }
+
+  goToDetails(week: number){
+    this.navCtrl.push(MoreDetailsPage2, {
+    param1: this.ID, param2: week
+    });
+  }
+
 }
