@@ -16,6 +16,7 @@ export class GroupListPage {
   itemstemp: any[] = [];
   items2: any[] = [];
   Groups: any[];
+  TAGroups: any[] = [];
 
   wkn: number[] = [];
   mx: number;
@@ -30,16 +31,29 @@ export class GroupListPage {
 
       console.log(this.Groups);
 
-      for(let i in this.Groups) {
-        this.wkn.push(this.Groups[i].g_wk);
+      for(let q in this.Groups) {
+        if(!this.TAGroups.includes(this.Groups[q].g_ID)) {
+        this.TAGroups.push(this.Groups[q].g_ID);
+        }
       }
-      this.mx = Math.max.apply(Math, this.wkn);
 
+      for(let i in this.TAGroups) {
+      var groupw: number[] = [];
+        for(let z in this.Groups) {
+        console.log(this.Groups[z].g_ID == this.TAGroups[i]);
+          if(this.Groups[z].g_ID == this.TAGroups[i]) {
+            groupw.push(this.Groups[z].g_wk);
+          }
+        }
+        var groupmax = Math.max.apply(Math, groupw);
       for(let k in this.Groups) {
-      if(this.Groups[k].g_wk == this.mx && !this.items.includes(this.Groups[k].g_ID)) {
+      if(this.Groups[k].g_wk == groupmax && this.Groups[k].g_ID == this.TAGroups[i]) {
+        if(!this.items.includes(this.Groups[k].g_ID)) {
         this.items.push(this.Groups[k].g_ID);
         this.itemstemp.push(this.Groups[k].gp);
         }
+        }
+      }
       }
 
       for(let j in this.itemstemp) {
