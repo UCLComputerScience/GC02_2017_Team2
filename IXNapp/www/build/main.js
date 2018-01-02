@@ -7,7 +7,7 @@ webpackJsonp([0],{
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoginPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__tabs_controller_tabs_controller__ = __webpack_require__(212);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__tabs_controller_tabs_controller__ = __webpack_require__(213);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_auth_service__ = __webpack_require__(61);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_share__ = __webpack_require__(349);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -80,6 +80,50 @@ LoginPage = __decorate([
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DeadlinesPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(11);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var DeadlinesPage = (function () {
+    function DeadlinesPage(navCtrl) {
+        this.navCtrl = navCtrl;
+    }
+    DeadlinesPage.prototype.ngOnInit = function () {
+        this.Deadlinetitles = [{ Title: "HCI Deadline", Date: "15/11/2017" }, { Title: "Final Deadline", Date: "10/01/2018" }];
+        this.Deadlinedates = [{ Date: "15/11/2017" }, { Date: "10/01/2018" }];
+    };
+    DeadlinesPage.prototype.Date = function () {
+        var today = new Date();
+        var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+        return date;
+    };
+    return DeadlinesPage;
+}());
+DeadlinesPage = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+        selector: 'page-deadlines',template:/*ion-inline-start:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/deadlines/deadlines.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>\n      Deadlines\n    </ion-title>\n    <ion-buttons end>\n      <button ion-button></button>\n    </ion-buttons>\n  </ion-navbar>\n</ion-header>\n<ion-content padding>\n  <ion-item>\n    <ion-grid>\n      <ion-row>\n        <ion-col>\n          <h1>Today\'s date:</h1>\n        </ion-col>\n        <ion-col>\n          <h1>{{Date()}}</h1>\n        </ion-col>\n      </ion-row>\n    </ion-grid>\n    <div class="spacer" style="height:20px;"></div>\n  </ion-item>\n  <ion-item *ngFor="let DL of Deadlinetitles; let DLD of Deadlinedates">\n    <ion-grid>\n      <ion-row>\n        <ion-col>\n         {{DL.Title}}\n        </ion-col>\n        <ion-col>\n          {{DL.Date}}\n        </ion-col>\n      </ion-row>\n    </ion-grid>\n  </ion-item>\n</ion-content>\n'/*ion-inline-end:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/deadlines/deadlines.html"*/
+    }),
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */]])
+], DeadlinesPage);
+
+//# sourceMappingURL=deadlines.js.map
+
+/***/ }),
+
+/***/ 115:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return GroupPage; });
 /* unused harmony export Student */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
@@ -111,17 +155,21 @@ var GroupPage = (function () {
         this.weeks = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
         this.weeksoccupied = [];
         this.buttons = ['button1', 'button2', 'button3', 'button4'];
+        this.photoarray = ['1jBNm4xWINklxipgU1Wkka17YY34x8JY4', '1S3UVJReDGZUlyWPqxdk7r908kKlk2v6z', '1luooOs5haSaSqMoSEEKBiKU6AusZ0xNR'];
         this.descriptions = ['excellent', 'good', 'average', 'bad']; // don't change
         this.studentFeedback = [];
         this.groupFeedback = null;
         this.groupComment = null;
         this.data = {};
         this.data2 = {};
+        this.myToggle = {};
         this.Students = [];
         this.names = [];
         this.ultimatewkn = [];
         this.StudentIDs = [];
         this.buttonSelected = null;
+        this.absentToggle = [false, true, false];
+        this.studentContribution = [3, 4, 5];
         this.groupNumber = this.nav.get('param1');
     }
     GroupPage.prototype.ngOnInit = function () {
@@ -196,12 +244,12 @@ var GroupPage = (function () {
         var checkData = true;
         for (var i = 0; i < this.names.length; i++) {
             // if field is empty show error
-            if (this['isStudentSelected' + i] === null || this['studentComment' + i] === null || this['studentContribution' + i] === null) {
+            if (this['isStudentSelected' + i] === null || this['studentComment' + i] === null || this.studentContribution[i] === null) {
                 this.showError("please fill in all fields, you can fill in '-' if you don't want to enter a comment, and enter integers for the contribution");
                 checkData = false;
                 break;
             }
-            else if (Number.isInteger(Number(this['studentContribution' + i])) === false) {
+            else if (Number.isInteger(Number(this.studentContribution[i])) === false) {
                 this.showError("please fill in all fields, you can fill in '-' if you don't want to enter a comment, and enter integers for the contribution");
                 checkData = false;
                 break;
@@ -216,7 +264,7 @@ var GroupPage = (function () {
             if (!this.weeksoccupied.includes(String(this.currentdateindex))) {
                 var added = 0;
                 for (var i = 0; i < this.names.length; i++) {
-                    added += Number(this['studentContribution' + i]);
+                    added += Number(this.studentContribution[i]);
                 }
                 if (added === 100) {
                     this.storeData();
@@ -251,7 +299,7 @@ var GroupPage = (function () {
                 feedback = 4;
             }
             var comment = this['studentComment' + i];
-            var contribution = Number(this['studentContribution' + i]);
+            var contribution = Number(this.studentContribution[i]);
             var stuID = this.StudentIDs[i];
             studentFeedback.push(new Student(feedback, comment, contribution, stuID));
         }
@@ -292,7 +340,7 @@ var GroupPage = (function () {
         this.navCtrl.pop();
     };
     GroupPage.prototype.getContribution = function (i) {
-        var val = this['studentContribution' + i];
+        var val = this.studentContribution[i];
         return val;
     };
     GroupPage.prototype.getComment = function (i) {
@@ -300,20 +348,32 @@ var GroupPage = (function () {
         return val;
     };
     GroupPage.prototype.toggleEvent = function (i) {
-        if (this['studentContribution' + i] === 0) {
-            this['studentContribution' + i] = null;
+        console.log(this.absentToggle[i]);
+        if (this.studentContribution[i] === 0) {
+            this.studentContribution[i] = 1;
         }
         else {
-            this['studentContribution' + i] = 0;
+            this.studentContribution[i] = 0;
         }
+    };
+    //this section is and handles the toggle button function, set the corresponding to true or false 
+    GroupPage.prototype.notify = function (i) {
+        this.myToggle[i] = true;
+        console.log(this.myToggle[0]);
+        console.log(this.myToggle[1]);
+        console.log(this.myToggle[2]);
+    };
+    GroupPage.prototype.photocompiler = function (i) {
+        var photoname = "https://docs.google.com/uc?id=".concat(this.photoarray[i]);
+        return photoname;
     };
     return GroupPage;
 }());
 GroupPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-group',template:/*ion-inline-start:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/group/group.html"*/'<ion-header>\n  <ion-navbar hideBackButton>\n    <ion-buttons start>\n      <button ion-button on-click="goBack();">\n        Cancel\n      </button>\n    </ion-buttons>\n    <ion-title>\n      Group {{groupNumber}}\n    </ion-title>\n    <ion-buttons end>\n      <button ion-button type="submit" form="feedbackForm">\n        Save\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n</ion-header>\n<ion-content padding id="page13">\n  <div id="weekcontrol">\n    <button class="datebar" id="group-button18" ion-button clear color="positive" (click)="previousweek()">\n      <ion-icon name="arrow-back"></ion-icon>\n    </button>\n    <p class="datebar" id="date">\n      <b>Week {{([currentdateindex])}}</b>\n    </p>\n    <button class="datebar" id="group-button19" ion-button clear color="positive" (click)="nextweek()">\n      <ion-icon name="arrow-forward"></ion-icon>\n    </button>\n  </div>\n  <h5 id="group-heading4" style="color:#000000;">\n    Group Performance\n  </h5>\n  <div id="groupperformance">\n    <button *ngFor="let button of buttons; let k = index; " class="performancebutton {{ button }}" [class.highlighted]="k === buttonSelected" (click)="buttonSelect(k)">\n      {{this.getDescription(k)}}\n    </button>\n  </div>\n  <h6 id="group-heading5" style="color:#000000;">\n    Comments\n  </h6>\n  <form (ngSubmit)="giveFeedback()" id="feedbackForm">\n    <ion-item text-wrap lines id="group-input7">\n      <ion-textarea rows=2 type="text" placeholder="Click to input" [(ngModel)]="this.groupComment" name="groupComment"></ion-textarea>\n    </ion-item>\n      <h5>Student Performance</h5>\n      <ion-list *ngFor="let name of names; let i = index; ">\n        <ion-card>\n          <div>\n            <ion-item text-wrap color="none" id="group-list-item39">\n              <ion-avatar item-left>\n                <img src="http://static.bleacherreport.net/images/redesign/avatars/default-user-icon-profile.png" style="height: 12vh; width: 22vw;">\n              </ion-avatar>\n              <p id="name">\n                {{name}}\n              </p>\n            </ion-item>\n            <div>\n              <button type="button" *ngFor="let button of buttons; let j = index; " class="studentbutton {{button}}" [class.highlighted]="j === getIsStudentSelected(i)" (click)="onSelect(j, i)"></button>\n              <ion-input placeholder="contr." id="contribution" [(ngModel)]="this[\'studentContribution\'+i]" name="studentContribution"></ion-input>\n            </div>\n            <ion-item lines>\n              <ion-input [(ngModel)]="this[\'studentComment\'+i]" name="studentComment" type="text" placeholder="Click to input comment"></ion-input>\n            </ion-item>\n            <ion-item no-lines id="toggleitem">\n              <ion-label id="label">Absent:</ion-label>\n              <ion-toggle></ion-toggle>\n            </ion-item>\n          </div>\n        </ion-card>\n      </ion-list>\n    </form>\n</ion-content>\n'/*ion-inline-end:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/group/group.html"*/
+        selector: 'page-group',template:/*ion-inline-start:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/group/group.html"*/'<ion-header>\n  <ion-navbar hideBackButton>\n    <ion-buttons start>\n      <button ion-button on-click="goBack();">\n        Cancel\n      </button>\n    </ion-buttons>\n    <ion-title>\n      Group {{groupNumber}}\n    </ion-title>\n    <ion-buttons end>\n      <button ion-button type="submit" form="feedbackForm">\n        Save\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n</ion-header>\n<ion-content padding id="page13">\n  <div id="weekcontrol">\n    <button class="datebar" id="group-button18" ion-button clear color="positive" (click)="previousweek()">\n      <ion-icon name="arrow-back"></ion-icon>\n    </button>\n    <p class="datebar" id="date">\n      <b>Week {{([currentdateindex])}}</b>\n    </p>\n    <button class="datebar" id="group-button19" ion-button clear color="positive" (click)="nextweek()">\n      <ion-icon name="arrow-forward"></ion-icon>\n    </button>\n  </div>\n  <h5 id="group-heading4" style="color:#000000;">\n    Group Performance\n  </h5>\n  <div id="groupperformance">\n    <button *ngFor="let button of buttons; let k = index; " class="performancebutton {{ button }}" [class.highlighted]="k === buttonSelected" (click)="buttonSelect(k)">\n      {{this.getDescription(k)}}\n    </button>\n  </div>\n  <h6 id="group-heading5" style="color:#000000;">\n    Comments\n  </h6>\n  <form (ngSubmit)="giveFeedback()" id="feedbackForm">\n    <ion-item text-wrap lines id="group-input7">\n      <ion-textarea rows=2 type="text" placeholder="Click to input" [(ngModel)]="this.groupComment" name="groupComment"></ion-textarea>\n    </ion-item>\n      <h5>Student Performance</h5>\n      <ion-list *ngFor="let name of names; let i = index; ">\n        <ion-card>\n          <div>\n            <ion-item text-wrap color="none" id="group-list-item39">\n              <ion-avatar item-left>\n                <img src="{{ photocompiler(i) }}" style="height: 12vh; width: 22vw;">\n              </ion-avatar>\n              <p id="name">\n                {{name}}\n              </p>\n            </ion-item>\n            <div>\n              <button type="button" *ngFor="let button of buttons; let j = index; " class="studentbutton {{button}}" [class.highlighted]="j === getIsStudentSelected(i)" (click)="onSelect(j, i)"></button>\n              <ion-input placeholder="contr." id="contribution" [(ngModel)]="studentContribution[i]" name="studentContribution" value=""></ion-input>\n            </div>\n            <ion-item lines>\n              <ion-input [(ngModel)]="this[\'studentComment\'+i]" name="studentComment" type="text" placeholder="Click to input comment"></ion-input>\n            </ion-item>\n            <ion-item no-lines id="toggleitem">\n              <ion-label id="label">Absent:</ion-label>\n              <ion-toggle (ionChange)="notify(i)"></ion-toggle>\n            </ion-item>\n          </div>\n        </ion-card>\n      </ion-list>\n    </form>\n</ion-content>\n'/*ion-inline-end:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/group/group.html"*/
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_house_house__["a" /* HouseProvider */], __WEBPACK_IMPORTED_MODULE_3__angular_http__["a" /* Http */], __WEBPACK_IMPORTED_MODULE_3__angular_http__["a" /* Http */]])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2__providers_house_house__["a" /* HouseProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_house_house__["a" /* HouseProvider */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_3__angular_http__["a" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_http__["a" /* Http */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_3__angular_http__["a" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_http__["a" /* Http */]) === "function" && _f || Object])
 ], GroupPage);
 
 var Student = (function () {
@@ -326,11 +386,12 @@ var Student = (function () {
     return Student;
 }());
 
+var _a, _b, _c, _d, _e, _f;
 //# sourceMappingURL=group.js.map
 
 /***/ }),
 
-/***/ 124:
+/***/ 125:
 /***/ (function(module, exports) {
 
 function webpackEmptyAsyncContext(req) {
@@ -343,7 +404,7 @@ function webpackEmptyAsyncContext(req) {
 webpackEmptyAsyncContext.keys = function() { return []; };
 webpackEmptyAsyncContext.resolve = webpackEmptyAsyncContext;
 module.exports = webpackEmptyAsyncContext;
-webpackEmptyAsyncContext.id = 124;
+webpackEmptyAsyncContext.id = 125;
 
 /***/ }),
 
@@ -447,7 +508,7 @@ HouseProvider = __decorate([
 
 /***/ }),
 
-/***/ 167:
+/***/ 168:
 /***/ (function(module, exports) {
 
 function webpackEmptyAsyncContext(req) {
@@ -460,18 +521,18 @@ function webpackEmptyAsyncContext(req) {
 webpackEmptyAsyncContext.keys = function() { return []; };
 webpackEmptyAsyncContext.resolve = webpackEmptyAsyncContext;
 module.exports = webpackEmptyAsyncContext;
-webpackEmptyAsyncContext.id = 167;
+webpackEmptyAsyncContext.id = 168;
 
 /***/ }),
 
-/***/ 212:
+/***/ 213:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TabsControllerPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__home_home__ = __webpack_require__(213);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__home_home__ = __webpack_require__(214);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__group_list_group_list__ = __webpack_require__(339);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__staff_contact_info_staff_contact_info__ = __webpack_require__(342);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__my_profile_my_profile__ = __webpack_require__(343);
@@ -536,14 +597,14 @@ TabsControllerPage = __decorate([
 
 /***/ }),
 
-/***/ 213:
+/***/ 214:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__deadlines_deadlines__ = __webpack_require__(214);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__deadlines_deadlines__ = __webpack_require__(114);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__red_groups_red_groups__ = __webpack_require__(215);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__red_students_red_students__ = __webpack_require__(217);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_chart_js__ = __webpack_require__(218);
@@ -894,50 +955,6 @@ HomePage = __decorate([
 
 /***/ }),
 
-/***/ 214:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DeadlinesPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(11);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-var DeadlinesPage = (function () {
-    function DeadlinesPage(navCtrl) {
-        this.navCtrl = navCtrl;
-    }
-    DeadlinesPage.prototype.ngOnInit = function () {
-        this.Deadlinetitles = [{ Title: "HCI Deadline", Date: "15/11/2017" }, { Title: "Final Deadline", Date: "10/01/2018" }];
-        this.Deadlinedates = [{ Date: "15/11/2017" }, { Date: "10/01/2018" }];
-    };
-    DeadlinesPage.prototype.Date = function () {
-        var today = new Date();
-        var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
-        return date;
-    };
-    return DeadlinesPage;
-}());
-DeadlinesPage = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-deadlines',template:/*ion-inline-start:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/deadlines/deadlines.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>\n      Deadlines\n    </ion-title>\n    <ion-buttons end>\n      <button ion-button></button>\n    </ion-buttons>\n  </ion-navbar>\n</ion-header>\n<ion-content padding>\n  <ion-item>\n    <ion-grid>\n      <ion-row>\n        <ion-col>\n          <h1>Today\'s date:</h1>\n        </ion-col>\n        <ion-col>\n          <h1>{{Date()}}</h1>\n        </ion-col>\n      </ion-row>\n    </ion-grid>\n    <div class="spacer" style="height:20px;"></div>\n  </ion-item>\n  <ion-item *ngFor="let DL of Deadlinetitles; let DLD of Deadlinedates">\n    <ion-grid>\n      <ion-row>\n        <ion-col>\n         {{DL.Title}}\n        </ion-col>\n        <ion-col>\n          {{DL.Date}}\n        </ion-col>\n      </ion-row>\n    </ion-grid>\n  </ion-item>\n</ion-content>\n'/*ion-inline-end:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/deadlines/deadlines.html"*/
-    }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */]])
-], DeadlinesPage);
-
-//# sourceMappingURL=deadlines.js.map
-
-/***/ }),
-
 /***/ 215:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -1158,7 +1175,7 @@ RedStudentsPage = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__feedback_summary_feedback_summary__ = __webpack_require__(340);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__group_group__ = __webpack_require__(114);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__group_group__ = __webpack_require__(115);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_house_house__ = __webpack_require__(16);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1267,7 +1284,7 @@ GroupListPage = __decorate([
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FeedbackSummaryPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__group_group__ = __webpack_require__(114);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__group_group__ = __webpack_require__(115);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__more_details_more_details__ = __webpack_require__(341);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_house_house__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_http__ = __webpack_require__(26);
@@ -1689,7 +1706,8 @@ MyProfilePage = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_chart_js__ = __webpack_require__(218);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_chart_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_chart_js__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_house_house__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__deadlines_deadlines__ = __webpack_require__(114);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_house_house__ = __webpack_require__(16);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1699,6 +1717,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 
 
@@ -1853,6 +1872,11 @@ var StudentHomePage = (function () {
             });
         });
     };
+    StudentHomePage.prototype.goToDeadlines = function (params) {
+        if (!params)
+            params = {};
+        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_3__deadlines_deadlines__["a" /* DeadlinesPage */]);
+    };
     return StudentHomePage;
 }());
 __decorate([
@@ -1863,7 +1887,7 @@ StudentHomePage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
         selector: 'page-home-page',template:/*ion-inline-start:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/home-page/home-page.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>\n      Home Page\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n<ion-content padding id="page2">\n    <div id="notification-section" no-padding no-margin >\n        <ion-card text-center id="notification" no-padding no-margin>\n            <h6 style="color: white">Today\'s date: {{Date()}}</h6>\n        </ion-card>\n    </div>\n    <div class="spacer" style="height:2% ;" id="spacerline"></div>\n    \n    <div id="deadlines-section" no-padding>\n        <button id="deadlines-button" ion-button block icon-right style="text-align:right;"\n                on-click="goToDeadlines()">\n            Deadlines \n            <ion-icon name="calendar"></ion-icon>\n        </button>\n    </div>\n\n    \n    <div class="spacer" style="height:3% ;" id="spacerline"></div>\n    <div id="header-section">\n    <h4>My Overview</h4>\n    </div>\n    <div class="spacer" style="height:5%; " id="spacerline"></div>\n        \n    <ion-card class="graphCard" style="border-top: 5px solid #00A8FF;" padding no-margin>\n        <ion-card-content>\n          <canvas #lineCanvas></canvas>\n        </ion-card-content>\n    </ion-card>\n  <div class="spacer" style="height:3%;" id="spacerline"></div>\n  <div id="header-section">\n      <h4>Latest Feedback</h4>\n      </div>\n  <div class="spacer" style="height:5%; " id="spacerline"></div>\n    <div style="height: 30vh;">\n        <ion-card no-padding no-margin style="height: 40% !important;"> <!-- important to position the card in the center -->\n            <ion-card-content no-padding no-margin> <!-- important to fill the content of the card with the group performance color -->\n                <ion-item-divider style="width: 100% !important; height: 2vh !important; color: white;" class="{{ performanceColor[latestPerformance()] }}">\n                    <p id="weekdiv" style="color: white;">Week {{weekindex}} group peformance: </p>\n                    <p style="float: right; color: white;"> {{ performanceDescription[latestPerformance()] }} </p>\n                  </ion-item-divider>\n                  <ion-item color="none" id="feedbackSummary-list-item56">\n                      <p class="name">{{student}}</p>\n                      <ion-note item-right>\n                       <p><button class="performance {{ performanceColor[studentLatestPerformance()] }}"></button><span id="percentage" style="padding-left:10px"> {{contribution}}% (contribution)</span></p>\n                      </ion-note>\n                    </ion-item>\n              </ion-card-content>\n            </ion-card>\n</div>\n</ion-content>'/*ion-inline-end:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/home-page/home-page.html"*/
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_3__providers_house_house__["a" /* HouseProvider */]])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_4__providers_house_house__["a" /* HouseProvider */]])
 ], StudentHomePage);
 
 //# sourceMappingURL=home-page.js.map
@@ -2245,16 +2269,16 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__ = __webpack_require__(35);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_component__ = __webpack_require__(403);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_home_home__ = __webpack_require__(213);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_home_home__ = __webpack_require__(214);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_group_list_group_list__ = __webpack_require__(339);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_my_profile_my_profile__ = __webpack_require__(343);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_tabs_controller_tabs_controller__ = __webpack_require__(212);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_tabs_controller_tabs_controller__ = __webpack_require__(213);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_staff_contact_info_staff_contact_info__ = __webpack_require__(342);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_login_login__ = __webpack_require__(113);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_red_students_red_students__ = __webpack_require__(217);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__pages_red_groups_red_groups__ = __webpack_require__(215);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__pages_deadlines_deadlines__ = __webpack_require__(214);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_group_group__ = __webpack_require__(114);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__pages_deadlines_deadlines__ = __webpack_require__(114);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_group_group__ = __webpack_require__(115);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__pages_feedback_summary_feedback_summary__ = __webpack_require__(340);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__components_progress_bar_progress_bar__ = __webpack_require__(470);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__pages_home_page_home_page__ = __webpack_require__(344);
@@ -2266,8 +2290,8 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__angular_http__ = __webpack_require__(26);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__providers_auth_service__ = __webpack_require__(61);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__providers_house_house__ = __webpack_require__(16);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__ionic_native_status_bar__ = __webpack_require__(207);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__ionic_native_splash_screen__ = __webpack_require__(211);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__ionic_native_status_bar__ = __webpack_require__(208);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__ionic_native_splash_screen__ = __webpack_require__(212);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__providers_share__ = __webpack_require__(349);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -2381,8 +2405,8 @@ AppModule = __decorate([
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyApp; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(207);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(211);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(208);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(212);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_login_login__ = __webpack_require__(113);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;

@@ -16,21 +16,19 @@ export class GroupPage implements OnInit {
   
   weeks = [1,2,3,4,5,6,7,8,9,10]
   weeksoccupied: any[] = [];
-  
   buttons = ['button1', 'button2', 'button3', 'button4'];
-  
   groupNumber: number;
-  
+  photoarray = ['1jBNm4xWINklxipgU1Wkka17YY34x8JY4', '1S3UVJReDGZUlyWPqxdk7r908kKlk2v6z', '1luooOs5haSaSqMoSEEKBiKU6AusZ0xNR']; 
+
+
+
   descriptions= ['excellent', 'good', 'average', 'bad']; // don't change
-  
   studentFeedback: any[] = [];
-  
   groupFeedback = null;
   groupComment = null; 
   data:any = {};
   data2:any = {};
   myToggle:any ={};
-
   Students: any[] = [];
   names: any[] = [];
   str: string;
@@ -38,6 +36,7 @@ export class GroupPage implements OnInit {
   ultimatewkn: number[] = [];
   mx2: number;
   StudentIDs: any[] = [];
+
 
 
   constructor(public navCtrl: NavController, private alertCtrl: AlertController, public nav : NavParams, public house: HouseProvider, public http: Http, public http2: Http) {
@@ -274,10 +273,16 @@ export class GroupPage implements OnInit {
     console.log(this.myToggle[1]); 
     console.log(this.myToggle[2]); 
   }
+
+  photocompiler(i){
+    var photoname = "https://docs.google.com/uc?id=".concat(this.photoarray[i]); 
+    return photoname; 
+   } 
   
   absentToggle:boolean[] = [false, true, false];
   studentContribution: any[] = [3,4,5];
 }
+
 
 export class Student {
     feedback: string;
