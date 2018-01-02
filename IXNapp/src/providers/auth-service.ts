@@ -18,6 +18,7 @@ export class User {
     this.lastName = lastName;
     this.email = email;
     this.type = type;
+
   }
 }
  
@@ -25,9 +26,12 @@ export class User {
 export class AuthService {
   currentUser: User;
   combo: any[] = [];
-
+  one: number;
+  zero: number;
 
   constructor(public http: Http, public http2: Http, public http3: Http, public house: HouseProvider) {
+  this.one = 1;
+  this.zero = 0;
   }
  
   public login(credentials) {
@@ -53,6 +57,7 @@ export class AuthService {
         this.currentUser = new User(firstName, lastName, email, typee);
 
         this.house.setSID(this.combo[0].s_ID);
+        this.house.setLect(this.zero);
 
         observer.next(access);
         observer.complete();
@@ -81,6 +86,7 @@ export class AuthService {
       this.currentUser = new User(firstName, lastName, email, typee);
 
       this.house.setTAID(this.combo[0].t_ID);
+      this.house.setLect(this.zero);
 
       observer.next(access);
       observer.complete();
@@ -107,6 +113,10 @@ export class AuthService {
       let email = this.combo[0].tlmail;
       let typee = credentials.type;
       this.currentUser = new User(firstName, lastName, email, typee);
+
+      this.house.setTAID(this.combo[0].l_ID);
+      this.house.setLect(this.one);
+
       observer.next(access);
       observer.complete();
       } else {
@@ -132,4 +142,3 @@ export class AuthService {
     });
   }
 }
-
