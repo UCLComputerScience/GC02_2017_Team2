@@ -20,6 +20,7 @@ RGroups: any[] = [];
 Weeks: any[];
 RWeeks: any[] = [];
 Message: string;
+RIWeeks: any[] = [];
 	
 
   constructor(public navCtrl: NavController, public house: HouseProvider, public http: Http, public http2 : Http) {
@@ -50,15 +51,31 @@ Message: string;
 
 onClick(gid : any) {
 	this.RWeeks = [];
+  this.RIWeeks = [];
 	this.clicked = true;
 
 this.house.getAllRedTeam().subscribe(dt2 => {
 	this.Weeks = JSON.parse(dt2["_body"]);
 	for(let i in this.Weeks){
 	if(this.Weeks[i].g_id == gid){
-		this.RWeeks.push(this.Weeks[i]);
+		this.RIWeeks.push(this.Weeks[i].weeknum);
 	}
 	}
+
+  this.RIWeeks.sort(function(a,b) { 
+  return a - b
+  })
+
+    for(let q in this.RIWeeks) {
+    for(let j in this.Weeks) {
+    if(this.Weeks[j].weeknum == this.RIWeeks[q]) {
+      if(this.Weeks[j].g_id == gid){
+      this.RWeeks.push(this.Weeks[j]);
+      }
+    }
+    }
+    }
+
 	for(let i = 0; i < this.RWeeks.length; i++){
 		if(this.RWeeks[i].g_fb == 4){
 			this.RWeeks[i].g_fb = "dark";
