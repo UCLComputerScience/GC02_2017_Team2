@@ -1,0 +1,44 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>
+            More details
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content style="font-size:16px;" padding>
+  <h5>
+    Group {{group}} Week {{week}}
+  </h5>
+  <div id="groupperformance">
+    Group Performance:
+    <button class="performancebutton {{groupPerformance2}}">{{groupPerformance2}}</button>
+  </div>
+  <h6>
+    Group Comment:
+  </h6>
+  <p>"{{groupComment}}"</p>
+  <h5>Student Performance</h5>
+  <ion-list *ngFor="let name of names; let i = index; ">
+    <ion-card>
+      <div>
+        <ion-item text-wrap color="none" id="group-list-item39">
+          <ion-avatar item-left>
+            <img src="http://static.bleacherreport.net/images/redesign/avatars/default-user-icon-profile.png" style="height: 12vh; width: 22vw;">
+          </ion-avatar>
+          <p id="name" style="font-size:16px;">
+            {{name}}
+          </p>
+        </ion-item>
+        <ion-item>
+          Performance: <button class="studentbutton {{getPerformance(i)}}" style="margin-right:20px"> </button>
+         {{individualContributions[i]}} % 
+        </ion-item>
+        <ion-item text-wrap style ="color: grey !important">
+            {{individualComments[i]}}
+        </ion-item>
+      </div>
+    </ion-card>
+  </ion-list>
+    
+</ion-content>
