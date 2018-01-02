@@ -16,6 +16,7 @@ import { FeedbackSummaryPage } from '../pages/feedback-summary/feedback-summary'
 import { ProgressBarComponent } from "../components/progress-bar/progress-bar";
 import { StudentHomePage } from '../pages/home-page/home-page';
 import { MoreDetailsPage } from '../pages/more-details/more-details';
+import { MoreDetailsPage2 } from '../pages/more-details2/more-details2';
 import { StaffContactPage } from '../pages/staff-contact/staff-contact';
 import { ProfilePage } from '../pages/profile/profile';
 import { MyFeedbackHistoryPage } from '../pages/my-feedback-history/my-feedback-history';
@@ -47,7 +48,8 @@ import { ShareService } from '../providers/share';
     MoreDetailsPage,
     StaffContactPage,
     ProfilePage,
-    MyFeedbackHistoryPage
+    MyFeedbackHistoryPage,
+    MoreDetailsPage2
   ],
   imports: [
     BrowserModule,
@@ -72,7 +74,8 @@ import { ShareService } from '../providers/share';
     MoreDetailsPage,
     StaffContactPage,
     ProfilePage,
-    MyFeedbackHistoryPage
+    MyFeedbackHistoryPage,
+    MoreDetailsPage2
   ],
   providers: [
     StatusBar,
