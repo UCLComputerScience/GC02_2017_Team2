@@ -18,6 +18,8 @@ export class GroupPage implements OnInit {
   weeksoccupied: any[] = [];
   buttons = ['button1', 'button2', 'button3', 'button4'];
   groupNumber: number;
+
+  // retrieve photoids for each student, photo will be automatically uploaded
   photoarray = ['1jBNm4xWINklxipgU1Wkka17YY34x8JY4', '1S3UVJReDGZUlyWPqxdk7r908kKlk2v6z', '1luooOs5haSaSqMoSEEKBiKU6AusZ0xNR']; 
 
 
