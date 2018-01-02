@@ -19,6 +19,7 @@ export class FeedbackSummaryPage {
 
   Groups: any[];
   wkn: number[] = [];
+  wcheck: number[] = [];
   ultimatewkn: number[] = [];
   mx: number;
   mx2: number;
@@ -50,6 +51,8 @@ export class FeedbackSummaryPage {
     this.GetStage2Student().subscribe(dt => {
       this.Students = JSON.parse(dt["_body"]);
 
+      console.log(this.Students);
+
       for(let i in this.Students) {
       this.str = this.Students[i].fname;
       this.str2 = this.Students[i].lname;
@@ -62,9 +65,32 @@ export class FeedbackSummaryPage {
       for(let q in this.Students) {
       if(this.Students[q].g_ID == this.groupnumber && !this.ultimatewkn.includes(this.Students[q].s_wk)) {
         this.ultimatewkn.push(this.Students[q].s_wk);
-        this.groupdata.push(this.Students[q].gp);
+        //this.groupdata.push(this.Students[q].gp);
       }
       }
+
+      this.ultimatewkn.sort(function(a,b) { 
+      return a - b
+      })
+
+      console.log(this.ultimatewkn);
+
+      for(let p in this.ultimatewkn) {
+      for(let z in this.Students) {
+      if(this.Students[z].g_ID == this.groupnumber) {
+        console.log(this.Students[z].s_wk == this.ultimatewkn[p]);
+        if(this.Students[z].s_wk == this.ultimatewkn[p]) {
+        if(!this.wcheck.includes(this.Students[z].s_wk)) {
+        this.wcheck.push(this.Students[z].s_wk);
+        this.groupdata.push(this.Students[z].gp);
+        }
+      }
+      }
+      }
+      }
+
+      console.log(this.groupdata);
+
       this.mx2 = Math.max.apply(Math, this.ultimatewkn);
 
       for(let e in this.Students) {
@@ -175,4 +201,4 @@ colourval = "blue";
     });
   }
 
-}  
+}
