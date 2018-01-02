@@ -23,7 +23,6 @@ export class FeedbackSummaryPage {
   ultimatewkn: number[] = [];
   mx: number;
   mx2: number;
-  check: any[] = [];
   percentageresults: any[] = [];
   results: any[] = [];
   contrrow: number[] = [];
@@ -31,7 +30,6 @@ export class FeedbackSummaryPage {
   Students: any[] = [];
   StudentNames: any[] = [];
   StudentIDs: any[] = [];
-  CurAV: number[] = [];
   groupdata: number[] = [];
   str: string;
   str2: string;
@@ -113,24 +111,12 @@ export class FeedbackSummaryPage {
         this.latestperformance = 'Excellent';
       }
 
-      for(let j in this.Students) {
-          for(let k in this.StudentIDs) {
-          console.log(this.mx2);
-            if(this.StudentIDs[k] == this.Students[j].s_ID && this.Students[j].s_wk == this.mx2) {
-              if(!this.check.includes(this.StudentIDs[k])) {
-              this.CurAV.push(this.Students[j].sp);
-              this.check.push(this.StudentIDs[k]);
-              }
-            }
-          }
-      }
-      console.log(this.StudentIDs);
-      console.log(this.CurAV);
 
-        for (let y in this.CurAV){
-        this.sum = parseFloat((this.sum).toString()) + parseFloat((this.CurAV[y]).toString()); 
+        for (let y in this.groupdata){
+        this.sum = parseFloat((this.sum).toString()) + parseFloat((this.groupdata[y]).toString()); 
         }
-        this.sum = this.sum/parseFloat((this.CurAV.length).toString()); 
+        var a = (this.sum/parseFloat((this.groupdata.length).toString())).toFixed(1);
+        this.sum = parseFloat(a); 
 
         for(let h in this.ultimatewkn) {
         console.log(this.percentageresults);
