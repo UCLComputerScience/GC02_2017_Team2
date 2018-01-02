@@ -16,7 +16,7 @@ export class HouseProvider {
   TAID: number;
   SID: number;
 
-  constructor(public http: Http, public http2: Http, public http3: Http, public http4: Http, public http5: Http, public http6: Http, public http7: Http) {
+  constructor(public http: Http, public http2: Http, public http3: Http, public http4: Http, public http5: Http, public http6: Http, public http7: Http, public http8: Http) {
     console.log('Hello HouseProvider Provider');
   }
 
@@ -69,6 +69,13 @@ export class HouseProvider {
     return this.http7.post(link6, myData6);
   }
 
+  MoreDetsS() {
+      var link7 = 'http://gc02team02app.azurewebsites.net/SQL/MoreDetsS.php';
+    var myData7 =  JSON.stringify({studID: this.SID})
+
+    return this.http8.post(link7, myData7);
+  }
+
   setSID(userID){
        this.SID = userID; 
    }
@@ -79,4 +86,3 @@ export class HouseProvider {
 
 
 }
-
