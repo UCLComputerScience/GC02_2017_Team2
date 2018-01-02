@@ -56,14 +56,14 @@
             </ion-item>
             <div>
               <button type="button" *ngFor="let button of buttons; let j = index; " class="studentbutton {{button}}" [class.highlighted]="j === getIsStudentSelected(i)" (click)="onSelect(j, i)"></button>
-              <ion-input placeholder="contr." id="contribution" [(ngModel)]="this['studentContribution'+i]" name="studentContribution"></ion-input>
+              <ion-input placeholder="contr." id="contribution" [(ngModel)]="studentContribution[i]" name="studentContribution" value=""></ion-input>
             </div>
             <ion-item lines>
               <ion-input [(ngModel)]="this['studentComment'+i]" name="studentComment" type="text" placeholder="Click to input comment"></ion-input>
             </ion-item>
             <ion-item no-lines id="toggleitem">
               <ion-label id="label">Absent:</ion-label>
-              <ion-toggle></ion-toggle>
+              <ion-toggle (ionChange)="notify(i)"></ion-toggle>
             </ion-item>
           </div>
         </ion-card>

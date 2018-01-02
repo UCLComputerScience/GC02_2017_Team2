@@ -29,6 +29,7 @@ export class GroupPage implements OnInit {
   groupComment = null; 
   data:any = {};
   data2:any = {};
+  myToggle:any ={};
 
   Students: any[] = [];
   names: any[] = [];
@@ -133,13 +134,13 @@ export class GroupPage implements OnInit {
     let checkData = true;
     for (let i=0; i<this.names.length; i++) {
         // if field is empty show error
-        if (this['isStudentSelected'+i] === null || this['studentComment'+i] === null || this['studentContribution'+i] === null) {
+        if (this['isStudentSelected'+i] === null || this['studentComment'+i] === null || this.studentContribution[i] === null) {
             this.showError("please fill in all fields, you can fill in '-' if you don't want to enter a comment, and enter integers for the contribution");
             checkData = false;
             break;
         }
         
-        else if (Number.isInteger(Number(this['studentContribution'+i])) === false) {
+        else if (Number.isInteger(Number(this.studentContribution[i])) === false) {
             this.showError("please fill in all fields, you can fill in '-' if you don't want to enter a comment, and enter integers for the contribution");
             checkData = false;
             break;
@@ -154,7 +155,7 @@ export class GroupPage implements OnInit {
       if(!this.weeksoccupied.includes(String(this.currentdateindex))) {
         let added = 0;
         for (let i=0; i<this.names.length; i++) {
-            added += Number(this['studentContribution'+i]);
+            added += Number(this.studentContribution[i]);
         }
         if (added === 100) {
             this.storeData();
@@ -192,7 +193,7 @@ export class GroupPage implements OnInit {
         }
 
         let comment: string = this['studentComment'+i];
-        let contribution = Number(this['studentContribution'+i]);
+        let contribution = Number(this.studentContribution[i]);
         let stuID = this.StudentIDs[i];
         studentFeedback.push(new Student(feedback, comment, contribution, stuID));
     }
@@ -246,7 +247,7 @@ export class GroupPage implements OnInit {
 
   
   getContribution(i){
-    let val = this['studentContribution'+i];
+    let val = this.studentContribution[i];
     return val;
   }
   
@@ -254,17 +255,28 @@ export class GroupPage implements OnInit {
     let val = this['studentComment'+i];
     return val;
   }
-  
+
   toggleEvent(i) {
-    if (this['studentContribution'+i] === 0) {
-        this['studentContribution'+i] = null;
+    console.log(this.absentToggle[i]); 
+    if (this.studentContribution[i] === 0) {
+        this.studentContribution[i] = 1;
     }
     else {
-        this['studentContribution'+i] = 0;
+        this.studentContribution[i] = 0;
     }
         
   }
   
+  //this section is and handles the toggle button function, set the corresponding to true or false 
+  notify(i){
+    this.myToggle[i]= true; 
+    console.log(this.myToggle[0]); 
+    console.log(this.myToggle[1]); 
+    console.log(this.myToggle[2]); 
+  }
+  
+  absentToggle:boolean[] = [false, true, false];
+  studentContribution: any[] = [3,4,5];
 }
 
 export class Student {
