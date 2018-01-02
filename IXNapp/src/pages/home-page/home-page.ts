@@ -97,9 +97,23 @@ export class StudentHomePage {
 
       for(let q in this.Students) {
         this.ultimatewkn.push(this.Students[q].s_wk);
-        this.groupdata.push(this.Students[q].gp);
-        this.studentdata.push(this.Students[q].sp);
-        this.contrhist.push(this.Students[q].contr);
+        //this.groupdata.push(this.Students[q].gp);
+        //this.studentdata.push(this.Students[q].sp);
+        //this.contrhist.push(this.Students[q].contr);
+      }
+
+      this.ultimatewkn.sort(function(a,b) { 
+      return a - b
+      })
+
+      for(let p in this.ultimatewkn) {
+      for(let x in this.Students) {
+        if(this.Students[x].s_wk == this.ultimatewkn[p]) {
+          this.groupdata.push(this.Students[x].gp);
+          this.studentdata.push(this.Students[x].sp);
+          this.contrhist.push(this.Students[x].contr);
+        }
+      }
       }
 
       this.weekindex = Math.max.apply(Math, this.ultimatewkn);
