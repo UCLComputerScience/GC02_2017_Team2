@@ -1,6 +1,7 @@
 import {Component, ViewChild} from '@angular/core';
 import { NavController} from 'ionic-angular';
 import { Chart } from 'chart.js';
+import { DeadlinesPage } from '../deadlines/deadlines';
 import { HouseProvider } from '../../providers/house/house';
 
 @Component({
@@ -194,4 +195,9 @@ export class StudentHomePage {
     );
   })
   }
+
+  goToDeadlines(params) {
+		if (!params) params = {};
+		this.navCtrl.push(DeadlinesPage);
+	}
 }

@@ -26311,6 +26311,54 @@ page-more-details ion-item {
   padding-top: 0px !important;
 }
 
+page-more-details2 .performancebutton {
+  font-size: 13px;
+  height: 30px;
+  width: 23%;
+  padding: 2px;
+  margin: 3px;
+  color: white;
+  border-radius: 5px;
+}
+
+page-more-details2 .studentbutton {
+  height: 30px;
+  width: 30px;
+  border-radius: 80px;
+  vertical-align: middle;
+  margin-left: 5px;
+}
+
+page-more-details2 .excellent {
+  background-color: #058D65;
+}
+
+page-more-details2 .good {
+  background-color: #7ED321;
+}
+
+page-more-details2 .average {
+  background-color: #FFCD56;
+}
+
+page-more-details2 .bad {
+  background-color: #FF6384;
+}
+
+page-more-details2 h5 {
+  text-align: center;
+}
+
+page-more-details2 ion-list {
+  margin-bottom: 0px !important;
+  margin-top: 0px !important;
+}
+
+page-more-details2 ion-item {
+  padding-bottom: 0px !important;
+  padding-top: 0px !important;
+}
+
 page-my-feedback-history #feedbackSummary-heading6 {
   margin-bottom: 0;
   float: left;
