@@ -22,14 +22,14 @@
     </ion-grid>
     <div class="spacer" style="height:20px;"></div>
   </ion-item>
-  <ion-item *ngFor="let DL of Deadlinetitles; let DLD of Deadlinedates">
+  <ion-item *ngFor="let DL of Deadlinetitles">
     <ion-grid>
       <ion-row>
         <ion-col>
-         {{DL.Title}}
+         {{DL.deadt}}
         </ion-col>
         <ion-col>
-          {{DL.Date}}
+          {{DL.deadd}}
         </ion-col>
       </ion-row>
     </ion-grid>
