@@ -10,6 +10,10 @@
 </ion-header>
 
 <ion-content padding>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  
   <h4 id="feedbackSummary-heading6">
     Group {{groupnumber}}
   </h4>
