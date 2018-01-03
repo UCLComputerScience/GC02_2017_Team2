@@ -1,6 +1,7 @@
 import { Component , OnInit} from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { HouseProvider } from '../../providers/house/house';
+import { Http, Headers, RequestOptions } from '@angular/http';
 
 
 @Component({
@@ -10,20 +11,24 @@ import { HouseProvider } from '../../providers/house/house';
 })
 export class StaffContactInfoPage {
 
-StaffContact: any[];
-TAContact: any[];
+GContact: any[] = [];
+SContact: any[] = [];
+
 
   constructor(public navCtrl: NavController, public house: HouseProvider) {
-    this.house.getStaffCon().subscribe(data => this.TAContact = data);
-  console.log(this.TAContact);
+    this.house.GetGroupCon().subscribe(dt => {
+      this.GContact = JSON.parse(dt["_body"]);
+
+      })
   }
 
 
 ngOnInit() {
-	
-	this.StaffContact= [{"Name": "Yun Fu", "Email": "yunfu@ucl.ac.uk", "Hours": "13:00", "Location": "Malet Place"}];
 
-	}
+	this.house.GetSuper().subscribe(dt2 => {
+      this.SContact = JSON.parse(dt2["_body"]);
 
+      })
 
+}
 }
