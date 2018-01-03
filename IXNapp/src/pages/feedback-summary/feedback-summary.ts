@@ -152,6 +152,126 @@ export class FeedbackSummaryPage {
   return this.http.post(link, myData);
   }
 
+  doRefresh(refresher) {
+    console.log('Begin async operation', refresher);
+
+  this.wcheck = [];
+  this.ultimatewkn = [];
+  this.mx2 = 0;
+  this.percentageresults = [];
+  this.results = [];
+  this.contrrow = [];
+  this.sprow = [];
+  this.Students = [];
+  this.StudentNames = [];
+  this.StudentIDs = [];
+  this.groupdata = [];
+  this.sum = 0;
+
+    this.GetStage2Student().subscribe(dt => {
+      this.Students = JSON.parse(dt["_body"]);
+
+      console.log(this.Students);
+
+      for(let i in this.Students) {
+      this.str = this.Students[i].fname;
+      this.str2 = this.Students[i].lname;
+      if(!this.StudentNames.includes(this.str.concat(" ", this.str2)) && this.Students[i].g_ID == this.groupnumber) {
+        this.StudentNames.push(this.str.concat(" ", this.str2));
+        this.StudentIDs.push(this.Students[i].s_ID);
+        }
+      }
+
+      for(let q in this.Students) {
+      if(this.Students[q].g_ID == this.groupnumber && !this.ultimatewkn.includes(this.Students[q].s_wk)) {
+        this.ultimatewkn.push(this.Students[q].s_wk);
+        //this.groupdata.push(this.Students[q].gp);
+      }
+      }
+
+      this.ultimatewkn.sort(function(a,b) { 
+      return a - b
+      })
+
+      console.log(this.ultimatewkn);
+
+      for(let p in this.ultimatewkn) {
+      for(let z in this.Students) {
+      if(this.Students[z].g_ID == this.groupnumber) {
+        console.log(this.Students[z].s_wk == this.ultimatewkn[p]);
+        if(this.Students[z].s_wk == this.ultimatewkn[p]) {
+        if(!this.wcheck.includes(this.Students[z].s_wk)) {
+        this.wcheck.push(this.Students[z].s_wk);
+        this.groupdata.push(this.Students[z].gp);
+        }
+      }
+      }
+      }
+      }
+
+      console.log(this.groupdata);
+
+      this.mx2 = Math.max.apply(Math, this.ultimatewkn);
+
+      for(let e in this.Students) {
+      console.log(this.Students[e].g_wk == this.mx2 && this.Students[e].g_ID == this.groupnumber);
+      if(this.Students[e].g_wk == this.mx2 && this.Students[e].g_ID == this.groupnumber) {
+        this.latestfeedback = this.Students[e].gp;
+      }
+      }
+
+      if(this.latestfeedback == 1) {
+        this.latestperformance = 'Bad';
+      }
+      if(this.latestfeedback == 2) {
+        this.latestperformance = 'Average';
+      }
+      if(this.latestfeedback == 3) {
+        this.latestperformance = 'Good';
+      }
+      if(this.latestfeedback == 4) {
+        this.latestperformance = 'Excellent';
+      }
+
+
+        for (let y in this.groupdata){
+        this.sum = parseFloat((this.sum).toString()) + parseFloat((this.groupdata[y]).toString()); 
+        }
+        var a = (this.sum/parseFloat((this.groupdata.length).toString())).toFixed(1);
+        this.sum = parseFloat(a); 
+
+        for(let h in this.ultimatewkn) {
+        console.log(this.percentageresults);
+        this.contrrow= [];
+        this.sprow= [];
+          for(let g in this.Students) {
+            for(let u in this.StudentIDs) {
+            if(this.Students[g].g_ID == this.groupnumber && this.ultimatewkn[h] == this.Students[g].s_wk) {
+              if(this.Students[g].s_ID == this.StudentIDs[u]) {
+                this.contrrow.push(this.Students[g].contr);
+                this.sprow.push(this.Students[g].sp);
+              }
+
+            }
+            }
+          }
+          if(this.contrrow.length != 0) {
+          this.percentageresults.push(this.contrrow);
+          }
+          if(this.sprow.length != 0) {
+          this.results.push(this.sprow);
+          }
+        }
+
+      })
+
+
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      refresher.complete();
+    }, 2000);
+  }
+
 
   groupColorSetting(x) {
     var value = this.groupdata[x];  
