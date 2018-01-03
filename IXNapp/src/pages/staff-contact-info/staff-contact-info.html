@@ -1,5 +1,3 @@
-
-
 <ion-header>
   <ion-navbar>
     <ion-title>
@@ -12,15 +10,14 @@
   <h4 style="margin-top: 6vh;">
     Lecturer
   </h4>
-    <ion-item no-lines *ngFor= "let StaffC of StaffContact">
+    <ion-item no-lines *ngFor= "let StaffC of SContact">
       <ion-avatar item-start>
-        <img src= "assets/img/Staff.png" style= "height: 12vh; width: 22vw; margin-left: 1.6vw;">
+        <img src= "{{StaffC.pic}}" style= "height: 12vh; width: 22vw; margin-left: 1.6vw;">
       </ion-avatar>
       <ul style="list-style-type:none; margin-left: -9vw;">
-        <li>{{StaffC.Name}}</li>
-        <li>{{StaffC.Email}}</li>
-        <li>{{StaffC.Hours}}</li>
-        <li>{{StaffC.Location}}</li>
+        <li>{{StaffC.first}}</li>
+        <li>{{StaffC.last}}</li>
+        <li>{{StaffC.email}}</li>
       </ul>
     </ion-item>
 
@@ -30,17 +27,13 @@
     Teaching Assistance
   </h4>
   
-    <ion-item no-lines *ngFor= "let TAC of TAContact">
-      <ion-avatar item-start>
-        <img class= "TAsize" src= "{{TAC.Pic}}" style= "height: 10vh; width: 18vw; margin-left: 4vw; margin-top:-6vh;">
-      </ion-avatar>
-      <ul style="list-style-type:none; margin-left: -7vw;">
-        <li>{{TAC.first}}</li>
-        <li>{{TAC.email}}</li>
-      </ul>
-      <ul style="list-style-type:none; margin-left: -7vw;">
-        <li><u>Experience:</u></li>
-        <li>{{TAC.s_exp}}</li>
+    <ion-item no-lines *ngFor= "let GC of GContact">
+      <h1 item-start style="margin-left: 9vw;">
+        G{{GC.g_id}}
+      </h1>
+      <ul style="list-style-type:none; margin-left:-4vw;">
+        <li><u>Project:</u></li>
+        <li>{{GC.pro}}</li>
       </ul>  
 
     </ion-item>
