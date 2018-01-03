@@ -158,6 +158,7 @@ export class GroupPage implements OnInit {
     if (checkData === true) {
       console.log(this.weeksoccupied);
       console.log(this.currentdateindex);
+      let allAbsent = true;
       if(!this.weeksoccupied.includes(String(this.currentdateindex))) {
         let added = 0;
         for (let i=0; i<this.names.length; i++) {
@@ -166,9 +167,10 @@ export class GroupPage implements OnInit {
             }
             else {
                 added += Number(this['studentContribution'+i]);
+                allAbsent = false;
             }
         }
-        if (added === 100) {
+        if (added === 100 || allAbsent === true) {
             this.storeData();
         }
         else {
