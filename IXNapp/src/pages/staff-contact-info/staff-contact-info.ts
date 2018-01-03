@@ -20,15 +20,9 @@ SContact: any[] = [];
       this.GContact = JSON.parse(dt["_body"]);
 
       })
-  }
 
-
-ngOnInit() {
-
-	this.house.GetSuper().subscribe(dt2 => {
+      this.house.GetSuper().subscribe(dt2 => {
       this.SContact = JSON.parse(dt2["_body"]);
-
       })
-
-}
+  }
 }
