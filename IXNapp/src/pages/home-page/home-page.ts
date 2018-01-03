@@ -61,7 +61,7 @@ export class StudentHomePage {
 
   Date(): String{
     var today = new Date();
-    var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+    var date = today.getDate()+'-'+(today.getMonth()+1)+'-'+today.getFullYear();
     return date;
   }
 
