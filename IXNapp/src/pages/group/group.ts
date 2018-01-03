@@ -190,7 +190,7 @@ export class GroupPage implements OnInit {
     for (let i=0; i<this.names.length; i++) {
         let feedback: any = this.getDescription(this['isStudentSelected'+i]);
         let contribution;
-        let comment: strung;
+        let comment: string;
         
         if (this.myToggle[i] === true) {
             feedback = 0
@@ -210,11 +210,11 @@ export class GroupPage implements OnInit {
         
         if (this.myToggle[i] === true) {
             contribution = 0;
-            comment: string = "-";
+            comment = "-";
         }
         else {
             contribution = Number(this['studentContribution'+i]);
-            comment: string = this['studentComment'+i];
+            comment = this['studentComment'+i];
         }
         let stuID = this.StudentIDs[i];
         studentFeedback.push(new Student(feedback, comment, contribution, stuID));
