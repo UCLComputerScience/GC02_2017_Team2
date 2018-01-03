@@ -30,7 +30,7 @@ export class GroupPage implements OnInit {
   groupComment = null; 
   data:any = {};
   data2:any = {};
-  myToggle:any ={};
+  myToggle: boolean[] = [];
   Students: any[] = [];
   names: any[] = [];
   str: string;
@@ -53,6 +53,7 @@ export class GroupPage implements OnInit {
       console.log(this.Students);
 
       for(let i in this.Students) {
+      this.myToggle[i] = false;
       this.str = this.Students[i].fname;
       this.str2 = this.Students[i].lname;
       if(!this.names.includes(this.str.concat(" ", this.str2)) && this.Students[i].g_ID == this.groupNumber) {
@@ -75,6 +76,7 @@ export class GroupPage implements OnInit {
       console.log(this.mx2);
 
     })
+    
   }
 
  goBack(params){
@@ -134,14 +136,17 @@ export class GroupPage implements OnInit {
     this.groupFeedback = this.descriptions[this.buttonSelected]; 
     let checkData = true;
     for (let i=0; i<this.names.length; i++) {
+        if (this.myToggle[i] === true) {
+            continue;
+        }
         // if field is empty show error
-        if (this['isStudentSelected'+i] === null || this['studentComment'+i] === null || this.studentContribution[i] === null) {
+        else if (this['isStudentSelected'+i] === null || this['studentComment'+i] === null || this['studentContribution'+i] === null) {
             this.showError("please fill in all fields, you can fill in '-' if you don't want to enter a comment, and enter integers for the contribution");
             checkData = false;
             break;
         }
         
-        else if (Number.isInteger(Number(this.studentContribution[i])) === false) {
+        else if (Number.isInteger(Number(this['studentContribution'+i])) === false) {
             this.showError("please fill in all fields, you can fill in '-' if you don't want to enter a comment, and enter integers for the contribution");
             checkData = false;
             break;
@@ -156,13 +161,18 @@ export class GroupPage implements OnInit {
       if(!this.weeksoccupied.includes(String(this.currentdateindex))) {
         let added = 0;
         for (let i=0; i<this.names.length; i++) {
-            added += Number(this.studentContribution[i]);
+            if (this.myToggle[i]= true) {
+                added += 0;
+            }
+            else {
+                added += Number(this['studentContribution'+i]);
+            }
         }
         if (added === 100) {
             this.storeData();
         }
         else {
-            this.showError("the contributions must add up to 100");
+            this.showError("the contributions must add up to 100, notice that if a student is marked as absent the contribution is recorded as 0");
         }
         } else {
           this.showError("This week's feedback already exists");
@@ -179,22 +189,31 @@ export class GroupPage implements OnInit {
 
     for (let i=0; i<this.names.length; i++) {
         let feedback: any = this.getDescription(this['isStudentSelected'+i]);
-
-        if(feedback == 'bad') {
+        
+        if (this.myToggle[i] === true) {
+            feedback = 0
+        }
+        else if(feedback === 'bad') {
           feedback = 1;
         }
-        if(feedback == 'average') {
+        else if(feedback === 'average') {
           feedback = 2;
         }
-        if(feedback == 'good') {
+        else if(feedback === 'good') {
           feedback = 3;
         }
-        if(feedback == 'excellent') {
+        else if(feedback === 'excellent') {
           feedback = 4;
         }
-
-        let comment: string = this['studentComment'+i];
-        let contribution = Number(this.studentContribution[i]);
+        
+        if (this.myToggle[i] === true) {
+            let contribution = 0;
+            let comment = '-';
+        }
+        else {
+            let contribution = Number(this['studentContribution'+i]);
+            let comment: string = this['studentComment'+i];
+        }
         let stuID = this.StudentIDs[i];
         studentFeedback.push(new Student(feedback, comment, contribution, stuID));
     }
@@ -248,7 +267,7 @@ export class GroupPage implements OnInit {
 
   
   getContribution(i){
-    let val = this.studentContribution[i];
+    let val = this['studentContribution'+i];
     return val;
   }
   
@@ -256,33 +275,32 @@ export class GroupPage implements OnInit {
     let val = this['studentComment'+i];
     return val;
   }
-
-  toggleEvent(i) {
-    console.log(this.absentToggle[i]); 
-    if (this.studentContribution[i] === 0) {
-        this.studentContribution[i] = 1;
-    }
-    else {
-        this.studentContribution[i] = 0;
-    }
-        
-  }
   
   //this section is and handles the toggle button function, set the corresponding to true or false 
+  
   notify(i){
-    this.myToggle[i]= true; 
-    console.log(this.myToggle[0]); 
-    console.log(this.myToggle[1]); 
-    console.log(this.myToggle[2]); 
+    console.log("toggle: " + this.myToggle);
+    if (this.myToggle[i] === true) {
+        this.myToggle[i]= false;
+    }
+    else if (this.myToggle[i] === false) {
+        this.myToggle[i]= true;
+        let alert = this.alertCtrl.create({
+          title: 'Warning',
+          subTitle: "marking a student as absent will set their contribution and feedback to 0 and the comment to '-'",
+          buttons: ['OK']
+        });
+        alert.present(prompt);
+    }
+    console.log("toggle2: " + this.myToggle);
+    
   }
 
   photocompiler(i){
     var photoname = "https://docs.google.com/uc?id=".concat(this.photoarray[i]); 
     return photoname; 
    } 
-  
-  absentToggle:boolean[] = [false, true, false];
-  studentContribution: any[] = [3,4,5];
+
 }
 
 
