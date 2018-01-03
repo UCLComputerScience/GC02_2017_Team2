@@ -76,6 +76,65 @@ export class MyFeedbackHistoryPage {
 
       })
   }
+
+  doRefresh(refresher) {
+    console.log('Begin async operation', refresher);
+
+    this.groupnumber = 0;
+    this.ID = 0;
+    this.Students = [];
+    this.groupdata = [];
+    this.studentdata = [];
+    this.groupIDs = [];
+    this.studentN = [];
+    this.StudentIDs = [];
+    this.percentageresults = [];
+    this.weekswithinfo = [];
+
+    this.house.GetStudentHome().subscribe(dt => {
+      this.Students = JSON.parse(dt["_body"]);
+
+        for(let i in this.Students) {
+      this.str = this.Students[i].fname;
+      this.str2 = this.Students[i].lname;
+      if(!this.studentN.includes(this.str.concat(" ", this.str2))) {
+        this.studentN.push(this.str.concat(" ", this.str2));
+        this.StudentIDs.push(this.Students[i].s_ID);
+        this.groupIDs.push(this.Students[i].g_ID);
+        }
+      }
+
+      this.groupnumber = this.groupIDs[0];
+
+      this.ID = this.StudentIDs[0];
+
+      this.student = this.studentN[0];
+
+      for(let q in this.Students) {
+        this.weekswithinfo.push(this.Students[q].s_wk);
+      }
+
+      this.weekswithinfo.sort(function(a,b) { 
+      return a - b
+      })
+
+      for(let p in this.weekswithinfo) {
+      for(let x in this.Students) {
+        if(this.Students[x].s_wk == this.weekswithinfo[p]) {
+          this.groupdata.push(this.Students[x].gp);
+          this.studentdata.push(this.Students[x].sp);
+          this.percentageresults.push(this.Students[x].contr);
+        }
+      }
+      }
+
+      })
+
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      refresher.complete();
+    }, 2000);
+  }
   
   groupColorSetting(x) {
     var value = this.groupdata[x];  
