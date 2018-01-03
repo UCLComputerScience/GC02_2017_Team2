@@ -161,8 +161,8 @@ export class GroupPage implements OnInit {
       if(!this.weeksoccupied.includes(String(this.currentdateindex))) {
         let added = 0;
         for (let i=0; i<this.names.length; i++) {
-            if (this.myToggle[i]= true) {
-                added += 0;
+            if (this.myToggle[i] === true) {
+                added += Number(0);
             }
             else {
                 added += Number(this['studentContribution'+i]);
