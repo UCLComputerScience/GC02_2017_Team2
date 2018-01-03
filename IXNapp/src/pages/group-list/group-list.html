@@ -7,6 +7,11 @@
 </ion-header>
 
 <ion-content no-padding id="page3">
+
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+    
     <div class="spacer" style="width:300px;height: 20px;" id="groupList-spacer6"></div>
     <div class="section" *ngFor="let item of items; let i = index">
         <button ion-button class="groupbutton {{getPerformance(i)}}" on-click="goToFeedbackSummary(item)">
