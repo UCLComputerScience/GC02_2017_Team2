@@ -76,9 +76,70 @@ export class GroupListPage {
     })
   }
 
-  ngOnInit() {
-  
-  }
+doRefresh(refresher) {
+    console.log('Begin async operation', refresher);
+
+  this.items = [];
+  this.itemstemp = [];
+  this.items2 = [];
+  this.Groups = [];
+  this.TAGroups = [];
+
+    this.house.GetStage2Student().subscribe(dt => {
+      this.Groups = JSON.parse(dt["_body"]);
+
+      console.log(this.Groups);
+
+      for(let q in this.Groups) {
+        if(!this.TAGroups.includes(this.Groups[q].g_ID)) {
+        this.TAGroups.push(this.Groups[q].g_ID);
+        }
+      }
+
+      for(let i in this.TAGroups) {
+      var groupw: number[] = [];
+        for(let z in this.Groups) {
+        console.log(this.Groups[z].g_ID == this.TAGroups[i]);
+          if(this.Groups[z].g_ID == this.TAGroups[i]) {
+            groupw.push(this.Groups[z].g_wk);
+          }
+        }
+        var groupmax = Math.max.apply(Math, groupw);
+      for(let k in this.Groups) {
+      if(this.Groups[k].g_wk == groupmax && this.Groups[k].g_ID == this.TAGroups[i]) {
+        if(!this.items.includes(this.Groups[k].g_ID)) {
+        this.items.push(this.Groups[k].g_ID);
+        this.itemstemp.push(this.Groups[k].gp);
+        }
+        }
+      }
+      }
+
+      for(let j in this.itemstemp) {
+      if(this.itemstemp[j] == 1) {
+        this.items2.push('Bad');
+      }
+      if(this.itemstemp[j] == 2) {
+        this.items2.push('Ok');
+      }
+      if(this.itemstemp[j] == 3) {
+        this.items2.push('Good');
+      }
+      if(this.itemstemp[j] == 4) {
+        this.items2.push('Excellent');
+      }
+      }    
+
+      console.log(this.items);
+
+    })
+
+
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      refresher.complete();
+    }, 2000);
+}
 
   performanceAnnotation = ['bad', 'average', 'good', 'excellent']; //constants do not modify
   
