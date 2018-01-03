@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { HouseProvider } from '../../providers/house/house';
+import { Http, Headers, RequestOptions } from '@angular/http';
 
 @Component({
   selector: 'page-deadlines',
@@ -9,14 +11,17 @@ import { NavController } from 'ionic-angular';
 export class DeadlinesPage {
 
   Deadlinetitles: any[];
-  Deadlinedates: any[];
-  constructor(public navCtrl: NavController) {
+
+
+  constructor(public navCtrl: NavController, public house: HouseProvider) {
+
   }
 
   ngOnInit(){
 
-    this.Deadlinetitles= [{Title: "HCI Deadline", Date: "15/11/2017"},{Title: "Final Deadline", Date: "10/01/2018"}];
-    this.Deadlinedates= [{Date: "15/11/2017"}, {Date: "10/01/2018"}];
+  this.house.getDead().subscribe(dt =>
+      this.Deadlinetitles = dt);
+
   }
 
   Date(): String{
