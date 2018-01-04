@@ -63,7 +63,7 @@ export class GroupPage implements OnInit {
       }
 
       for(let j in this.Students) {
-      if(!this.ultimatewkn.includes(this.Students[j].g_wk)) {
+      if(!this.ultimatewkn.includes(this.Students[j].g_wk) && this.Students[j].g_ID == this.groupNumber) {
         this.ultimatewkn.push(this.Students[j].g_wk);
       }
       }
