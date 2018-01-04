@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { HouseProvider } from '../../providers/house/house';
+import { FeedbackSummaryPage } from '../feedback-summary/feedback-summary';
 import { Http, Headers, RequestOptions } from '@angular/http';
 
 @Component({
@@ -108,7 +109,9 @@ groupPerformance2: string;
     console.log("Oooops!");
     })
 
-    this.navCtrl.pop();
+    this.navCtrl.push(FeedbackSummaryPage,  {
+    paramx: this.group
+    });
 
 
     }
