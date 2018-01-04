@@ -108,11 +108,8 @@ groupPerformance2: string;
     }, error => {
     console.log("Oooops!");
     })
-
-    this.navCtrl.push(FeedbackSummaryPage,  {
-    paramx: this.group
-    });
-
+      
+    this.navCtrl.popTo( this.navCtrl.getByIndex(0));
 
     }
 
