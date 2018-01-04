@@ -26,6 +26,7 @@ str: string;
 str2: string;
 data:any = {};
 data2:any = {};
+photoarray: any[] = [];
 
 groupPerformance2: string;
 
@@ -54,6 +55,7 @@ groupPerformance2: string;
             this.individualContributions.push(this.Students[i].contr);
             this.groupComment = this.Students[i].gc;
             this.groupPerformance = this.Students[i].gp;
+            this.photoarray.push(this.Students[i].photo);
             }
             }
             }
@@ -62,16 +64,6 @@ groupPerformance2: string;
 
         })
     }
-    
-    //BACKEND HERE!!
-    //group = 5;
-    //week = 4;
-    //names = ['Samantha Watson', 'John Taylor', 'James Kirk'];
-    //individualPerformances = [4, 4, 5];
-    //individualComments = ['good work','',''];
-    //individualContributions = [33, 34, 33];
-    //groupPerformance = 2;
-    //groupComment = 'The group progressed from last week but needs to work on the prototype more';
     
     values = ['bad', 'average', 'good', 'excellent']; // don't change
 
@@ -84,6 +76,11 @@ groupPerformance2: string;
     getGroupPerformance() {
         var value = this.values[this.groupPerformance-1];
         return value;
+    }
+  
+    photocompiler(i) {
+    var photoname = "https://docs.google.com/uc?id=".concat(this.photoarray[i]); 
+    return photoname; 
     }
 
     del() {
