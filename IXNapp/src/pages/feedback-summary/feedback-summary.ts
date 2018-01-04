@@ -41,7 +41,11 @@ export class FeedbackSummaryPage {
 
 
   constructor(public navCtrl: NavController, public nav : NavParams, public house: HouseProvider, public http: Http) {
+    if(typeof this.nav.get('param1') !== 'undefined') {
     this.groupnumber = this.nav.get('param1');
+    } else if(typeof this.nav.get('paramx') !== 'undefined') {
+    this.groupnumber = this.nav.get('paramx');
+    }
 
   }
 
