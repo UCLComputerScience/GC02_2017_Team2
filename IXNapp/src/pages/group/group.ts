@@ -17,11 +17,8 @@ export class GroupPage implements OnInit {
   weeks = [1,2,3,4,5,6,7,8,9,10]
   weeksoccupied: any[] = [];
   buttons = ['button1', 'button2', 'button3', 'button4'];
-  groupNumber: number;
-
-  // retrieve photoids for each student, photo will be automatically uploaded
-  photoarray = ['1jBNm4xWINklxipgU1Wkka17YY34x8JY4', '1S3UVJReDGZUlyWPqxdk7r908kKlk2v6z', '1luooOs5haSaSqMoSEEKBiKU6AusZ0xNR']; 
-
+  groupNumber: number; 
+  photoarray: any[] = [];
 
 
   descriptions= ['excellent', 'good', 'average', 'bad']; // don't change
@@ -59,6 +56,7 @@ export class GroupPage implements OnInit {
       if(!this.names.includes(this.str.concat(" ", this.str2)) && this.Students[i].g_ID == this.groupNumber) {
         this.names.push(this.str.concat(" ", this.str2));
         this.StudentIDs.push(this.Students[i].s_ID);
+        this.photoarray.push(this.Students[i].photo);
         }
       }
 
