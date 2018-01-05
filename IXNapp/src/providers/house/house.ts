@@ -18,7 +18,7 @@ export class HouseProvider {
   Lect: number;
 
 
-  constructor(public http: Http, public http2: Http, public http3: Http, public http4: Http, public http5: Http, public http6: Http, public http7: Http, public http8: Http, public http9: Http, public http10: Http, public http11: Http) {
+  constructor(public http: Http, public http2: Http, public http3: Http, public http4: Http, public http5: Http, public http6: Http, public http7: Http, public http8: Http, public http9: Http, public http10: Http, public http11: Http, public http12: Http, public http13: Http) {
     console.log('Hello HouseProvider Provider');
   }
 
@@ -90,6 +90,20 @@ export class HouseProvider {
     var myData9 =  JSON.stringify({teachID: this.TAID, lect: this.Lect})
 
     return this.http10.post(link9, myData9);
+  }
+	
+  GetSuper2() {
+      var link10 = 'http://gc02team02app.azurewebsites.net/SQL/Supervisor%20Contact2.php';
+    var myData10 =  JSON.stringify({teachID: this.TAID, lect: this.Lect})
+
+    return this.http12.post(link10, myData10);
+  }
+
+  GetGroupCon2() {
+      var link11 = 'http://gc02team02app.azurewebsites.net/SQL/SC.php';
+    var myData11 =  JSON.stringify({teachID: this.TAID, lect: this.Lect})
+
+    return this.http13.post(link11, myData11);
   }
 
   getDead(){
