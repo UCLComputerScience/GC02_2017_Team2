@@ -1,48 +1,86 @@
 page-profile {
-  #profilepic {
-    display:block;
-    width:80px;
-    height:80px;
-    margin-left:auto;
-    margin-right:auto;
-  }
+   #profilepic {
+        display:block;
+        width:80px;
+        height:80px;
+        margin-left:auto;
+        margin-right:auto;
+        margin-bottom: 30px;
+        margin-top: 20px;
+    }
+    
+    #myProfile-input1 {
+        width:52%;
+        float:left;
+    }
+    #myProfile-input2 {
+        width:47%;
+        padding-left:0px;
+    }
+    
+    ion-input {
+        border:solid 2px;
+        border-color:#00A8FF;
+        border-radius: 15px;
+        padding-left: 10px;
+        margin-bottom: 10px;
+        background-color: white !important;
+    }
+    
+    #supervising{
+        margin-top: 20px;
+    }
+    
+    #button {
+        background-color:#00A8FF;
+        color:white;
+        font-size:24px;
+        border-radius:70px;
+        height:70px;
+        width:70px;
+        margin:10px;
+    }
+    
+    #groups {
+        text-align: center;
+    }
+    
+    ion-item {
+        background-color: #00A8FF !important;
+    }
 
-  #myProfile-input1 {
-    width:52%;
-    float:left;
-  }
-  #myProfile-input2 {
-    width:47%;
-    padding-left:0px;
-  }
+    #blueblue {
+        background-color: #00A8FF;
+        padding-bottom: 40px;
+    }
+    
+    #logout {
+        position:absolute;
+        top: 15px;
+        right: 15px;
+        width: auto;
+        background-color: white;
+        color: grey;
+        border-radius: 5px;
+        height: 25px;
+    }
+    
+    #savechanges {
+        width: auto;
+        background-color: white;
+        color: grey;
+        border-radius: 5px;
+        height: 25px;
+        float:right;
+    }
+    
+    #supervising{
+        margin-top: 10px;
+    }
 
-  ion-input {
-    border:solid 2px;
-    border-color:#00A8FF;
-    //background-color:#00A8FF;
-    border-radius: 15px;
-    padding-left: 10px;
-    margin-bottom: 10px;
-    color:white;
-  }
-
-  #supervising{
-    margin-top: 25px;
-  }
-  button {
-    background-color:#00A8FF;
-    //background-color:"primary";
-    color:white;
-    font-size:17px;
-    border-radius:70px;
-    height:50px;
-    width:50px;
-    margin:10px;
-  }
-
-  #groups {
-    text-align: center;
-  }
+    #groups {
+        text-align: center;
+      }
 
 
 }
