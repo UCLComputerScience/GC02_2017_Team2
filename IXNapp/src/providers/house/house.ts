@@ -18,7 +18,7 @@ export class HouseProvider {
   Lect: number;
 
 
-  constructor(public http: Http, public http2: Http, public http3: Http, public http4: Http, public http5: Http, public http6: Http, public http7: Http, public http8: Http, public http9: Http, public http10: Http, public http11: Http, public http12: Http, public http13: Http) {
+  constructor(public http: Http, public http2: Http, public http3: Http, public http4: Http, public http5: Http, public http6: Http, public http7: Http, public http8: Http, public http9: Http, public http10: Http, public http11: Http, public http12: Http, public http13: Http, public http14: Http, public http15: Http) {
     console.log('Hello HouseProvider Provider');
   }
 
@@ -109,6 +109,20 @@ export class HouseProvider {
   getDead(){
 
       return this.http11.get('http://gc02team02app.azurewebsites.net/SQL/Deadline.php').do((res: Response) => console.log(res)).map((res: Response) => res.json());
+  }
+	
+  getProfileStaff() {
+      var link12 = 'http://gc02team02app.azurewebsites.net/SQL/ProfileStaGet.php';
+    var myData12 =  JSON.stringify({teachID: this.TAID, lect: this.Lect})
+
+    return this.http14.post(link12, myData12);
+  }
+
+  getProfileStu() {
+      var link13 = 'http://gc02team02app.azurewebsites.net/SQL/ProfileSGet.php';
+    var myData13 =  JSON.stringify({studID: this.SID})
+
+    return this.http15.post(link13, myData13);
   }
 
   setSID(userID){
