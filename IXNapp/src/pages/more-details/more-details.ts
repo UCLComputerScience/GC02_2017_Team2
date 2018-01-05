@@ -59,13 +59,19 @@ groupPerformance2: string;
             }
             }
             }
-
             this.groupPerformance2 = this.getGroupPerformance();
-
         })
     }
     
     values = ['bad', 'average', 'good', 'excellent']; // don't change
+    cardvalues = ['cardbad', 'cardaverage', 'cardgood', 'cardexcellent']
+
+    public getCard(i) { 
+        var performance = this.individualPerformances[i]; 
+        var value = this.cardvalues[performance-1]; 
+        console.log(value); 
+        return value; 
+    }
 
     public getPerformance(x) {
     var performance = this.individualPerformances[x];
@@ -83,8 +89,8 @@ groupPerformance2: string;
     return photoname; 
     }
 
-    del() {
 
+    del() {
     for(let j in this.Students) {
         var link = 'http://gc02team02app.azurewebsites.net/SQL/DelS.php';
     var myData =  JSON.stringify({week: this.week, sID: this.StudentIDs[j]})
@@ -97,7 +103,7 @@ groupPerformance2: string;
 
     }
 
-        var link2 = 'http://gc02team02app.azurewebsites.net/SQL/DelG.php';
+    var link2 = 'http://gc02team02app.azurewebsites.net/SQL/DelG.php';
     var myData2 =  JSON.stringify({week: this.week, gID: this.group})
 
     this.http2.post(link2, myData2).subscribe(data2 => {

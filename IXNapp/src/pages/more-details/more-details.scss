@@ -33,18 +33,47 @@ page-more-details {
     .bad {
         background-color:#FF6384;
     }
+
+    #cardexcellent{
+        border-top: 10px solid #058D65;
+    }
+
+    #cardgood {
+        border-top: 10px solid #7ED321;
+    }
+
+    #cardaverage { 
+        border-top: 10px solid #FFCD56;
+    }
+
+    #cardbad {
+        border-top: 10px solid #FF6384;
+    }
+    
+    .feedbackwriting {
+        color: #00A8FF; 
+    }
     
     h5 {
         text-align: center;
+    }
+
+    .floating {
+        display:inline-block;
+    }
+    
+    #deletebutton { 
+        width: 100% !important; 
+        height: 100% !important; 
+        color: white; 
+        background-color: red; 
+        font-size: 1em; 
+        border-radius: 8px !important; 
     }
     
     ion-list {
         margin-bottom: 0px !important;
         margin-top: 0px !important;
-    }
-    
-    ion-card {
-        
     }
     
     ion-item {

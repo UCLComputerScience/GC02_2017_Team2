@@ -83,6 +83,7 @@ LoginPage = __decorate([
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DeadlinesPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_house_house__ = __webpack_require__(15);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -94,26 +95,51 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
 var DeadlinesPage = (function () {
-    function DeadlinesPage(navCtrl) {
+    function DeadlinesPage(navCtrl, house) {
         this.navCtrl = navCtrl;
+        this.house = house;
+        this.Deadlinetitles = [];
+        this.Deadlineraw = [];
     }
     DeadlinesPage.prototype.ngOnInit = function () {
-        this.Deadlinetitles = [{ Title: "HCI Deadline", Date: "15/11/2017" }, { Title: "Final Deadline", Date: "10/01/2018" }];
-        this.Deadlinedates = [{ Date: "15/11/2017" }, { Date: "10/01/2018" }];
+        var _this = this;
+        this.house.getDead().subscribe(function (dt) {
+            _this.Deadlineraw = dt;
+            _this.Deadlineraw.sort(function (a, b) {
+                var aa = a.deadd.split('/').reverse().join();
+                var bb = b.deadd.split('/').reverse().join();
+                return aa < bb ? -1 : (aa > bb ? 1 : 0);
+            });
+            var today = new Date();
+            var d = today.getDate();
+            var m = today.getMonth() + 1;
+            var y = today.getFullYear();
+            var dd = d + '/' + m + '/' + y;
+            var parts = dd.split("/");
+            var z = new Date(parseInt(parts[2]), (parseInt(parts[1]) - 1), parseInt(parts[0]));
+            for (var i in _this.Deadlineraw) {
+                var t = _this.Deadlineraw[i].deadd.split("/");
+                var w = new Date(parseInt(t[2]), (parseInt(t[1]) - 1), parseInt(t[0]));
+                if (z < w) {
+                    _this.Deadlinetitles.push(_this.Deadlineraw[i]);
+                }
+            }
+        });
     };
     DeadlinesPage.prototype.Date = function () {
         var today = new Date();
-        var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+        var date = today.getDate() + '/' + (today.getMonth() + 1) + '/' + today.getFullYear();
         return date;
     };
     return DeadlinesPage;
 }());
 DeadlinesPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-deadlines',template:/*ion-inline-start:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/deadlines/deadlines.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>\n      Deadlines\n    </ion-title>\n    <ion-buttons end>\n      <button ion-button></button>\n    </ion-buttons>\n  </ion-navbar>\n</ion-header>\n<ion-content padding>\n  <ion-item>\n    <ion-grid>\n      <ion-row>\n        <ion-col>\n          <h1>Today\'s date:</h1>\n        </ion-col>\n        <ion-col>\n          <h1>{{Date()}}</h1>\n        </ion-col>\n      </ion-row>\n    </ion-grid>\n    <div class="spacer" style="height:20px;"></div>\n  </ion-item>\n  <ion-item *ngFor="let DL of Deadlinetitles; let DLD of Deadlinedates">\n    <ion-grid>\n      <ion-row>\n        <ion-col>\n         {{DL.Title}}\n        </ion-col>\n        <ion-col>\n          {{DL.Date}}\n        </ion-col>\n      </ion-row>\n    </ion-grid>\n  </ion-item>\n</ion-content>\n'/*ion-inline-end:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/deadlines/deadlines.html"*/
+        selector: 'page-deadlines',template:/*ion-inline-start:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/deadlines/deadlines.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>\n      Deadlines\n    </ion-title>\n    <ion-buttons end>\n      <button ion-button></button>\n    </ion-buttons>\n  </ion-navbar>\n</ion-header>\n<ion-content padding>\n  <ion-item>\n    <ion-grid>\n      <ion-row>\n        <ion-col>\n          <h1>Today\'s date:</h1>\n        </ion-col>\n        <ion-col>\n          <h1>{{Date()}}</h1>\n        </ion-col>\n      </ion-row>\n    </ion-grid>\n    <div class="spacer" style="height:20px;"></div>\n  </ion-item>\n  <ion-item *ngFor="let DL of Deadlinetitles">\n    <ion-grid>\n      <ion-row>\n        <ion-col>\n         {{DL.deadt}}\n        </ion-col>\n        <ion-col>\n          {{DL.deadd}}\n        </ion-col>\n      </ion-row>\n    </ion-grid>\n  </ion-item>\n</ion-content>\n'/*ion-inline-end:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/deadlines/deadlines.html"*/
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */]])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__providers_house_house__["a" /* HouseProvider */]])
 ], DeadlinesPage);
 
 //# sourceMappingURL=deadlines.js.map
@@ -128,7 +154,7 @@ DeadlinesPage = __decorate([
 /* unused harmony export Student */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_house_house__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_house_house__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__(26);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -155,21 +181,19 @@ var GroupPage = (function () {
         this.weeks = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
         this.weeksoccupied = [];
         this.buttons = ['button1', 'button2', 'button3', 'button4'];
-        this.photoarray = ['1jBNm4xWINklxipgU1Wkka17YY34x8JY4', '1S3UVJReDGZUlyWPqxdk7r908kKlk2v6z', '1luooOs5haSaSqMoSEEKBiKU6AusZ0xNR'];
+        this.photoarray = [];
         this.descriptions = ['excellent', 'good', 'average', 'bad']; // don't change
         this.studentFeedback = [];
         this.groupFeedback = null;
         this.groupComment = null;
         this.data = {};
         this.data2 = {};
-        this.myToggle = {};
+        this.myToggle = [];
         this.Students = [];
         this.names = [];
         this.ultimatewkn = [];
         this.StudentIDs = [];
         this.buttonSelected = null;
-        this.absentToggle = [false, true, false];
-        this.studentContribution = [3, 4, 5];
         this.groupNumber = this.nav.get('param1');
     }
     GroupPage.prototype.ngOnInit = function () {
@@ -178,15 +202,17 @@ var GroupPage = (function () {
             _this.Students = JSON.parse(dt["_body"]);
             console.log(_this.Students);
             for (var i in _this.Students) {
+                _this.myToggle[i] = false;
                 _this.str = _this.Students[i].fname;
                 _this.str2 = _this.Students[i].lname;
                 if (!_this.names.includes(_this.str.concat(" ", _this.str2)) && _this.Students[i].g_ID == _this.groupNumber) {
                     _this.names.push(_this.str.concat(" ", _this.str2));
                     _this.StudentIDs.push(_this.Students[i].s_ID);
+                    _this.photoarray.push(_this.Students[i].photo);
                 }
             }
             for (var j in _this.Students) {
-                if (!_this.ultimatewkn.includes(_this.Students[j].g_wk)) {
+                if (!_this.ultimatewkn.includes(_this.Students[j].g_wk) && _this.Students[j].g_ID == _this.groupNumber) {
                     _this.ultimatewkn.push(_this.Students[j].g_wk);
                 }
             }
@@ -243,13 +269,15 @@ var GroupPage = (function () {
         this.groupFeedback = this.descriptions[this.buttonSelected];
         var checkData = true;
         for (var i = 0; i < this.names.length; i++) {
-            // if field is empty show error
-            if (this['isStudentSelected' + i] === null || this['studentComment' + i] === null || this.studentContribution[i] === null) {
+            if (this.myToggle[i] === true) {
+                continue;
+            }
+            else if (this['isStudentSelected' + i] === null || this['studentComment' + i] === null || this['studentContribution' + i] === null) {
                 this.showError("please fill in all fields, you can fill in '-' if you don't want to enter a comment, and enter integers for the contribution");
                 checkData = false;
                 break;
             }
-            else if (Number.isInteger(Number(this.studentContribution[i])) === false) {
+            else if (Number.isInteger(Number(this['studentContribution' + i])) === false) {
                 this.showError("please fill in all fields, you can fill in '-' if you don't want to enter a comment, and enter integers for the contribution");
                 checkData = false;
                 break;
@@ -261,16 +289,23 @@ var GroupPage = (function () {
         if (checkData === true) {
             console.log(this.weeksoccupied);
             console.log(this.currentdateindex);
+            var allAbsent = true;
             if (!this.weeksoccupied.includes(String(this.currentdateindex))) {
                 var added = 0;
                 for (var i = 0; i < this.names.length; i++) {
-                    added += Number(this.studentContribution[i]);
+                    if (this.myToggle[i] === true) {
+                        added += Number(0);
+                    }
+                    else {
+                        added += Number(this['studentContribution' + i]);
+                        allAbsent = false;
+                    }
                 }
-                if (added === 100) {
+                if (added === 100 || allAbsent === true) {
                     this.storeData();
                 }
                 else {
-                    this.showError("the contributions must add up to 100");
+                    this.showError("the contributions must add up to 100, notice that if a student is marked as absent the contribution is recorded as 0");
                 }
             }
             else {
@@ -286,20 +321,31 @@ var GroupPage = (function () {
         var studentFeedback = [];
         for (var i = 0; i < this.names.length; i++) {
             var feedback = this.getDescription(this['isStudentSelected' + i]);
-            if (feedback == 'bad') {
+            var contribution = void 0;
+            var comment = void 0;
+            if (this.myToggle[i] === true) {
+                feedback = 0;
+            }
+            else if (feedback === 'bad') {
                 feedback = 1;
             }
-            if (feedback == 'average') {
+            else if (feedback === 'average') {
                 feedback = 2;
             }
-            if (feedback == 'good') {
+            else if (feedback === 'good') {
                 feedback = 3;
             }
-            if (feedback == 'excellent') {
+            else if (feedback === 'excellent') {
                 feedback = 4;
             }
-            var comment = this['studentComment' + i];
-            var contribution = Number(this.studentContribution[i]);
+            if (this.myToggle[i] === true) {
+                contribution = 0;
+                comment = "-";
+            }
+            else {
+                contribution = Number(this['studentContribution' + i]);
+                comment = this['studentComment' + i];
+            }
             var stuID = this.StudentIDs[i];
             studentFeedback.push(new Student(feedback, comment, contribution, stuID));
         }
@@ -340,28 +386,29 @@ var GroupPage = (function () {
         this.navCtrl.pop();
     };
     GroupPage.prototype.getContribution = function (i) {
-        var val = this.studentContribution[i];
+        var val = this['studentContribution' + i];
         return val;
     };
     GroupPage.prototype.getComment = function (i) {
         var val = this['studentComment' + i];
         return val;
     };
-    GroupPage.prototype.toggleEvent = function (i) {
-        console.log(this.absentToggle[i]);
-        if (this.studentContribution[i] === 0) {
-            this.studentContribution[i] = 1;
-        }
-        else {
-            this.studentContribution[i] = 0;
-        }
-    };
     //this section is and handles the toggle button function, set the corresponding to true or false 
     GroupPage.prototype.notify = function (i) {
-        this.myToggle[i] = true;
-        console.log(this.myToggle[0]);
-        console.log(this.myToggle[1]);
-        console.log(this.myToggle[2]);
+        console.log("toggle: " + this.myToggle);
+        if (this.myToggle[i] === true) {
+            this.myToggle[i] = false;
+        }
+        else if (this.myToggle[i] === false) {
+            this.myToggle[i] = true;
+            var alert_1 = this.alertCtrl.create({
+                title: 'Warning',
+                subTitle: "marking a student as absent will set their contribution and feedback to 0 and the comment to '-'",
+                buttons: ['OK']
+            });
+            alert_1.present(prompt);
+        }
+        console.log("toggle2: " + this.myToggle);
     };
     GroupPage.prototype.photocompiler = function (i) {
         var photoname = "https://docs.google.com/uc?id=".concat(this.photoarray[i]);
@@ -371,9 +418,9 @@ var GroupPage = (function () {
 }());
 GroupPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-group',template:/*ion-inline-start:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/group/group.html"*/'<ion-header>\n  <ion-navbar hideBackButton>\n    <ion-buttons start>\n      <button ion-button on-click="goBack();">\n        Cancel\n      </button>\n    </ion-buttons>\n    <ion-title>\n      Group {{groupNumber}}\n    </ion-title>\n    <ion-buttons end>\n      <button ion-button type="submit" form="feedbackForm">\n        Save\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n</ion-header>\n<ion-content padding id="page13">\n  <div id="weekcontrol">\n    <button class="datebar" id="group-button18" ion-button clear color="positive" (click)="previousweek()">\n      <ion-icon name="arrow-back"></ion-icon>\n    </button>\n    <p class="datebar" id="date">\n      <b>Week {{([currentdateindex])}}</b>\n    </p>\n    <button class="datebar" id="group-button19" ion-button clear color="positive" (click)="nextweek()">\n      <ion-icon name="arrow-forward"></ion-icon>\n    </button>\n  </div>\n  <h5 id="group-heading4" style="color:#000000;">\n    Group Performance\n  </h5>\n  <div id="groupperformance">\n    <button *ngFor="let button of buttons; let k = index; " class="performancebutton {{ button }}" [class.highlighted]="k === buttonSelected" (click)="buttonSelect(k)">\n      {{this.getDescription(k)}}\n    </button>\n  </div>\n  <h6 id="group-heading5" style="color:#000000;">\n    Comments\n  </h6>\n  <form (ngSubmit)="giveFeedback()" id="feedbackForm">\n    <ion-item text-wrap lines id="group-input7">\n      <ion-textarea rows=2 type="text" placeholder="Click to input" [(ngModel)]="this.groupComment" name="groupComment"></ion-textarea>\n    </ion-item>\n      <h5>Student Performance</h5>\n      <ion-list *ngFor="let name of names; let i = index; ">\n        <ion-card>\n          <div>\n            <ion-item text-wrap color="none" id="group-list-item39">\n              <ion-avatar item-left>\n                <img src="{{ photocompiler(i) }}" style="height: 12vh; width: 22vw;">\n              </ion-avatar>\n              <p id="name">\n                {{name}}\n              </p>\n            </ion-item>\n            <div>\n              <button type="button" *ngFor="let button of buttons; let j = index; " class="studentbutton {{button}}" [class.highlighted]="j === getIsStudentSelected(i)" (click)="onSelect(j, i)"></button>\n              <ion-input placeholder="contr." id="contribution" [(ngModel)]="studentContribution[i]" name="studentContribution" value=""></ion-input>\n            </div>\n            <ion-item lines>\n              <ion-input [(ngModel)]="this[\'studentComment\'+i]" name="studentComment" type="text" placeholder="Click to input comment"></ion-input>\n            </ion-item>\n            <ion-item no-lines id="toggleitem">\n              <ion-label id="label">Absent:</ion-label>\n              <ion-toggle (ionChange)="notify(i)"></ion-toggle>\n            </ion-item>\n          </div>\n        </ion-card>\n      </ion-list>\n    </form>\n</ion-content>\n'/*ion-inline-end:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/group/group.html"*/
+        selector: 'page-group',template:/*ion-inline-start:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/group/group.html"*/'<ion-header>\n  <ion-navbar hideBackButton>\n    <ion-buttons start>\n      <button ion-button on-click="goBack();">\n        Cancel\n      </button>\n    </ion-buttons>\n    <ion-title>\n      Group {{groupNumber}}\n    </ion-title>\n    <ion-buttons end>\n      <button ion-button type="submit" form="feedbackForm">\n        Save\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n</ion-header>\n<ion-content padding id="page13">\n  <div id="weekcontrol">\n    <button class="datebar" id="group-button18" ion-button clear color="positive" (click)="previousweek()">\n      <ion-icon name="arrow-back"></ion-icon>\n    </button>\n    <p class="datebar" id="date">\n      <b>Week {{([currentdateindex])}}</b>\n    </p>\n    <button class="datebar" id="group-button19" ion-button clear color="positive" (click)="nextweek()">\n      <ion-icon name="arrow-forward"></ion-icon>\n    </button>\n  </div>\n  <h5 id="group-heading4" style="color:#000000;">\n    Group Performance\n  </h5>\n  <div id="groupperformance">\n    <button *ngFor="let button of buttons; let k = index; " class="performancebutton {{ button }}" [class.highlighted]="k === buttonSelected" (click)="buttonSelect(k)">\n      {{this.getDescription(k)}}\n    </button>\n  </div>\n  <h6 id="group-heading5" style="color:#000000;">\n    Comments\n  </h6>\n  <form (ngSubmit)="giveFeedback()" id="feedbackForm">\n    <ion-item text-wrap lines id="group-input7">\n      <ion-textarea rows=2 type="text" placeholder="Click to input" [(ngModel)]="this.groupComment" name="groupComment"></ion-textarea>\n    </ion-item>\n      <h5>Student Performance</h5>\n      <ion-list *ngFor="let name of names; let i = index; ">\n        <ion-card>\n          <div>\n            <ion-item text-wrap color="none" id="group-list-item39">\n              <ion-avatar item-left>\n                <img src="{{ photocompiler(i) }}" style="height: 12vh; width: 22vw;">\n              </ion-avatar>\n              <p id="name">\n                {{name}}\n              </p>\n            </ion-item>\n            <div>\n              <button type="button" *ngFor="let button of buttons; let j = index; " class="studentbutton {{button}}" [class.highlighted]="j === getIsStudentSelected(i)" (click)="onSelect(j, i)"></button>\n              <ion-input placeholder="contr." id="contribution" [(ngModel)]="this[\'studentContribution\'+i]" name="studentContribution" value=""></ion-input>\n            </div>\n            <ion-item lines>\n              <ion-input [(ngModel)]="this[\'studentComment\'+i]" name="studentComment" type="text" placeholder="Click to input comment"></ion-input>\n            </ion-item>\n            <ion-item no-lines id="toggleitem">\n              <ion-label id="label">Absent:</ion-label>\n              <ion-toggle (ionChange)="notify(i)"></ion-toggle>\n            </ion-item>\n          </div>\n        </ion-card>\n      </ion-list>\n    </form>\n</ion-content>\n'/*ion-inline-end:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/group/group.html"*/
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2__providers_house_house__["a" /* HouseProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_house_house__["a" /* HouseProvider */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_3__angular_http__["a" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_http__["a" /* Http */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_3__angular_http__["a" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_http__["a" /* Http */]) === "function" && _f || Object])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_house_house__["a" /* HouseProvider */], __WEBPACK_IMPORTED_MODULE_3__angular_http__["a" /* Http */], __WEBPACK_IMPORTED_MODULE_3__angular_http__["a" /* Http */]])
 ], GroupPage);
 
 var Student = (function () {
@@ -386,7 +433,6 @@ var Student = (function () {
     return Student;
 }());
 
-var _a, _b, _c, _d, _e, _f;
 //# sourceMappingURL=group.js.map
 
 /***/ }),
@@ -408,13 +454,13 @@ webpackEmptyAsyncContext.id = 125;
 
 /***/ }),
 
-/***/ 16:
+/***/ 15:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HouseProvider; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_map__ = __webpack_require__(216);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_map__ = __webpack_require__(215);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_map__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_do__ = __webpack_require__(411);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_do___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_do__);
@@ -439,7 +485,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var HouseProvider = (function () {
-    function HouseProvider(http, http2, http3, http4, http5, http6, http7, http8) {
+    function HouseProvider(http, http2, http3, http4, http5, http6, http7, http8, http9, http10, http11) {
         this.http = http;
         this.http2 = http2;
         this.http3 = http3;
@@ -448,6 +494,9 @@ var HouseProvider = (function () {
         this.http6 = http6;
         this.http7 = http7;
         this.http8 = http8;
+        this.http9 = http9;
+        this.http10 = http10;
+        this.http11 = http11;
         console.log('Hello HouseProvider Provider');
     }
     HouseProvider.prototype.getAllRedStudent = function () {
@@ -488,6 +537,19 @@ var HouseProvider = (function () {
         var myData7 = JSON.stringify({ studID: this.SID });
         return this.http8.post(link7, myData7);
     };
+    HouseProvider.prototype.GetGroupCon = function () {
+        var link8 = 'http://gc02team02app.azurewebsites.net/SQL/Group%20Contact.php';
+        var myData8 = JSON.stringify({ teachID: this.TAID, lect: this.Lect });
+        return this.http9.post(link8, myData8);
+    };
+    HouseProvider.prototype.GetSuper = function () {
+        var link9 = 'http://gc02team02app.azurewebsites.net/SQL/Supervisor%20Contact.php';
+        var myData9 = JSON.stringify({ teachID: this.TAID, lect: this.Lect });
+        return this.http10.post(link9, myData9);
+    };
+    HouseProvider.prototype.getDead = function () {
+        return this.http11.get('http://gc02team02app.azurewebsites.net/SQL/Deadline.php').do(function (res) { return console.log(res); }).map(function (res) { return res.json(); });
+    };
     HouseProvider.prototype.setSID = function (userID) {
         this.SID = userID;
     };
@@ -501,7 +563,7 @@ var HouseProvider = (function () {
 }());
 HouseProvider = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["B" /* Injectable */])(),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_5__angular_http__["a" /* Http */], __WEBPACK_IMPORTED_MODULE_5__angular_http__["a" /* Http */], __WEBPACK_IMPORTED_MODULE_5__angular_http__["a" /* Http */], __WEBPACK_IMPORTED_MODULE_5__angular_http__["a" /* Http */], __WEBPACK_IMPORTED_MODULE_5__angular_http__["a" /* Http */], __WEBPACK_IMPORTED_MODULE_5__angular_http__["a" /* Http */], __WEBPACK_IMPORTED_MODULE_5__angular_http__["a" /* Http */], __WEBPACK_IMPORTED_MODULE_5__angular_http__["a" /* Http */]])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_5__angular_http__["a" /* Http */], __WEBPACK_IMPORTED_MODULE_5__angular_http__["a" /* Http */], __WEBPACK_IMPORTED_MODULE_5__angular_http__["a" /* Http */], __WEBPACK_IMPORTED_MODULE_5__angular_http__["a" /* Http */], __WEBPACK_IMPORTED_MODULE_5__angular_http__["a" /* Http */], __WEBPACK_IMPORTED_MODULE_5__angular_http__["a" /* Http */], __WEBPACK_IMPORTED_MODULE_5__angular_http__["a" /* Http */], __WEBPACK_IMPORTED_MODULE_5__angular_http__["a" /* Http */], __WEBPACK_IMPORTED_MODULE_5__angular_http__["a" /* Http */], __WEBPACK_IMPORTED_MODULE_5__angular_http__["a" /* Http */], __WEBPACK_IMPORTED_MODULE_5__angular_http__["a" /* Http */]])
 ], HouseProvider);
 
 //# sourceMappingURL=house.js.map
@@ -605,11 +667,11 @@ TabsControllerPage = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__deadlines_deadlines__ = __webpack_require__(114);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__red_groups_red_groups__ = __webpack_require__(215);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__red_groups_red_groups__ = __webpack_require__(216);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__red_students_red_students__ = __webpack_require__(217);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_chart_js__ = __webpack_require__(218);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_chart_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_chart_js__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_house_house__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_house_house__ = __webpack_require__(15);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -955,7 +1017,7 @@ HomePage = __decorate([
 
 /***/ }),
 
-/***/ 215:
+/***/ 216:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -963,7 +1025,7 @@ HomePage = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__(26);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_house_house__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_house_house__ = __webpack_require__(15);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1071,7 +1133,7 @@ RedGroupsPage = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__(26);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_house_house__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_house_house__ = __webpack_require__(15);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1176,7 +1238,7 @@ RedStudentsPage = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__feedback_summary_feedback_summary__ = __webpack_require__(340);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__group_group__ = __webpack_require__(115);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_house_house__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_house_house__ = __webpack_require__(15);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1245,7 +1307,60 @@ var GroupListPage = (function () {
             console.log(_this.items);
         });
     }
-    GroupListPage.prototype.ngOnInit = function () {
+    GroupListPage.prototype.doRefresh = function (refresher) {
+        var _this = this;
+        console.log('Begin async operation', refresher);
+        this.items = [];
+        this.itemstemp = [];
+        this.items2 = [];
+        this.Groups = [];
+        this.TAGroups = [];
+        this.house.GetStage2Student().subscribe(function (dt) {
+            _this.Groups = JSON.parse(dt["_body"]);
+            console.log(_this.Groups);
+            for (var q in _this.Groups) {
+                if (!_this.TAGroups.includes(_this.Groups[q].g_ID)) {
+                    _this.TAGroups.push(_this.Groups[q].g_ID);
+                }
+            }
+            for (var i in _this.TAGroups) {
+                var groupw = [];
+                for (var z in _this.Groups) {
+                    console.log(_this.Groups[z].g_ID == _this.TAGroups[i]);
+                    if (_this.Groups[z].g_ID == _this.TAGroups[i]) {
+                        groupw.push(_this.Groups[z].g_wk);
+                    }
+                }
+                var groupmax = Math.max.apply(Math, groupw);
+                for (var k in _this.Groups) {
+                    if (_this.Groups[k].g_wk == groupmax && _this.Groups[k].g_ID == _this.TAGroups[i]) {
+                        if (!_this.items.includes(_this.Groups[k].g_ID)) {
+                            _this.items.push(_this.Groups[k].g_ID);
+                            _this.itemstemp.push(_this.Groups[k].gp);
+                        }
+                    }
+                }
+            }
+            for (var j in _this.itemstemp) {
+                if (_this.itemstemp[j] == 1) {
+                    _this.items2.push('Bad');
+                }
+                if (_this.itemstemp[j] == 2) {
+                    _this.items2.push('Ok');
+                }
+                if (_this.itemstemp[j] == 3) {
+                    _this.items2.push('Good');
+                }
+                if (_this.itemstemp[j] == 4) {
+                    _this.items2.push('Excellent');
+                }
+            }
+            console.log(_this.items);
+        });
+        setTimeout(function () {
+            console.log('Async operation has ended');
+            refresher.complete();
+        }, 2000);
     };
     GroupListPage.prototype.getPerformance = function (x) {
         var value = this.itemstemp[x];
@@ -1268,7 +1383,7 @@ var GroupListPage = (function () {
 }());
 GroupListPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-group-list',template:/*ion-inline-start:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/group-list/group-list.html"*/'<ion-header>\n    <ion-navbar>\n        <ion-title>\n            Group List\n        </ion-title>\n    </ion-navbar>\n</ion-header>\n\n<ion-content no-padding id="page3">\n    <div class="spacer" style="width:300px;height: 20px;" id="groupList-spacer6"></div>\n    <div class="section" *ngFor="let item of items; let i = index">\n        <button ion-button class="groupbutton {{getPerformance(i)}}" on-click="goToFeedbackSummary(item)">\n            <span class="button-inner">\n                <ion-item class="background {{getPerformance(i)}}" no-lines>\n                    <ion-row>\n                        <ion-col>\n                            Group&nbsp; <span>{{item}}</span>\n                        </ion-col>\n                        <ion-col>\n                        </ion-col>\n                        <ion-col>\n                            <span id="hello">{{getPerformance(i)}}</span>&nbsp;\n                        </ion-col>\n                    </ion-row>\n                </ion-item>\n            </span>\n        </button>\n     <!-- <button class="addbutton" ion-button clear on-click="goToGroup()">\n            <ion-icon name="add-circle"></ion-icon>\n        </button> -->\n    </div>\n</ion-content>\n'/*ion-inline-end:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/group-list/group-list.html"*/
+        selector: 'page-group-list',template:/*ion-inline-start:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/group-list/group-list.html"*/'<ion-header>\n    <ion-navbar>\n        <ion-title>\n            Group List\n        </ion-title>\n    </ion-navbar>\n</ion-header>\n\n<ion-content no-padding id="page3">\n\n    <ion-refresher (ionRefresh)="doRefresh($event)">\n    <ion-refresher-content></ion-refresher-content>\n    </ion-refresher>\n    \n    <div class="spacer" style="width:300px;height: 20px;" id="groupList-spacer6"></div>\n    <div class="section" *ngFor="let item of items; let i = index">\n        <button ion-button class="groupbutton {{getPerformance(i)}}" on-click="goToFeedbackSummary(item)">\n            <span class="button-inner">\n                <ion-item class="background {{getPerformance(i)}}" no-lines>\n                    <ion-row>\n                        <ion-col>\n                            Group&nbsp; <span>{{item}}</span>\n                        </ion-col>\n                        <ion-col>\n                        </ion-col>\n                        <ion-col>\n                            <span id="hello">{{getPerformance(i)}}</span>&nbsp;\n                        </ion-col>\n                    </ion-row>\n                </ion-item>\n            </span>\n        </button>\n     <!-- <button class="addbutton" ion-button clear on-click="goToGroup()">\n            <ion-icon name="add-circle"></ion-icon>\n        </button> -->\n    </div>\n</ion-content>\n'/*ion-inline-end:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/group-list/group-list.html"*/
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_4__providers_house_house__["a" /* HouseProvider */]])
 ], GroupListPage);
@@ -1286,7 +1401,7 @@ GroupListPage = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__group_group__ = __webpack_require__(115);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__more_details_more_details__ = __webpack_require__(341);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_house_house__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_house_house__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_http__ = __webpack_require__(26);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1416,6 +1531,107 @@ var FeedbackSummaryPage = (function () {
         var myData = JSON.stringify({ DaGroup: this.groupnumber });
         return this.http.post(link, myData);
     };
+    FeedbackSummaryPage.prototype.doRefresh = function (refresher) {
+        var _this = this;
+        console.log('Begin async operation', refresher);
+        this.wcheck = [];
+        this.ultimatewkn = [];
+        this.mx2 = 0;
+        this.percentageresults = [];
+        this.results = [];
+        this.contrrow = [];
+        this.sprow = [];
+        this.Students = [];
+        this.StudentNames = [];
+        this.StudentIDs = [];
+        this.groupdata = [];
+        this.sum = 0;
+        this.GetStage2Student().subscribe(function (dt) {
+            _this.Students = JSON.parse(dt["_body"]);
+            console.log(_this.Students);
+            for (var i in _this.Students) {
+                _this.str = _this.Students[i].fname;
+                _this.str2 = _this.Students[i].lname;
+                if (!_this.StudentNames.includes(_this.str.concat(" ", _this.str2)) && _this.Students[i].g_ID == _this.groupnumber) {
+                    _this.StudentNames.push(_this.str.concat(" ", _this.str2));
+                    _this.StudentIDs.push(_this.Students[i].s_ID);
+                }
+            }
+            for (var q in _this.Students) {
+                if (_this.Students[q].g_ID == _this.groupnumber && !_this.ultimatewkn.includes(_this.Students[q].s_wk)) {
+                    _this.ultimatewkn.push(_this.Students[q].s_wk);
+                    //this.groupdata.push(this.Students[q].gp);
+                }
+            }
+            _this.ultimatewkn.sort(function (a, b) {
+                return a - b;
+            });
+            console.log(_this.ultimatewkn);
+            for (var p in _this.ultimatewkn) {
+                for (var z in _this.Students) {
+                    if (_this.Students[z].g_ID == _this.groupnumber) {
+                        console.log(_this.Students[z].s_wk == _this.ultimatewkn[p]);
+                        if (_this.Students[z].s_wk == _this.ultimatewkn[p]) {
+                            if (!_this.wcheck.includes(_this.Students[z].s_wk)) {
+                                _this.wcheck.push(_this.Students[z].s_wk);
+                                _this.groupdata.push(_this.Students[z].gp);
+                            }
+                        }
+                    }
+                }
+            }
+            console.log(_this.groupdata);
+            _this.mx2 = Math.max.apply(Math, _this.ultimatewkn);
+            for (var e in _this.Students) {
+                console.log(_this.Students[e].g_wk == _this.mx2 && _this.Students[e].g_ID == _this.groupnumber);
+                if (_this.Students[e].g_wk == _this.mx2 && _this.Students[e].g_ID == _this.groupnumber) {
+                    _this.latestfeedback = _this.Students[e].gp;
+                }
+            }
+            if (_this.latestfeedback == 1) {
+                _this.latestperformance = 'Bad';
+            }
+            if (_this.latestfeedback == 2) {
+                _this.latestperformance = 'Average';
+            }
+            if (_this.latestfeedback == 3) {
+                _this.latestperformance = 'Good';
+            }
+            if (_this.latestfeedback == 4) {
+                _this.latestperformance = 'Excellent';
+            }
+            for (var y in _this.groupdata) {
+                _this.sum = parseFloat((_this.sum).toString()) + parseFloat((_this.groupdata[y]).toString());
+            }
+            var a = (_this.sum / parseFloat((_this.groupdata.length).toString())).toFixed(1);
+            _this.sum = parseFloat(a);
+            for (var h in _this.ultimatewkn) {
+                console.log(_this.percentageresults);
+                _this.contrrow = [];
+                _this.sprow = [];
+                for (var g in _this.Students) {
+                    for (var u in _this.StudentIDs) {
+                        if (_this.Students[g].g_ID == _this.groupnumber && _this.ultimatewkn[h] == _this.Students[g].s_wk) {
+                            if (_this.Students[g].s_ID == _this.StudentIDs[u]) {
+                                _this.contrrow.push(_this.Students[g].contr);
+                                _this.sprow.push(_this.Students[g].sp);
+                            }
+                        }
+                    }
+                }
+                if (_this.contrrow.length != 0) {
+                    _this.percentageresults.push(_this.contrrow);
+                }
+                if (_this.sprow.length != 0) {
+                    _this.results.push(_this.sprow);
+                }
+            }
+        });
+        setTimeout(function () {
+            console.log('Async operation has ended');
+            refresher.complete();
+        }, 2000);
+    };
     FeedbackSummaryPage.prototype.groupColorSetting = function (x) {
         var value = this.groupdata[x];
         var indexvalue = value - 1;
@@ -1447,7 +1663,7 @@ var FeedbackSummaryPage = (function () {
 }());
 FeedbackSummaryPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-feedback-summary',template:/*ion-inline-start:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/feedback-summary/feedback-summary.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-buttons start>\n      <button ion-button></button>\n    </ion-buttons>\n    <ion-title>\n      Feedback Summary\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding id="page14">\n    <h4 id="feedbackSummary-heading6">\n        Group {{groupnumber}}\n    </h4>\n    <div id="addfeedback">\n        <button id="feedbackSummary-button42" ion-button clear color="positive" small on-click="goToGroup();">\n            Add Feedback\n        </button>\n    </div>\n    \n    <div id="top" >\n        <div id="latestfeedback">\n            <p style="margin:0px;outline:none;" >Latest Feedback:\n                <br><span class="feedbackwriting">Week </span><span class="feedbackwriting">{{mx2}}</span></p>\n        </div>\n    </div>\n    <hr>\n    <div id="legend">\n        <div id="lll">\n          <p class="floating" id="overallp" style="color:#000000;">\n            Current average <br> performance:\n          </p>\n          <p class="floating" id="latestp" style="color:#000000;">\n            latest performance:\n            <br>\n            <span class="feedbackwriting" id="latestperformance">{{latestperformance}}</span>\n          </p>\n        </div>\n        <p class="feedbackwriting" id="performance2">\n          {{sum}} out of 4\n        </p>\n      </div>\n    <hr>\n    <h5 id="feedbackSummary-heading9" style="color:#000000;">\n        Weekly Feedback\n    </h5>\n    <div style="padding-bottom:7px;"><button class="performance darkgreen"></button> excellent <button class="performance lightgreen"></button> good <button class="performance yellow"></button> average <button class="performance red"></button> bad</div>\n    <hr>\n\n  <div id="feedbackSummary-container9" *ngFor="let week of ultimatewkn; let i = index">\n    <ion-list id="feedbackSummary-list10">\n      <ion-item-divider id="feedbackSummary-list-item-divider2" class="{{ groupColorSetting(i) }}">\n        <p id="weekdiv">Week {{week}}</p>\n        <p id="weekdiv2"><button id="feedbackSummary-button41" ion-button clear small (click)=\'goToDetails(week);\'>\n                more details\n            </button>\n        </p> \n      </ion-item-divider>\n      <ion-item color="none" id="feedbackSummary-list-item56" *ngFor="let student of StudentNames; let j = index" (click)="setcolour();">\n          <p class="name">{{student}}</p>\n        <ion-note item-right>\n           <p><button class="performance {{studentColorSetting(i, j)}}"></button><span id="percentage" style="padding-left:10px"> contribution: {{ percentageresults[i][j] }}%</span></p> \n        </ion-note>\n      </ion-item>\n      \n    </ion-list>\n\n  </div>\n</ion-content>\n'/*ion-inline-end:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/feedback-summary/feedback-summary.html"*/
+        selector: 'page-feedback-summary',template:/*ion-inline-start:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/feedback-summary/feedback-summary.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-buttons start>\n      <button ion-button></button>\n    </ion-buttons>\n    <ion-title>\n      Feedback Summary\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding id="page14">\n\n    <ion-refresher (ionRefresh)="doRefresh($event)">\n    <ion-refresher-content></ion-refresher-content>\n    </ion-refresher>\n\n\n    <h4 id="feedbackSummary-heading6">\n        Group {{groupnumber}}\n    </h4>\n    <div id="addfeedback">\n        <button id="feedbackSummary-button42" ion-button clear color="positive" small on-click="goToGroup();">\n            Add Feedback\n        </button>\n    </div>\n    \n    <div id="top" >\n        <div id="latestfeedback">\n            <p style="margin:0px;outline:none;" >Latest Feedback:\n                <br><span class="feedbackwriting">Week </span><span class="feedbackwriting">{{mx2}}</span></p>\n        </div>\n    </div>\n    <hr>\n    <div id="legend">\n        <div id="lll">\n          <p class="floating" id="overallp" style="color:#000000;">\n            Current average <br> performance:\n          </p>\n          <p class="floating" id="latestp" style="color:#000000;">\n            latest performance:\n            <br>\n            <span class="feedbackwriting" id="latestperformance">{{latestperformance}}</span>\n          </p>\n        </div>\n        <p class="feedbackwriting" id="performance2">\n          {{sum}} out of 4\n        </p>\n      </div>\n    <hr>\n    <h5 id="feedbackSummary-heading9" style="color:#000000;">\n        Weekly Feedback\n    </h5>\n    <div style="padding-bottom:7px;"><button class="performance darkgreen"></button> excellent <button class="performance lightgreen"></button> good <button class="performance yellow"></button> average <button class="performance red"></button> bad</div>\n    <hr>\n\n  <div id="feedbackSummary-container9" *ngFor="let week of ultimatewkn; let i = index">\n    <ion-list id="feedbackSummary-list10">\n      <ion-item-divider id="feedbackSummary-list-item-divider2" class="{{ groupColorSetting(i) }}">\n        <p id="weekdiv">Week {{week}}</p>\n        <p id="weekdiv2"><button id="feedbackSummary-button41" ion-button clear small (click)=\'goToDetails(week);\'>\n                more details\n            </button>\n        </p> \n      </ion-item-divider>\n      <ion-item color="none" id="feedbackSummary-list-item56" *ngFor="let student of StudentNames; let j = index" (click)="setcolour();">\n          <p class="name">{{student}}</p>\n        <ion-note item-right>\n           <p><button class="performance {{studentColorSetting(i, j)}}"></button><span id="percentage" style="padding-left:10px"> contribution: {{ percentageresults[i][j] }}%</span></p> \n        </ion-note>\n      </ion-item>\n      \n    </ion-list>\n\n  </div>\n</ion-content>\n'/*ion-inline-end:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/feedback-summary/feedback-summary.html"*/
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */], __WEBPACK_IMPORTED_MODULE_4__providers_house_house__["a" /* HouseProvider */], __WEBPACK_IMPORTED_MODULE_5__angular_http__["a" /* Http */]])
 ], FeedbackSummaryPage);
@@ -1463,7 +1679,7 @@ FeedbackSummaryPage = __decorate([
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MoreDetailsPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_house_house__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_house_house__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__(26);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1493,16 +1709,9 @@ var MoreDetailsPage = (function () {
         this.individualContributions = [];
         this.data = {};
         this.data2 = {};
-        //BACKEND HERE!!
-        //group = 5;
-        //week = 4;
-        //names = ['Samantha Watson', 'John Taylor', 'James Kirk'];
-        //individualPerformances = [4, 4, 5];
-        //individualComments = ['good work','',''];
-        //individualContributions = [33, 34, 33];
-        //groupPerformance = 2;
-        //groupComment = 'The group progressed from last week but needs to work on the prototype more';
+        this.photoarray = [];
         this.values = ['bad', 'average', 'good', 'excellent']; // don't change
+        this.cardvalues = ['cardbad', 'cardaverage', 'cardgood', 'cardexcellent'];
         this.group = this.nav.get('param1');
         this.week = this.nav.get('param2');
     }
@@ -1523,11 +1732,18 @@ var MoreDetailsPage = (function () {
                         _this.individualContributions.push(_this.Students[i].contr);
                         _this.groupComment = _this.Students[i].gc;
                         _this.groupPerformance = _this.Students[i].gp;
+                        _this.photoarray.push(_this.Students[i].photo);
                     }
                 }
             }
             _this.groupPerformance2 = _this.getGroupPerformance();
         });
+    };
+    MoreDetailsPage.prototype.getCard = function (i) {
+        var performance = this.individualPerformances[i];
+        var value = this.cardvalues[performance - 1];
+        console.log(value);
+        return value;
     };
     MoreDetailsPage.prototype.getPerformance = function (x) {
         var performance = this.individualPerformances[x];
@@ -1537,6 +1753,10 @@ var MoreDetailsPage = (function () {
     MoreDetailsPage.prototype.getGroupPerformance = function () {
         var value = this.values[this.groupPerformance - 1];
         return value;
+    };
+    MoreDetailsPage.prototype.photocompiler = function (i) {
+        var photoname = "https://docs.google.com/uc?id=".concat(this.photoarray[i]);
+        return photoname;
     };
     MoreDetailsPage.prototype.del = function () {
         var _this = this;
@@ -1556,17 +1776,18 @@ var MoreDetailsPage = (function () {
         }, function (error) {
             console.log("Oooops!");
         });
-        this.navCtrl.pop();
+        this.navCtrl.popTo(this.navCtrl.getByIndex(0));
     };
     return MoreDetailsPage;
 }());
 MoreDetailsPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-more-details',template:/*ion-inline-start:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/more-details/more-details.html"*/'<ion-header>\n    <ion-navbar>\n        <ion-title>\n            More details\n        </ion-title>\n    </ion-navbar>\n</ion-header>\n\n<ion-content style="font-size:16px;" padding>\n  <h5>\n    Group {{group}} Week {{week}}\n  </h5>\n  <div id="groupperformance">\n    Group Performance:\n    <button class="performancebutton {{groupPerformance2}}">{{groupPerformance2}}</button>\n  </div>\n  <h6>\n    Comment:\n  </h6>\n  <p>"{{groupComment}}"</p>\n  <h5>Student Performances</h5>\n  <ion-list *ngFor="let name of names; let i = index; ">\n    <ion-card>\n      <div>\n        <ion-item text-wrap color="none" id="group-list-item39">\n          <ion-avatar item-left>\n            <img src="http://static.bleacherreport.net/images/redesign/avatars/default-user-icon-profile.png" style="height: 12vh; width: 22vw;">\n          </ion-avatar>\n          <p id="name" style="font-size:16px;">\n            {{name}}\n          </p>\n        </ion-item>\n        <ion-item>\n          Performance: <button class="studentbutton {{getPerformance(i)}}" style="margin-right:20px"> </button>\n         {{individualContributions[i]}} % \n        </ion-item>\n        <ion-item text-wrap style ="color: grey !important">\n            {{individualComments[i]}}\n        </ion-item>\n      </div>\n    </ion-card>\n  </ion-list>\n    <button on-click="del();">Delete this Feedback</button>\n    \n</ion-content>\n'/*ion-inline-end:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/more-details/more-details.html"*/
+        selector: 'page-more-details',template:/*ion-inline-start:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/more-details/more-details.html"*/'<ion-header>\n    <ion-navbar>\n        <ion-title>\n            Week {{week}} details\n        </ion-title>\n    </ion-navbar>\n</ion-header>\n\n<ion-content style="font-size:16px;" padding>\n    <div class="spacer" style="height:5px;"></div>\n    <div id="latestfeedback">\n        <h5 style="margin:0px;outline:none;" >Group performance: \n          <span class="feedbackwriting">{{groupPerformance2}} </span></h5>\n    </div>\n  <div class="spacer" style="height:10px;"></div>\n  <p>"{{groupComment}}"</p>\n  <div class="spacer" style="height:5px;"></div>\n    <hr>\n  <h5>Student Performances</h5>\n  <ion-list *ngFor="let name of names; let i = index; ">\n    <ion-card id="{{getCard(i)}}">\n      <div>\n        <ion-item text-wrap color="none" id="group-list-item39">\n          <ion-avatar item-left>\n            <img src="{{ photocompiler(i) }}" style="height: 12vh; width: 22vw;">\n          </ion-avatar>\n          <p id="name" style="font-size:1.1em;">\n            {{name}}\n          </p>\n        </ion-item>\n        <ion-item>\n          Contribution: \n         {{individualContributions[i]}}% \n        </ion-item>\n        <ion-item text-wrap style ="color: grey !important">\n            {{individualComments[i]}}\n        </ion-item>\n      </div>\n    </ion-card>\n  </ion-list>\n  <div class="spacer" style="height:5px;"></div>\n  <div margin style="height: 7% !important;">\n    <button id="deletebutton" on-click="del();">Delete this Feedback</button>\n  </div>\n</ion-content>\n'/*ion-inline-end:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/more-details/more-details.html"*/
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_house_house__["a" /* HouseProvider */], __WEBPACK_IMPORTED_MODULE_3__angular_http__["a" /* Http */], __WEBPACK_IMPORTED_MODULE_3__angular_http__["a" /* Http */]])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__providers_house_house__["a" /* HouseProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_house_house__["a" /* HouseProvider */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3__angular_http__["a" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_http__["a" /* Http */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_3__angular_http__["a" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_http__["a" /* Http */]) === "function" && _e || Object])
 ], MoreDetailsPage);
 
+var _a, _b, _c, _d, _e;
 //# sourceMappingURL=more-details.js.map
 
 /***/ }),
@@ -1578,7 +1799,7 @@ MoreDetailsPage = __decorate([
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return StaffContactInfoPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_house_house__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_house_house__ = __webpack_require__(15);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1596,17 +1817,20 @@ var StaffContactInfoPage = (function () {
         var _this = this;
         this.navCtrl = navCtrl;
         this.house = house;
-        this.house.getStaffCon().subscribe(function (data) { return _this.TAContact = data; });
-        console.log(this.TAContact);
+        this.GContact = [];
+        this.SContact = [];
+        this.house.GetGroupCon().subscribe(function (dt) {
+            _this.GContact = JSON.parse(dt["_body"]);
+        });
+        this.house.GetSuper().subscribe(function (dt2) {
+            _this.SContact = JSON.parse(dt2["_body"]);
+        });
     }
-    StaffContactInfoPage.prototype.ngOnInit = function () {
-        this.StaffContact = [{ "Name": "Yun Fu", "Email": "yunfu@ucl.ac.uk", "Hours": "13:00", "Location": "Malet Place" }];
-    };
     return StaffContactInfoPage;
 }());
 StaffContactInfoPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-staff-contact-info',template:/*ion-inline-start:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/staff-contact-info/staff-contact-info.html"*/'\n\n<ion-header>\n  <ion-navbar>\n    <ion-title>\n      Staff Contact Info\n    </ion-title> \n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <h4 style="margin-top: 6vh;">\n    Lecturer\n  </h4>\n    <ion-item no-lines *ngFor= "let StaffC of StaffContact">\n      <ion-avatar item-start>\n        <img src= "assets/img/Staff.png" style= "height: 12vh; width: 22vw; margin-left: 1.6vw;">\n      </ion-avatar>\n      <ul style="list-style-type:none; margin-left: -9vw;">\n        <li>{{StaffC.Name}}</li>\n        <li>{{StaffC.Email}}</li>\n        <li>{{StaffC.Hours}}</li>\n        <li>{{StaffC.Location}}</li>\n      </ul>\n    </ion-item>\n\n  <hr>\n\n  <h4>\n    Teaching Assistance\n  </h4>\n  \n    <ion-item no-lines *ngFor= "let TAC of TAContact">\n      <ion-avatar item-start>\n        <img class= "TAsize" src= "{{TAC.Pic}}" style= "height: 10vh; width: 18vw; margin-left: 4vw; margin-top:-6vh;">\n      </ion-avatar>\n      <ul style="list-style-type:none; margin-left: -7vw;">\n        <li>{{TAC.first}}</li>\n        <li>{{TAC.email}}</li>\n      </ul>\n      <ul style="list-style-type:none; margin-left: -7vw;">\n        <li><u>Experience:</u></li>\n        <li>{{TAC.s_exp}}</li>\n      </ul>  \n\n    </ion-item>\n</ion-content>\n'/*ion-inline-end:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/staff-contact-info/staff-contact-info.html"*/
+        selector: 'page-staff-contact-info',template:/*ion-inline-start:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/staff-contact-info/staff-contact-info.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>\n      Staff Contact Info\n    </ion-title> \n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <h4 style="margin-top: 6vh;">\n    Lecturer\n  </h4>\n    <ion-item no-lines *ngFor= "let StaffC of SContact">\n      <ion-avatar item-start>\n        <img src= "{{StaffC.pic}}" style= "height: 12vh; width: 22vw; margin-left: 1.6vw;">\n      </ion-avatar>\n      <ul style="list-style-type:none; margin-left: -9vw;">\n        <li>{{StaffC.first}}</li>\n        <li>{{StaffC.last}}</li>\n        <li>{{StaffC.email}}</li>\n      </ul>\n    </ion-item>\n\n  <hr>\n\n  <h4>\n    Teaching Assistance\n  </h4>\n  \n    <ion-item no-lines *ngFor= "let GC of GContact">\n      <h1 item-start style="margin-left: 9vw;">\n        G{{GC.g_id}}\n      </h1>\n      <ul style="list-style-type:none; margin-left:-4vw;">\n        <li><u>Project:</u></li>\n        <li>{{GC.pro}}</li>\n      </ul>  \n\n    </ion-item>\n</ion-content>\n'/*ion-inline-end:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/staff-contact-info/staff-contact-info.html"*/
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__providers_house_house__["a" /* HouseProvider */]])
 ], StaffContactInfoPage);
@@ -1707,7 +1931,7 @@ MyProfilePage = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_chart_js__ = __webpack_require__(218);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_chart_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_chart_js__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__deadlines_deadlines__ = __webpack_require__(114);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_house_house__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_house_house__ = __webpack_require__(15);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1756,7 +1980,7 @@ var StudentHomePage = (function () {
     }
     StudentHomePage.prototype.Date = function () {
         var today = new Date();
-        var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+        var date = today.getDate() + '-' + (today.getMonth() + 1) + '-' + today.getFullYear();
         return date;
     };
     StudentHomePage.prototype.latestPerformance = function () {
@@ -1901,7 +2125,7 @@ StudentHomePage = __decorate([
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return StaffContactPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_house_house__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_house_house__ = __webpack_require__(15);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1928,7 +2152,7 @@ var StaffContactPage = (function () {
 }());
 StaffContactPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-staff-contact',template:/*ion-inline-start:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/staff-contact/staff-contact.html"*/'\n<ion-header>\n  <ion-navbar>\n    <ion-title>\n      Staff Contact Info\n    </ion-title> \n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <h4 style="margin-top: 6vh;">\n    Lecturer\n  </h4>\n    <ion-item no-lines *ngFor= "let StaffC of StaffContact">\n      <ion-avatar item-start>\n        <img src= "https://docs.google.com/uc?id=1jBNm4xWINklxipgU1Wkka17YY34x8JY4" style= "height: 12vh; width: 22vw; margin-left: 1.6vw;">\n      </ion-avatar>\n      <ul style="list-style-type:none; margin-left: -9vw;">\n        <li>{{StaffC.Name}}</li>\n        <li>{{StaffC.Email}}</li>\n        <li>{{StaffC.Hours}}</li>\n        <li>{{StaffC.Location}}</li>\n      </ul>\n    </ion-item>\n\n  <hr>\n\n  <h4>\n    Teaching Assistance\n  </h4>\n  \n    <ion-item no-lines *ngFor= "let TAC of TAContact">\n      <ion-avatar item-start>\n        <img class= "TAsize" src= "{{TAC.Pic}}" style= "height: 10vh; width: 18vw; margin-left: 4vw; margin-top:-6vh;">\n      </ion-avatar>\n      <ul style="list-style-type:none; margin-left: -7vw;">\n        <li>{{TAC.first}}</li>\n        <li>{{TAC.email}}</li>\n      </ul>\n      <ul style="list-style-type:none; margin-left: -7vw;">\n        <li><u>Experience:</u></li>\n        <li>{{TAC.s_exp}}</li>\n      </ul>  \n\n    </ion-item>\n</ion-content>\n'/*ion-inline-end:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/staff-contact/staff-contact.html"*/
+        selector: 'page-staff-contact',template:/*ion-inline-start:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/staff-contact/staff-contact.html"*/'\n<ion-header>\n  <ion-navbar>\n    <ion-title>\n      Staff Contact Info\n    </ion-title> \n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <h4 style="margin-top: 6vh;">\n    Lecturer\n  </h4>\n    <ion-item no-lines *ngFor= "let StaffC of StaffContact">\n      <ion-avatar item-start>\n        <img src= "https://docs.google.com/uc?id=1jBNm4xWINklxipgU1Wkka17YY34x8JY4" style= "height: 12vh; width: 22vw; margin-left: 1.6vw;">\n      </ion-avatar>\n      <ul style="list-style-type:none; margin-left: -9vw;">\n        <li>{{StaffC.Name}}</li>\n        <li>{{StaffC.Email}}</li>\n        <li>{{StaffC.Hours}}</li>\n        <li>{{StaffC.Location}}</li>\n      </ul>\n    </ion-item>\n\n  <hr>\n\n  <h4>\n    Teaching Assistance\n  </h4>\n  \n    <ion-item no-lines *ngFor= "let TAC of TAContact">\n      <ion-avatar item-start>\n        <img class= "TAsize" src= "{{TAC.pic}}" style= "height: 10vh; width: 18vw; margin-left: 4vw; margin-top:-6vh;">\n      </ion-avatar>\n      <ul style="list-style-type:none; margin-left: -7vw;">\n        <li>{{TAC.first}}</li>\n        <li>{{TAC.email}}</li>\n      </ul>\n      <ul style="list-style-type:none; margin-left: -7vw;">\n        <li><u>Experience:</u></li>\n        <li>{{TAC.s_exp}}</li>\n      </ul>  \n\n    </ion-item>\n</ion-content>\n'/*ion-inline-end:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/staff-contact/staff-contact.html"*/
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__providers_house_house__["a" /* HouseProvider */]])
 ], StaffContactPage);
@@ -1981,7 +2205,7 @@ ProfilePage = __decorate([
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyFeedbackHistoryPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_house_house__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_house_house__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__more_details2_more_details2__ = __webpack_require__(348);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -2051,6 +2275,54 @@ var MyFeedbackHistoryPage = (function () {
             }
         });
     };
+    MyFeedbackHistoryPage.prototype.doRefresh = function (refresher) {
+        var _this = this;
+        console.log('Begin async operation', refresher);
+        this.groupnumber = 0;
+        this.ID = 0;
+        this.Students = [];
+        this.groupdata = [];
+        this.studentdata = [];
+        this.groupIDs = [];
+        this.studentN = [];
+        this.StudentIDs = [];
+        this.percentageresults = [];
+        this.weekswithinfo = [];
+        this.house.GetStudentHome().subscribe(function (dt) {
+            _this.Students = JSON.parse(dt["_body"]);
+            for (var i in _this.Students) {
+                _this.str = _this.Students[i].fname;
+                _this.str2 = _this.Students[i].lname;
+                if (!_this.studentN.includes(_this.str.concat(" ", _this.str2))) {
+                    _this.studentN.push(_this.str.concat(" ", _this.str2));
+                    _this.StudentIDs.push(_this.Students[i].s_ID);
+                    _this.groupIDs.push(_this.Students[i].g_ID);
+                }
+            }
+            _this.groupnumber = _this.groupIDs[0];
+            _this.ID = _this.StudentIDs[0];
+            _this.student = _this.studentN[0];
+            for (var q in _this.Students) {
+                _this.weekswithinfo.push(_this.Students[q].s_wk);
+            }
+            _this.weekswithinfo.sort(function (a, b) {
+                return a - b;
+            });
+            for (var p in _this.weekswithinfo) {
+                for (var x in _this.Students) {
+                    if (_this.Students[x].s_wk == _this.weekswithinfo[p]) {
+                        _this.groupdata.push(_this.Students[x].gp);
+                        _this.studentdata.push(_this.Students[x].sp);
+                        _this.percentageresults.push(_this.Students[x].contr);
+                    }
+                }
+            }
+        });
+        setTimeout(function () {
+            console.log('Async operation has ended');
+            refresher.complete();
+        }, 2000);
+    };
     MyFeedbackHistoryPage.prototype.groupColorSetting = function (x) {
         var value = this.groupdata[x];
         var indexvalue = value - 1;
@@ -2093,7 +2365,7 @@ var MyFeedbackHistoryPage = (function () {
 }());
 MyFeedbackHistoryPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-my-feedback-history',template:/*ion-inline-start:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/my-feedback-history/my-feedback-history.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-buttons start>\n      <button ion-button></button>\n    </ion-buttons>\n    <ion-title>\n      Feedback Summary\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <h4 id="feedbackSummary-heading6">\n    Group {{groupnumber}}\n  </h4>\n  <!-- Latest Feedback section -->\n  <div class="spacer" style="height:3%;" id="spacerline"></div>\n    <div>\n      <br><p style="margin:0px; outline:none;"> Latest Feedback:\n        <span class="feedbackwriting">Week </span><span class="feedbackwriting"> {{latestWeek()}} </span></p>\n    </div>\n  <hr>\n  <div id="legend">\n    <div id="lll">\n      <p class="floating" id="overallp" style="color:#000000;">\n        Current average <br> performance:\n      </p>\n      <p class="floating" id="latestp" style="color:#000000;">\n        latest performance:\n        <br>\n        <span class="feedbackwriting" id="latestperformance">{{latestPerformance()}}</span>\n      </p>\n    </div>\n    <p class="feedbackwriting" id="performance2">\n      {{averagePerformance()}} out of 4\n    </p>\n  </div>\n<!-- Weekly feedback history legend-->\n  <hr>\n  <h5 style="color:#000000;">\n    Weekly Feedback\n  </h5>\n  <div style="padding-bottom:7px;"><button class="performance darkgreen"></button> excellent <button class="performance lightgreen"></button> good <button class="performance yellow"></button> average <button class="performance red"></button> bad</div>\n  <hr>\n  <div id="feedbackSummary-container9" *ngFor="let item of weekswithinfo; let i = index">\n    <ion-list id="feedbackSummary-list10">\n      <ion-item-divider id="feedbackSummary-list-item-divider2" class="{{groupColorSetting(i)}}">\n        <p id="weekdiv">Week {{weekswithinfo[i]}}</p>\n        <p id="weekdiv2"><button id="feedbackSummary-button41" ion-button clear small (click)=\'goToDetails(item);\'>\n          more details\n        </button>\n        </p>\n      </ion-item-divider>\n      <!-- Weekly feedback history -->\n      <ion-item color="none" id="feedbackSummary-list-item56" (click)="setcolour();">\n        <p class="name">{{student}}</p>\n        <ion-note item-right>\n          <p><button class="performance {{studentColorSetting(i)}} "></button><span id="percentage" style="padding-left:10px"> contribution: {{ percentageresults[i] }}%</span></p>\n        </ion-note>\n      </ion-item>\n    </ion-list>\n\n  </div>\n</ion-content>\n'/*ion-inline-end:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/my-feedback-history/my-feedback-history.html"*/
+        selector: 'page-my-feedback-history',template:/*ion-inline-start:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/my-feedback-history/my-feedback-history.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-buttons start>\n      <button ion-button></button>\n    </ion-buttons>\n    <ion-title>\n      Feedback Summary\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <ion-refresher (ionRefresh)="doRefresh($event)">\n    <ion-refresher-content></ion-refresher-content>\n  </ion-refresher>\n  \n  <h4 id="feedbackSummary-heading6">\n    Group {{groupnumber}}\n  </h4>\n  <!-- Latest Feedback section -->\n  <div class="spacer" style="height:3%;" id="spacerline"></div>\n    <div>\n      <br><p style="margin:0px; outline:none;"> Latest Feedback:\n        <span class="feedbackwriting">Week </span><span class="feedbackwriting"> {{latestWeek()}} </span></p>\n    </div>\n  <hr>\n  <div id="legend">\n    <div id="lll">\n      <p class="floating" id="overallp" style="color:#000000;">\n        Current average <br> performance:\n      </p>\n      <p class="floating" id="latestp" style="color:#000000;">\n        latest performance:\n        <br>\n        <span class="feedbackwriting" id="latestperformance">{{latestPerformance()}}</span>\n      </p>\n    </div>\n    <p class="feedbackwriting" id="performance2">\n      {{averagePerformance()}} out of 4\n    </p>\n  </div>\n<!-- Weekly feedback history legend-->\n  <hr>\n  <h5 style="color:#000000;">\n    Weekly Feedback\n  </h5>\n  <div style="padding-bottom:7px;"><button class="performance darkgreen"></button> excellent <button class="performance lightgreen"></button> good <button class="performance yellow"></button> average <button class="performance red"></button> bad</div>\n  <hr>\n  <div id="feedbackSummary-container9" *ngFor="let item of weekswithinfo; let i = index">\n    <ion-list id="feedbackSummary-list10">\n      <ion-item-divider id="feedbackSummary-list-item-divider2" class="{{groupColorSetting(i)}}">\n        <p id="weekdiv">Week {{weekswithinfo[i]}}</p>\n        <p id="weekdiv2"><button id="feedbackSummary-button41" ion-button clear small (click)=\'goToDetails(item);\'>\n          more details\n        </button>\n        </p>\n      </ion-item-divider>\n      <!-- Weekly feedback history -->\n      <ion-item color="none" id="feedbackSummary-list-item56" (click)="setcolour();">\n        <p class="name">{{student}}</p>\n        <ion-note item-right>\n          <p><button class="performance {{studentColorSetting(i)}} "></button><span id="percentage" style="padding-left:10px"> contribution: {{ percentageresults[i] }}%</span></p>\n        </ion-note>\n      </ion-item>\n    </ion-list>\n\n  </div>\n</ion-content>\n'/*ion-inline-end:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/my-feedback-history/my-feedback-history.html"*/
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__providers_house_house__["a" /* HouseProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */]])
 ], MyFeedbackHistoryPage);
@@ -2109,7 +2381,7 @@ MyFeedbackHistoryPage = __decorate([
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MoreDetailsPage2; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_house_house__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_house_house__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__(26);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -2140,15 +2412,8 @@ var MoreDetailsPage2 = (function () {
         this.individualContributions = [];
         this.data = {};
         this.data2 = {};
-        //BACKEND HERE!!
-        //group = 5;
-        //week = 4;
-        //names = ['Samantha Watson', 'John Taylor', 'James Kirk'];
-        //individualPerformances = [4, 4, 5];
-        //individualComments = ['good work','',''];
-        //individualContributions = [33, 34, 33];
-        //groupPerformance = 2;
-        //groupComment = 'The group progressed from last week but needs to work on the prototype more';
+        this.photoarray = [];
+        this.photoarrayint = [];
         this.values = ['bad', 'average', 'good', 'excellent']; // don't change
         this.SID = this.nav.get('param1');
         this.week = this.nav.get('param2');
@@ -2171,12 +2436,18 @@ var MoreDetailsPage2 = (function () {
                         _this.groupComment = _this.Students[i].gc;
                         _this.groupPerformance = _this.Students[i].gp;
                         _this.groups.push(_this.Students[i].g_ID);
+                        _this.photoarrayint.push(_this.Students[i].photo);
                     }
                 }
             }
             _this.groupPerformance2 = _this.getGroupPerformance();
             _this.group = _this.groups[0];
+            _this.photoarray.push(_this.photoarrayint[0]);
         });
+    };
+    MoreDetailsPage2.prototype.photocompiler = function (i) {
+        var photoname = "https://docs.google.com/uc?id=".concat(this.photoarray[i]);
+        return photoname;
     };
     MoreDetailsPage2.prototype.getPerformance = function (x) {
         var performance = this.individualPerformances[x];
@@ -2191,7 +2462,7 @@ var MoreDetailsPage2 = (function () {
 }());
 MoreDetailsPage2 = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-more-details2',template:/*ion-inline-start:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/more-details2/more-details2.html"*/'<ion-header>\n    <ion-navbar>\n        <ion-title>\n            More details\n        </ion-title>\n    </ion-navbar>\n</ion-header>\n\n<ion-content style="font-size:16px;" padding>\n  <h5>\n    Group {{group}} Week {{week}}\n  </h5>\n  <div id="groupperformance">\n    Group Performance:\n    <button class="performancebutton {{groupPerformance2}}">{{groupPerformance2}}</button>\n  </div>\n  <h6>\n    Group Comment:\n  </h6>\n  <p>"{{groupComment}}"</p>\n  <h5>Student Performance</h5>\n  <ion-list *ngFor="let name of names; let i = index; ">\n    <ion-card>\n      <div>\n        <ion-item text-wrap color="none" id="group-list-item39">\n          <ion-avatar item-left>\n            <img src="http://static.bleacherreport.net/images/redesign/avatars/default-user-icon-profile.png" style="height: 12vh; width: 22vw;">\n          </ion-avatar>\n          <p id="name" style="font-size:16px;">\n            {{name}}\n          </p>\n        </ion-item>\n        <ion-item>\n          Performance: <button class="studentbutton {{getPerformance(i)}}" style="margin-right:20px"> </button>\n         {{individualContributions[i]}} % \n        </ion-item>\n        <ion-item text-wrap style ="color: grey !important">\n            {{individualComments[i]}}\n        </ion-item>\n      </div>\n    </ion-card>\n  </ion-list>\n    \n</ion-content>\n'/*ion-inline-end:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/more-details2/more-details2.html"*/
+        selector: 'page-more-details2',template:/*ion-inline-start:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/more-details2/more-details2.html"*/'<ion-header>\n    <ion-navbar>\n        <ion-title>\n            More details\n        </ion-title>\n    </ion-navbar>\n</ion-header>\n\n<ion-content style="font-size:16px;" padding>\n  <h5>\n    Group {{group}} Week {{week}}\n  </h5>\n  <div id="groupperformance">\n    Group Performance:\n    <button class="performancebutton {{groupPerformance2}}">{{groupPerformance2}}</button>\n  </div>\n  <h6>\n    Group Comment:\n  </h6>\n  <p>"{{groupComment}}"</p>\n  <h5>Student Performance</h5>\n  <ion-list *ngFor="let name of names; let i = index; ">\n    <ion-card>\n      <div>\n        <ion-item text-wrap color="none" id="group-list-item39">\n          <ion-avatar item-left>\n            <img src="{{ photocompiler(i) }}" style="height: 12vh; width: 22vw;">\n          </ion-avatar>\n          <p id="name" style="font-size:16px;">\n            {{name}}\n          </p>\n        </ion-item>\n        <ion-item>\n          Performance: <button class="studentbutton {{getPerformance(i)}}" style="margin-right:20px"> </button>\n         {{individualContributions[i]}} % \n        </ion-item>\n        <ion-item text-wrap style ="color: grey !important">\n            {{individualComments[i]}}\n        </ion-item>\n      </div>\n    </ion-card>\n  </ion-list>\n    \n</ion-content>\n'/*ion-inline-end:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/more-details2/more-details2.html"*/
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_house_house__["a" /* HouseProvider */], __WEBPACK_IMPORTED_MODULE_3__angular_http__["a" /* Http */], __WEBPACK_IMPORTED_MODULE_3__angular_http__["a" /* Http */]])
 ], MoreDetailsPage2);
@@ -2276,7 +2547,7 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_staff_contact_info_staff_contact_info__ = __webpack_require__(342);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_login_login__ = __webpack_require__(113);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_red_students_red_students__ = __webpack_require__(217);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__pages_red_groups_red_groups__ = __webpack_require__(215);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__pages_red_groups_red_groups__ = __webpack_require__(216);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__pages_deadlines_deadlines__ = __webpack_require__(114);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_group_group__ = __webpack_require__(115);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__pages_feedback_summary_feedback_summary__ = __webpack_require__(340);
@@ -2289,7 +2560,7 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__pages_my_feedback_history_my_feedback_history__ = __webpack_require__(347);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__angular_http__ = __webpack_require__(26);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__providers_auth_service__ = __webpack_require__(61);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__providers_house_house__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__providers_house_house__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__ionic_native_status_bar__ = __webpack_require__(208);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__ionic_native_splash_screen__ = __webpack_require__(212);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__providers_share__ = __webpack_require__(349);
@@ -2744,10 +3015,10 @@ ProgressBarComponent = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_Observable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_Observable__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_observable_throw__ = __webpack_require__(469);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_observable_throw___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_observable_throw__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__ = __webpack_require__(216);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__ = __webpack_require__(215);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_http__ = __webpack_require__(26);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__house_house__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__house_house__ = __webpack_require__(15);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);

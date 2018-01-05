@@ -1,38 +1,36 @@
 <ion-header>
     <ion-navbar>
         <ion-title>
-            More details
+            Week {{week}} details
         </ion-title>
     </ion-navbar>
 </ion-header>
 
 <ion-content style="font-size:16px;" padding>
-  <h5>
-    Group {{group}} Week {{week}}
-  </h5>
-  <div id="groupperformance">
-    Group Performance:
-    <button class="performancebutton {{groupPerformance2}}">{{groupPerformance2}}</button>
-  </div>
-  <h6>
-    Comment:
-  </h6>
+    <div class="spacer" style="height:5px;"></div>
+    <div id="latestfeedback">
+        <h5 style="margin:0px;outline:none;" >Group performance: 
+          <span class="feedbackwriting">{{groupPerformance2}} </span></h5>
+    </div>
+  <div class="spacer" style="height:10px;"></div>
   <p>"{{groupComment}}"</p>
+  <div class="spacer" style="height:5px;"></div>
+    <hr>
   <h5>Student Performances</h5>
   <ion-list *ngFor="let name of names; let i = index; ">
-    <ion-card>
+    <ion-card id="{{getCard(i)}}">
       <div>
         <ion-item text-wrap color="none" id="group-list-item39">
           <ion-avatar item-left>
             <img src="{{ photocompiler(i) }}" style="height: 12vh; width: 22vw;">
           </ion-avatar>
-          <p id="name" style="font-size:16px;">
+          <p id="name" style="font-size:1.1em;">
             {{name}}
           </p>
         </ion-item>
         <ion-item>
-          Performance: <button class="studentbutton {{getPerformance(i)}}" style="margin-right:20px"> </button>
-         {{individualContributions[i]}} % 
+          Contribution: 
+         {{individualContributions[i]}}% 
         </ion-item>
         <ion-item text-wrap style ="color: grey !important">
             {{individualComments[i]}}
@@ -40,6 +38,8 @@
       </div>
     </ion-card>
   </ion-list>
-    <button on-click="del();">Delete this Feedback</button>
-    
+  <div class="spacer" style="height:5px;"></div>
+  <div margin style="height: 7% !important;">
+    <button id="deletebutton" on-click="del();">Delete this Feedback</button>
+  </div>
 </ion-content>
