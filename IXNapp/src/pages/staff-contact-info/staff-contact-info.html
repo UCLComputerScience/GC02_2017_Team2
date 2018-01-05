@@ -15,8 +15,7 @@
         <img src= "{{StaffC.pic}}" style= "height: 12vh; width: 22vw; margin-left: 1.6vw;">
       </ion-avatar>
       <ul style="list-style-type:none; margin-left: -9vw;">
-        <li>{{StaffC.first}}</li>
-        <li>{{StaffC.last}}</li>
+        <li>{{StaffC.first}} {{StaffC.last}}</li>
         <li>{{StaffC.email}}</li>
       </ul>
     </ion-item>
@@ -24,17 +23,17 @@
   <hr>
 
   <h4>
-    Teaching Assistance
+    My Students
   </h4>
   
     <ion-item no-lines *ngFor= "let GC of GContact">
-      <h1 item-start style="margin-left: 9vw;">
-        G{{GC.g_id}}
-      </h1>
+      <ion-avatar item-start>
+        <img src= "{{GC.pic}}" style= "height: 12vh; width: 22vw; margin-left: 1.6vw;">
+      </ion-avatar>
       <ul style="list-style-type:none; margin-left:-4vw;">
-        <li><u>Project:</u></li>
-        <li>{{GC.pro}}</li>
+        <li>{{GC.first}}</li>
+        <li>{{GC.last}}</li>
+        <li>G{{GC.g_id}}</li>
       </ul>  
-
     </ion-item>
 </ion-content>
