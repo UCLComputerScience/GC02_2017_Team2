@@ -25736,6 +25736,10 @@ page-feedback-summary .performance {
   vertical-align: middle !important;
 }
 
+page-feedback-summary .performance2 {
+  float: left !important;
+}
+
 page-feedback-summary .name {
   font-size: 14px;
   color: black;
@@ -25774,6 +25778,7 @@ page-feedback-summary ion-note {
   padding: 0px !important;
   margin: 0px !important;
   text-align: right;
+  width: 160px !important;
 }
 
 page-feedback-summary ion-note button {
@@ -25823,6 +25828,10 @@ page-feedback-summary .lightgreen {
 
 page-feedback-summary .darkgreen {
   background-color: #058D65;
+}
+
+page-feedback-summary .black {
+  background-color: black;
 }
 
 page-group .datebar {
@@ -25964,7 +25973,7 @@ page-group-list .addbutton {
 
 page-group-list .groupbutton {
   width: 80% !important;
-  height: 100% !important;
+  height: auto !important;
   padding-left: 10px !important;
   margin-left: 0px !important;
   float: left;
@@ -26005,6 +26014,23 @@ page-group-list .average {
 
 page-group-list .bad {
   background-color: #FF6384;
+}
+
+page-group-list #descriptions {
+  font-size: 13px !important;
+  text-align: left !important;
+}
+
+page-group-list #groupp {
+  text-align: left !important;
+}
+
+page-group-list #perf {
+  text-align: right !important;
+}
+
+page-group-list ion-item {
+  width: 100% !important;
 }
 
 page-group-list .addbutton {
@@ -26340,6 +26366,54 @@ page-more-details ion-list {
 }
 
 page-more-details ion-item {
+  padding-bottom: 0px !important;
+  padding-top: 0px !important;
+}
+
+page-more-details2 .performancebutton {
+  font-size: 13px;
+  height: 30px;
+  width: 23%;
+  padding: 2px;
+  margin: 3px;
+  color: white;
+  border-radius: 5px;
+}
+
+page-more-details2 .studentbutton {
+  height: 30px;
+  width: 30px;
+  border-radius: 80px;
+  vertical-align: middle;
+  margin-left: 5px;
+}
+
+page-more-details2 .excellent {
+  background-color: #058D65;
+}
+
+page-more-details2 .good {
+  background-color: #7ED321;
+}
+
+page-more-details2 .average {
+  background-color: #FFCD56;
+}
+
+page-more-details2 .bad {
+  background-color: #FF6384;
+}
+
+page-more-details2 h5 {
+  text-align: center;
+}
+
+page-more-details2 ion-list {
+  margin-bottom: 0px !important;
+  margin-top: 0px !important;
+}
+
+page-more-details2 ion-item {
   padding-bottom: 0px !important;
   padding-top: 0px !important;
 }

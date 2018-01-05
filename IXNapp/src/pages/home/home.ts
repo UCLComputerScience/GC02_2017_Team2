@@ -268,7 +268,7 @@ export class HomePage {
 		this.groupData.push(this.DGCount);
 
 		let donutGroup = this.doughnutCanvas.nativeElement;
-		donutGroup.height = innerHeight * 0.25;
+		
 
 		console.log(donutGroup.height);
 
@@ -343,7 +343,6 @@ export class HomePage {
 		console.log(this.studentData);
 
 		let donutStudent = this.doughnutCanvasS.nativeElement;
-		donutStudent.height = innerHeight * 0.25;
 
 		var dataStudent = {
 			datasets: [
