@@ -41,6 +41,10 @@ page-feedback-summary {
         vertical-align: middle !important;
     }
     
+    .performance2 {
+        float: left !important;
+    }
+    
     .name {
         font-size: 14px;
         color: black;
@@ -79,6 +83,7 @@ page-feedback-summary {
         padding:0px !important;
         margin:0px !important;
         text-align: right;
+        width: 160px !important;
     }
     
     ion-note button {
@@ -128,6 +133,10 @@ page-feedback-summary {
     
     .darkgreen {
         background-color: #058D65;
+    }
+    
+    .black {
+        background-color: black;
     }
     
 

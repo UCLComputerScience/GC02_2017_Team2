@@ -18,13 +18,16 @@
             <span class="button-inner">
                 <ion-item class="background {{getPerformance(i)}}" no-lines>
                     <ion-row>
-                        <ion-col>
+                        <ion-col id="groupp">
                             Group&nbsp; <span>{{item}}</span>
                         </ion-col>
-                        <ion-col>
-                        </ion-col>
-                        <ion-col>
+                        <ion-col id="perf">
                             <span id="hello">{{getPerformance(i)}}</span>&nbsp;
+                        </ion-col>
+                    </ion-row>
+                    <ion-row>
+                        <ion-col id="descriptions">
+                            {{descriptions[i]}}
                         </ion-col>
                     </ion-row>
                 </ion-item>

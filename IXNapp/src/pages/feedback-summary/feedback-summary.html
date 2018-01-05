@@ -63,10 +63,10 @@
             </button>
         </p> 
       </ion-item-divider>
-      <ion-item color="none" id="feedbackSummary-list-item56" *ngFor="let student of StudentNames; let j = index" (click)="setcolour();">
+      <ion-item text-wrap color="none" id="feedbackSummary-list-item56" *ngFor="let student of StudentNames; let j = index" (click)="setcolour();">
           <p class="name">{{student}}</p>
         <ion-note item-right>
-           <p><button class="performance {{studentColorSetting(i, j)}}"></button><span id="percentage" style="padding-left:10px"> contribution: {{ percentageresults[i][j] }}%</span></p> 
+           <p><button class=" performance2 performance {{studentColorSetting(i, j)}}"></button><span id="percentage" style="padding-left:10px"> contribution: {{ percentageresults[i][j] }}%</span></p> 
         </ion-note>
       </ion-item>
       

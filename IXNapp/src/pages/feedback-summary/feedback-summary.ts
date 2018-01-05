@@ -36,8 +36,8 @@ export class FeedbackSummaryPage {
   sum: number = 0;
     
 
-  performanceAnnotation = ['bad', 'average', 'good', 'excellent']; //constants do not modify
-  performanceColor = ['red', 'yellow', 'lightgreen', 'darkgreen']; //constants do not modify
+  performanceAnnotation = ['absent', 'bad', 'average', 'good', 'excellent']; //constants do not modify
+  performanceColor = ['black', 'red', 'yellow', 'lightgreen', 'darkgreen']; //constants do not modify
 
 
   constructor(public navCtrl: NavController, public nav : NavParams, public house: HouseProvider, public http: Http) {
@@ -273,14 +273,13 @@ export class FeedbackSummaryPage {
 
 
   groupColorSetting(x) {
-    var value = this.groupdata[x];  
-    var indexvalue = value-1; 
+    var indexvalue = this.groupdata[x];
     var colorName = this.performanceColor[indexvalue]; 
     return colorName; 
   }
 
   studentColorSetting(x, y) {  
-    var indexvalue = this.results[x][y]-1; 
+    var indexvalue = this.results[x][y]; 
     var studentColor = this.performanceColor[indexvalue]; 
     return studentColor; 
   }

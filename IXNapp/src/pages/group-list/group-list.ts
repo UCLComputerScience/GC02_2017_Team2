@@ -17,6 +17,10 @@ export class GroupListPage {
   items2: any[] = [];
   Groups: any[];
   TAGroups: any[] = [];
+  
+  // NEW ARRAY - PROJECT DESCRIPTIONS NEED TO BE LOADED HERE?
+  
+  descriptions: any[] = ['description 1 lala', 'description 2', 'description 3'];
 
   wkn: number[] = [];
   mx: number;

@@ -16,7 +16,7 @@ page-group-list {
     
     .groupbutton {
         width:80% !important;
-        height: 100% !important;
+        height: auto !important;
         padding-left: 10px !important;
         margin-left: 0px !important;
         float:left;
@@ -55,6 +55,24 @@ page-group-list {
     
     .bad {
         background-color:#FF6384;
+    }
+    
+    #descriptions {
+        font-size: 13px !important;
+        text-align: left !important;
+    }
+    
+    #groupp {
+        text-align: left !important;
+    }
+    
+    #perf {
+        //float: right !important;
+        text-align: right !important;
+    }
+    
+    ion-item {
+        width: 100% !important;
     }
 
 }
