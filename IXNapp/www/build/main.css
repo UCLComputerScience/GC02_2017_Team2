@@ -26628,6 +26628,8 @@ page-profile #profilepic {
   height: 80px;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 30px;
+  margin-top: 20px;
 }
 
 page-profile #myProfile-input1 {
@@ -26646,21 +26648,58 @@ page-profile ion-input {
   border-radius: 15px;
   padding-left: 10px;
   margin-bottom: 10px;
-  color: white;
+  background-color: white !important;
 }
 
 page-profile #supervising {
-  margin-top: 25px;
+  margin-top: 20px;
 }
 
-page-profile button {
+page-profile #button {
   background-color: #00A8FF;
   color: white;
-  font-size: 17px;
+  font-size: 24px;
   border-radius: 70px;
-  height: 50px;
-  width: 50px;
+  height: 70px;
+  width: 70px;
   margin: 10px;
+}
+
+page-profile #groups {
+  text-align: center;
+}
+
+page-profile ion-item {
+  background-color: #00A8FF !important;
+}
+
+page-profile #blueblue {
+  background-color: #00A8FF;
+  padding-bottom: 40px;
+}
+
+page-profile #logout {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: auto;
+  background-color: white;
+  color: grey;
+  border-radius: 5px;
+  height: 25px;
+}
+
+page-profile #savechanges {
+  width: auto;
+  background-color: white;
+  color: grey;
+  border-radius: 5px;
+  height: 25px;
+  float: right;
+}
+
+page-profile #supervising {
+  margin-top: 10px;
 }
 
 page-profile #groups {

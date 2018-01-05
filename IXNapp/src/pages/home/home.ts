@@ -210,6 +210,20 @@ export class HomePage {
 
 	}
 
+	CurrentWeek(): String{
+		var start = new Date("2017-10-06");
+		var today = new Date();
+		var diff =(today.getTime() - start.getTime()) / 1000;
+		diff /= (60 * 60 * 24 * 7);
+		var diyy = Math.abs(Math.floor(diff))+1;
+		if (diyy > 10){
+		  return 'holidays'
+		} else {
+			var weekcounter = 'Week '+String(diyy)
+		  return weekcounter; 
+		}
+	}
+
  /* AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA */
 
 	doRefresh(refresher) {
