@@ -6,6 +6,9 @@
   </ion-navbar>
 </ion-header>
 <ion-content padding id="page2">
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
     <div id="notification-section" no-padding no-margin >
         <ion-card text-center id="notification" no-padding no-margin>
             <h6 style="color: white">Today's date: {{Date()}}</h6>
