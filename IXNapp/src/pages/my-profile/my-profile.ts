@@ -44,17 +44,25 @@ export class MyProfilePage {
     if (this.password === null || this.password == null) {
         this.showError("No password inserted");
     }
-    else if (this.password !== null)
-        if (this.password.length < 7) {
+    else if (this.password !== null) {
+        if (this.password.length < 6) {
             this.showError("Please choose a password that is at least 6 characters long");
         }
         else {
+            // BACKEND HERE TO SAVE PASSWORD
+            let alert = this.alertCtrl.create({
+              title: 'Success',
+              subTitle: 'Your password was changed',
+              buttons: ['OK']
+            });
+            alert.present(prompt);
             this.password = null;
-            // BACKEND HERE
         }
+    }
     
   }
   
+  // BACKEND HERE FOR SUPERVISING GROUPS
   items = ['G1', 'G3', 'G8'];
   
 }

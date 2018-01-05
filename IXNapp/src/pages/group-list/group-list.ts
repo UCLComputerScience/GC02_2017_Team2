@@ -20,8 +20,9 @@ export class GroupListPage {
   
   // NEW ARRAY - PROJECT DESCRIPTIONS NEED TO BE LOADED HERE?
   
-  descriptions: any[] = ['description 1 lala', 'description 2', 'description 3'];
+  //descriptions: any[] = ['description 1 lala', 'description 2', 'description 3'];
 
+  descriptions: any[] = [];
   wkn: number[] = [];
   mx: number;
 
@@ -55,6 +56,7 @@ export class GroupListPage {
         if(!this.items.includes(this.Groups[k].g_ID)) {
         this.items.push(this.Groups[k].g_ID);
         this.itemstemp.push(this.Groups[k].gp);
+        this.descriptions.push(this.Groups[k].pro);
         }
         }
       }
@@ -88,6 +90,7 @@ doRefresh(refresher) {
   this.items2 = [];
   this.Groups = [];
   this.TAGroups = [];
+  this.descriptions = [];
 
     this.house.GetStage2Student().subscribe(dt => {
       this.Groups = JSON.parse(dt["_body"]);
@@ -114,6 +117,7 @@ doRefresh(refresher) {
         if(!this.items.includes(this.Groups[k].g_ID)) {
         this.items.push(this.Groups[k].g_ID);
         this.itemstemp.push(this.Groups[k].gp);
+        this.descriptions.push(this.Groups[k].pro);
         }
         }
       }
