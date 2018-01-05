@@ -21,29 +21,30 @@
     </ion-row>
   </ion-scroll>
 
-  <div ng-hide= "Clicked" class= "ng-hide">
-  <p class= "para" style="font-size:160%; top-margin:-3vh;" align="center">Press On a Student!</p>
+  <div>
+      <ion-item-divider>
+          <p id="weekdiv" style="color:grey !important;">Press on a student</p>
+      </ion-item-divider>
   </div>
+  <div class="spacer" style="height:3%;" id="spacerline"></div>
 
   <p style= "margin-left:44vw; margin-bottom:-1vh;" *ngFor="let con of Contribution">{{con}}</p>
 
 <ion-spinner name="dots" style= "margin-left:35.5vw;" *ngIf="RWeeks == 0 && clicked"></ion-spinner>
-<ion-list *ngIf="RWeeks != 0">
-  <ion-item *ngFor="let BadW of RWeeks">
-    <div class= "Week">
-      <h1>
-        Week {{BadW.weeknum}}
-      </h1>
-    </div>
-    <button ion-button class= "stat" style= "width: 8vw; border-radius: 50%;" color= {{BadW.st_fb}}>
-    </button>
-    <h1 class= "contribution">
-      {{BadW.contr}}%
-    </h1>
-    <p style="font-size:70%; margin-left: 40.5vw;">
-      Contribution
-    </p>
-  </ion-item>
-</ion-list>
 
+<div *ngFor="let BadW of RWeeks">
+<ion-list *ngIf="RWeeks != 0">
+  <ion-item-divider color= {{BadW.st_fb}} >
+  <p id="weekdiv" style="color:white !important;">Week {{BadW.weeknum}}</p>
+  </ion-item-divider>
+
+  <!-- individual feedbacks of the performances -->
+  <ion-item no-lines>
+      <p  style="color: rgb(94, 91, 91)" class="name">Name of student</p>
+      <p item-right style="color: rgb(94, 91, 91)">
+          Contribution: {{BadW.contr}}%
+      </p>
+    </ion-item>
+</ion-list>
+</div>
 </ion-content>

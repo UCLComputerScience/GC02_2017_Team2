@@ -26695,13 +26695,6 @@ page-red-groups ion-list {
   position: relative;
 }
 
-page-red-groups .Week {
-  float: left;
-  position: relative;
-  top: 0.5vh;
-  left: 17vw;
-}
-
 page-red-groups ion-item {
   border: 3px;
 }
@@ -26732,9 +26725,13 @@ page-red-students ion-scroll {
 }
 
 page-red-students .para {
-  border-style: solid;
-  border-width: 4px;
-  border-radius: 10%;
+  border-top: solid #00A8FF;
+  border-width: 5px;
+}
+
+page-red-students ion-list {
+  padding: 0px !important;
+  margin-bottom: 10px !important;
 }
 
 page-red-students ion-row {
@@ -26754,19 +26751,6 @@ page-red-students .Week {
   float: left;
   position: relative;
   top: 0.5vh;
-}
-
-page-red-students ion-item {
-  border: 3px;
-}
-
-page-red-students .stat {
-  float: left;
-  left: 7%;
-  top: 1%;
-  height: 10 vh;
-  width: 10 vw;
-  position: relative;
 }
 
 page-red-students .contribution {

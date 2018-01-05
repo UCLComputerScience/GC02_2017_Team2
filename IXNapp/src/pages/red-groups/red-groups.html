@@ -8,30 +8,35 @@
     </ion-title>
   </ion-navbar>
 </ion-header>
-<ion-content padding id="page8">
-  
+<ion-content padding id="page8">  
   <ion-scroll scrollX="true">
-    <ion-spinner name="dots" style= "margin-left:35.5vw;" *ngIf="RGroups == 0 && Message == 'Press on a Student!'"></ion-spinner>
+    <ion-spinner name="dots" style= "margin-left:35.5vw;" *ngIf="RGroups == 0 && Message == 'Press on a Group'"></ion-spinner>
     <ion-row nowrap class= "scroller" *ngIf="RGroups != 0">
       <button ion-button color= "danger" *ngFor= "let BadG of RGroups" (click)= "onClick(BadG.g_id)" class= "BadButton">
           G{{BadG.g_id}}
       </button>
     </ion-row>
   </ion-scroll>
-
-<p class= "para" style="font-size:160%;" align="center">{{Message}}</p>
-
+  <div>
+      <ion-item-divider>
+          <p id="weekdiv" style="color:grey !important;">{{Message}}</p>
+      </ion-item-divider>
+  </div>
+  <div class="spacer" style="height:3%;" id="spacerline"></div>
 <ion-spinner name="dots" style= "margin-left:41vw;" *ngIf="RWeeks == 0 && clicked"></ion-spinner>
 <ion-list *ngIf="RWeekds != 0">
-  <ion-item *ngFor= "let BadWeek of RWeeks">
+  <div *ngFor= "let BadWeek of RWeeks">
+    <ion-item-divider color= "{{BadWeek.g_fb}}" >
+        <p id="weekdiv" style="color:white !important;">Week {{BadWeek.weeknum}}</p>
+    </ion-item-divider>
+  <ion-item text-wrap>
     <div class= "Week">
-      <h1>
-        Week {{BadWeek.weeknum}}
-      </h1>
+      <p style="color: rgb(94, 91, 91)">for this groupasdoifjaosdijfoaisjdfoiajsdoifjaoisjdfoijasodifjoaisjdfoijasodijfoij
+      <p>
     </div>
-    <button ion-button class= "stat" color= "{{BadWeek.g_fb}}" style= "width: 8vw; border-radius: 50%;">
-    </button>
   </ion-item>
+</div>
+
 </ion-list>
 
 

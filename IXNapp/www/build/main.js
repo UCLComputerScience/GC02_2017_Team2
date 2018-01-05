@@ -891,6 +891,7 @@ var HomePage = (function () {
             _this.groupData.push(_this.LGCount);
             _this.groupData.push(_this.DGCount);
             var donutGroup = _this.doughnutCanvas.nativeElement;
+            donutGroup.height = innerHeight * 0.25;
             console.log(donutGroup.height);
             var datax = _this.groupData;
             var dataGroup = {
@@ -950,6 +951,7 @@ var HomePage = (function () {
             _this.studentData.push(_this.DCount);
             console.log(_this.studentData);
             var donutStudent = _this.doughnutCanvasS.nativeElement;
+            donutStudent.height = innerHeight * 0.25;
             var dataStudent = {
                 datasets: [
                     {
@@ -1014,16 +1016,15 @@ __decorate([
 ], HomePage.prototype, "doughnutCanvasS", void 0);
 __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_13" /* ViewChild */])(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* Slides */]),
-    __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* Slides */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* Slides */]) === "function" && _a || Object)
+    __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* Slides */])
 ], HomePage.prototype, "slides", void 0);
 HomePage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
         selector: 'page-home',template:/*ion-inline-start:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/home/home.html"*/'<ion-header>\n    <ion-navbar>\n        <ion-title>\n            Home\n        </ion-title>\n    </ion-navbar>\n</ion-header>\n<!--Adding Refresher Section -->\n<ion-content padding>\n    <ion-refresher (ionRefresh)="doRefresh($event)">\n        <ion-refresher-content></ion-refresher-content>\n    </ion-refresher>\n\n    <!--Button to Deadlines Section -->\n    <div id="deadlines-section" no-padding>\n        <button id="deadlines-button" ion-button block icon-right style="text-align:right;"\n                on-click="goToDeadlines()">\n            Deadlines \n            <ion-icon name="calendar"></ion-icon>\n        </button>\n    </div>\n\n    <!--Notification for Feedback Request-->\n<div id="notification-section" no-padding no-margin >\n    <ion-card text-center id="notification" no-margin>\n        <h6 style="padding-top: 0 auto !important">Everything up to date</h6>\n    </ion-card>\n</div>\n\n    <!--Latest Feedback title section-->\n    <h4 id="home-heading11" style="color:#000000;">\n        Latest Feedback\n    </h4>\n\n    <!--Graph section with information-->\n    <div id="graph-section">\n        <ion-slides pager="true"> <!--pager for the small points-->\n            <ion-slide>\n                <canvas #doughnutCanvas></canvas>\n                <h6 padding=20px>\n                    Groups Feedback\n                </h6>\n                <div class="spacer" style="height:10px;"></div>\n\n                <ion-grid style="margin-bottom: 5px;"> <!--can add no-padding no-margin to reduce gap between title and legend -->\n                    <ion-row>\n                        <ion-label no-padding no-margin class="greendarklabel">\n                            excellent\n                        </ion-label>\n                        <ion-label no-padding no-margin class="greenlabel">\n                            good\n                        </ion-label>\n                        <ion-label no-padding no-margin class="yellowlabel">\n                            average\n                        </ion-label>\n                        <ion-label no-padding no-margin class="redlabel">\n                            danger\n                        </ion-label>\n                    </ion-row>\n                    <ion-row>\n                        <ion-label class="legend-number" no-padding no-margin >\n                            {{groupData[3]}}\n                        </ion-label>\n                        <ion-label class="legend-number" no-padding no-margin >\n                            {{groupData[2]}}\n                        </ion-label>\n                        <ion-label class="legend-number" no-padding no-margin >\n                            {{groupData[1]}}\n                        </ion-label>\n                        <ion-label class="legend-number" no-padding no-margin >\n                            {{groupData[0]}}\n                        </ion-label>\n                    </ion-row>\n                </ion-grid>\n\n                <div class="spacer" style="height:5px;" id="spacerline"></div>\n            </ion-slide>\n            <ion-slide>\n                <canvas #doughnutCanvasS></canvas>\n                <h6 id="home-heading12">\n                    Students Feedback\n                </h6>\n                <div class="spacer" style="height:10px;"></div>\n\n                <ion-grid style="margin-bottom: 5px;"> <!--can add no-padding no-margin to reduce gap between title and legend -->\n                    <ion-row>\n                        <ion-label no-padding no-margin class="greendarklabel">\n                            excellent\n                        </ion-label>\n                        <ion-label no-padding no-margin class="greenlabel">\n                            good\n                        </ion-label>\n                        <ion-label no-padding no-margin class="yellowlabel">\n                            average\n                        </ion-label>\n                        <ion-label no-padding no-margin class="redlabel">\n                            danger\n                        </ion-label>\n                    </ion-row>\n                    <ion-row>\n                        <ion-label class="legend-number" no-padding no-margin >\n                            {{studentData[3]}}\n                        </ion-label>\n                        <ion-label class="legend-number" no-padding no-margin >\n                            {{studentData[2]}}\n                        </ion-label>\n                        <ion-label class="legend-number" no-padding no-margin >\n                            {{studentData[1]}}\n                        </ion-label>\n                        <ion-label class="legend-number" no-padding no-margin >\n                            {{studentData[0]}}\n                        </ion-label>\n                    </ion-row>\n                </ion-grid>\n\n                <div class="spacer" style="height:5px;"></div>\n            </ion-slide>\n        </ion-slides>\n    </div>\n\n    <div id="buttonsection">\n        <ion-row class="rowbuttons">\n            <ion-col col-6>\n                <button class="redbutton" ion-button no-padding on-click="goToRedGroups()">\n                    Red Teams\n                </button>\n            </ion-col>\n            <ion-col col-6>\n                <button class="redbutton" ion-button no-padding on-click="goToRedStudents()">\n                    Red Students\n                </button>\n            </ion-col>\n        </ion-row>\n    </div>\n</ion-content>\n'/*ion-inline-end:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/home/home.html"*/
     }),
-    __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_6__providers_house_house__["a" /* HouseProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__providers_house_house__["a" /* HouseProvider */]) === "function" && _c || Object])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_6__providers_house_house__["a" /* HouseProvider */]])
 ], HomePage);
 
-var _a, _b, _c;
 //# sourceMappingURL=home.js.map
 
 /***/ }),
@@ -1127,7 +1128,7 @@ var RedGroupsPage = (function () {
 }());
 RedGroupsPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-red-groups',template:/*ion-inline-start:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/red-groups/red-groups.html"*/'<ion-header>\n  <ion-navbar >\n    <ion-buttons start>\n      <button ion-button></button>\n    </ion-buttons>\n    <ion-title>\n      Red Groups\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n<ion-content padding id="page8">\n  \n  <ion-scroll scrollX="true">\n    <ion-spinner name="dots" style= "margin-left:35.5vw;" *ngIf="RGroups == 0 && Message == \'Press on a Student!\'"></ion-spinner>\n    <ion-row nowrap class= "scroller" *ngIf="RGroups != 0">\n      <button ion-button color= "danger" *ngFor= "let BadG of RGroups" (click)= "onClick(BadG.g_id)" class= "BadButton">\n          G{{BadG.g_id}}\n      </button>\n    </ion-row>\n  </ion-scroll>\n\n<p class= "para" style="font-size:160%;" align="center">{{Message}}</p>\n\n<ion-spinner name="dots" style= "margin-left:41vw;" *ngIf="RWeeks == 0 && clicked"></ion-spinner>\n<ion-list *ngIf="RWeekds != 0">\n  <ion-item *ngFor= "let BadWeek of RWeeks">\n    <div class= "Week">\n      <h1>\n        Week {{BadWeek.weeknum}}\n      </h1>\n    </div>\n    <button ion-button class= "stat" color= "{{BadWeek.g_fb}}" style= "width: 8vw; border-radius: 50%;">\n    </button>\n  </ion-item>\n</ion-list>\n\n\n</ion-content>\n'/*ion-inline-end:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/red-groups/red-groups.html"*/
+        selector: 'page-red-groups',template:/*ion-inline-start:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/red-groups/red-groups.html"*/'<ion-header>\n  <ion-navbar >\n    <ion-buttons start>\n      <button ion-button></button>\n    </ion-buttons>\n    <ion-title>\n      Red Groups\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n<ion-content padding id="page8">  \n  <ion-scroll scrollX="true">\n    <ion-spinner name="dots" style= "margin-left:35.5vw;" *ngIf="RGroups == 0 && Message == \'Press on a Group\'"></ion-spinner>\n    <ion-row nowrap class= "scroller" *ngIf="RGroups != 0">\n      <button ion-button color= "danger" *ngFor= "let BadG of RGroups" (click)= "onClick(BadG.g_id)" class= "BadButton">\n          G{{BadG.g_id}}\n      </button>\n    </ion-row>\n  </ion-scroll>\n  <div>\n      <ion-item-divider>\n          <p id="weekdiv" style="color:grey !important;">{{Message}}</p>\n      </ion-item-divider>\n  </div>\n  <div class="spacer" style="height:3%;" id="spacerline"></div>\n<ion-spinner name="dots" style= "margin-left:41vw;" *ngIf="RWeeks == 0 && clicked"></ion-spinner>\n<ion-list *ngIf="RWeekds != 0">\n  <div *ngFor= "let BadWeek of RWeeks">\n    <ion-item-divider color= "{{BadWeek.g_fb}}" >\n        <p id="weekdiv" style="color:white !important;">Week {{BadWeek.weeknum}}</p>\n    </ion-item-divider>\n  <ion-item text-wrap>\n    <div class= "Week">\n      <p style="color: rgb(94, 91, 91)">for this groupasdoifjaosdijfoaisjdfoiajsdoifjaoisjdfoijasodifjoaisjdfoijasodijfoij\n      <p>\n    </div>\n  </ion-item>\n</div>\n\n</ion-list>\n\n\n</ion-content>\n'/*ion-inline-end:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/red-groups/red-groups.html"*/
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_3__providers_house_house__["a" /* HouseProvider */], __WEBPACK_IMPORTED_MODULE_2__angular_http__["a" /* Http */], __WEBPACK_IMPORTED_MODULE_2__angular_http__["a" /* Http */]])
 ], RedGroupsPage);
@@ -1231,7 +1232,7 @@ var RedStudentsPage = (function () {
 }());
 RedStudentsPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-red-students',template:/*ion-inline-start:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/red-students/red-students.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-buttons start>\n      <button ion-button></button>\n    </ion-buttons>\n    <ion-title>\n      Red Students\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n<ion-content padding id="page8">\n  \n  <ion-scroll scrollX="true">\n    <ion-spinner name="dots" style= "margin-left:35.5vw;" *ngIf="RStudents == 0"></ion-spinner>\n    <ion-row nowrap class= "scroller" *ngIf="RStudents != 0">\n      <div *ngFor= "let BadStu of RStudents">\n      <button ion-button color= "danger" (click)="onClick(BadStu.first, BadStu.last)" class= "StudentButton" round="true">\n          {{BadStu.first}} {{BadStu.last}}\n      </button>\n      </div>\n    </ion-row>\n  </ion-scroll>\n\n  <div ng-hide= "Clicked" class= "ng-hide">\n  <p class= "para" style="font-size:160%; top-margin:-3vh;" align="center">Press On a Student!</p>\n  </div>\n\n  <p style= "margin-left:44vw; margin-bottom:-1vh;" *ngFor="let con of Contribution">{{con}}</p>\n\n<ion-spinner name="dots" style= "margin-left:35.5vw;" *ngIf="RWeeks == 0 && clicked"></ion-spinner>\n<ion-list *ngIf="RWeeks != 0">\n  <ion-item *ngFor="let BadW of RWeeks">\n    <div class= "Week">\n      <h1>\n        Week {{BadW.weeknum}}\n      </h1>\n    </div>\n    <button ion-button class= "stat" style= "width: 8vw; border-radius: 50%;" color= {{BadW.st_fb}}>\n    </button>\n    <h1 class= "contribution">\n      {{BadW.contr}}%\n    </h1>\n    <p style="font-size:70%; margin-left: 40.5vw;">\n      Contribution\n    </p>\n  </ion-item>\n</ion-list>\n\n</ion-content>\n'/*ion-inline-end:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/red-students/red-students.html"*/
+        selector: 'page-red-students',template:/*ion-inline-start:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/red-students/red-students.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-buttons start>\n      <button ion-button></button>\n    </ion-buttons>\n    <ion-title>\n      Red Students\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n<ion-content padding id="page8">\n  \n  <ion-scroll scrollX="true">\n    <ion-spinner name="dots" style= "margin-left:35.5vw;" *ngIf="RStudents == 0"></ion-spinner>\n    <ion-row nowrap class= "scroller" *ngIf="RStudents != 0">\n      <div *ngFor= "let BadStu of RStudents">\n      <button ion-button color= "danger" (click)="onClick(BadStu.first, BadStu.last)" class= "StudentButton" round="true">\n          {{BadStu.first}} {{BadStu.last}}\n      </button>\n      </div>\n    </ion-row>\n  </ion-scroll>\n\n  <div>\n      <ion-item-divider>\n          <p id="weekdiv" style="color:grey !important;">Press on a student</p>\n      </ion-item-divider>\n  </div>\n  <div class="spacer" style="height:3%;" id="spacerline"></div>\n\n  <p style= "margin-left:44vw; margin-bottom:-1vh;" *ngFor="let con of Contribution">{{con}}</p>\n\n<ion-spinner name="dots" style= "margin-left:35.5vw;" *ngIf="RWeeks == 0 && clicked"></ion-spinner>\n\n<div *ngFor="let BadW of RWeeks">\n<ion-list *ngIf="RWeeks != 0">\n  <ion-item-divider color= {{BadW.st_fb}} >\n  <p id="weekdiv" style="color:white !important;">Week {{BadW.weeknum}}</p>\n  </ion-item-divider>\n\n  <!-- individual feedbacks of the performances -->\n  <ion-item no-lines>\n      <p  style="color: rgb(94, 91, 91)" class="name">Name of student</p>\n      <p item-right style="color: rgb(94, 91, 91)">\n          Contribution: {{BadW.contr}}%\n      </p>\n    </ion-item>\n</ion-list>\n</div>\n</ion-content>\n'/*ion-inline-end:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/red-students/red-students.html"*/
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_3__providers_house_house__["a" /* HouseProvider */], __WEBPACK_IMPORTED_MODULE_2__angular_http__["a" /* Http */], __WEBPACK_IMPORTED_MODULE_2__angular_http__["a" /* Http */]])
 ], RedStudentsPage);
@@ -1707,7 +1708,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var MoreDetailsPage = (function () {
-    function MoreDetailsPage(navCtrl, nav, house, http, http2) {
+    function MoreDetailsPage(alertCtrl, navCtrl, nav, house, http, http2) {
+        this.alertCtrl = alertCtrl;
         this.navCtrl = navCtrl;
         this.nav = nav;
         this.house = house;
@@ -1772,23 +1774,41 @@ var MoreDetailsPage = (function () {
     };
     MoreDetailsPage.prototype.del = function () {
         var _this = this;
-        for (var j in this.Students) {
-            var link = 'http://gc02team02app.azurewebsites.net/SQL/DelS.php';
-            var myData = JSON.stringify({ week: this.week, sID: this.StudentIDs[j] });
-            this.http.post(link, myData).subscribe(function (data) {
-                _this.data.response = data["_body"];
-            }, function (error) {
-                console.log("Oooops!");
-            });
-        }
-        var link2 = 'http://gc02team02app.azurewebsites.net/SQL/DelG.php';
-        var myData2 = JSON.stringify({ week: this.week, gID: this.group });
-        this.http2.post(link2, myData2).subscribe(function (data2) {
-            _this.data2.response = data2["_body"];
-        }, function (error) {
-            console.log("Oooops!");
+        var alert = this.alertCtrl.create({
+            title: 'Confirm Deletion',
+            message: 'Do you want to proceed with deletion of this feedback?',
+            buttons: [
+                {
+                    text: 'Cancel',
+                    role: 'cancel',
+                    handler: function () {
+                    }
+                },
+                {
+                    text: 'Proceed',
+                    handler: function () {
+                        for (var j in _this.Students) {
+                            var link = 'http://gc02team02app.azurewebsites.net/SQL/DelS.php';
+                            var myData = JSON.stringify({ week: _this.week, sID: _this.StudentIDs[j] });
+                            _this.http.post(link, myData).subscribe(function (data) {
+                                _this.data.response = data["_body"];
+                            }, function (error) {
+                                console.log("Oooops!");
+                            });
+                        }
+                        var link2 = 'http://gc02team02app.azurewebsites.net/SQL/DelG.php';
+                        var myData2 = JSON.stringify({ week: _this.week, gID: _this.group });
+                        _this.http2.post(link2, myData2).subscribe(function (data2) {
+                            _this.data2.response = data2["_body"];
+                        }, function (error) {
+                            console.log("Oooops!");
+                        });
+                        _this.navCtrl.popTo(_this.navCtrl.getByIndex(0));
+                    }
+                }
+            ]
         });
-        this.navCtrl.popTo(this.navCtrl.getByIndex(0));
+        alert.present();
     };
     return MoreDetailsPage;
 }());
@@ -1796,9 +1816,10 @@ MoreDetailsPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
         selector: 'page-more-details',template:/*ion-inline-start:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/more-details/more-details.html"*/'<ion-header>\n    <ion-navbar>\n        <ion-title>\n            Week {{week}} details\n        </ion-title>\n    </ion-navbar>\n</ion-header>\n\n<ion-content style="font-size:16px;" padding>\n    <div class="spacer" style="height:5px;"></div>\n    <div id="latestfeedback">\n        <h5 style="margin:0px;outline:none;" >Group performance: \n          <span class="feedbackwriting">{{groupPerformance2}} </span></h5>\n    </div>\n  <div class="spacer" style="height:10px;"></div>\n  <p>"{{groupComment}}"</p>\n  <div class="spacer" style="height:5px;"></div>\n    <hr>\n  <h5>Student Performances</h5>\n  <ion-list *ngFor="let name of names; let i = index; ">\n    <ion-card id="{{getCard(i)}}">\n      <div>\n        <ion-item text-wrap color="none" id="group-list-item39">\n          <ion-avatar item-left>\n            <img src="{{ photocompiler(i) }}" style="height: 12vh; width: 22vw;">\n          </ion-avatar>\n          <p id="name" style="font-size:1.1em;">\n            {{name}}\n          </p>\n        </ion-item>\n        <ion-item>\n          Contribution: \n         {{individualContributions[i]}}% \n        </ion-item>\n        <ion-item text-wrap style ="color: grey !important">\n            {{individualComments[i]}}\n        </ion-item>\n      </div>\n    </ion-card>\n  </ion-list>\n  <div class="spacer" style="height:5px;"></div>\n  <div margin style="height: 7% !important;">\n    <button id="deletebutton" on-click="del();">Delete this Feedback</button>\n  </div>\n</ion-content>\n'/*ion-inline-end:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/more-details/more-details.html"*/
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_house_house__["a" /* HouseProvider */], __WEBPACK_IMPORTED_MODULE_3__angular_http__["a" /* Http */], __WEBPACK_IMPORTED_MODULE_3__angular_http__["a" /* Http */]])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2__providers_house_house__["a" /* HouseProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_house_house__["a" /* HouseProvider */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_3__angular_http__["a" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_http__["a" /* Http */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_3__angular_http__["a" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_http__["a" /* Http */]) === "function" && _f || Object])
 ], MoreDetailsPage);
 
+var _a, _b, _c, _d, _e, _f;
 //# sourceMappingURL=more-details.js.map
 
 /***/ }),

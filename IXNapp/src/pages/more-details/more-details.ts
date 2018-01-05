@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, AlertController } from 'ionic-angular';
 import { HouseProvider } from '../../providers/house/house';
 import { FeedbackSummaryPage } from '../feedback-summary/feedback-summary';
 import { Http, Headers, RequestOptions } from '@angular/http';
@@ -31,7 +31,7 @@ photoarray: any[] = [];
 groupPerformance2: string;
 
 
-    constructor(public navCtrl: NavController, public nav : NavParams, public house: HouseProvider, public http: Http, public http2: Http) {
+    constructor(private alertCtrl: AlertController, public navCtrl: NavController, public nav : NavParams, public house: HouseProvider, public http: Http, public http2: Http) {
     this.group = this.nav.get('param1');
     this.week = this.nav.get('param2');
 
@@ -91,30 +91,54 @@ groupPerformance2: string;
 
 
     del() {
-    for(let j in this.Students) {
-        var link = 'http://gc02team02app.azurewebsites.net/SQL/DelS.php';
-    var myData =  JSON.stringify({week: this.week, sID: this.StudentIDs[j]})
 
-    this.http.post(link, myData).subscribe(data => {
-    this.data.response = data["_body"];
-    }, error => {
-    console.log("Oooops!");
-    })
+            let alert = this.alertCtrl.create({
+              title: 'Confirm Deletion',
+              message: 'Do you want to proceed with deletion of this feedback?',
+              buttons: [
+                {
+                  text: 'Cancel',
+                  role: 'cancel',
+                  handler: () => {
+                  }
+                },
+                {
+                  text: 'Proceed',
+                  handler: () => {
+                    for(let j in this.Students) {
+                        var link = 'http://gc02team02app.azurewebsites.net/SQL/DelS.php';
+                    var myData =  JSON.stringify({week: this.week, sID: this.StudentIDs[j]})
+                
+                    this.http.post(link, myData).subscribe(data => {
+                    this.data.response = data["_body"];
+                    }, error => {
+                    console.log("Oooops!");
+                    })
+                
+                    }
+                
+                    var link2 = 'http://gc02team02app.azurewebsites.net/SQL/DelG.php';
+                    var myData2 =  JSON.stringify({week: this.week, gID: this.group})
+                
+                    this.http2.post(link2, myData2).subscribe(data2 => {
+                    this.data2.response = data2["_body"];
+                    }, error => {
+                    console.log("Oooops!");
+                    })
+                      
+                    this.navCtrl.popTo( this.navCtrl.getByIndex(0));
+                  }
+                }
+              ]
+            });
+            alert.present();
+          }
 
-    }
+        
 
-    var link2 = 'http://gc02team02app.azurewebsites.net/SQL/DelG.php';
-    var myData2 =  JSON.stringify({week: this.week, gID: this.group})
+ 
 
-    this.http2.post(link2, myData2).subscribe(data2 => {
-    this.data2.response = data2["_body"];
-    }, error => {
-    console.log("Oooops!");
-    })
-      
-    this.navCtrl.popTo( this.navCtrl.getByIndex(0));
-
-    }
+    
 
 
 }

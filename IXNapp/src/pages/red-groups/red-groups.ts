@@ -24,7 +24,7 @@ RIWeeks: any[] = [];
 	
 
   constructor(public navCtrl: NavController, public house: HouseProvider, public http: Http, public http2 : Http) {
-  	this.Message = 'Press on a Student!';
+  	this.Message = 'Press on a Group!';
   }
 
   ngOnInit() {
@@ -45,7 +45,6 @@ RIWeeks: any[] = [];
   		if(this.RGroups.length == 0) {
   			this.Message = 'No Red Groups!';
   		}
-
   	})
   } 
 
