@@ -22,6 +22,7 @@ export class MyProfilePage {
   sorting: number[] = [];
   items: string[] = [];
   Students: any[] = [];
+  Picture: string;
 
   // BACKEND HERE FOR SUPERVISING GROUPS
   //items = ['G1', 'G3', 'G8'];
@@ -49,6 +50,8 @@ export class MyProfilePage {
       for(let j in this.sorting) {
       this.items.push("G".concat(String(this.sorting[j])));
       }
+      
+      this.Picture = this.Students[0].pic;
 
       //this.myGroup = "G".concat(this.Students[0].g_id);
       //this.groupDescription = this.Students[0].pro;
