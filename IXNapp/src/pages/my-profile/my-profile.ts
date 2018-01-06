@@ -3,6 +3,8 @@ import { NavController, AlertController } from 'ionic-angular';
 import { AuthService } from '../../providers/auth-service';
 import { LoginPage } from '../login/login';
 import { App } from 'ionic-angular';
+import { HouseProvider } from '../../providers/house/house';
+import { Http, Headers, RequestOptions } from '@angular/http';
 
 @Component({
   selector: 'page-my-profile',
@@ -16,8 +18,9 @@ export class MyProfilePage {
   email = '';
   type = '';
   password;
+  data: any = {};
   
-  constructor(private app: App, public navCtrl: NavController, private auth: AuthService, private alertCtrl: AlertController) {
+  constructor(private app: App, public navCtrl: NavController, private auth: AuthService, private alertCtrl: AlertController, public house: HouseProvider) {
     let info = this.auth.getUserInfo();
     this.firstName = info['firstName'];
     this.lastName = info['lastName'];
@@ -50,6 +53,13 @@ export class MyProfilePage {
         }
         else {
             // BACKEND HERE TO SAVE PASSWORD
+            
+            this.house.PassPrelim(this.password).subscribe(data => {
+            this.data.response = data["_body"];
+            }, error => {
+            console.log("Oooops!");
+            });
+            
             let alert = this.alertCtrl.create({
               title: 'Success',
               subTitle: 'Your password was changed',
