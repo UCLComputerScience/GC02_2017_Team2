@@ -46,12 +46,50 @@ RIWeeks: any[] = [];
   			this.Message = 'No Red Groups!';
   		}
   	})
+  }
+
+  doRefresh(refresher) {
+    console.log('Begin async operation', refresher);
+
+    this.Message = 'Press on a Group!';
+
+    this.dt = {};
+    this.wkn = [];
+    this.mx = 0;
+    this.clicked = false;
+    this.Groups = [];
+    this.RGroups = [];
+
+    this.house.getAllRedTeam().subscribe(dt => {
+      this.Groups = JSON.parse(dt["_body"]);
+
+      for(let i in this.Groups){
+      this.wkn.push(this.Groups[i].weeknum);
+      }
+      this.mx = Math.max.apply(Math, this.wkn);
+
+      for(let k in this.Groups){
+      if(this.Groups[k].weeknum == this.mx && this.Groups[k].g_fb == 1) {
+        this.RGroups.push(this.Groups[k]);
+      }
+      }
+
+      if(this.RGroups.length == 0) {
+        this.Message = 'No Red Groups!';
+      }
+    })
+
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      refresher.complete();
+    }, 2000);
   } 
 
 onClick(gid : any) {
 	this.RWeeks = [];
   this.RIWeeks = [];
 	this.clicked = true;
+  this.Weeks = [];
 
 this.house.getAllRedTeam().subscribe(dt2 => {
 	this.Weeks = JSON.parse(dt2["_body"]);
