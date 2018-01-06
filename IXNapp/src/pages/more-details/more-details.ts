@@ -63,24 +63,24 @@ groupPerformance2: string;
         })
     }
     
-    values = ['bad', 'average', 'good', 'excellent']; // don't change
-    cardvalues = ['cardbad', 'cardaverage', 'cardgood', 'cardexcellent']
+    values = ['absent', 'bad', 'average', 'good', 'excellent']; // don't change
+    cardvalues = ['cardabsent', 'cardbad', 'cardaverage', 'cardgood', 'cardexcellent']
 
     public getCard(i) { 
         var performance = this.individualPerformances[i]; 
-        var value = this.cardvalues[performance-1]; 
+        var value = this.cardvalues[performance]; 
         console.log(value); 
         return value; 
     }
 
     public getPerformance(x) {
     var performance = this.individualPerformances[x];
-    var value = this.values[performance-1]; 
+    var value = this.values[performance]; 
     return value; 
     }
   
     getGroupPerformance() {
-        var value = this.values[this.groupPerformance-1];
+        var value = this.values[this.groupPerformance];
         return value;
     }
   

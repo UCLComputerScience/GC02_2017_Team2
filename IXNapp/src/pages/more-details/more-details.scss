@@ -33,6 +33,10 @@ page-more-details {
     .bad {
         background-color:#FF6384;
     }
+    
+    .absent {
+        background-color: black;
+    }
 
     #cardexcellent{
         border-top: 10px solid #058D65;
@@ -48,6 +52,10 @@ page-more-details {
 
     #cardbad {
         border-top: 10px solid #FF6384;
+    }
+    
+    #cardabsent {
+        border-top: 10px solid black;
     }
     
     .feedbackwriting {

@@ -33,8 +33,8 @@ export class MyFeedbackHistoryPage {
 
 /* Do not change anything beyond this point */
 
-  performanceAnnotation = ['bad', 'average', 'good', 'excellent']; //constants do not modify
-  performanceColor = ['red', 'yellow', 'lightgreen', 'darkgreen']; //constants do not modify
+  performanceAnnotation = ['absent', 'bad', 'average', 'good', 'excellent']; //constants do not modify
+  performanceColor = ['black', 'red', 'yellow', 'lightgreen', 'darkgreen']; //constants do not modify
 
   ngOnInit() {
     this.house.GetStudentHome().subscribe(dt => {
@@ -137,14 +137,13 @@ export class MyFeedbackHistoryPage {
   }
   
   groupColorSetting(x) {
-    var value = this.groupdata[x];  
-    var indexvalue = value-1; 
+    var indexvalue = this.groupdata[x];
     var colorName = this.performanceColor[indexvalue]; 
     return colorName; 
   }
 
   studentColorSetting(x) {  
-    var indexvalue = this.studentdata[x]-1; 
+    var indexvalue = this.studentdata[x]; 
     var studentColor = this.performanceColor[indexvalue]; 
     return studentColor; 
   }
@@ -171,7 +170,7 @@ export class MyFeedbackHistoryPage {
     console.log(weekIndex);
     var indexvalue = this.groupdata[weekIndex-1]; 
     console.log(indexvalue);
-    return this.performanceAnnotation[indexvalue-1]; 
+    return this.performanceAnnotation[indexvalue]; 
     
   }
 

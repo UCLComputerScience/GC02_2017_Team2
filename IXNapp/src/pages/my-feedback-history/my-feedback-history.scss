@@ -79,6 +79,7 @@ page-my-feedback-history {
       padding: 0px !important;
       margin: 0px !important;
       text-align: right;
+      width: 160px !important;
     }
 
     ion-note button {
@@ -128,6 +129,14 @@ page-my-feedback-history {
 
     .darkgreen {
       background-color: #058D65;
+    }
+    
+    .black {
+        background-color: black;
+    }
+    
+    .performance2 {
+        float: left !important;
     }
 
 }

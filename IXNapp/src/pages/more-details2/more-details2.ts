@@ -70,7 +70,7 @@ groupPerformance2: string;
         })
     }
     
-    values = ['bad', 'average', 'good', 'excellent']; // don't change
+    values = ['absent', 'bad', 'average', 'good', 'excellent']; // don't change
   
     photocompiler(i) {
     var photoname = "https://docs.google.com/uc?id=".concat(this.photoarray[i]); 
@@ -79,12 +79,12 @@ groupPerformance2: string;
 
     public getPerformance(x) {
     var performance = this.individualPerformances[x];
-    var value = this.values[performance-1]; 
+    var value = this.values[performance]; 
     return value; 
     }
   
     getGroupPerformance() {
-        var value = this.values[this.groupPerformance-1];
+        var value = this.values[this.groupPerformance];
         return value;
     }
 
