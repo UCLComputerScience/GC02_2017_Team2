@@ -14,7 +14,7 @@
   </ion-refresher>
   
   <ion-scroll scrollX="true">
-    <ion-spinner name="dots" style= "margin-left:35.5vw;" *ngIf="RStudents == 0"></ion-spinner>
+    <ion-spinner name="dots" style= "margin-left:35.5vw;" *ngIf="RStudents == 0 && Message == 'Press on a Student!'"></ion-spinner>
     <ion-row nowrap class= "scroller" *ngIf="RStudents != 0">
       <div *ngFor= "let BadStu of RStudents">
       <button ion-button color= "danger" (click)="onClick(BadStu.first, BadStu.last)" class= "StudentButton" round="true">
