@@ -8,7 +8,10 @@
     </ion-title>
   </ion-navbar>
 </ion-header>
-<ion-content padding id="page8">  
+<ion-content padding id="page8"> 
+<ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher> 
   <ion-scroll scrollX="true">
     <ion-spinner name="dots" style= "margin-left:35.5vw;" *ngIf="RGroups == 0 && Message == 'Press on a Group'"></ion-spinner>
     <ion-row nowrap class= "scroller" *ngIf="RGroups != 0">
@@ -31,7 +34,7 @@
     </ion-item-divider>
   <ion-item text-wrap>
     <div class= "Week">
-      <p style="color: rgb(94, 91, 91)">for this groupasdoifjaosdijfoaisjdfoiajsdoifjaoisjdfoijasodifjoaisjdfoijasodijfoij
+      <p style="color: rgb(94, 91, 91)">{{BadWeek.g_c}}
       <p>
     </div>
   </ion-item>
