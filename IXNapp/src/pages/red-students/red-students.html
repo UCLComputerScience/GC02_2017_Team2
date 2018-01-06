@@ -9,6 +9,9 @@
   </ion-navbar>
 </ion-header>
 <ion-content padding id="page8">
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
   
   <ion-scroll scrollX="true">
     <ion-spinner name="dots" style= "margin-left:35.5vw;" *ngIf="RStudents == 0"></ion-spinner>
@@ -23,7 +26,7 @@
 
   <div>
       <ion-item-divider>
-          <p id="weekdiv" style="color:grey !important;">Press on a student</p>
+          <p id="weekdiv" style="color:grey !important;">{{Message}}</p>
       </ion-item-divider>
   </div>
   <div class="spacer" style="height:3%;" id="spacerline"></div>
