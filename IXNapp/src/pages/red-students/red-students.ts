@@ -24,6 +24,7 @@ Weeks: any[];
 RWeeks: any[] = [];
 RIWeeks: any[] = [];
 Message: string;
+Fullname: string;
 	
 
   constructor(public navCtrl: NavController, public house: HouseProvider, public http: Http, public http2 : Http) {
@@ -96,7 +97,9 @@ onClick(first : any, last: any) {
 	this.RWeeks = [];
 	this.RIWeeks = [];
 	this.clicked = true;
-  this.Weeks = [];
+  	this.Weeks = [];
+	
+	this.Fullname = first.concat(" ", last);
 
 this.house.getAllRedStudent().subscribe(dt2 => {
 	this.Weeks = JSON.parse(dt2["_body"]);
