@@ -19,6 +19,12 @@ export class MyProfilePage {
   type = '';
   password;
   data: any = {};
+  sorting: number[] = [];
+  items: string[] = [];
+  Students: any[] = [];
+
+  // BACKEND HERE FOR SUPERVISING GROUPS
+  //items = ['G1', 'G3', 'G8'];
   
   constructor(private app: App, public navCtrl: NavController, private auth: AuthService, private alertCtrl: AlertController, public house: HouseProvider) {
     let info = this.auth.getUserInfo();
@@ -26,6 +32,29 @@ export class MyProfilePage {
     this.lastName = info['lastName'];
     this.email = info['email'];
     this.type = info['type'];
+  }
+
+  ngOnInit() {
+    this.house.getProfileStaff().subscribe(dt => {
+      this.Students = JSON.parse(dt["_body"]);
+
+      for(let i in this.Students) {
+      this.sorting.push(this.Students[i].g_id);
+      }
+
+      this.sorting.sort(function(a,b) { 
+      return a - b
+      })
+
+      for(let j in this.sorting) {
+      this.items.push("G".concat(String(this.sorting[j])));
+      }
+
+      //this.myGroup = "G".concat(this.Students[0].g_id);
+      //this.groupDescription = this.Students[0].pro;
+      //this.SID = this.Students[0].s_id;
+
+    })
   }
   
   public logout() {
@@ -71,8 +100,5 @@ export class MyProfilePage {
     }
     
   }
-  
-  // BACKEND HERE FOR SUPERVISING GROUPS
-  items = ['G1', 'G3', 'G8'];
   
 }
