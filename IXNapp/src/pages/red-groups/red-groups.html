@@ -13,7 +13,7 @@
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher> 
   <ion-scroll scrollX="true">
-    <ion-spinner name="dots" style= "margin-left:35.5vw;" *ngIf="RGroups == 0 && Message == 'Press on a Group'"></ion-spinner>
+    <ion-spinner name="dots" style= "margin-left:35.5vw;" *ngIf="RGroups == 0 && Message == 'Press on a Group!'"></ion-spinner>
     <ion-row nowrap class= "scroller" *ngIf="RGroups != 0">
       <button ion-button color= "danger" *ngFor= "let BadG of RGroups" (click)= "onClick(BadG.g_id)" class= "BadButton">
           G{{BadG.g_id}}
