@@ -22,6 +22,7 @@ export class ProfilePage {
   Students: any[] = [];
   data: any = {};
   SID: number;
+  Picture: string;
 
   //BACKEND FOR STUDENT GROUP AND GROUP DESCRIPTION
   //myGroup = 'G3';
@@ -45,6 +46,8 @@ export class ProfilePage {
       this.myGroup = "G".concat(this.Students[0].g_id);
       this.groupDescription = this.Students[0].pro;
       this.SID = this.Students[0].s_id;
+      
+      this.Picture = "https://docs.google.com/uc?id=".concat(this.Students[0].pic);
 
       console.log(this.myGroup);
       console.log(this.groupDescription);
