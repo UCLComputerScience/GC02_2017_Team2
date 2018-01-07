@@ -21,6 +21,7 @@ Weeks: any[];
 RWeeks: any[] = [];
 Message: string;
 RIWeeks: any[] = [];
+wknraw: any[] = [];
 	
 
   constructor(public navCtrl: NavController, public house: HouseProvider, public http: Http, public http2 : Http) {
@@ -95,13 +96,15 @@ this.house.getAllRedTeam().subscribe(dt2 => {
 	this.Weeks = JSON.parse(dt2["_body"]);
 	for(let i in this.Weeks){
 	if(this.Weeks[i].g_id == gid){
-		this.RIWeeks.push(this.Weeks[i].weeknum);
+		this.wknraw.push(this.Weeks[i].weeknum);
 	}
 	}
 
-  this.RIWeeks.sort(function(a,b) { 
+  this.wknraw.sort(function(a,b) { 
   return a - b
   })
+
+  this.RIWeeks = this.wknraw.slice(1);
 
     for(let q in this.RIWeeks) {
     for(let j in this.Weeks) {
