@@ -23,6 +23,7 @@ RStudents: any[] = [];
 Weeks: any[];
 RWeeks: any[] = [];
 RIWeeks: any[] = [];
+wknraw: any[] = [];
 Message: string;
 Fullname: string;
 	
@@ -105,13 +106,15 @@ this.house.getAllRedStudent().subscribe(dt2 => {
 	this.Weeks = JSON.parse(dt2["_body"]);
 	for(let i in this.Weeks){
 	if(this.Weeks[i].first == first && this.Weeks[i].last == last){
-		this.RIWeeks.push(this.Weeks[i].weeknum);
+		this.wknraw.push(this.Weeks[i].weeknum);
 	}
 	}
 
-	this.RIWeeks.sort(function(a,b) { 
+	this.wknraw.sort(function(a,b) { 
     return a - b
     })
+
+    this.RIWeeks = this.wknraw.slice(1);
 
     for(let q in this.RIWeeks) {
     for(let j in this.Weeks) {
