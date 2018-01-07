@@ -45,6 +45,12 @@ export class DeadlinesPage {
           this.Deadlinetitles.push(this.Deadlineraw[i]);
         }
       }
+	  
+      for(let j in this.Deadlineraw) {
+      if(this.Deadlineraw[j].deadt == 'Start Date') {
+      this.dateString = this.Deadlineraw[j].deadd;
+      }
+      }
 
       })
   }
