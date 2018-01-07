@@ -21,6 +21,7 @@ export class FeedbackSummaryPage {
   wkn: number[] = [];
   wcheck: number[] = [];
   ultimatewkn: number[] = [];
+  wknraw: number[] = [];
   mx: number;
   mx2: number;
   percentageresults: any[] = [];
@@ -61,17 +62,17 @@ export class FeedbackSummaryPage {
       }
 
       for(let q in this.Students) {
-      if(this.Students[q].g_ID == this.groupnumber && !this.ultimatewkn.includes(this.Students[q].s_wk)) {
-        this.ultimatewkn.push(this.Students[q].s_wk);
+      if(this.Students[q].g_ID == this.groupnumber && !this.wknraw.includes(this.Students[q].s_wk)) {
+        this.wknraw.push(this.Students[q].s_wk);
         //this.groupdata.push(this.Students[q].gp);
       }
       }
 
-      this.ultimatewkn.sort(function(a,b) { 
+      this.wknraw.sort(function(a,b) { 
       return a - b
       })
 
-      console.log(this.ultimatewkn);
+      this.ultimatewkn = this.wknraw.slice(1);
 
       for(let p in this.ultimatewkn) {
       for(let z in this.Students) {
