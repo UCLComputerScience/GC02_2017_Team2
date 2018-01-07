@@ -19,6 +19,8 @@ export class HomePage {
 	@ViewChild('doughnutCanvas') doughnutCanvas;
 	@ViewChild('doughnutCanvasS') doughnutCanvasS;
 	@ViewChild(Slides) slides: Slides;
+	
+	dateString= "2017-10-06"; //Backend: String in database should be like this 
 
 	Students: any[];
 	Groups: any[];
