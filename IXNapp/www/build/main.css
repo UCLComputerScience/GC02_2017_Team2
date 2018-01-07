@@ -26016,6 +26016,10 @@ page-group-list .bad {
   background-color: #FF6384;
 }
 
+page-group-list .new {
+  background-color: darkgrey;
+}
+
 page-group-list #descriptions {
   font-size: 13px !important;
   text-align: left !important;

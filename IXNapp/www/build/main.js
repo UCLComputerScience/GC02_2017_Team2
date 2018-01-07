@@ -21,6 +21,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var DeadlinesPage = (function () {
+    //dateString= "2017-10-06"; //Backend: String in database should be like this 
     function DeadlinesPage(navCtrl, house) {
         this.navCtrl = navCtrl;
         this.house = house;
@@ -50,10 +51,15 @@ var DeadlinesPage = (function () {
                     _this.Deadlinetitles.push(_this.Deadlineraw[i]);
                 }
             }
+            for (var j in _this.Deadlineraw) {
+                if (_this.Deadlineraw[j].deadt == 'Start Date') {
+                    _this.dateString = _this.Deadlineraw[j].deadd;
+                }
+            }
         });
     };
     DeadlinesPage.prototype.CurrentWeek = function () {
-        var start = new Date("2017-10-06");
+        var start = new Date(this.dateString);
         var today = new Date();
         var diff = (today.getTime() - start.getTime()) / 1000;
         diff /= (60 * 60 * 24 * 7);
@@ -656,8 +662,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 var HomePage = (function () {
     function HomePage(navCtrl, house) {
+        var _this = this;
         this.navCtrl = navCtrl;
         this.house = house;
+        this.Deadlineraw = [];
         this.wkn = [];
         this.wkn2 = [];
         this.RCount = 0;
@@ -672,131 +680,149 @@ var HomePage = (function () {
         this.groupData = [];
         this.innerHeight = (window.screen.height);
         this.innerWidth = (window.screen.width);
+        this.house.getDead().subscribe(function (dt) {
+            _this.Deadlineraw = dt;
+            for (var j in _this.Deadlineraw) {
+                if (_this.Deadlineraw[j].deadt == 'Start Date') {
+                    _this.dateString = _this.Deadlineraw[j].deadd;
+                }
+            }
+        });
     }
     HomePage.prototype.ngOnInit = function () {
         var _this = this;
         this.house.getAllRedTeam().subscribe(function (dt) {
-            _this.Groups = JSON.parse(dt["_body"]);
-            for (var i in _this.Groups) {
-                _this.wkn2.push(_this.Groups[i].weeknum);
-            }
-            _this.mx2 = Math.max.apply(Math, _this.wkn2);
-            for (var k in _this.Groups) {
-                if (_this.Groups[k].weeknum == _this.mx2 && _this.Groups[k].g_fb == 1) {
-                    _this.RGCount = _this.RGCount + 1;
+            if (dt["_body"]) {
+                _this.Groups = JSON.parse(dt["_body"]);
+                for (var i in _this.Groups) {
+                    _this.wkn2.push(_this.Groups[i].weeknum);
                 }
-                if (_this.Groups[k].weeknum == _this.mx2 && _this.Groups[k].g_fb == 2) {
-                    _this.AGCount = _this.AGCount + 1;
-                }
-                if (_this.Groups[k].weeknum == _this.mx2 && _this.Groups[k].g_fb == 3) {
-                    _this.LGCount = _this.LGCount + 1;
-                }
-                if (_this.Groups[k].weeknum == _this.mx2 && _this.Groups[k].g_fb == 4) {
-                    _this.DGCount = _this.DGCount + 1;
-                }
-            }
-            _this.groupData.push(_this.RGCount);
-            _this.groupData.push(_this.AGCount);
-            _this.groupData.push(_this.LGCount);
-            _this.groupData.push(_this.DGCount);
-            var donutGroup = _this.doughnutCanvas.nativeElement;
-            donutGroup.height = innerHeight * 0.25;
-            console.log(donutGroup.height);
-            var datax = _this.groupData;
-            var dataGroup = {
-                labels: datax,
-                datasets: [
-                    {
-                        "data": datax,
-                        "backgroundColor": [
-                            "#ff6384",
-                            "#ffcd56",
-                            "#7ed321",
-                            "#058d65",
-                        ]
+                _this.mx2 = Math.max.apply(Math, _this.wkn2);
+                for (var k in _this.Groups) {
+                    if (_this.Groups[k].weeknum == _this.mx2 && _this.Groups[k].g_fb == 1) {
+                        _this.RGCount = _this.RGCount + 1;
                     }
-                ]
-            };
-            _this.doughnutGroup = new __WEBPACK_IMPORTED_MODULE_5_chart_js__["Chart"](donutGroup, {
-                "type": 'doughnut',
-                "data": dataGroup,
-                "options": {
-                    legend: {
-                        display: false,
-                    },
-                    responsive: true,
-                    maintainAspectRatio: true,
-                    "animation": {
-                        "animateScale": true,
-                        "animateRotate": false
-                    },
+                    if (_this.Groups[k].weeknum == _this.mx2 && _this.Groups[k].g_fb == 2) {
+                        _this.AGCount = _this.AGCount + 1;
+                    }
+                    if (_this.Groups[k].weeknum == _this.mx2 && _this.Groups[k].g_fb == 3) {
+                        _this.LGCount = _this.LGCount + 1;
+                    }
+                    if (_this.Groups[k].weeknum == _this.mx2 && _this.Groups[k].g_fb == 4) {
+                        _this.DGCount = _this.DGCount + 1;
+                    }
                 }
-            });
+                _this.groupData.push(_this.RGCount);
+                _this.groupData.push(_this.AGCount);
+                _this.groupData.push(_this.LGCount);
+                _this.groupData.push(_this.DGCount);
+                var donutGroup = _this.doughnutCanvas.nativeElement;
+                donutGroup.height = innerHeight * 0.25;
+                console.log(donutGroup.height);
+                var datax = _this.groupData;
+                var dataGroup = {
+                    labels: datax,
+                    datasets: [
+                        {
+                            "data": datax,
+                            "backgroundColor": [
+                                "#ff6384",
+                                "#ffcd56",
+                                "#7ed321",
+                                "#058d65",
+                            ]
+                        }
+                    ]
+                };
+                _this.doughnutGroup = new __WEBPACK_IMPORTED_MODULE_5_chart_js__["Chart"](donutGroup, {
+                    "type": 'doughnut',
+                    "data": dataGroup,
+                    "options": {
+                        legend: {
+                            display: false,
+                        },
+                        responsive: true,
+                        maintainAspectRatio: true,
+                        "animation": {
+                            "animateScale": true,
+                            "animateRotate": false
+                        },
+                    }
+                });
+            }
+            else {
+                // HERE HANDLE IF THERE IS NO DATA FOR THE DOUGHNUT HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE
+            }
         });
         this.house.getAllRedStudent().subscribe(function (dt) {
-            _this.Students = JSON.parse(dt["_body"]);
-            for (var i in _this.Students) {
-                _this.wkn.push(_this.Students[i].weeknum);
-            }
-            _this.mx = Math.max.apply(Math, _this.wkn);
-            for (var k in _this.Students) {
-                if (_this.Students[k].weeknum == _this.mx && _this.Students[k].st_fb == 1) {
-                    _this.RCount = _this.RCount + 1;
-                    console.log(_this.RCount);
+            if (dt["_body"]) {
+                _this.Students = JSON.parse(dt["_body"]);
+                for (var i in _this.Students) {
+                    _this.wkn.push(_this.Students[i].weeknum);
                 }
-                if (_this.Students[k].weeknum == _this.mx && _this.Students[k].st_fb == 2) {
-                    _this.ACount = _this.ACount + 1;
-                }
-                if (_this.Students[k].weeknum == _this.mx && _this.Students[k].st_fb == 3) {
-                    _this.LCount = _this.LCount + 1;
-                }
-                if (_this.Students[k].weeknum == _this.mx && _this.Students[k].st_fb == 4) {
-                    _this.DCount = _this.DCount + 1;
-                }
-            }
-            _this.studentData.push(_this.RCount);
-            _this.studentData.push(_this.ACount);
-            _this.studentData.push(_this.LCount);
-            _this.studentData.push(_this.DCount);
-            console.log(_this.studentData);
-            var donutStudent = _this.doughnutCanvasS.nativeElement;
-            donutStudent.height = innerHeight * 0.25;
-            var dataStudent = {
-                datasets: [
-                    {
-                        "data": _this.studentData,
-                        "backgroundColor": [
-                            "#ff6384",
-                            "#ffcd56",
-                            "#7ed321",
-                            "#058d65",
-                        ]
+                _this.mx = Math.max.apply(Math, _this.wkn);
+                for (var k in _this.Students) {
+                    if (_this.Students[k].weeknum == _this.mx && _this.Students[k].st_fb == 1) {
+                        _this.RCount = _this.RCount + 1;
+                        console.log(_this.RCount);
                     }
-                ]
-            };
-            _this.doughnutStudent = new __WEBPACK_IMPORTED_MODULE_5_chart_js__["Chart"](donutStudent, {
-                "type": 'doughnut',
-                "data": dataStudent,
-                "options": {
-                    legend: {
-                        display: false,
-                        position: 'right',
-                    },
-                    responsive: true,
-                    maintainAspectRatio: true,
-                    "animation": {
-                        "animateScale": true,
-                        "animateRotate": false
+                    if (_this.Students[k].weeknum == _this.mx && _this.Students[k].st_fb == 2) {
+                        _this.ACount = _this.ACount + 1;
+                    }
+                    if (_this.Students[k].weeknum == _this.mx && _this.Students[k].st_fb == 3) {
+                        _this.LCount = _this.LCount + 1;
+                    }
+                    if (_this.Students[k].weeknum == _this.mx && _this.Students[k].st_fb == 4) {
+                        _this.DCount = _this.DCount + 1;
                     }
                 }
-            });
+                _this.studentData.push(_this.RCount);
+                _this.studentData.push(_this.ACount);
+                _this.studentData.push(_this.LCount);
+                _this.studentData.push(_this.DCount);
+                console.log(_this.studentData);
+                var donutStudent = _this.doughnutCanvasS.nativeElement;
+                donutStudent.height = innerHeight * 0.25;
+                var dataStudent = {
+                    datasets: [
+                        {
+                            "data": _this.studentData,
+                            "backgroundColor": [
+                                "#ff6384",
+                                "#ffcd56",
+                                "#7ed321",
+                                "#058d65",
+                            ]
+                        }
+                    ]
+                };
+                _this.doughnutStudent = new __WEBPACK_IMPORTED_MODULE_5_chart_js__["Chart"](donutStudent, {
+                    "type": 'doughnut',
+                    "data": dataStudent,
+                    "options": {
+                        legend: {
+                            display: false,
+                            position: 'right',
+                        },
+                        responsive: true,
+                        maintainAspectRatio: true,
+                        "animation": {
+                            "animateScale": true,
+                            "animateRotate": false
+                        }
+                    }
+                });
+            }
+            else {
+                // HERE HANDLE IF THERE IS NO DATA FOR THE DOUGHNUT HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE
+            }
         });
         console.log(this.studentData);
         this.slides.autoHeight = true;
         console.log("happened");
     };
     HomePage.prototype.CurrentWeek = function () {
-        var start = new Date("2017-10-06");
+        var start = new Date(this.dateString);
         var today = new Date();
         var diff = (today.getTime() - start.getTime()) / 1000;
         diff /= (60 * 60 * 24 * 7);
@@ -834,125 +860,133 @@ var HomePage = (function () {
         this.studentData = [];
         this.groupData = [];
         this.house.getAllRedTeam().subscribe(function (dt) {
-            _this.Groups = JSON.parse(dt["_body"]);
-            for (var i in _this.Groups) {
-                _this.wkn2.push(_this.Groups[i].weeknum);
-            }
-            _this.mx2 = Math.max.apply(Math, _this.wkn2);
-            for (var k in _this.Groups) {
-                if (_this.Groups[k].weeknum == _this.mx2 && _this.Groups[k].g_fb == 1) {
-                    _this.RGCount = _this.RGCount + 1;
+            if (dt["_body"]) {
+                _this.Groups = JSON.parse(dt["_body"]);
+                for (var i in _this.Groups) {
+                    _this.wkn2.push(_this.Groups[i].weeknum);
                 }
-                if (_this.Groups[k].weeknum == _this.mx2 && _this.Groups[k].g_fb == 2) {
-                    _this.AGCount = _this.AGCount + 1;
-                }
-                if (_this.Groups[k].weeknum == _this.mx2 && _this.Groups[k].g_fb == 3) {
-                    _this.LGCount = _this.LGCount + 1;
-                }
-                if (_this.Groups[k].weeknum == _this.mx2 && _this.Groups[k].g_fb == 4) {
-                    _this.DGCount = _this.DGCount + 1;
-                }
-            }
-            _this.groupData.push(_this.RGCount);
-            _this.groupData.push(_this.AGCount);
-            _this.groupData.push(_this.LGCount);
-            _this.groupData.push(_this.DGCount);
-            var donutGroup = _this.doughnutCanvas.nativeElement;
-            console.log(donutGroup.height);
-            var datax = _this.groupData;
-            var dataGroup = {
-                labels: datax,
-                datasets: [
-                    {
-                        "data": datax,
-                        "backgroundColor": [
-                            "#ff6384",
-                            "#ffcd56",
-                            "#7ed321",
-                            "#058d65",
-                        ]
+                _this.mx2 = Math.max.apply(Math, _this.wkn2);
+                for (var k in _this.Groups) {
+                    if (_this.Groups[k].weeknum == _this.mx2 && _this.Groups[k].g_fb == 1) {
+                        _this.RGCount = _this.RGCount + 1;
                     }
-                ]
-            };
-            _this.doughnutGroup = new __WEBPACK_IMPORTED_MODULE_5_chart_js__["Chart"](donutGroup, {
-                "type": 'doughnut',
-                "data": dataGroup,
-                "options": {
-                    legend: {
-                        display: false,
-                    },
-                    responsive: true,
-                    maintainAspectRatio: true,
-                    "animation": {
-                        "animateScale": true,
-                        "animateRotate": false
-                    },
+                    if (_this.Groups[k].weeknum == _this.mx2 && _this.Groups[k].g_fb == 2) {
+                        _this.AGCount = _this.AGCount + 1;
+                    }
+                    if (_this.Groups[k].weeknum == _this.mx2 && _this.Groups[k].g_fb == 3) {
+                        _this.LGCount = _this.LGCount + 1;
+                    }
+                    if (_this.Groups[k].weeknum == _this.mx2 && _this.Groups[k].g_fb == 4) {
+                        _this.DGCount = _this.DGCount + 1;
+                    }
                 }
-            });
+                _this.groupData.push(_this.RGCount);
+                _this.groupData.push(_this.AGCount);
+                _this.groupData.push(_this.LGCount);
+                _this.groupData.push(_this.DGCount);
+                var donutGroup = _this.doughnutCanvas.nativeElement;
+                console.log(donutGroup.height);
+                var datax = _this.groupData;
+                var dataGroup = {
+                    labels: datax,
+                    datasets: [
+                        {
+                            "data": datax,
+                            "backgroundColor": [
+                                "#ff6384",
+                                "#ffcd56",
+                                "#7ed321",
+                                "#058d65",
+                            ]
+                        }
+                    ]
+                };
+                _this.doughnutGroup = new __WEBPACK_IMPORTED_MODULE_5_chart_js__["Chart"](donutGroup, {
+                    "type": 'doughnut',
+                    "data": dataGroup,
+                    "options": {
+                        legend: {
+                            display: false,
+                        },
+                        responsive: true,
+                        maintainAspectRatio: true,
+                        "animation": {
+                            "animateScale": true,
+                            "animateRotate": false
+                        },
+                    }
+                });
+            }
+            else {
+                // HERE HANDLE IF THERE IS NO DATA FOR THE DOUGHNUT HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE
+            }
         });
         this.house.getAllRedStudent().subscribe(function (dt) {
-            _this.Students = JSON.parse(dt["_body"]);
-            for (var i in _this.Students) {
-                _this.wkn.push(_this.Students[i].weeknum);
-            }
-            _this.mx = Math.max.apply(Math, _this.wkn);
-            for (var k in _this.Students) {
-                if (_this.Students[k].weeknum == _this.mx && _this.Students[k].st_fb == 1) {
-                    _this.RCount = _this.RCount + 1;
-                    console.log(_this.RCount);
+            if (dt["_body"]) {
+                _this.Students = JSON.parse(dt["_body"]);
+                for (var i in _this.Students) {
+                    _this.wkn.push(_this.Students[i].weeknum);
                 }
-                if (_this.Students[k].weeknum == _this.mx && _this.Students[k].st_fb == 2) {
-                    _this.ACount = _this.ACount + 1;
-                }
-                if (_this.Students[k].weeknum == _this.mx && _this.Students[k].st_fb == 3) {
-                    _this.LCount = _this.LCount + 1;
-                }
-                if (_this.Students[k].weeknum == _this.mx && _this.Students[k].st_fb == 4) {
-                    _this.DCount = _this.DCount + 1;
-                }
-            }
-            _this.studentData.push(_this.RCount);
-            _this.studentData.push(_this.ACount);
-            _this.studentData.push(_this.LCount);
-            _this.studentData.push(_this.DCount);
-            console.log(_this.studentData);
-            var donutStudent = _this.doughnutCanvasS.nativeElement;
-            var dataStudent = {
-                datasets: [
-                    {
-                        "data": _this.studentData,
-                        "backgroundColor": [
-                            "#ff6384",
-                            "#ffcd56",
-                            "#7ed321",
-                            "#058d65",
-                        ]
+                _this.mx = Math.max.apply(Math, _this.wkn);
+                for (var k in _this.Students) {
+                    if (_this.Students[k].weeknum == _this.mx && _this.Students[k].st_fb == 1) {
+                        _this.RCount = _this.RCount + 1;
+                        console.log(_this.RCount);
                     }
-                ]
-            };
-            _this.doughnutStudent = new __WEBPACK_IMPORTED_MODULE_5_chart_js__["Chart"](donutStudent, {
-                "type": 'doughnut',
-                "data": dataStudent,
-                "options": {
-                    legend: {
-                        display: false,
-                        position: 'right',
-                    },
-                    responsive: true,
-                    maintainAspectRatio: true,
-                    "animation": {
-                        "animateScale": true,
-                        "animateRotate": false
+                    if (_this.Students[k].weeknum == _this.mx && _this.Students[k].st_fb == 2) {
+                        _this.ACount = _this.ACount + 1;
+                    }
+                    if (_this.Students[k].weeknum == _this.mx && _this.Students[k].st_fb == 3) {
+                        _this.LCount = _this.LCount + 1;
+                    }
+                    if (_this.Students[k].weeknum == _this.mx && _this.Students[k].st_fb == 4) {
+                        _this.DCount = _this.DCount + 1;
                     }
                 }
-            });
+                _this.studentData.push(_this.RCount);
+                _this.studentData.push(_this.ACount);
+                _this.studentData.push(_this.LCount);
+                _this.studentData.push(_this.DCount);
+                console.log(_this.studentData);
+                var donutStudent = _this.doughnutCanvasS.nativeElement;
+                var dataStudent = {
+                    datasets: [
+                        {
+                            "data": _this.studentData,
+                            "backgroundColor": [
+                                "#ff6384",
+                                "#ffcd56",
+                                "#7ed321",
+                                "#058d65",
+                            ]
+                        }
+                    ]
+                };
+                _this.doughnutStudent = new __WEBPACK_IMPORTED_MODULE_5_chart_js__["Chart"](donutStudent, {
+                    "type": 'doughnut',
+                    "data": dataStudent,
+                    "options": {
+                        legend: {
+                            display: false,
+                            position: 'right',
+                        },
+                        responsive: true,
+                        maintainAspectRatio: true,
+                        "animation": {
+                            "animateScale": true,
+                            "animateRotate": false
+                        }
+                    }
+                });
+            }
+            else {
+                // HERE HANDLE IF THERE IS NO DATA FOR THE DOUGHNUT HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE
+            }
         });
-        console.log(this.studentData);
         setTimeout(function () {
             console.log('Async operation has ended');
             refresher.complete();
         }, 500);
-        console.log(this.studentData);
     };
     HomePage.prototype.goToDeadlines = function (params) {
         if (!params)
@@ -1314,47 +1348,52 @@ var GroupListPage = (function () {
         this.wkn = [];
         this.performanceAnnotation = ['bad', 'average', 'good', 'excellent']; //constants do not modify
         this.house.GetStage2Student().subscribe(function (dt) {
-            _this.Groups = JSON.parse(dt["_body"]);
-            console.log(_this.Groups);
-            for (var q in _this.Groups) {
-                if (!_this.TAGroups.includes(_this.Groups[q].g_ID)) {
-                    _this.TAGroups.push(_this.Groups[q].g_ID);
-                }
-            }
-            for (var i in _this.TAGroups) {
-                var groupw = [];
-                for (var z in _this.Groups) {
-                    console.log(_this.Groups[z].g_ID == _this.TAGroups[i]);
-                    if (_this.Groups[z].g_ID == _this.TAGroups[i]) {
-                        groupw.push(_this.Groups[z].g_wk);
+            if (dt["_body"]) {
+                _this.Groups = JSON.parse(dt["_body"]);
+                console.log(_this.Groups);
+                for (var q in _this.Groups) {
+                    if (!_this.TAGroups.includes(_this.Groups[q].g_ID)) {
+                        _this.TAGroups.push(_this.Groups[q].g_ID);
                     }
                 }
-                var groupmax = Math.max.apply(Math, groupw);
-                for (var k in _this.Groups) {
-                    if (_this.Groups[k].g_wk == groupmax && _this.Groups[k].g_ID == _this.TAGroups[i]) {
-                        if (!_this.items.includes(_this.Groups[k].g_ID)) {
-                            _this.items.push(_this.Groups[k].g_ID);
-                            _this.itemstemp.push(_this.Groups[k].gp);
-                            _this.descriptions.push(_this.Groups[k].pro);
+                for (var i in _this.TAGroups) {
+                    var groupw = [];
+                    for (var z in _this.Groups) {
+                        console.log(_this.Groups[z].g_ID == _this.TAGroups[i]);
+                        if (_this.Groups[z].g_ID == _this.TAGroups[i]) {
+                            groupw.push(_this.Groups[z].g_wk);
+                        }
+                    }
+                    var groupmax = Math.max.apply(Math, groupw);
+                    for (var k in _this.Groups) {
+                        if (_this.Groups[k].g_wk == groupmax && _this.Groups[k].g_ID == _this.TAGroups[i]) {
+                            if (!_this.items.includes(_this.Groups[k].g_ID)) {
+                                _this.items.push(_this.Groups[k].g_ID);
+                                _this.itemstemp.push(_this.Groups[k].gp);
+                                _this.descriptions.push(_this.Groups[k].pro);
+                            }
                         }
                     }
                 }
+                for (var j in _this.itemstemp) {
+                    if (_this.itemstemp[j] == 1) {
+                        _this.items2.push('Bad');
+                    }
+                    if (_this.itemstemp[j] == 2) {
+                        _this.items2.push('Ok');
+                    }
+                    if (_this.itemstemp[j] == 3) {
+                        _this.items2.push('Good');
+                    }
+                    if (_this.itemstemp[j] == 4) {
+                        _this.items2.push('Excellent');
+                    }
+                }
+                console.log(_this.items);
             }
-            for (var j in _this.itemstemp) {
-                if (_this.itemstemp[j] == 1) {
-                    _this.items2.push('Bad');
-                }
-                if (_this.itemstemp[j] == 2) {
-                    _this.items2.push('Ok');
-                }
-                if (_this.itemstemp[j] == 3) {
-                    _this.items2.push('Good');
-                }
-                if (_this.itemstemp[j] == 4) {
-                    _this.items2.push('Excellent');
-                }
+            else {
+                // IF THERE ARE NO GROUPS WITH FEEDBACK HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE
             }
-            console.log(_this.items);
         });
     }
     GroupListPage.prototype.doRefresh = function (refresher) {
@@ -1367,47 +1406,52 @@ var GroupListPage = (function () {
         this.TAGroups = [];
         this.descriptions = [];
         this.house.GetStage2Student().subscribe(function (dt) {
-            _this.Groups = JSON.parse(dt["_body"]);
-            console.log(_this.Groups);
-            for (var q in _this.Groups) {
-                if (!_this.TAGroups.includes(_this.Groups[q].g_ID)) {
-                    _this.TAGroups.push(_this.Groups[q].g_ID);
-                }
-            }
-            for (var i in _this.TAGroups) {
-                var groupw = [];
-                for (var z in _this.Groups) {
-                    console.log(_this.Groups[z].g_ID == _this.TAGroups[i]);
-                    if (_this.Groups[z].g_ID == _this.TAGroups[i]) {
-                        groupw.push(_this.Groups[z].g_wk);
+            if (dt["_body"]) {
+                _this.Groups = JSON.parse(dt["_body"]);
+                console.log(_this.Groups);
+                for (var q in _this.Groups) {
+                    if (!_this.TAGroups.includes(_this.Groups[q].g_ID)) {
+                        _this.TAGroups.push(_this.Groups[q].g_ID);
                     }
                 }
-                var groupmax = Math.max.apply(Math, groupw);
-                for (var k in _this.Groups) {
-                    if (_this.Groups[k].g_wk == groupmax && _this.Groups[k].g_ID == _this.TAGroups[i]) {
-                        if (!_this.items.includes(_this.Groups[k].g_ID)) {
-                            _this.items.push(_this.Groups[k].g_ID);
-                            _this.itemstemp.push(_this.Groups[k].gp);
-                            _this.descriptions.push(_this.Groups[k].pro);
+                for (var i in _this.TAGroups) {
+                    var groupw = [];
+                    for (var z in _this.Groups) {
+                        console.log(_this.Groups[z].g_ID == _this.TAGroups[i]);
+                        if (_this.Groups[z].g_ID == _this.TAGroups[i]) {
+                            groupw.push(_this.Groups[z].g_wk);
+                        }
+                    }
+                    var groupmax = Math.max.apply(Math, groupw);
+                    for (var k in _this.Groups) {
+                        if (_this.Groups[k].g_wk == groupmax && _this.Groups[k].g_ID == _this.TAGroups[i]) {
+                            if (!_this.items.includes(_this.Groups[k].g_ID)) {
+                                _this.items.push(_this.Groups[k].g_ID);
+                                _this.itemstemp.push(_this.Groups[k].gp);
+                                _this.descriptions.push(_this.Groups[k].pro);
+                            }
                         }
                     }
                 }
+                for (var j in _this.itemstemp) {
+                    if (_this.itemstemp[j] == 1) {
+                        _this.items2.push('Bad');
+                    }
+                    if (_this.itemstemp[j] == 2) {
+                        _this.items2.push('Ok');
+                    }
+                    if (_this.itemstemp[j] == 3) {
+                        _this.items2.push('Good');
+                    }
+                    if (_this.itemstemp[j] == 4) {
+                        _this.items2.push('Excellent');
+                    }
+                }
+                console.log(_this.items);
             }
-            for (var j in _this.itemstemp) {
-                if (_this.itemstemp[j] == 1) {
-                    _this.items2.push('Bad');
-                }
-                if (_this.itemstemp[j] == 2) {
-                    _this.items2.push('Ok');
-                }
-                if (_this.itemstemp[j] == 3) {
-                    _this.items2.push('Good');
-                }
-                if (_this.itemstemp[j] == 4) {
-                    _this.items2.push('Excellent');
-                }
+            else {
+                // IF THERE ARE NO GROUPS WITH FEEDBACK HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE
             }
-            console.log(_this.items);
         });
         setTimeout(function () {
             console.log('Async operation has ended');
@@ -1416,8 +1460,14 @@ var GroupListPage = (function () {
     };
     GroupListPage.prototype.getPerformance = function (x) {
         var value = this.itemstemp[x];
-        var colorName = this.performanceAnnotation[value - 1];
-        return colorName;
+        if (value == 0) {
+            var colorEmpty = 'new';
+            return colorEmpty;
+        }
+        else {
+            var colorName = this.performanceAnnotation[value - 1];
+            return colorName;
+        }
     };
     GroupListPage.prototype.goToFeedbackSummary = function (Gchosen) {
         this.Gchosen = Gchosen;
@@ -1437,9 +1487,10 @@ GroupListPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
         selector: 'page-group-list',template:/*ion-inline-start:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/group-list/group-list.html"*/'<ion-header>\n    <ion-navbar>\n        <ion-title>\n            Group List\n        </ion-title>\n    </ion-navbar>\n</ion-header>\n\n<ion-content no-padding id="page3">\n\n    <ion-refresher (ionRefresh)="doRefresh($event)">\n    <ion-refresher-content></ion-refresher-content>\n    </ion-refresher>\n    \n    <div class="spacer" style="width:300px;height: 20px;" id="groupList-spacer6"></div>\n    <div class="section" *ngFor="let item of items; let i = index">\n        <button ion-button class="groupbutton {{getPerformance(i)}}" on-click="goToFeedbackSummary(item)">\n            <span class="button-inner">\n                <ion-item class="background {{getPerformance(i)}}" no-lines>\n                    <ion-row>\n                        <ion-col id="groupp">\n                            Group&nbsp; <span>{{item}}</span>\n                        </ion-col>\n                        <ion-col id="perf">\n                            <span id="hello">{{getPerformance(i)}}</span>&nbsp;\n                        </ion-col>\n                    </ion-row>\n                    <ion-row>\n                        <ion-col id="descriptions">\n                            {{descriptions[i]}}\n                        </ion-col>\n                    </ion-row>\n                </ion-item>\n            </span>\n        </button>\n     <!-- <button class="addbutton" ion-button clear on-click="goToGroup()">\n            <ion-icon name="add-circle"></ion-icon>\n        </button> -->\n    </div>\n</ion-content>\n'/*ion-inline-end:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/group-list/group-list.html"*/
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_4__providers_house_house__["a" /* HouseProvider */]])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_4__providers_house_house__["a" /* HouseProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__providers_house_house__["a" /* HouseProvider */]) === "function" && _b || Object])
 ], GroupListPage);
 
+var _a, _b;
 //# sourceMappingURL=group-list.js.map
 
 /***/ }),
@@ -1497,84 +1548,89 @@ var FeedbackSummaryPage = (function () {
     FeedbackSummaryPage.prototype.ngOnInit = function () {
         var _this = this;
         this.GetStage2Student().subscribe(function (dt) {
-            _this.Students = JSON.parse(dt["_body"]);
-            console.log(_this.Students);
-            for (var i in _this.Students) {
-                _this.str = _this.Students[i].fname;
-                _this.str2 = _this.Students[i].lname;
-                if (!_this.StudentNames.includes(_this.str.concat(" ", _this.str2)) && _this.Students[i].g_ID == _this.groupnumber) {
-                    _this.StudentNames.push(_this.str.concat(" ", _this.str2));
-                    _this.StudentIDs.push(_this.Students[i].s_ID);
+            if (dt["_body"]) {
+                _this.Students = JSON.parse(dt["_body"]);
+                console.log(_this.Students);
+                for (var i in _this.Students) {
+                    _this.str = _this.Students[i].fname;
+                    _this.str2 = _this.Students[i].lname;
+                    if (!_this.StudentNames.includes(_this.str.concat(" ", _this.str2)) && _this.Students[i].g_ID == _this.groupnumber) {
+                        _this.StudentNames.push(_this.str.concat(" ", _this.str2));
+                        _this.StudentIDs.push(_this.Students[i].s_ID);
+                    }
                 }
-            }
-            for (var q in _this.Students) {
-                if (_this.Students[q].g_ID == _this.groupnumber && !_this.ultimatewkn.includes(_this.Students[q].s_wk)) {
-                    _this.ultimatewkn.push(_this.Students[q].s_wk);
-                    //this.groupdata.push(this.Students[q].gp);
+                for (var q in _this.Students) {
+                    if (_this.Students[q].g_ID == _this.groupnumber && !_this.ultimatewkn.includes(_this.Students[q].s_wk)) {
+                        _this.ultimatewkn.push(_this.Students[q].s_wk);
+                        //this.groupdata.push(this.Students[q].gp);
+                    }
                 }
-            }
-            _this.ultimatewkn.sort(function (a, b) {
-                return a - b;
-            });
-            console.log(_this.ultimatewkn);
-            for (var p in _this.ultimatewkn) {
-                for (var z in _this.Students) {
-                    if (_this.Students[z].g_ID == _this.groupnumber) {
-                        console.log(_this.Students[z].s_wk == _this.ultimatewkn[p]);
-                        if (_this.Students[z].s_wk == _this.ultimatewkn[p]) {
-                            if (!_this.wcheck.includes(_this.Students[z].s_wk)) {
-                                _this.wcheck.push(_this.Students[z].s_wk);
-                                _this.groupdata.push(_this.Students[z].gp);
+                _this.ultimatewkn.sort(function (a, b) {
+                    return a - b;
+                });
+                console.log(_this.ultimatewkn);
+                for (var p in _this.ultimatewkn) {
+                    for (var z in _this.Students) {
+                        if (_this.Students[z].g_ID == _this.groupnumber) {
+                            console.log(_this.Students[z].s_wk == _this.ultimatewkn[p]);
+                            if (_this.Students[z].s_wk == _this.ultimatewkn[p]) {
+                                if (!_this.wcheck.includes(_this.Students[z].s_wk)) {
+                                    _this.wcheck.push(_this.Students[z].s_wk);
+                                    _this.groupdata.push(_this.Students[z].gp);
+                                }
                             }
                         }
                     }
                 }
-            }
-            console.log(_this.groupdata);
-            _this.mx2 = Math.max.apply(Math, _this.ultimatewkn);
-            for (var e in _this.Students) {
-                console.log(_this.Students[e].g_wk == _this.mx2 && _this.Students[e].g_ID == _this.groupnumber);
-                if (_this.Students[e].g_wk == _this.mx2 && _this.Students[e].g_ID == _this.groupnumber) {
-                    _this.latestfeedback = _this.Students[e].gp;
+                console.log(_this.groupdata);
+                _this.mx2 = Math.max.apply(Math, _this.ultimatewkn);
+                for (var e in _this.Students) {
+                    console.log(_this.Students[e].g_wk == _this.mx2 && _this.Students[e].g_ID == _this.groupnumber);
+                    if (_this.Students[e].g_wk == _this.mx2 && _this.Students[e].g_ID == _this.groupnumber) {
+                        _this.latestfeedback = _this.Students[e].gp;
+                    }
                 }
-            }
-            if (_this.latestfeedback == 1) {
-                _this.latestperformance = 'Bad';
-            }
-            if (_this.latestfeedback == 2) {
-                _this.latestperformance = 'Average';
-            }
-            if (_this.latestfeedback == 3) {
-                _this.latestperformance = 'Good';
-            }
-            if (_this.latestfeedback == 4) {
-                _this.latestperformance = 'Excellent';
-            }
-            for (var y in _this.groupdata) {
-                _this.sum = parseFloat((_this.sum).toString()) + parseFloat((_this.groupdata[y]).toString());
-            }
-            var a = (_this.sum / parseFloat((_this.groupdata.length).toString())).toFixed(1);
-            _this.sum = parseFloat(a);
-            for (var h in _this.ultimatewkn) {
-                console.log(_this.percentageresults);
-                _this.contrrow = [];
-                _this.sprow = [];
-                for (var g in _this.Students) {
-                    for (var u in _this.StudentIDs) {
-                        if (_this.Students[g].g_ID == _this.groupnumber && _this.ultimatewkn[h] == _this.Students[g].s_wk) {
-                            if (_this.Students[g].s_ID == _this.StudentIDs[u]) {
-                                _this.contrrow.push(_this.Students[g].contr);
-                                _this.sprow.push(_this.Students[g].sp);
+                if (_this.latestfeedback == 1) {
+                    _this.latestperformance = 'Bad';
+                }
+                if (_this.latestfeedback == 2) {
+                    _this.latestperformance = 'Average';
+                }
+                if (_this.latestfeedback == 3) {
+                    _this.latestperformance = 'Good';
+                }
+                if (_this.latestfeedback == 4) {
+                    _this.latestperformance = 'Excellent';
+                }
+                for (var y in _this.groupdata) {
+                    _this.sum = parseFloat((_this.sum).toString()) + parseFloat((_this.groupdata[y]).toString());
+                }
+                var a = (_this.sum / parseFloat((_this.groupdata.length).toString())).toFixed(1);
+                _this.sum = parseFloat(a);
+                for (var h in _this.ultimatewkn) {
+                    console.log(_this.percentageresults);
+                    _this.contrrow = [];
+                    _this.sprow = [];
+                    for (var g in _this.Students) {
+                        for (var u in _this.StudentIDs) {
+                            if (_this.Students[g].g_ID == _this.groupnumber && _this.ultimatewkn[h] == _this.Students[g].s_wk) {
+                                if (_this.Students[g].s_ID == _this.StudentIDs[u]) {
+                                    _this.contrrow.push(_this.Students[g].contr);
+                                    _this.sprow.push(_this.Students[g].sp);
+                                }
                             }
                         }
                     }
+                    if (_this.contrrow.length != 0) {
+                        _this.percentageresults.push(_this.contrrow);
+                    }
+                    if (_this.sprow.length != 0) {
+                        _this.results.push(_this.sprow);
+                    }
                 }
-                if (_this.contrrow.length != 0) {
-                    _this.percentageresults.push(_this.contrrow);
-                }
-                if (_this.sprow.length != 0) {
-                    _this.results.push(_this.sprow);
-                }
+            }
+            else {
+                // IF THERE ARE NO STUDENTS WITH FEEDBACK FOR THE CHOSEN GROUP HERE HERE HERE HERE HERE HERE HERE HERE
             }
         });
     };
@@ -1599,84 +1655,89 @@ var FeedbackSummaryPage = (function () {
         this.groupdata = [];
         this.sum = 0;
         this.GetStage2Student().subscribe(function (dt) {
-            _this.Students = JSON.parse(dt["_body"]);
-            console.log(_this.Students);
-            for (var i in _this.Students) {
-                _this.str = _this.Students[i].fname;
-                _this.str2 = _this.Students[i].lname;
-                if (!_this.StudentNames.includes(_this.str.concat(" ", _this.str2)) && _this.Students[i].g_ID == _this.groupnumber) {
-                    _this.StudentNames.push(_this.str.concat(" ", _this.str2));
-                    _this.StudentIDs.push(_this.Students[i].s_ID);
+            if (dt["_body"]) {
+                _this.Students = JSON.parse(dt["_body"]);
+                console.log(_this.Students);
+                for (var i in _this.Students) {
+                    _this.str = _this.Students[i].fname;
+                    _this.str2 = _this.Students[i].lname;
+                    if (!_this.StudentNames.includes(_this.str.concat(" ", _this.str2)) && _this.Students[i].g_ID == _this.groupnumber) {
+                        _this.StudentNames.push(_this.str.concat(" ", _this.str2));
+                        _this.StudentIDs.push(_this.Students[i].s_ID);
+                    }
                 }
-            }
-            for (var q in _this.Students) {
-                if (_this.Students[q].g_ID == _this.groupnumber && !_this.ultimatewkn.includes(_this.Students[q].s_wk)) {
-                    _this.ultimatewkn.push(_this.Students[q].s_wk);
-                    //this.groupdata.push(this.Students[q].gp);
+                for (var q in _this.Students) {
+                    if (_this.Students[q].g_ID == _this.groupnumber && !_this.ultimatewkn.includes(_this.Students[q].s_wk)) {
+                        _this.ultimatewkn.push(_this.Students[q].s_wk);
+                        //this.groupdata.push(this.Students[q].gp);
+                    }
                 }
-            }
-            _this.ultimatewkn.sort(function (a, b) {
-                return a - b;
-            });
-            console.log(_this.ultimatewkn);
-            for (var p in _this.ultimatewkn) {
-                for (var z in _this.Students) {
-                    if (_this.Students[z].g_ID == _this.groupnumber) {
-                        console.log(_this.Students[z].s_wk == _this.ultimatewkn[p]);
-                        if (_this.Students[z].s_wk == _this.ultimatewkn[p]) {
-                            if (!_this.wcheck.includes(_this.Students[z].s_wk)) {
-                                _this.wcheck.push(_this.Students[z].s_wk);
-                                _this.groupdata.push(_this.Students[z].gp);
+                _this.ultimatewkn.sort(function (a, b) {
+                    return a - b;
+                });
+                console.log(_this.ultimatewkn);
+                for (var p in _this.ultimatewkn) {
+                    for (var z in _this.Students) {
+                        if (_this.Students[z].g_ID == _this.groupnumber) {
+                            console.log(_this.Students[z].s_wk == _this.ultimatewkn[p]);
+                            if (_this.Students[z].s_wk == _this.ultimatewkn[p]) {
+                                if (!_this.wcheck.includes(_this.Students[z].s_wk)) {
+                                    _this.wcheck.push(_this.Students[z].s_wk);
+                                    _this.groupdata.push(_this.Students[z].gp);
+                                }
                             }
                         }
                     }
                 }
-            }
-            console.log(_this.groupdata);
-            _this.mx2 = Math.max.apply(Math, _this.ultimatewkn);
-            for (var e in _this.Students) {
-                console.log(_this.Students[e].g_wk == _this.mx2 && _this.Students[e].g_ID == _this.groupnumber);
-                if (_this.Students[e].g_wk == _this.mx2 && _this.Students[e].g_ID == _this.groupnumber) {
-                    _this.latestfeedback = _this.Students[e].gp;
+                console.log(_this.groupdata);
+                _this.mx2 = Math.max.apply(Math, _this.ultimatewkn);
+                for (var e in _this.Students) {
+                    console.log(_this.Students[e].g_wk == _this.mx2 && _this.Students[e].g_ID == _this.groupnumber);
+                    if (_this.Students[e].g_wk == _this.mx2 && _this.Students[e].g_ID == _this.groupnumber) {
+                        _this.latestfeedback = _this.Students[e].gp;
+                    }
                 }
-            }
-            if (_this.latestfeedback == 1) {
-                _this.latestperformance = 'Bad';
-            }
-            if (_this.latestfeedback == 2) {
-                _this.latestperformance = 'Average';
-            }
-            if (_this.latestfeedback == 3) {
-                _this.latestperformance = 'Good';
-            }
-            if (_this.latestfeedback == 4) {
-                _this.latestperformance = 'Excellent';
-            }
-            for (var y in _this.groupdata) {
-                _this.sum = parseFloat((_this.sum).toString()) + parseFloat((_this.groupdata[y]).toString());
-            }
-            var a = (_this.sum / parseFloat((_this.groupdata.length).toString())).toFixed(1);
-            _this.sum = parseFloat(a);
-            for (var h in _this.ultimatewkn) {
-                console.log(_this.percentageresults);
-                _this.contrrow = [];
-                _this.sprow = [];
-                for (var g in _this.Students) {
-                    for (var u in _this.StudentIDs) {
-                        if (_this.Students[g].g_ID == _this.groupnumber && _this.ultimatewkn[h] == _this.Students[g].s_wk) {
-                            if (_this.Students[g].s_ID == _this.StudentIDs[u]) {
-                                _this.contrrow.push(_this.Students[g].contr);
-                                _this.sprow.push(_this.Students[g].sp);
+                if (_this.latestfeedback == 1) {
+                    _this.latestperformance = 'Bad';
+                }
+                if (_this.latestfeedback == 2) {
+                    _this.latestperformance = 'Average';
+                }
+                if (_this.latestfeedback == 3) {
+                    _this.latestperformance = 'Good';
+                }
+                if (_this.latestfeedback == 4) {
+                    _this.latestperformance = 'Excellent';
+                }
+                for (var y in _this.groupdata) {
+                    _this.sum = parseFloat((_this.sum).toString()) + parseFloat((_this.groupdata[y]).toString());
+                }
+                var a = (_this.sum / parseFloat((_this.groupdata.length).toString())).toFixed(1);
+                _this.sum = parseFloat(a);
+                for (var h in _this.ultimatewkn) {
+                    console.log(_this.percentageresults);
+                    _this.contrrow = [];
+                    _this.sprow = [];
+                    for (var g in _this.Students) {
+                        for (var u in _this.StudentIDs) {
+                            if (_this.Students[g].g_ID == _this.groupnumber && _this.ultimatewkn[h] == _this.Students[g].s_wk) {
+                                if (_this.Students[g].s_ID == _this.StudentIDs[u]) {
+                                    _this.contrrow.push(_this.Students[g].contr);
+                                    _this.sprow.push(_this.Students[g].sp);
+                                }
                             }
                         }
                     }
+                    if (_this.contrrow.length != 0) {
+                        _this.percentageresults.push(_this.contrrow);
+                    }
+                    if (_this.sprow.length != 0) {
+                        _this.results.push(_this.sprow);
+                    }
                 }
-                if (_this.contrrow.length != 0) {
-                    _this.percentageresults.push(_this.contrrow);
-                }
-                if (_this.sprow.length != 0) {
-                    _this.results.push(_this.sprow);
-                }
+            }
+            else {
+                // IF THERE ARE NO STUDENTS WITH FEEDBACK FOR THE CHOSEN GROUP HERE HERE HERE HERE HERE HERE HERE HERE
             }
         });
         setTimeout(function () {
@@ -2064,9 +2125,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 var StudentHomePage = (function () {
     function StudentHomePage(navCtrl, house) {
+        var _this = this;
         this.navCtrl = navCtrl;
         this.house = house;
-        this.dateString = "2017-10-06"; //Backend: String in database should be like this 
+        this.Deadlineraw = [];
         this.Students = [];
         this.ultimatewkn = [];
         this.ultimatewkn2 = [];
@@ -2094,6 +2156,14 @@ var StudentHomePage = (function () {
         this.contribution;
         this.weekindex;
         this.performanceDescription;
+        this.house.getDead().subscribe(function (dt) {
+            _this.Deadlineraw = dt;
+            for (var j in _this.Deadlineraw) {
+                if (_this.Deadlineraw[j].deadt == 'Start Date') {
+                    _this.dateString = _this.Deadlineraw[j].deadd;
+                }
+            }
+        });
     }
     StudentHomePage.prototype.CurrentWeek = function () {
         var start = new Date(this.dateString);
@@ -2124,99 +2194,104 @@ var StudentHomePage = (function () {
     StudentHomePage.prototype.ngOnInit = function () {
         var _this = this;
         this.house.GetStudentHome().subscribe(function (dt) {
-            _this.Students = JSON.parse(dt["_body"]);
-            console.log(_this.Students);
-            for (var i in _this.Students) {
-                _this.str = _this.Students[i].fname;
-                _this.str2 = _this.Students[i].lname;
-                if (!_this.studentN.includes(_this.str.concat(" ", _this.str2))) {
-                    _this.studentN.push(_this.str.concat(" ", _this.str2));
-                    _this.StudentIDs.push(_this.Students[i].s_ID);
-                }
-            }
-            _this.student = _this.studentN[0];
-            for (var q in _this.Students) {
-                _this.ultimatewkn.push(_this.Students[q].s_wk);
-            }
-            _this.ultimatewkn.sort(function (a, b) {
-                return a - b;
-            });
-            for (var p in _this.ultimatewkn) {
-                for (var x_1 in _this.Students) {
-                    if (_this.Students[x_1].s_wk == _this.ultimatewkn[p]) {
-                        _this.groupdata.push(_this.Students[x_1].gp);
-                        _this.studentdata.push(_this.Students[x_1].sp);
-                        _this.contrhist.push(_this.Students[x_1].contr);
+            if (dt["_body"]) {
+                _this.Students = JSON.parse(dt["_body"]);
+                console.log(_this.Students);
+                for (var i in _this.Students) {
+                    _this.str = _this.Students[i].fname;
+                    _this.str2 = _this.Students[i].lname;
+                    if (!_this.studentN.includes(_this.str.concat(" ", _this.str2))) {
+                        _this.studentN.push(_this.str.concat(" ", _this.str2));
+                        _this.StudentIDs.push(_this.Students[i].s_ID);
                     }
                 }
-            }
-            _this.weekindex = Math.max.apply(Math, _this.ultimatewkn);
-            console.log(_this.weekindex);
-            _this.groupLatest.push(_this.groupdata[_this.weekindex - 1]);
-            _this.studentLatest.push(_this.studentdata[_this.weekindex - 1]);
-            _this.contribution = _this.contrhist[_this.weekindex - 1];
-            for (var t in _this.ultimatewkn) {
-                var x;
-                var y;
-                y = "W";
-                x = String(_this.ultimatewkn[t]);
-                _this.ultimatewkn2.push(y.concat("", x));
-            }
-            var lineCTX = _this.lineCanvas.nativeElement;
-            lineCTX.height = innerHeight * 0.4;
-            lineCTX.width = innerWidth;
-            var data = {
-                labels: _this.ultimatewkn2,
-                datasets: [
-                    {
-                        label: 'me',
-                        data: _this.studentdata,
-                        fill: false,
-                        lineTension: 0.1,
-                        backgroundColor: "rgba(255,99,132,1)",
-                        borderColor: "rgba(255,99,132,1)",
-                        pointBorderWidth: 5,
-                        pointHoverRadius: 10,
-                        pointHoverBackgroundColor: "rgba(255,99,132,1)",
-                        pointHoverBorderColor: "rgba(220,220,220,1)",
-                        pointHoverBorderWidth: 2,
-                        pointRadius: 1,
-                        pointHitRadius: 10,
-                        spanGaps: true,
-                    }, {
-                        label: 'my group',
-                        data: _this.groupdata,
-                        fill: false,
-                        lineTension: 0.1,
-                        backgroundColor: "rgba(0,168,255,0.4)",
-                        borderColor: "rgba(0,168,255,0.4)",
-                        pointBorderWidth: 5,
-                        pointHoverRadius: 10,
-                        pointHoverBackgroundColor: "rgba(75,192,192,1)",
-                        pointHoverBorderColor: "rgba(0,168,255,1)",
-                        pointHoverBorderWidth: 2,
-                        pointRadius: 1,
-                        pointHitRadius: 10,
-                        spanGaps: true,
-                    }
-                ]
-            };
-            new __WEBPACK_IMPORTED_MODULE_2_chart_js__["Chart"](lineCTX, {
-                "type": 'line',
-                "data": data,
-                "options": {
-                    legend: {
-                        display: true,
-                        position: 'top',
-                        responsive: true,
-                        maintainAspectRatio: false
-                    },
-                    "animation": {
-                        "animateScale": true,
-                        "animateRotate": false
-                    },
+                _this.student = _this.studentN[0];
+                for (var q in _this.Students) {
+                    _this.ultimatewkn.push(_this.Students[q].s_wk);
                 }
-            });
+                _this.ultimatewkn.sort(function (a, b) {
+                    return a - b;
+                });
+                for (var p in _this.ultimatewkn) {
+                    for (var x_1 in _this.Students) {
+                        if (_this.Students[x_1].s_wk == _this.ultimatewkn[p]) {
+                            _this.groupdata.push(_this.Students[x_1].gp);
+                            _this.studentdata.push(_this.Students[x_1].sp);
+                            _this.contrhist.push(_this.Students[x_1].contr);
+                        }
+                    }
+                }
+                _this.weekindex = Math.max.apply(Math, _this.ultimatewkn);
+                console.log(_this.weekindex);
+                _this.groupLatest.push(_this.groupdata[_this.weekindex - 1]);
+                _this.studentLatest.push(_this.studentdata[_this.weekindex - 1]);
+                _this.contribution = _this.contrhist[_this.weekindex - 1];
+                for (var t in _this.ultimatewkn) {
+                    var x;
+                    var y;
+                    y = "W";
+                    x = String(_this.ultimatewkn[t]);
+                    _this.ultimatewkn2.push(y.concat("", x));
+                }
+                var lineCTX = _this.lineCanvas.nativeElement;
+                lineCTX.height = innerHeight * 0.4;
+                lineCTX.width = innerWidth;
+                var data = {
+                    labels: _this.ultimatewkn2,
+                    datasets: [
+                        {
+                            label: 'me',
+                            data: _this.studentdata,
+                            fill: false,
+                            lineTension: 0.1,
+                            backgroundColor: "rgba(255,99,132,1)",
+                            borderColor: "rgba(255,99,132,1)",
+                            pointBorderWidth: 5,
+                            pointHoverRadius: 10,
+                            pointHoverBackgroundColor: "rgba(255,99,132,1)",
+                            pointHoverBorderColor: "rgba(220,220,220,1)",
+                            pointHoverBorderWidth: 2,
+                            pointRadius: 1,
+                            pointHitRadius: 10,
+                            spanGaps: true,
+                        }, {
+                            label: 'my group',
+                            data: _this.groupdata,
+                            fill: false,
+                            lineTension: 0.1,
+                            backgroundColor: "rgba(0,168,255,0.4)",
+                            borderColor: "rgba(0,168,255,0.4)",
+                            pointBorderWidth: 5,
+                            pointHoverRadius: 10,
+                            pointHoverBackgroundColor: "rgba(75,192,192,1)",
+                            pointHoverBorderColor: "rgba(0,168,255,1)",
+                            pointHoverBorderWidth: 2,
+                            pointRadius: 1,
+                            pointHitRadius: 10,
+                            spanGaps: true,
+                        }
+                    ]
+                };
+                new __WEBPACK_IMPORTED_MODULE_2_chart_js__["Chart"](lineCTX, {
+                    "type": 'line',
+                    "data": data,
+                    "options": {
+                        legend: {
+                            display: true,
+                            position: 'top',
+                            responsive: true,
+                            maintainAspectRatio: false
+                        },
+                        "animation": {
+                            "animateScale": true,
+                            "animateRotate": false
+                        },
+                    }
+                });
+            }
+            else {
+                // IF THERE IS NO FEEDBACK DATA FOR THAT STUDENT. HERE HERE HERE HERE HERE HERE HERE HERE HERE
+            }
         });
     };
     StudentHomePage.prototype.doRefresh = function (refresher) {
@@ -2238,99 +2313,104 @@ var StudentHomePage = (function () {
         this.groupLatest = [];
         this.studentLatest = [];
         this.house.GetStudentHome().subscribe(function (dt) {
-            _this.Students = JSON.parse(dt["_body"]);
-            console.log(_this.Students);
-            for (var i in _this.Students) {
-                _this.str = _this.Students[i].fname;
-                _this.str2 = _this.Students[i].lname;
-                if (!_this.studentN.includes(_this.str.concat(" ", _this.str2))) {
-                    _this.studentN.push(_this.str.concat(" ", _this.str2));
-                    _this.StudentIDs.push(_this.Students[i].s_ID);
-                }
-            }
-            _this.student = _this.studentN[0];
-            for (var q in _this.Students) {
-                _this.ultimatewkn.push(_this.Students[q].s_wk);
-            }
-            _this.ultimatewkn.sort(function (a, b) {
-                return a - b;
-            });
-            for (var p in _this.ultimatewkn) {
-                for (var x_2 in _this.Students) {
-                    if (_this.Students[x_2].s_wk == _this.ultimatewkn[p]) {
-                        _this.groupdata.push(_this.Students[x_2].gp);
-                        _this.studentdata.push(_this.Students[x_2].sp);
-                        _this.contrhist.push(_this.Students[x_2].contr);
+            if (dt["_body"]) {
+                _this.Students = JSON.parse(dt["_body"]);
+                console.log(_this.Students);
+                for (var i in _this.Students) {
+                    _this.str = _this.Students[i].fname;
+                    _this.str2 = _this.Students[i].lname;
+                    if (!_this.studentN.includes(_this.str.concat(" ", _this.str2))) {
+                        _this.studentN.push(_this.str.concat(" ", _this.str2));
+                        _this.StudentIDs.push(_this.Students[i].s_ID);
                     }
                 }
-            }
-            _this.weekindex = Math.max.apply(Math, _this.ultimatewkn);
-            console.log(_this.weekindex);
-            _this.groupLatest.push(_this.groupdata[_this.weekindex - 1]);
-            _this.studentLatest.push(_this.studentdata[_this.weekindex - 1]);
-            _this.contribution = _this.contrhist[_this.weekindex - 1];
-            for (var t in _this.ultimatewkn) {
-                var x;
-                var y;
-                y = "W";
-                x = String(_this.ultimatewkn[t]);
-                _this.ultimatewkn2.push(y.concat("", x));
-            }
-            var lineCTX = _this.lineCanvas.nativeElement;
-            lineCTX.height = innerHeight * 0.4;
-            lineCTX.width = innerWidth;
-            var data = {
-                labels: _this.ultimatewkn2,
-                datasets: [
-                    {
-                        label: 'me',
-                        data: _this.studentdata,
-                        fill: false,
-                        lineTension: 0.1,
-                        backgroundColor: "rgba(255,99,132,1)",
-                        borderColor: "rgba(255,99,132,1)",
-                        pointBorderWidth: 5,
-                        pointHoverRadius: 10,
-                        pointHoverBackgroundColor: "rgba(255,99,132,1)",
-                        pointHoverBorderColor: "rgba(220,220,220,1)",
-                        pointHoverBorderWidth: 2,
-                        pointRadius: 1,
-                        pointHitRadius: 10,
-                        spanGaps: true,
-                    }, {
-                        label: 'my group',
-                        data: _this.groupdata,
-                        fill: false,
-                        lineTension: 0.1,
-                        backgroundColor: "rgba(0,168,255,0.4)",
-                        borderColor: "rgba(0,168,255,0.4)",
-                        pointBorderWidth: 5,
-                        pointHoverRadius: 10,
-                        pointHoverBackgroundColor: "rgba(75,192,192,1)",
-                        pointHoverBorderColor: "rgba(0,168,255,1)",
-                        pointHoverBorderWidth: 2,
-                        pointRadius: 1,
-                        pointHitRadius: 10,
-                        spanGaps: true,
-                    }
-                ]
-            };
-            new __WEBPACK_IMPORTED_MODULE_2_chart_js__["Chart"](lineCTX, {
-                "type": 'line',
-                "data": data,
-                "options": {
-                    legend: {
-                        display: true,
-                        position: 'top',
-                        responsive: true,
-                        maintainAspectRatio: false
-                    },
-                    "animation": {
-                        "animateScale": true,
-                        "animateRotate": false
-                    },
+                _this.student = _this.studentN[0];
+                for (var q in _this.Students) {
+                    _this.ultimatewkn.push(_this.Students[q].s_wk);
                 }
-            });
+                _this.ultimatewkn.sort(function (a, b) {
+                    return a - b;
+                });
+                for (var p in _this.ultimatewkn) {
+                    for (var x_2 in _this.Students) {
+                        if (_this.Students[x_2].s_wk == _this.ultimatewkn[p]) {
+                            _this.groupdata.push(_this.Students[x_2].gp);
+                            _this.studentdata.push(_this.Students[x_2].sp);
+                            _this.contrhist.push(_this.Students[x_2].contr);
+                        }
+                    }
+                }
+                _this.weekindex = Math.max.apply(Math, _this.ultimatewkn);
+                console.log(_this.weekindex);
+                _this.groupLatest.push(_this.groupdata[_this.weekindex - 1]);
+                _this.studentLatest.push(_this.studentdata[_this.weekindex - 1]);
+                _this.contribution = _this.contrhist[_this.weekindex - 1];
+                for (var t in _this.ultimatewkn) {
+                    var x;
+                    var y;
+                    y = "W";
+                    x = String(_this.ultimatewkn[t]);
+                    _this.ultimatewkn2.push(y.concat("", x));
+                }
+                var lineCTX = _this.lineCanvas.nativeElement;
+                lineCTX.height = innerHeight * 0.4;
+                lineCTX.width = innerWidth;
+                var data = {
+                    labels: _this.ultimatewkn2,
+                    datasets: [
+                        {
+                            label: 'me',
+                            data: _this.studentdata,
+                            fill: false,
+                            lineTension: 0.1,
+                            backgroundColor: "rgba(255,99,132,1)",
+                            borderColor: "rgba(255,99,132,1)",
+                            pointBorderWidth: 5,
+                            pointHoverRadius: 10,
+                            pointHoverBackgroundColor: "rgba(255,99,132,1)",
+                            pointHoverBorderColor: "rgba(220,220,220,1)",
+                            pointHoverBorderWidth: 2,
+                            pointRadius: 1,
+                            pointHitRadius: 10,
+                            spanGaps: true,
+                        }, {
+                            label: 'my group',
+                            data: _this.groupdata,
+                            fill: false,
+                            lineTension: 0.1,
+                            backgroundColor: "rgba(0,168,255,0.4)",
+                            borderColor: "rgba(0,168,255,0.4)",
+                            pointBorderWidth: 5,
+                            pointHoverRadius: 10,
+                            pointHoverBackgroundColor: "rgba(75,192,192,1)",
+                            pointHoverBorderColor: "rgba(0,168,255,1)",
+                            pointHoverBorderWidth: 2,
+                            pointRadius: 1,
+                            pointHitRadius: 10,
+                            spanGaps: true,
+                        }
+                    ]
+                };
+                new __WEBPACK_IMPORTED_MODULE_2_chart_js__["Chart"](lineCTX, {
+                    "type": 'line',
+                    "data": data,
+                    "options": {
+                        legend: {
+                            display: true,
+                            position: 'top',
+                            responsive: true,
+                            maintainAspectRatio: false
+                        },
+                        "animation": {
+                            "animateScale": true,
+                            "animateRotate": false
+                        },
+                    }
+                });
+            }
+            else {
+                // IF THERE IS NO FEEDBACK DATA FOR THAT STUDENT. HERE HERE HERE HERE HERE HERE HERE HERE HERE
+            }
         });
         setTimeout(function () {
             console.log('Async operation has ended');
@@ -2352,10 +2432,9 @@ StudentHomePage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
         selector: 'page-home-page',template:/*ion-inline-start:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/home-page/home-page.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>\n      Home Page\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n<ion-content padding id="page2">\n  <ion-refresher (ionRefresh)="doRefresh($event)">\n    <ion-refresher-content></ion-refresher-content>\n  </ion-refresher>\n    <div id="notification-section" no-padding no-margin >\n        <ion-card text-center id="notification" no-padding no-margin>\n            <h6 style="padding-top: 0 auto !important; color: white;">Currently in {{CurrentWeek()}}</h6>\n        </ion-card>\n    </div>\n    <div class="spacer" style="height:2% ;" id="spacerline"></div>\n    \n    <div id="deadlines-section" no-padding>\n        <button id="deadlines-button" ion-button block icon-right style="text-align:right;"\n                on-click="goToDeadlines()">\n            Deadlines \n            <ion-icon name="calendar"></ion-icon>\n        </button>\n    </div>\n\n    \n    <div class="spacer" style="height:3% ;" id="spacerline"></div>\n    <div id="header-section">\n    <h4>My Overview</h4>\n    </div>\n    <div class="spacer" style="height:5%; " id="spacerline"></div>\n        \n    <ion-card class="graphCard" style="border-top: 5px solid #00A8FF;" padding no-margin>\n        <ion-card-content>\n          <canvas #lineCanvas></canvas>\n        </ion-card-content>\n    </ion-card>\n  <div class="spacer" style="height:3%;" id="spacerline"></div>\n  <div id="header-section">\n      <h4>Latest Feedback</h4>\n      </div>\n  <div class="spacer" style="height:5%; " id="spacerline"></div>\n    <div style="height: 30vh;">\n        <ion-card no-padding no-margin style="height: 40% !important;"> <!-- important to position the card in the center -->\n            <ion-card-content no-padding no-margin> <!-- important to fill the content of the card with the group performance color -->\n                <ion-item-divider style="width: 100% !important; height: 2vh !important; color: white;" class="{{ performanceColor[latestPerformance()] }}">\n                    <p id="weekdiv" style="color: white;">Week {{weekindex}} group peformance: </p>\n                    <p style="float: right; color: white;"> {{ performanceDescription[latestPerformance()] }} </p>\n                  </ion-item-divider>\n                  <ion-item color="none" id="feedbackSummary-list-item56">\n                      <p class="name">{{student}}</p>\n                      <ion-note item-right>\n                       <p><button class="performance {{ performanceColor[studentLatestPerformance()] }}"></button><span id="percentage" style="padding-left:10px"> {{contribution}}% (contribution)</span></p>\n                      </ion-note>\n                    </ion-item>\n              </ion-card-content>\n            </ion-card>\n</div>\n</ion-content>\n'/*ion-inline-end:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/home-page/home-page.html"*/
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_4__providers_house_house__["a" /* HouseProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__providers_house_house__["a" /* HouseProvider */]) === "function" && _b || Object])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_4__providers_house_house__["a" /* HouseProvider */]])
 ], StudentHomePage);
 
-var _a, _b;
 //# sourceMappingURL=home-page.js.map
 
 /***/ }),
@@ -2566,33 +2645,38 @@ var MyFeedbackHistoryPage = (function () {
     MyFeedbackHistoryPage.prototype.ngOnInit = function () {
         var _this = this;
         this.house.GetStudentHome().subscribe(function (dt) {
-            _this.Students = JSON.parse(dt["_body"]);
-            for (var i in _this.Students) {
-                _this.str = _this.Students[i].fname;
-                _this.str2 = _this.Students[i].lname;
-                if (!_this.studentN.includes(_this.str.concat(" ", _this.str2))) {
-                    _this.studentN.push(_this.str.concat(" ", _this.str2));
-                    _this.StudentIDs.push(_this.Students[i].s_ID);
-                    _this.groupIDs.push(_this.Students[i].g_ID);
-                }
-            }
-            _this.groupnumber = _this.groupIDs[0];
-            _this.ID = _this.StudentIDs[0];
-            _this.student = _this.studentN[0];
-            for (var q in _this.Students) {
-                _this.weekswithinfo.push(_this.Students[q].s_wk);
-            }
-            _this.weekswithinfo.sort(function (a, b) {
-                return a - b;
-            });
-            for (var p in _this.weekswithinfo) {
-                for (var x in _this.Students) {
-                    if (_this.Students[x].s_wk == _this.weekswithinfo[p]) {
-                        _this.groupdata.push(_this.Students[x].gp);
-                        _this.studentdata.push(_this.Students[x].sp);
-                        _this.percentageresults.push(_this.Students[x].contr);
+            if (dt["_body"]) {
+                _this.Students = JSON.parse(dt["_body"]);
+                for (var i in _this.Students) {
+                    _this.str = _this.Students[i].fname;
+                    _this.str2 = _this.Students[i].lname;
+                    if (!_this.studentN.includes(_this.str.concat(" ", _this.str2))) {
+                        _this.studentN.push(_this.str.concat(" ", _this.str2));
+                        _this.StudentIDs.push(_this.Students[i].s_ID);
+                        _this.groupIDs.push(_this.Students[i].g_ID);
                     }
                 }
+                _this.groupnumber = _this.groupIDs[0];
+                _this.ID = _this.StudentIDs[0];
+                _this.student = _this.studentN[0];
+                for (var q in _this.Students) {
+                    _this.weekswithinfo.push(_this.Students[q].s_wk);
+                }
+                _this.weekswithinfo.sort(function (a, b) {
+                    return a - b;
+                });
+                for (var p in _this.weekswithinfo) {
+                    for (var x in _this.Students) {
+                        if (_this.Students[x].s_wk == _this.weekswithinfo[p]) {
+                            _this.groupdata.push(_this.Students[x].gp);
+                            _this.studentdata.push(_this.Students[x].sp);
+                            _this.percentageresults.push(_this.Students[x].contr);
+                        }
+                    }
+                }
+            }
+            else {
+                // IF THERE ARE NO FEEDBACK FOR THAT STUDENT AND HIS TEAM HERE HERE HERE HERE HERE
             }
         });
     };
@@ -2610,33 +2694,38 @@ var MyFeedbackHistoryPage = (function () {
         this.percentageresults = [];
         this.weekswithinfo = [];
         this.house.GetStudentHome().subscribe(function (dt) {
-            _this.Students = JSON.parse(dt["_body"]);
-            for (var i in _this.Students) {
-                _this.str = _this.Students[i].fname;
-                _this.str2 = _this.Students[i].lname;
-                if (!_this.studentN.includes(_this.str.concat(" ", _this.str2))) {
-                    _this.studentN.push(_this.str.concat(" ", _this.str2));
-                    _this.StudentIDs.push(_this.Students[i].s_ID);
-                    _this.groupIDs.push(_this.Students[i].g_ID);
-                }
-            }
-            _this.groupnumber = _this.groupIDs[0];
-            _this.ID = _this.StudentIDs[0];
-            _this.student = _this.studentN[0];
-            for (var q in _this.Students) {
-                _this.weekswithinfo.push(_this.Students[q].s_wk);
-            }
-            _this.weekswithinfo.sort(function (a, b) {
-                return a - b;
-            });
-            for (var p in _this.weekswithinfo) {
-                for (var x in _this.Students) {
-                    if (_this.Students[x].s_wk == _this.weekswithinfo[p]) {
-                        _this.groupdata.push(_this.Students[x].gp);
-                        _this.studentdata.push(_this.Students[x].sp);
-                        _this.percentageresults.push(_this.Students[x].contr);
+            if (dt["_body"]) {
+                _this.Students = JSON.parse(dt["_body"]);
+                for (var i in _this.Students) {
+                    _this.str = _this.Students[i].fname;
+                    _this.str2 = _this.Students[i].lname;
+                    if (!_this.studentN.includes(_this.str.concat(" ", _this.str2))) {
+                        _this.studentN.push(_this.str.concat(" ", _this.str2));
+                        _this.StudentIDs.push(_this.Students[i].s_ID);
+                        _this.groupIDs.push(_this.Students[i].g_ID);
                     }
                 }
+                _this.groupnumber = _this.groupIDs[0];
+                _this.ID = _this.StudentIDs[0];
+                _this.student = _this.studentN[0];
+                for (var q in _this.Students) {
+                    _this.weekswithinfo.push(_this.Students[q].s_wk);
+                }
+                _this.weekswithinfo.sort(function (a, b) {
+                    return a - b;
+                });
+                for (var p in _this.weekswithinfo) {
+                    for (var x in _this.Students) {
+                        if (_this.Students[x].s_wk == _this.weekswithinfo[p]) {
+                            _this.groupdata.push(_this.Students[x].gp);
+                            _this.studentdata.push(_this.Students[x].sp);
+                            _this.percentageresults.push(_this.Students[x].contr);
+                        }
+                    }
+                }
+            }
+            else {
+                // IF THERE ARE NO FEEDBACK FOR THAT STUDENT AND HIS TEAM HERE HERE HERE HERE HERE
             }
         });
         setTimeout(function () {

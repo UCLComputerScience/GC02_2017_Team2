@@ -163,8 +163,13 @@ doRefresh(refresher) {
   
   getPerformance(x) {
     var value = this.itemstemp[x];
+    if (value == 0){
+      var colorEmpty = 'new'; 
+      return colorEmpty; 
+    } else {
     var colorName = this.performanceAnnotation[value-1];
     return colorName;
+    }
   }
 
   goToFeedbackSummary(Gchosen : number){
