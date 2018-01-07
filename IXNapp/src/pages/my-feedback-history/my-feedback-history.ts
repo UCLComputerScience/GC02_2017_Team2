@@ -38,6 +38,7 @@ export class MyFeedbackHistoryPage {
 
   ngOnInit() {
     this.house.GetStudentHome().subscribe(dt => {
+    if (dt["_body"]) {
       this.Students = JSON.parse(dt["_body"]);
 
         for(let i in this.Students) {
@@ -72,6 +73,10 @@ export class MyFeedbackHistoryPage {
           this.percentageresults.push(this.Students[x].contr);
         }
       }
+      }
+
+      } else {
+      // IF THERE ARE NO FEEDBACK FOR THAT STUDENT AND HIS TEAM HERE HERE HERE HERE HERE
       }
 
       })
@@ -92,6 +97,7 @@ export class MyFeedbackHistoryPage {
     this.weekswithinfo = [];
 
     this.house.GetStudentHome().subscribe(dt => {
+    if (dt["_body"]) {
       this.Students = JSON.parse(dt["_body"]);
 
         for(let i in this.Students) {
@@ -126,6 +132,10 @@ export class MyFeedbackHistoryPage {
           this.percentageresults.push(this.Students[x].contr);
         }
       }
+      }
+
+      } else {
+      // IF THERE ARE NO FEEDBACK FOR THAT STUDENT AND HIS TEAM HERE HERE HERE HERE HERE
       }
 
       })
