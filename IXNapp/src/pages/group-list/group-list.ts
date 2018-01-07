@@ -32,6 +32,7 @@ export class GroupListPage {
   constructor(public navCtrl: NavController, public house: HouseProvider) {
 
   this.house.GetStage2Student().subscribe(dt => {
+  if (dt["_body"]) {
       this.Groups = JSON.parse(dt["_body"]);
 
       console.log(this.Groups);
@@ -78,6 +79,10 @@ export class GroupListPage {
       }    
 
       console.log(this.items);
+
+    } else {
+
+    }
 
     })
   }
@@ -93,6 +98,7 @@ doRefresh(refresher) {
   this.descriptions = [];
 
     this.house.GetStage2Student().subscribe(dt => {
+    if (dt["_body"]) {
       this.Groups = JSON.parse(dt["_body"]);
 
       console.log(this.Groups);
@@ -139,6 +145,10 @@ doRefresh(refresher) {
       }    
 
       console.log(this.items);
+
+      } else {
+
+      }
 
     })
 
