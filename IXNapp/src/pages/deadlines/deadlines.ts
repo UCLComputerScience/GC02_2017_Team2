@@ -12,7 +12,8 @@ export class DeadlinesPage {
 
   Deadlinetitles: any[] = [];
   Deadlineraw: any[] = [];
-  dateString= "2017-10-06"; //Backend: String in database should be like this 
+  dateString: string;
+  //dateString= "2017-10-06"; //Backend: String in database should be like this 
 
 
   constructor(public navCtrl: NavController, public house: HouseProvider) {
