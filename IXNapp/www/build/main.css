@@ -25856,7 +25856,7 @@ page-group #groupperformance {
 page-group .performancebutton {
   font-size: 13px;
   height: 30px;
-  width: 20%;
+  width: 23%;
   padding: 2px;
   margin: 3px;
   color: white;
@@ -26323,6 +26323,10 @@ page-more-details .bad {
   background-color: #FF6384;
 }
 
+page-more-details .absent {
+  background-color: black;
+}
+
 page-more-details #cardexcellent {
   border-top: 10px solid #058D65;
 }
@@ -26337,6 +26341,10 @@ page-more-details #cardaverage {
 
 page-more-details #cardbad {
   border-top: 10px solid #FF6384;
+}
+
+page-more-details #cardabsent {
+  border-top: 10px solid black;
 }
 
 page-more-details .feedbackwriting {
@@ -26402,6 +26410,10 @@ page-more-details2 .average {
 
 page-more-details2 .bad {
   background-color: #FF6384;
+}
+
+page-more-details2 .absent {
+  background-color: black;
 }
 
 page-more-details2 h5 {
@@ -26495,6 +26507,7 @@ page-my-feedback-history ion-note {
   padding: 0px !important;
   margin: 0px !important;
   text-align: right;
+  width: 160px !important;
 }
 
 page-my-feedback-history ion-note button {
@@ -26546,6 +26559,14 @@ page-my-feedback-history .darkgreen {
   background-color: #058D65;
 }
 
+page-my-feedback-history .black {
+  background-color: black;
+}
+
+page-my-feedback-history .performance2 {
+  float: left !important;
+}
+
 page-my-profile #profilepic {
   display: block;
   width: 80px;
@@ -26554,6 +26575,7 @@ page-my-profile #profilepic {
   margin-right: auto;
   margin-bottom: 30px;
   margin-top: 20px;
+  border-radius: 50%;
 }
 
 page-my-profile #myProfile-input1 {
@@ -26630,6 +26652,7 @@ page-profile #profilepic {
   margin-right: auto;
   margin-bottom: 30px;
   margin-top: 20px;
+  border-radius: 50%;
 }
 
 page-profile #myProfile-input1 {

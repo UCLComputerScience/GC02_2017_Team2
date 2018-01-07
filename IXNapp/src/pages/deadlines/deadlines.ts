@@ -12,6 +12,7 @@ export class DeadlinesPage {
 
   Deadlinetitles: any[] = [];
   Deadlineraw: any[] = [];
+  dateString= "2017-10-06"; //Backend: String in database should be like this 
 
 
   constructor(public navCtrl: NavController, public house: HouseProvider) {
@@ -49,7 +50,7 @@ export class DeadlinesPage {
   }
 
   CurrentWeek(): String{
-		var start = new Date("2017-10-06");
+		var start = new Date(this.dateString);
 		var today = new Date();
 		var diff =(today.getTime() - start.getTime()) / 1000;
 		diff /= (60 * 60 * 24 * 7);

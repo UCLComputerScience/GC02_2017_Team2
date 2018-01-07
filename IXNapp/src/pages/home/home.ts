@@ -20,6 +20,8 @@ export class HomePage {
 	@ViewChild('doughnutCanvasS') doughnutCanvasS;
 	@ViewChild(Slides) slides: Slides;
 
+	dateString= "2017-10-06"; //Backend: String in database should be like this 
+
 	Students: any[];
 	Groups: any[];
 	wkn: number[] = [];
@@ -39,6 +41,7 @@ export class HomePage {
 
 	studentData: any[] = [];
 	groupData: any[] = [];
+
 
 	//studentData = [2,4,1,5]; bad, average, good, excellent order
 	//groupData = [1,2,3,5]; bad, average, good, excellent order
@@ -211,7 +214,7 @@ export class HomePage {
 	}
 
 	CurrentWeek(): String{
-		var start = new Date("2017-10-06");
+		var start = new Date(this.dateString);
 		var today = new Date();
 		var diff =(today.getTime() - start.getTime()) / 1000;
 		diff /= (60 * 60 * 24 * 7);
