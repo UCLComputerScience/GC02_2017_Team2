@@ -2276,11 +2276,21 @@ var StudentHomePage = (function () {
                     "type": 'line',
                     "data": data,
                     "options": {
+                        scales: {
+                            yAxes: [{
+                                    display: true,
+                                    ticks: {
+                                        beginAtZero: true,
+                                        stepValue: 1,
+                                        max: 4
+                                    }
+                                }]
+                        },
                         legend: {
                             display: true,
                             position: 'top',
                             responsive: true,
-                            maintainAspectRatio: false
+                            maintainAspectRatio: false,
                         },
                         "animation": {
                             "animateScale": true,
@@ -2432,9 +2442,10 @@ StudentHomePage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
         selector: 'page-home-page',template:/*ion-inline-start:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/home-page/home-page.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>\n      Home Page\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n<ion-content padding id="page2">\n  <ion-refresher (ionRefresh)="doRefresh($event)">\n    <ion-refresher-content></ion-refresher-content>\n  </ion-refresher>\n    <div id="notification-section" no-padding no-margin >\n        <ion-card text-center id="notification" no-padding no-margin>\n            <h6 style="padding-top: 0 auto !important; color: white;">Currently in {{CurrentWeek()}}</h6>\n        </ion-card>\n    </div>\n    <div class="spacer" style="height:2% ;" id="spacerline"></div>\n    \n    <div id="deadlines-section" no-padding>\n        <button id="deadlines-button" ion-button block icon-right style="text-align:right;"\n                on-click="goToDeadlines()">\n            Deadlines \n            <ion-icon name="calendar"></ion-icon>\n        </button>\n    </div>\n\n    \n    <div class="spacer" style="height:3% ;" id="spacerline"></div>\n    <div id="header-section">\n    <h4>My Overview</h4>\n    </div>\n    <div class="spacer" style="height:5%; " id="spacerline"></div>\n        \n    <ion-card class="graphCard" style="border-top: 5px solid #00A8FF;" padding no-margin>\n        <ion-card-content>\n          <canvas #lineCanvas></canvas>\n        </ion-card-content>\n    </ion-card>\n  <div class="spacer" style="height:3%;" id="spacerline"></div>\n  <div id="header-section">\n      <h4>Latest Feedback</h4>\n      </div>\n  <div class="spacer" style="height:5%; " id="spacerline"></div>\n    <div style="height: 30vh;">\n        <ion-card no-padding no-margin style="height: 40% !important;"> <!-- important to position the card in the center -->\n            <ion-card-content no-padding no-margin> <!-- important to fill the content of the card with the group performance color -->\n                <ion-item-divider style="width: 100% !important; height: 2vh !important; color: white;" class="{{ performanceColor[latestPerformance()] }}">\n                    <p id="weekdiv" style="color: white;">Week {{weekindex}} group peformance: </p>\n                    <p style="float: right; color: white;"> {{ performanceDescription[latestPerformance()] }} </p>\n                  </ion-item-divider>\n                  <ion-item color="none" id="feedbackSummary-list-item56">\n                      <p class="name">{{student}}</p>\n                      <ion-note item-right>\n                       <p><button class="performance {{ performanceColor[studentLatestPerformance()] }}"></button><span id="percentage" style="padding-left:10px"> {{contribution}}% (contribution)</span></p>\n                      </ion-note>\n                    </ion-item>\n              </ion-card-content>\n            </ion-card>\n</div>\n</ion-content>\n'/*ion-inline-end:"/Users/wthong/Documents/GitHub/GC02_2017_Team2/IXNapp/src/pages/home-page/home-page.html"*/
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_4__providers_house_house__["a" /* HouseProvider */]])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_4__providers_house_house__["a" /* HouseProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__providers_house_house__["a" /* HouseProvider */]) === "function" && _b || Object])
 ], StudentHomePage);
 
+var _a, _b;
 //# sourceMappingURL=home-page.js.map
 
 /***/ }),

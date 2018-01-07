@@ -1,5 +1,9 @@
 page-home-page {
 
+  .scroll-content {
+    overflow-y: hidden !important;
+  }
+
   #page2{
     background-color: white !important; 
   }
