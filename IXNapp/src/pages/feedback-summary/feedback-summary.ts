@@ -46,6 +46,7 @@ export class FeedbackSummaryPage {
 
   ngOnInit() {
     this.GetStage2Student().subscribe(dt => {
+    if (dt["_body"]) {
       this.Students = JSON.parse(dt["_body"]);
 
       console.log(this.Students);
@@ -139,6 +140,10 @@ export class FeedbackSummaryPage {
           this.results.push(this.sprow);
           }
         }
+
+        } else {
+        // IF THERE ARE NO STUDENTS WITH FEEDBACK FOR THE CHOSEN GROUP HERE HERE HERE HERE HERE HERE HERE HERE
+        } 
 
       })
 
@@ -168,6 +173,7 @@ export class FeedbackSummaryPage {
   this.sum = 0;
 
     this.GetStage2Student().subscribe(dt => {
+    if (dt["_body"]) {
       this.Students = JSON.parse(dt["_body"]);
 
       console.log(this.Students);
@@ -260,6 +266,10 @@ export class FeedbackSummaryPage {
           if(this.sprow.length != 0) {
           this.results.push(this.sprow);
           }
+        }
+
+        } else {
+        // IF THERE ARE NO STUDENTS WITH FEEDBACK FOR THE CHOSEN GROUP HERE HERE HERE HERE HERE HERE HERE HERE
         }
 
       })
