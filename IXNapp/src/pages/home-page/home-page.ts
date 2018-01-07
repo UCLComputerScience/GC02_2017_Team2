@@ -13,7 +13,9 @@ export class StudentHomePage {
   @ViewChild('lineCanvas') lineCanvas;
   
 
-  dateString= "2017-10-06"; //Backend: String in database should be like this 
+  //dateString= "2017-10-06"; //Backend: String in database should be like this 
+  dateString: string;
+  Deadlineraw: any[] = [];
   Deadlinetitles: any[];
   Deadlinedates: any[];
   innerHeight: any;
@@ -42,6 +44,17 @@ export class StudentHomePage {
     this.contribution; 
     this.weekindex; 
     this.performanceDescription; 
+	  
+    this.house.getDead().subscribe(dt => {
+        this.Deadlineraw = dt;
+
+        for(let j in this.Deadlineraw) {
+        if(this.Deadlineraw[j].deadt == 'Start Date') {
+        this.dateString = this.Deadlineraw[j].deadd;
+        }
+        }
+
+    })
   }
 
 
