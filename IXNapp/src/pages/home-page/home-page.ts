@@ -11,8 +11,9 @@ import { HouseProvider } from '../../providers/house/house';
 export class StudentHomePage {
 
   @ViewChild('lineCanvas') lineCanvas;
-
   
+
+  dateString= "2017-10-06"; //Backend: String in database should be like this 
   Deadlinetitles: any[];
   Deadlinedates: any[];
   innerHeight: any;
@@ -59,11 +60,20 @@ export class StudentHomePage {
   performanceColor = ['red','yellow','lightgreen', 'darkgreen']; //these are constants
   
 
-  Date(): String{
+  CurrentWeek(): String{
+    var start = new Date(this.dateString);
     var today = new Date();
-    var date = today.getDate()+'-'+(today.getMonth()+1)+'-'+today.getFullYear();
-    return date;
+    var diff =(today.getTime() - start.getTime()) / 1000;
+    diff /= (60 * 60 * 24 * 7);
+    var diyy = Math.abs(Math.floor(diff))+1;
+    if (diyy > 10){
+      return 'holidays'
+    } else {
+      var weekcounter = 'Week '+String(diyy)
+      return weekcounter; 
+    }
   }
+
 
   latestPerformance() {
     var latestGroup = this.groupLatest;
