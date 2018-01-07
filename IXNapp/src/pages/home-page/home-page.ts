@@ -12,7 +12,7 @@ export class StudentHomePage {
 
   @ViewChild('lineCanvas') lineCanvas;
 
-  dateString= "2017-10-06"; //Backend: String in database should be like this 
+  
   Deadlinetitles: any[];
   Deadlinedates: any[];
   innerHeight: any;
@@ -59,19 +59,11 @@ export class StudentHomePage {
   performanceColor = ['red','yellow','lightgreen', 'darkgreen']; //these are constants
   
 
-  CurrentWeek(): String{
-		var start = new Date(this.dateString);
-		var today = new Date();
-		var diff =(today.getTime() - start.getTime()) / 1000;
-		diff /= (60 * 60 * 24 * 7);
-		var diyy = Math.abs(Math.floor(diff))+1;
-		if (diyy > 10){
-		  return 'holidays'
-		} else {
-			var weekcounter = 'Week '+String(diyy)
-		  return weekcounter; 
-		}
-	}
+  Date(): String{
+    var today = new Date();
+    var date = today.getDate()+'-'+(today.getMonth()+1)+'-'+today.getFullYear();
+    return date;
+  }
 
   latestPerformance() {
     var latestGroup = this.groupLatest;
@@ -89,6 +81,7 @@ export class StudentHomePage {
 
   ngOnInit() {
   this.house.GetStudentHome().subscribe(dt => {
+  if (dt["_body"]) {
       this.Students = JSON.parse(dt["_body"]);
 
       console.log(this.Students);
@@ -198,6 +191,11 @@ export class StudentHomePage {
         }
       }
     );
+
+    } else {
+    // IF THERE IS NO FEEDBACK DATA FOR THAT STUDENT. HERE HERE HERE HERE HERE HERE HERE HERE HERE
+    }
+
   })
   }
 
@@ -222,6 +220,7 @@ export class StudentHomePage {
   this.studentLatest = [];
 
     this.house.GetStudentHome().subscribe(dt => {
+    if (dt["_body"]) {
       this.Students = JSON.parse(dt["_body"]);
 
       console.log(this.Students);
@@ -331,6 +330,11 @@ export class StudentHomePage {
         }
       }
     );
+
+    } else {
+    // IF THERE IS NO FEEDBACK DATA FOR THAT STUDENT. HERE HERE HERE HERE HERE HERE HERE HERE HERE
+    }
+
   })
 
     setTimeout(() => {
