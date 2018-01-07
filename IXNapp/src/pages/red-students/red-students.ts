@@ -99,6 +99,7 @@ onClick(first : any, last: any) {
 	this.RIWeeks = [];
 	this.clicked = true;
   	this.Weeks = [];
+	this.wknraw = [];
 	
 	this.Fullname = first.concat(" ", last);
 
