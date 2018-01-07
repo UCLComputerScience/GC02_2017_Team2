@@ -20,8 +20,6 @@ export class HomePage {
 	@ViewChild('doughnutCanvasS') doughnutCanvasS;
 	@ViewChild(Slides) slides: Slides;
 
-	dateString= "2017-10-06"; //Backend: String in database should be like this 
-
 	Students: any[];
 	Groups: any[];
 	wkn: number[] = [];
@@ -41,7 +39,6 @@ export class HomePage {
 
 	studentData: any[] = [];
 	groupData: any[] = [];
-
 
 	//studentData = [2,4,1,5]; bad, average, good, excellent order
 	//groupData = [1,2,3,5]; bad, average, good, excellent order
@@ -64,6 +61,7 @@ export class HomePage {
 	ngOnInit() {
 
 	this.house.getAllRedTeam().subscribe(dt => {
+	if (dt["_body"]) {
 		this.Groups = JSON.parse(dt["_body"]);
 
   		for(let i in this.Groups){
@@ -133,9 +131,14 @@ export class HomePage {
 			}
 		);
 
+		} else {
+			// HERE HANDLE IF THERE IS NO DATA FOR THE DOUGHNUT HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE
+		}
+
 		});
 
 		this.house.getAllRedStudent().subscribe(dt => {
+		if (dt["_body"]) {
 		this.Students = JSON.parse(dt["_body"]);
 
 		for(let i in this.Students){
@@ -203,6 +206,10 @@ export class HomePage {
 			}
 		);
 
+		} else {
+		// HERE HANDLE IF THERE IS NO DATA FOR THE DOUGHNUT HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE
+		}
+
 		});
 		console.log(this.studentData);
 
@@ -214,7 +221,7 @@ export class HomePage {
 	}
 
 	CurrentWeek(): String{
-		var start = new Date(this.dateString);
+		var start = new Date("2017-10-06");
 		var today = new Date();
 		var diff =(today.getTime() - start.getTime()) / 1000;
 		diff /= (60 * 60 * 24 * 7);
@@ -256,6 +263,7 @@ export class HomePage {
 		this.groupData= [];
 
 		this.house.getAllRedTeam().subscribe(dt => {
+		if (dt["_body"]) {
 		this.Groups = JSON.parse(dt["_body"]);
 
   		for(let i in this.Groups){
@@ -325,9 +333,14 @@ export class HomePage {
 			}
 		);
 
+		} else {
+		// HERE HANDLE IF THERE IS NO DATA FOR THE DOUGHNUT HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE
+		}
+
 		});
 
 		this.house.getAllRedStudent().subscribe(dt => {
+		if (dt["_body"]) {
 		this.Students = JSON.parse(dt["_body"]);
 
 		for(let i in this.Students){
@@ -394,16 +407,17 @@ export class HomePage {
 			}
 		);
 
+		} else {
+		// HERE HANDLE IF THERE IS NO DATA FOR THE DOUGHNUT HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE
+		}
+
 		});
-		console.log(this.studentData);
 
 	setTimeout(() => {
       console.log('Async operation has ended');
       refresher.complete();
 
     }, 500);
-
-	console.log(this.studentData);
 	
 }
 
