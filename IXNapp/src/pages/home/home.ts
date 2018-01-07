@@ -20,7 +20,9 @@ export class HomePage {
 	@ViewChild('doughnutCanvasS') doughnutCanvasS;
 	@ViewChild(Slides) slides: Slides;
 	
-	dateString= "2017-10-06"; //Backend: String in database should be like this 
+	//dateString= "2017-10-06"; //Backend: String in database should be like this 
+	dateString: number;
+	Deadlineraw: any[] = [];
 
 	Students: any[];
 	Groups: any[];
@@ -57,6 +59,17 @@ export class HomePage {
 	constructor(public navCtrl: NavController, public house: HouseProvider) {
 		this.innerHeight = (window.screen.height);
 		this.innerWidth = (window.screen.width);
+		
+		this.house.getDead().subscribe(dt => {
+      		this.Deadlineraw = dt;
+
+      		for(let j in this.Deadlineraw) {
+      		if(this.Deadlineraw[j].deadt == 'Start Date') {
+      		this.dateString = this.Deadlineraw[j].deadd;
+      		}
+      		}
+
+      	})
 
 	}
 
