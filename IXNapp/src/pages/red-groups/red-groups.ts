@@ -91,6 +91,7 @@ onClick(gid : any) {
   this.RIWeeks = [];
 	this.clicked = true;
   this.Weeks = [];
+	this.wknraw = [];
 
 this.house.getAllRedTeam().subscribe(dt2 => {
 	this.Weeks = JSON.parse(dt2["_body"]);
