@@ -81,7 +81,7 @@ export class GroupListPage {
       console.log(this.items);
 
     } else {
-
+    // IF THERE ARE NO GROUPS WITH FEEDBACK HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE
     }
 
     })
@@ -147,7 +147,7 @@ doRefresh(refresher) {
       console.log(this.items);
 
       } else {
-
+      // IF THERE ARE NO GROUPS WITH FEEDBACK HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE
       }
 
     })
