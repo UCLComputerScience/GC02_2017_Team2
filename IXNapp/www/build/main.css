@@ -26140,10 +26140,6 @@ page-home canvas {
   height: auto !important;
 }
 
-page-home #buttonsection {
-  height: 15% !important;
-}
-
 page-home .redbutton {
   width: 100% !important;
   height: 100% !important;
@@ -26152,7 +26148,7 @@ page-home .redbutton {
 }
 
 page-home .rowbuttons {
-  height: 100% !important;
+  height: 18% !important;
 }
 
 page-home-page .scroll-content {
@@ -26612,7 +26608,7 @@ page-my-profile #supervising {
 page-my-profile #button {
   background-color: #00A8FF;
   color: white;
-  font-size: 24px;
+  font-size: 20px;
   border-radius: 70px;
   height: 70px;
   width: 70px;
@@ -26689,7 +26685,7 @@ page-profile #supervising {
 page-profile #button {
   background-color: #00A8FF;
   color: white;
-  font-size: 24px;
+  font-size: 20px;
   border-radius: 70px;
   height: 70px;
   width: 70px;

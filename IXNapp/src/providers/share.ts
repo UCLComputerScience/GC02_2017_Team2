@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 
+//This ShareService approach is adapted from https://www.gajotres.net/ionic-2-sharing-data-between-pagescomponents/
 @Injectable()
 export class ShareService {
     

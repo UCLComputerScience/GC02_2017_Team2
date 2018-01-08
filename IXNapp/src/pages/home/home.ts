@@ -73,6 +73,7 @@ export class HomePage {
 
 	}
 
+	//The chart creation was adapted from https://www.joshmorony.com/adding-responsive-charts-graphs-to-ionic-2-applications/
 	ngOnInit() {
 
 	this.house.getAllRedTeam().subscribe(dt => {
