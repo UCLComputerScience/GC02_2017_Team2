@@ -353,11 +353,21 @@ export class StudentHomePage {
         "type": 'line',
         "data": data,
         "options": {
+          scales: {
+            yAxes: [{
+                display: true,
+                ticks: {
+                    beginAtZero: true,   // minimum value will be 0.
+                    stepValue: 1,
+                    max: 4
+                }
+            }]
+        },
           legend: {
             display: true,
             position: 'top',
             responsive: true, 
-            maintainAspectRatio: false
+            maintainAspectRatio: false,
           },
           "animation": {
             "animateScale": true,
