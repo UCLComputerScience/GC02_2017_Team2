@@ -30,6 +30,7 @@ wknraw: any[] = [];
 
   ngOnInit() {
   	this.house.getAllRedTeam().subscribe(dt => {
+    if (dt["_body"]) {
   		this.Groups = JSON.parse(dt["_body"]);
 
   		for(let i in this.Groups){
@@ -44,8 +45,12 @@ wknraw: any[] = [];
   		}
 
   		if(this.RGroups.length == 0) {
-  			this.Message = 'No Red Groups!';
+  		this.Message = 'No Red Groups!';
   		}
+
+      } else {
+        this.Message = 'No Red Groups!';
+      }
   	})
   }
 
@@ -62,6 +67,7 @@ wknraw: any[] = [];
     this.RGroups = [];
 
     this.house.getAllRedTeam().subscribe(dt => {
+    if (dt["_body"]) {
       this.Groups = JSON.parse(dt["_body"]);
 
       for(let i in this.Groups){
@@ -77,6 +83,9 @@ wknraw: any[] = [];
 
       if(this.RGroups.length == 0) {
         this.Message = 'No Red Groups!';
+      }
+      } else {
+      this.Message = 'No Red Groups!';
       }
     })
 
