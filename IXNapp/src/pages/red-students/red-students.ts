@@ -34,6 +34,7 @@ Fullname: string;
 
   ngOnInit() {
   	this.house.getAllRedStudent().subscribe(dt => {
+    if (dt["_body"]) {
   		this.Students = JSON.parse(dt["_body"]);
 
   		for(let i in this.Students){
@@ -49,6 +50,10 @@ Fullname: string;
 
       if(this.RStudents.length == 0) {
         this.Message = 'No Red Students!';
+      }
+
+      } else {
+      this.Message = 'No Red Students!';
       }
 
   	})
@@ -69,6 +74,7 @@ Fullname: string;
     this.RIWeeks = [];
 
     this.house.getAllRedStudent().subscribe(dt => {
+    if (dt["_body"]) {
       this.Students = JSON.parse(dt["_body"]);
 
       for(let i in this.Students){
@@ -84,6 +90,10 @@ Fullname: string;
 
       if(this.RStudents.length == 0) {
         this.Message = 'No Red Students!';
+      }
+
+      } else {
+      this.Message = 'No Red Students!';
       }
 
     })
