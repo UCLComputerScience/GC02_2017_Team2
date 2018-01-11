@@ -13,11 +13,11 @@ import { HouseProvider } from '../../providers/house/house';
 
 export class RedStudentsPage {
 
-dt:any = {};
-dt2:any = {};
-wkn: number[] = [];
-mx: number;
-clicked: any = false;
+dt:any = {}; //variable needed for database retrieve
+dt2:any = {}; //variable needed for database retrieve
+wkn: number[] = []; //week
+mx: number; //variable for max week variable
+clicked: any = false; 
 Students: any[];
 RStudents: any[] = [];
 Weeks: any[];
@@ -32,8 +32,8 @@ Fullname: string;
   this.Message = 'Press on a Student!';
   }
 
-  ngOnInit() {
-  	this.house.getAllRedStudent().subscribe(dt => {
+  ngOnInit() { //code to initialize the view including analysis of information 
+  	this.house.getAllRedStudent().subscribe(dt => { //function to retrieve the information from the database
     if (dt["_body"]) {
   		this.Students = JSON.parse(dt["_body"]);
 
@@ -59,12 +59,12 @@ Fullname: string;
   	})
   }
 
-  doRefresh(refresher) {
+  doRefresh(refresher) { //same code as, refresh the information
     console.log('Begin async operation', refresher);
 
     this.Message = 'Press on a Student!';
 
-    this.dt = {};
+    this.dt = {}; 
     this.wkn = [];
     this.mx = 0;
     this.clicked = false;
@@ -104,7 +104,7 @@ Fullname: string;
     }, 2000);
   } 
 
-onClick(first : any, last: any) {
+onClick(first : any, last: any) { //function activated when one of the red button is clicked
 	this.RWeeks = [];
 	this.RIWeeks = [];
 	this.clicked = true;

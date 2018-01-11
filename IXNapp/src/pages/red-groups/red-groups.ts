@@ -28,7 +28,7 @@ wknraw: any[] = [];
   	this.Message = 'Press on a Group!';
   }
 
-  ngOnInit() {
+  ngOnInit() { //on page load get required information
   	this.house.getAllRedTeam().subscribe(dt => {
     if (dt["_body"]) {
   		this.Groups = JSON.parse(dt["_body"]);
@@ -54,7 +54,7 @@ wknraw: any[] = [];
   	})
   }
 
-  doRefresh(refresher) {
+  doRefresh(refresher) { //update information on refresh
     console.log('Begin async operation', refresher);
 
     this.Message = 'Press on a Group!';
@@ -95,7 +95,7 @@ wknraw: any[] = [];
     }, 2000);
   } 
 
-onClick(gid : any) {
+onClick(gid : any) { //retrieve the feedback history of the group when clicked on specific group
 	this.RWeeks = [];
   this.RIWeeks = [];
 	this.clicked = true;
