@@ -59,16 +59,6 @@ export class StudentHomePage {
   }
 
 
-  //variables to change for data retrieval
-  //groupLatest = [3]; //latest group performance 
-  //studentLatest = [3]; //latest student performance 
-  //contribution = [33];  //latest student contribution 
-  //weekindex = [4]; // latest week index
-  //student = ['Samantha Watson']; //student name 
-  //studentdata = [3, 2, 2, 1, 4, 3, 2]; //student performance history
-  //groupdata = [4, 4, 3, 4, 3, 4, 3]; //group performance history 
-
-
   /*Not to change after here*/
   performanceDescription = ['bad', 'average', 'good', 'excellent']; //these are constants
   performanceColor = ['red','yellow','lightgreen', 'darkgreen']; //these are constants
@@ -79,7 +69,7 @@ export class StudentHomePage {
     var today = new Date();
     var diff =(today.getTime() - start.getTime()) / 1000;
     diff /= (60 * 60 * 24 * 7);
-    var diyy = Math.abs(Math.floor(diff))+1;
+    var diyy = Math.abs(Math.floor(diff))+1; //floor up to date to week index
     if (diyy > 10){
       return 'holidays'
     } else {
@@ -242,18 +232,18 @@ export class StudentHomePage {
   //innerHeight: any;
   //innerWidth: any;
   //lineChart: any;
-  this.Students = [];
-  this.ultimatewkn = [];
+  this.Students = []; //student objects for database objects
+  this.ultimatewkn = []; //max week
   this.ultimatewkn2 = [];
-  this.weekindex = 0;
-  this.groupdata = [];
-  this.studentdata = [];
+  this.weekindex = 0; //week index for information
+  this.groupdata = []; //groups array
+  this.studentdata = []; //student performances array
   this.studentN = [];
-  this.StudentIDs = [];
+  this.StudentIDs = []; //student ID 
   this.contrhist = [];
-  this.contribution = 0;
-  this.groupLatest = [];
-  this.studentLatest = [];
+  this.contribution = 0; //student contribution 
+  this.groupLatest = []; //latest information from group
+  this.studentLatest = []; //latest information from student
   this.wknraw = [];
 
     this.house.GetStudentHome().subscribe(dt => {

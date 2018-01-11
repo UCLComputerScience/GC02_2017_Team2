@@ -44,9 +44,6 @@ export class HomePage {
 	studentData: any[] = []; //getting the student performance array
 	groupData: any[] = []; //getting the student performance array
 
-	//studentData = [2,4,1,5]; bad, average, good, excellent order
-	//groupData = [1,2,3,5]; bad, average, good, excellent order
-
 	innerHeight: any;
 	innerWidth: any;
 	doughnutGroup: any;
@@ -113,7 +110,7 @@ export class HomePage {
 
 		var datax = this.groupData;
 		var dataGroup = {
-			labels: datax,
+			//labels: datax,
 			datasets: [
 				{
 					"data": datax,
@@ -236,7 +233,7 @@ export class HomePage {
 
 	}
 
-	CurrentWeek(): String{
+	CurrentWeek(): String{ //for week indicator calculates the current week
 		var start = new Date(this.dateString);
 		var today = new Date();
 		var diff =(today.getTime() - start.getTime()) / 1000;
