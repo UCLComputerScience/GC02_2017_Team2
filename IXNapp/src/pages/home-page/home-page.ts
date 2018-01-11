@@ -254,6 +254,7 @@ export class StudentHomePage {
   this.contribution = 0;
   this.groupLatest = [];
   this.studentLatest = [];
+  this.wknraw = [];
 
     this.house.GetStudentHome().subscribe(dt => {
     if (dt["_body"]) {
@@ -273,12 +274,14 @@ export class StudentHomePage {
       this.student = this.studentN[0];
 
       for(let q in this.Students) {
-        this.ultimatewkn.push(this.Students[q].s_wk);
+        this.wknraw.push(this.Students[q].s_wk);
       }
 
-      this.ultimatewkn.sort(function(a,b) { 
+      this.wknraw.sort(function(a,b) { 
       return a - b
       })
+
+      this.ultimatewkn = this.wknraw.slice(1);
 
       for(let p in this.ultimatewkn) {
       for(let x in this.Students) {
