@@ -10,10 +10,9 @@ import { Http, Headers, RequestOptions } from '@angular/http';
 
 export class DeadlinesPage {
 
-  Deadlinetitles: any[] = [];
-  Deadlineraw: any[] = [];
-  dateString: string;
-  //dateString= "2017-10-06"; //Backend: String in database should be like this 
+  Deadlinetitles: any[] = []; // array containing the deadline titles
+  Deadlineraw: any[] = []; // array containing all the deadline data, but in untreated form.
+  dateString: string; //Date queried from the database.
 
 
   constructor(public navCtrl: NavController, public house: HouseProvider) {
@@ -55,6 +54,8 @@ export class DeadlinesPage {
 
       })
   }
+
+  // This function that calculate whether today is a holiday.
 
   CurrentWeek(): String{
 		var start = new Date(this.dateString);
