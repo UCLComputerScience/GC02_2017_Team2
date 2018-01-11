@@ -98,6 +98,7 @@ export class MyFeedbackHistoryPage {
     this.StudentIDs = [];
     this.percentageresults = [];
     this.weekswithinfo = [];
+    this.wknraw = [];
 
     this.house.GetStudentHome().subscribe(dt => {
     if (dt["_body"]) {
@@ -120,12 +121,14 @@ export class MyFeedbackHistoryPage {
       this.student = this.studentN[0];
 
       for(let q in this.Students) {
-        this.weekswithinfo.push(this.Students[q].s_wk);
+        this.wknraw.push(this.Students[q].s_wk);
       }
 
-      this.weekswithinfo.sort(function(a,b) { 
+      this.wknraw.sort(function(a,b) { 
       return a - b
       })
+
+      this.weekswithinfo = this.wknraw.slice(1);
 
       for(let p in this.weekswithinfo) {
       for(let x in this.Students) {
