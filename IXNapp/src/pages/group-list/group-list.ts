@@ -17,8 +17,7 @@ export class GroupListPage {
   items2: any[] = [];
   Groups: any[];
   TAGroups: any[] = [];
-  
-  // NEW ARRAY - PROJECT DESCRIPTIONS NEED TO BE LOADED HERE?
+
   
   //descriptions: any[] = ['description 1 lala', 'description 2', 'description 3'];
 
@@ -81,12 +80,12 @@ export class GroupListPage {
       console.log(this.items);
 
     } else {
-    // IF THERE ARE NO GROUPS WITH FEEDBACK HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE
     }
 
     })
   }
 
+// refresh data
 doRefresh(refresher) {
     console.log('Begin async operation', refresher);
 
@@ -161,6 +160,7 @@ doRefresh(refresher) {
 
   performanceAnnotation = ['bad', 'average', 'good', 'excellent']; //constants do not modify
   
+  // get colour name from performance
   getPerformance(x) {
     var value = this.itemstemp[x];
     if (value == 0){
@@ -172,6 +172,7 @@ doRefresh(refresher) {
     }
   }
 
+  // go the feedback summary 
   goToFeedbackSummary(Gchosen : number){
 
     this.Gchosen = Gchosen;
