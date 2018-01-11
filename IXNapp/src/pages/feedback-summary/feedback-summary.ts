@@ -172,6 +172,7 @@ export class FeedbackSummaryPage {
   this.StudentIDs = [];
   this.groupdata = [];
   this.sum = 0;
+  this.wknraw = [];
 
     this.GetStage2Student().subscribe(dt => {
     if (dt["_body"]) {
@@ -189,15 +190,17 @@ export class FeedbackSummaryPage {
       }
 
       for(let q in this.Students) {
-      if(this.Students[q].g_ID == this.groupnumber && !this.ultimatewkn.includes(this.Students[q].s_wk)) {
-        this.ultimatewkn.push(this.Students[q].s_wk);
+      if(this.Students[q].g_ID == this.groupnumber && !this.wknraw.includes(this.Students[q].s_wk)) {
+        this.wknraw.push(this.Students[q].s_wk);
         //this.groupdata.push(this.Students[q].gp);
       }
       }
 
-      this.ultimatewkn.sort(function(a,b) { 
+      this.wknraw.sort(function(a,b) { 
       return a - b
       })
+
+      this.ultimatewkn = this.wknraw.slice(1);
 
       console.log(this.ultimatewkn);
 
