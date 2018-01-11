@@ -21,14 +21,14 @@ export class HomePage {
 	@ViewChild(Slides) slides: Slides;
 	
 	//dateString= "2017-10-06"; //Backend: String in database should be like this 
-	dateString: number;
-	Deadlineraw: any[] = [];
+	dateString: number; //date string
+	Deadlineraw: any[] = []; //deadline information
 
-	Students: any[];
-	Groups: any[];
-	wkn: number[] = [];
-	wkn2: number[] = [];
-	mx: number;
+	Students: any[]; //student groups
+	Groups: any[]; //groups information
+	wkn: number[] = []; //week array
+	wkn2: number[] = []; //second week 
+	mx: number; //find the maximum week number
 	mx2: number;
 
 	RCount: number = 0;
@@ -41,8 +41,8 @@ export class HomePage {
 	LGCount: number = 0;
 	DGCount: number = 0;
 
-	studentData: any[] = [];
-	groupData: any[] = [];
+	studentData: any[] = []; //getting the student performance array
+	groupData: any[] = []; //getting the student performance array
 
 	//studentData = [2,4,1,5]; bad, average, good, excellent order
 	//groupData = [1,2,3,5]; bad, average, good, excellent order
@@ -128,7 +128,7 @@ export class HomePage {
 				}]
 		};
 
-		this.doughnutGroup= new Chart(
+		this.doughnutGroup= new Chart( //after creating the chart
 			donutGroup,
 			{
 				"type": 'doughnut',
@@ -162,7 +162,7 @@ export class HomePage {
   		}
   		this.mx = Math.max.apply(Math, this.wkn);
 
-  		for(let k in this.Students){
+  		for(let k in this.Students){ //process the retrieve data from the database and populate the information
   		if(this.Students[k].weeknum == this.mx && this.Students[k].st_fb == 1) {
   			this.RCount = this.RCount + 1;
   			console.log(this.RCount);
