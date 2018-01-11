@@ -18,6 +18,7 @@ export class LoginPage {
   constructor(private navCtrl: NavController, public shareService: ShareService, private auth: AuthService, private alertCtrl: AlertController, private loadingCtrl: LoadingController) {
   }
  
+ //The authentication service was adapted from https://devdactic.com/login-ionic-2/
   public login() {
     this.showLoading()   
     this.auth.login(this.registerCredentials).subscribe(allowed => {
@@ -40,6 +41,7 @@ export class LoginPage {
     this.loading.present();
   }
  
+  // show alert function
   showError(text) {
     this.loading.dismiss();
  

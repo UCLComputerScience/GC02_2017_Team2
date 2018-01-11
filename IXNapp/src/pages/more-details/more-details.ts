@@ -72,13 +72,15 @@ groupPerformance2: string;
         console.log(value); 
         return value; 
     }
-
+    
+    // gets performance class value from the individual performance
     public getPerformance(x) {
     var performance = this.individualPerformances[x];
     var value = this.values[performance]; 
     return value; 
     }
   
+    //gets group performance class value
     getGroupPerformance() {
         var value = this.values[this.groupPerformance];
         return value;
@@ -89,7 +91,7 @@ groupPerformance2: string;
     return photoname; 
     }
 
-
+    // delete feedback function
     del() {
 
             let alert = this.alertCtrl.create({

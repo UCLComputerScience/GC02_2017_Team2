@@ -44,7 +44,7 @@ export class FeedbackSummaryPage {
   constructor(public navCtrl: NavController, public nav : NavParams, public house: HouseProvider, public http: Http) {
     this.groupnumber = this.nav.get('param1');
   }
-
+  // populates variables by getting data from teh database (based on user ID)
   ngOnInit() {
     this.GetStage2Student().subscribe(dt => {
     if (dt["_body"]) {
@@ -143,12 +143,13 @@ export class FeedbackSummaryPage {
         }
 
         } else {
-        // IF THERE ARE NO STUDENTS WITH FEEDBACK FOR THE CHOSEN GROUP HERE HERE HERE HERE HERE HERE HERE HERE
+
         } 
 
       })
 
   }
+  
 
   GetStage2Student() {
     var link = 'http://gc02team02app.azurewebsites.net/SQL/Stage2Student.php';
@@ -156,7 +157,8 @@ export class FeedbackSummaryPage {
 
   return this.http.post(link, myData);
   }
-
+  
+  // ion refresh - refreshes variables
   doRefresh(refresher) {
     console.log('Begin async operation', refresher);
 
@@ -285,13 +287,14 @@ export class FeedbackSummaryPage {
     }, 2000);
   }
 
-
+// get colour name from number
   groupColorSetting(x) {
     var indexvalue = this.groupdata[x];
     var colorName = this.performanceColor[indexvalue]; 
     return colorName; 
   }
 
+// set class name for specifc student and button
   studentColorSetting(x, y) {  
     var indexvalue = this.results[x][y]; 
     var studentColor = this.performanceColor[indexvalue]; 

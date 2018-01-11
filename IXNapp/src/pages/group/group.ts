@@ -76,24 +76,27 @@ export class GroupPage implements OnInit {
     })
     
   }
-
+// back button
  goBack(params){
     if (!params) params = {};
     this.navCtrl.pop();
   }
   
+  // go to next week by clicking on button
   nextweek() : void {
     if (this.currentdateindex < this.weeks.length) {
         this.currentdateindex++;
     }
   }
   
+  // go to previous week through button
   previousweek() : void {
     if (this.currentdateindex > 1) {
         this.currentdateindex--;
     }
   }
 
+ // keep track of selected buttons
   buttonSelected = null;
   
   buttonSelect(k) {
@@ -121,6 +124,7 @@ export class GroupPage implements OnInit {
     alert.present(prompt);
   }
   
+  // check if group fields are filled in
   public giveFeedback() {
     if (this.buttonSelected === null || this.groupComment === null) {
         this.showError ("please fill in all fields.");
@@ -129,7 +133,7 @@ export class GroupPage implements OnInit {
         this.setButtonData();
     }
   }
-  
+  //checks if all fields are filled in, that contributions add up. If there are no issues, it stores the data to be saved in variables
   setButtonData(){
     this.groupFeedback = this.descriptions[this.buttonSelected]; 
     let checkData = true;
@@ -183,6 +187,7 @@ export class GroupPage implements OnInit {
     }
   }
   
+  // store data prepares variables for backend and pushes it to the database
   storeData() {
 
     var studentFeedback: any[] = [];
@@ -305,7 +310,7 @@ export class GroupPage implements OnInit {
 
 }
 
-
+// class to store student feedback
 export class Student {
     feedback: string;
     comment: string;

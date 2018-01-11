@@ -54,6 +54,7 @@ export class ProfilePage {
       })
   }
   
+  // logout
   public logout() {
     this.auth.logout().subscribe(succ => {
       this.app.getRootNav().setRoot(LoginPage);
@@ -69,6 +70,7 @@ export class ProfilePage {
     alert.present(prompt);
   }
   
+  // change password and check new password length
   changePassword() {
     if (this.password === null || this.password == null) {
         this.showError("No password inserted");

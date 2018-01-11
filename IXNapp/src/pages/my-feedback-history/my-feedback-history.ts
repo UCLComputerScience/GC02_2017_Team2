@@ -163,7 +163,8 @@ export class MyFeedbackHistoryPage {
     var studentColor = this.performanceColor[indexvalue]; 
     return studentColor; 
   }
-
+  
+  // returns latest week
   latestWeek() {
     var weekIndex = this.weekswithinfo.length; 
     weekIndex = weekIndex-1; 
@@ -171,6 +172,7 @@ export class MyFeedbackHistoryPage {
     return latestW; 
   }
 
+  // calculates average group performance
   averagePerformance(){
     var weekIndex = this.weekswithinfo.length; 
     var sum: number = 0;
@@ -181,6 +183,7 @@ export class MyFeedbackHistoryPage {
     return sum.toFixed(1);
   }
 
+  // 
   latestPerformance() {
     var weekIndex = this.weekswithinfo.length; 
     console.log(weekIndex);

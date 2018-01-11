@@ -32,6 +32,7 @@ export class TabsControllerPage {
   }
   
   
+  // sets the root of tabs depending on user type
   newvalue() {
     if (this.type === "Student") {
         this.tab1Root = StudentHomePage;

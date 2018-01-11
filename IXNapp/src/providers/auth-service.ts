@@ -6,7 +6,7 @@ import { Http, Headers, RequestOptions } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import { HouseProvider } from './house/house';
 
- 
+// user class that stores all the user information 
 export class User {
   firstName: string;
   lastName: string;
@@ -23,6 +23,8 @@ export class User {
 }
  
 @Injectable()
+
+//The authentication service was adapted from https://devdactic.com/login-ionic-2/
 export class AuthService {
   currentUser: User;
   combo: any[] = [];
@@ -34,6 +36,7 @@ export class AuthService {
   this.zero = 0;
   }
  
+  // login function which takes the credentials of the login function in the login page and compares it with data retrieved from the database
   public login(credentials) {
     if (credentials.email === null || credentials.password === null || credentials.type === null) {
       return Observable.throw("Please insert credentials");
@@ -129,11 +132,12 @@ export class AuthService {
     }
   }
 
- 
+  // function that can be used from any page to get the user info
   public getUserInfo() : User {
     return this.currentUser;
   }
  
+  // logout function that sets the currentUser to null
   public logout() {
     return Observable.create(observer => {
       this.currentUser = null;

@@ -60,6 +60,7 @@ export class MyProfilePage {
     })
   }
   
+  // log out function
   public logout() {
     this.auth.logout().subscribe(succ => {
       this.app.getRootNav().setRoot(LoginPage);
@@ -75,6 +76,7 @@ export class MyProfilePage {
     alert.present(prompt);
   }
   
+  // change password if use clicks change password and check that the new password is longer than 6 characters
   changePassword() {
     if (this.password === null || this.password == null) {
         this.showError("No password inserted");
