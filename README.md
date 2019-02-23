@@ -1,6 +1,6 @@
 # IXN Management System
 
-The IXN management system is a mobile application built using the Ionic framework. It organises project management and communnication between project groups, supervisors and TAs. The project also serves as a feedback platform which allows users to track their individual performance throughout a project duration. Data provided through the users are stored and retrieved from a MYSQL database. 
+The IXN management system is a mobile application built using the Ionic framework. It organises project management and communnication between project groups, supervisors and TAs. The project also serves as a feedback platform which allows users to track their individual performance throughout a project duration. Data provided through the users are stored and retrieved from a MYSQL database. The project was developed in association with IXN and is used as a prototype across teaching modules at University College London
 
 ## Getting Started
 
