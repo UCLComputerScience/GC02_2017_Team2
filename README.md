@@ -17,7 +17,7 @@ The Ionic application module can be deployed on iOS and Android.
 
 * Generate the native project
 
-```
+```https://github.com/PurpleBooth
  $ ionic cordova prepare ios
 ```
 
@@ -41,6 +41,8 @@ In Xcode, select a target simulator or device and click the play button.
 
 ## Authors
 
-* **Won Tek Hong** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
+* **Won Tek Hong** - *Initial work* - [Github](https://github.com/anthony209)
+* **Sophia Botzmann**
+* **Antoine Tian**  
+* **Dr Yun Fu** - *UCL*
 
