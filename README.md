@@ -17,7 +17,7 @@ The Ionic application module can be deployed on iOS and Android.
 
 * Generate the native project
 
-```https://github.com/PurpleBooth
+```
  $ ionic cordova prepare ios
 ```
 
